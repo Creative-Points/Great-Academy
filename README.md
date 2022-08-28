@@ -8,16 +8,24 @@
 
 - **Home**
 - **Sections**
+- **Courses**
+- **Single Course**
+- **Workshops**
+- **Single Workshop**
 - **Contact Us**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **About Us**
+- **Register in Course | Register in Workshop**
+- **Login (Students)**
+- **Dashboard Students**
+- **Profile**
+
+### Dashboard UI
+- **Home**
+- **Courses {{Manage | Add}}**
+- ****
+- ****
+- ****
+- ****
+- ****
 
 
