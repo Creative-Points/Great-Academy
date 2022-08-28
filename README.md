@@ -4,7 +4,7 @@
 
 
 
-### Main Pages
+### Main Pages UI
 
 - **Home**
 - **Sections**
@@ -19,7 +19,7 @@
 - **Dashboard Students**
 - **Profile**
 
-### Dashboard UI
+### Dashboard Pages UI
 - **Home**
 - **Courses (Manage | Add | Edit)**
 - **Workshops (Manage | Add | Edit)**
