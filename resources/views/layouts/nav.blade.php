@@ -5,21 +5,24 @@
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
-            <li>
-                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    Home
-                </x-nav-link>
-            </li>
-            <li class="has-submenu"><a href="#section2">About Us</a>
-                <ul class="sub-menu">
-                    <li><a href="#section2">Who we are?</a></li>
-                    <li><a href="#section3">What we do?</a></li>
-                    <li><a href="#section3">How it works?</a></li>
-                </ul>
-            </li>
-            <li><a href="#section4">Courses</a></li>
-            <li><a href="#section5">Video</a></li>
-            <li><a href="#section6">Contact</a></li>
+            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                Home
+            </x-nav-link>
+            <x-nav-link :href="'sections'" :active="request()->routeIs('dashboard')">
+                Sections
+            </x-nav-link>
+            <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                Courses
+            </x-nav-link>
+            <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                Workshops
+            </x-nav-link>
+            <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                About Us
+            </x-nav-link>
+            <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                Countact US
+            </x-nav-link>
         </ul>
     </nav>
 </header>
