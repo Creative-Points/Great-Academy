@@ -11,4 +11,3 @@ $classes = $active == $href ? 'active' : '';
         {{ $slot }}
     </a>
 </li>
-
