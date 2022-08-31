@@ -21,22 +21,23 @@
                 </li>
             @else
                 <x-navbar :href="route('home')" :active="request()->routeIs('home')">
-                    Home
+                    الصفحه الرئيسيه
                 </x-navbar>
                 <x-navbar :href="'sections'" :active="request()->routeIs('dashboard')">
-                    Sections
+                    الأقسام الدراسية
+                    
                 </x-navbar>
                 <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
-                    Courses
+                    الكورسات
                 </x-navbar>
                 <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
-                    Workshops
+                    ورش العمل
                 </x-navbar>
                 <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
-                    About Us
+                    عن الأكاديمية
                 </x-navbar>
                 <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
-                    Countact US
+                    اتصل بنا
                 </x-navbar>
             @endrole
         </ul>
