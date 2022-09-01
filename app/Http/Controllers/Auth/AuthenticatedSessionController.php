@@ -37,9 +37,9 @@ class AuthenticatedSessionController extends Controller
         }elseif(Auth::user()->hasRole('instructor')){
             return redirect()->route('instructor.home');
         }elseif(Auth::user()->hasRole('student')){
-            return redirect()->route('student.dashboard');
+            return redirect()->route('student.home');
         }
-        
+
     }
 
     /**

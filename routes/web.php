@@ -24,7 +24,7 @@ Route::get('/sections', function () {
 
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
-    Route::get('/dashboard', [StudentController::class, 'index'])->name('dashboard');
+    Route::get('/home', [StudentController::class, 'index'])->name('home');
 });
 
 
