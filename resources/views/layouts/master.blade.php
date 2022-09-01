@@ -30,7 +30,7 @@
 
 
         <!-- Page Content -->
-        <main class="jumbotron jumbotron-fluid">
+        <main class="jumbotron jumbotron-fluid pb-0">
             {{ $slot }}
         </main>
     </div>
