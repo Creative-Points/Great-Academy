@@ -10,4 +10,6 @@ class StudentController extends Controller
     {
         return view('student.index');
     }
+
+
 }
