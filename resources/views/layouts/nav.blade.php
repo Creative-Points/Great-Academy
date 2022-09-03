@@ -5,7 +5,7 @@
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
-            
+
             @role('student')
                 <x-navbar :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">
                     Home
@@ -23,14 +23,13 @@
                 <x-navbar :href="route('home')" :active="request()->routeIs('home')">
                     الصفحه الرئيسيه
                 </x-navbar>
-                <x-navbar :href="'sections'" :active="request()->routeIs('dashboard')">
+                <x-navbar :href="route('sections')" :active="request()->routeIs('sections')">
                     الأقسام الدراسية
-                    
                 </x-navbar>
-                <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
+                <x-navbar :href="route('courses')" :active="request()->routeIs('courses')">
                     الكورسات
                 </x-navbar>
-                <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">
+                <x-navbar :href="route('workshops')" :active="request()->routeIs('workshops')">
                     ورش العمل
                 </x-navbar>
                 <x-navbar :href="route('home')" :active="request()->routeIs('dashboard')">

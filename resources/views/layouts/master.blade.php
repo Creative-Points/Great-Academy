@@ -48,7 +48,7 @@
     <script src="{{ asset('assets/js/video.js') }}"></script>
     <script src="{{ asset('assets/js/slick-slider.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js?v=').time() }}"></script>
-    <script>
+    {{-- <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
 
@@ -98,7 +98,7 @@
         $(window).scroll(function() {
             checkSection();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

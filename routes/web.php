@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 // sections
-Route::get('/sections', function () {
+Route::get('sections', function () {
     return view('sections');
 })->name('sections');
 // courses
