@@ -26,6 +26,10 @@ Route::get('/sections', function () {
 Route::get('/courses', function () {
     return view('courses');
 })->name('courses');
+// workshops
+Route::get('/workshops', function () {
+    return view('workshops');
+})->name('workshops');
 
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {

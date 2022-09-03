@@ -1,12 +1,15 @@
 <x-master-layout>
 
+<x-master-layout>
+
 
   <section class="section courses" data-section="section4">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-heading">
-                    <h2>الكورسات المتوفره بالأكاديمية</h2>
+                        <h2>ورش العمل  المتوفره بالأكاديمية</h2>
+
                     </div>
                 </div>
                 <div class="owl-carousel owl-theme">
@@ -168,4 +171,6 @@
             </div>
         </div>
     </section>
+</x-master-layout>
+
 </x-master-layout>
