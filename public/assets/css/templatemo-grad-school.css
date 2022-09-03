@@ -4,7 +4,7 @@ TemplateMo 557 Grad School
 
 https://templatemo.com/tm-557-grad-school
 
-*/
+
 
 
 @import url(fontawesome.css);
@@ -810,10 +810,10 @@ section.courses .item img {
 }
 
 section.courses .item .down-content {
-    padding: 30px;
+    padding: 6px;
     background-color: #fff;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 18px;
 }
 
 section.courses .item .down-content h4 {
@@ -862,6 +862,9 @@ section.courses .item .down-content .text-button-free a {
 
 section.courses .owl-carousel .owl-nav {
     display: none;
+}
+.owl-carousel.owl-loaded{
+  margin-top: -8;
 }
 
 section.courses .owl-carousel .owl-dots {

@@ -18,9 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 })->name('home');
+// sections
 Route::get('/sections', function () {
     return view('sections');
 })->name('sections');
+// courses
+Route::get('/courses', function () {
+    return view('courses');
+})->name('courses');
 
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
