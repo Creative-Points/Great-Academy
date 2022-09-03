@@ -1,8 +1,9 @@
 <x-master-layout>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- ***** Main Banner Area Start ***** -->
-  <section class="section main-banner" id="top" data-section="section1">
-      <video autoplay muted loop id="bg-video">
+    <!-- ***** Main Banner Area Start ***** -->
+    <section class="section main-banner" id="top" data-section="section1">
+        <!-- <video autoplay muted loop id="bg-video">
           <source src="assets/images/course-video.mp4" type="video/mp4" />
       </video>
 
@@ -18,13 +19,82 @@
 
               </div>
           </div>
-      </div>
-  </section>
-  <!-- ***** Main Banner Area End ***** -->
+      </div> -->
+
+        <section class="home">
+            <div class="slider">
+                <div class="slide active" style="background-image: url('assets/images/slide-1.jpg')">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>1. Winter Collection 2022</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('assets/images/slide-2.jpg')">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>2. Winter Collection 2022</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('assets/images/slide-3.jpg')">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>3. Winter Collection 2022</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://www.sha.edu.eg/upload/slider/707872752_%D9%85%D8%AD%D9%85%D8%AF%20%D9%81%D8%B1%D9%8A%D8%AF%20%D8%AE%D9%85%D9%8A%D8%B3.jpg')">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>3. Winter Collection 2022</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://www.sha.edu.eg/upload/slider/386966739_444799156_DJI_004200.jpg">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>3. Winter Collection 2022</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- controls  -->
+            <div class="controls">
+                <div class="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
+                <div class="next"><i class="fa-solid fa-circle-arrow-right"></i></div>
+            </div>
+
+            <!-- indicators -->
+            <div class="indicator">
+ 
+            </div>
+        </section>
+        <div class="marquee">
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+        <h1>Nepal * Himalayas * Mountains * Everest</h1>
+</div>
+    </section>
+    <!-- ***** Main Banner Area End ***** -->
 
 
-  <section class="features">
-      <!-- <div class="container">
+    <section class="features">
+        <!-- <div class="container">
           <div class="row">
              
               <div class="col-lg-4 col-12">
@@ -71,35 +141,35 @@
               </div>
           </div>
       </div> -->
-      <div class="wrapper2">
-  <div class="container2">
-      <img class="img-2" src="assets/images/university-campus.svg" alt="عدد سنوات الخبرة">
-      <span class="num2" data-val="40000">000</span>
-      <span class="text2">عدد سنوات الخبرة</span>
-  </div>
+        <div class="wrapper2">
+            <div class="container2">
+                <img class="img-2" src="assets/images/university-campus.svg" alt="عدد سنوات الخبرة">
+                <span class="num2" data-val="40000">000</span>
+                <span class="text2">عدد سنوات الخبرة</span>
+            </div>
 
-  <div class="container2">
-  <img class="img-2" src="assets/images/deparments.svg" alt="" >
-      <span class="num2" data-val="340">000</span>
-      <span class="text2">عدد أقسام الأكاديمية</span>
- 
-  </div>
+            <div class="container2">
+                <img class="img-2" src="assets/images/deparments.svg" alt="">
+                <span class="num2" data-val="340">000</span>
+                <span class="text2">عدد أقسام الأكاديمية</span>
 
-  <div class="container2">
-  <img class="img-2" src="assets/images/multiple-users-silhouette.svg" alt="" >
-      <span class="num2" data-val="225">000</span>
-      <span class="text2">عدد أعضاء هيئة التدريس</span>
-  </div>
-  <div class="container2">
-  <img class="img-2" src="assets/images/graduate-cap.svg" alt="عدد الخريجين">
-      <span class="num2" data-val="280" style="margin-top: 16px;">000</span>
-      <span class="text2">عدد المتخرجين</span>
-  </div>
+            </div>
 
-</div>
-  </section>
+            <div class="container2">
+                <img class="img-2" src="assets/images/multiple-users-silhouette.svg" alt="">
+                <span class="num2" data-val="225">000</span>
+                <span class="text2">عدد أعضاء هيئة التدريس</span>
+            </div>
+            <div class="container2">
+                <img class="img-2" src="assets/images/graduate-cap.svg" alt="عدد الخريجين">
+                <span class="num2" style="margin-top:16px;" data-val="280">000</span>
+                <span class="text2">عدد المتخرجين</span>
+            </div>
 
-  <!-- <section class="section why-us" data-section="section2">
+        </div>
+    </section>
+
+    <!-- <section class="section why-us" data-section="section2">
       <div class="container">
           <div class="row">
               <div class="col-md-12">
@@ -165,7 +235,7 @@
           </div>
       </div>
   </section> -->
-<!-- 
+    <!-- 
   <section class="section coming-soon" data-section="section3">
       <div class="container">
           <div class="row">
@@ -234,18 +304,18 @@
       </div>
   </section> -->
 
-  <section class="section courses" data-section="section4">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="section-heading">
-                      <h2>صور من الأكاديمية</h2>
-                  </div>
-              </div>
-              <div class="owl-carousel owl-theme">
-                  <div class="item">
-                      <img src="assets/images/courses-01.jpg" alt="Course #1">
-                      <!-- <div class="down-content">
+    <section class="section courses" data-section="section4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>صور من الأكاديمية</h2>
+                    </div>
+                </div>
+                <div class="owl-carousel owl-theme">
+                    <div class="item">
+                        <img src="assets/images/courses-01.jpg" alt="Course #1">
+                        <!-- <div class="down-content">
                           <h4>Digital Marketing</h4>
                           <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and
                               Pexels.</p>
@@ -256,10 +326,10 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-02.jpg" alt="Course #2">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-02.jpg" alt="Course #2">
+                        <!-- <div class="down-content">
                           <h4>Business World</h4>
                           <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
                               ipsum porta.</p>
@@ -270,10 +340,10 @@
                               <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-03.jpg" alt="Course #3">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-03.jpg" alt="Course #3">
+                        <!-- <div class="down-content">
                           <h4>Media Technology</h4>
                           <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
                               lobortis enim.</p>
@@ -284,10 +354,10 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-04.jpg" alt="Course #4">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-04.jpg" alt="Course #4">
+                        <!-- <div class="down-content">
                           <h4>Communications</h4>
                           <p>Download free images and videos for your websites by visiting Unsplash, Pixabay, and
                               Pexels.</p>
@@ -298,10 +368,10 @@
                               <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-05.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-05.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Business Ethics</h4>
                           <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
                               lobortis enim.</p>
@@ -312,10 +382,10 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-01.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-01.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Photography</h4>
                           <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
                               ipsum porta.</p>
@@ -326,10 +396,10 @@
                               <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-02.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-02.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Web Development</h4>
                           <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
                               lobortis enim.</p>
@@ -340,10 +410,10 @@
                               <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-03.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-03.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Learn HTML CSS</h4>
                           <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and
                               Pexels.</p>
@@ -354,10 +424,10 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-04.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-04.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Social Media</h4>
                           <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
                               lobortis enim.</p>
@@ -368,10 +438,10 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-05.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-05.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Digital Arts</h4>
                           <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
                               ipsum porta.</p>
@@ -382,10 +452,10 @@
                               <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-                  <div class="item">
-                      <img src="assets/images/courses-01.jpg" alt="">
-                      <!-- <div class="down-content">
+                    </div>
+                    <div class="item">
+                        <img src="assets/images/courses-01.jpg" alt="">
+                        <!-- <div class="down-content">
                           <h4>Media Streaming</h4>
                           <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
                               lobortis enim.</p>
@@ -396,59 +466,59 @@
                               <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
                           </div>
                       </div> -->
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-  <section class="section video" data-section="section5">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-6 align-self-center">
-                  <div class="left-content">
-                      <span>our presentation is for you</span>
-                      <h4>Watch the video to learn more <em>about Grad School</em></h4>
-                      <p>You are NOT allowed to redistribute this template ZIP file on any template collection
-                          website. However, you can use this template to convert into a specific theme for any kind of
-                          CMS platform such as WordPress. You may <a rel="nofollow" href="contact" target="_parent">contact TemplateMo</a> for
-                          details.
-                          <br><br>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec
-                          interdum quam felis non ante.
-                      </p>
-                      <div class="main-button"><a rel="nofollow" href="https://fb.com/templatemo" target="_parent">External URL</a></div>
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <article class="video-item">
-                      <div class="video-caption">
-                          <h4>Power HTML Template</h4>
-                      </div>
-                      <figure>
-                          <a href="https://www.youtube.com/watch?v=r9LtOG6pNUw" class="play"><img src="assets/images/main-thumb.png"></a>
-                      </figure>
-                  </article>
-              </div>
-          </div>
-      </div>
-  </section>
+    <section class="section video" data-section="section5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <div class="left-content">
+                        <span>our presentation is for you</span>
+                        <h4>Watch the video to learn more <em>about Grad School</em></h4>
+                        <p>You are NOT allowed to redistribute this template ZIP file on any template collection
+                            website. However, you can use this template to convert into a specific theme for any kind of
+                            CMS platform such as WordPress. You may <a rel="nofollow" href="contact" target="_parent">contact TemplateMo</a> for
+                            details.
+                            <br><br>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec
+                            interdum quam felis non ante.
+                        </p>
+                        <div class="main-button"><a rel="nofollow" href="https://fb.com/templatemo" target="_parent">External URL</a></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <article class="video-item">
+                        <div class="video-caption">
+                            <h4>Power HTML Template</h4>
+                        </div>
+                        <figure>
+                            <a href="https://www.youtube.com/watch?v=r9LtOG6pNUw" class="play"><img src="assets/images/main-thumb.png"></a>
+                        </figure>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="section contact" data-section="section6">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="section-heading">
-                      <h2>يمكنك التواصل معنا علي </h2>
-                  </div>
-              </div>
-              <div class="col-md-6">
+    <section class="section contact" data-section="section6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>يمكنك التواصل معنا علي </h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
 
-                  <!-- Do you need a working HTML contact-form script?
+                    <!-- Do you need a working HTML contact-form script?
 
                   Please visit https://templatemo.com/contact page -->
 
-                  <!-- <form id="contact" action="" method="post">
+                    <!-- <form id="contact" action="" method="post">
                       <div class="row">
                           <div class="col-md-6">
                               <fieldset>
@@ -472,65 +542,50 @@
                           </div>
                       </div>
                   </form> -->
-                  <ul class="info-contact">
-                            <li>
-                                <span>
-                                      الجيزه 5 شارع جامعه القاهره  <i class="fa fa-map-marker"></i>
-                                </span>
-                            </li>
+                    <ul class="info-contact">
+                        <li>
+                            <span>
+                                الجيزه 5 شارع جامعه القاهره <i class="fa fa-map-marker"></i>
+                            </span>
+                        </li>
 
-                            <li>
-                                <span>
-                                    رقم التليفون(1) : 01102353206 <i class="fa fa-phone"></i>
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    رقم التليفون(2) : 010102353206 <i class="fa fa-phone"></i>
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    رقم التليفون(3) : 01140181146 <i class="fa fa-phone"></i>
-                                </span>
-                            </li>
-                           
-                            <li>
-                                <span>
-                                    فاكس : 2124552552 <i class="fa fa-fax"></i>
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    info@great-academy.com  البريد الإلكتروني :<i class="fa fa-envelope-o"></i>
-                                </span>
-                            </li>
-                        </ul>
-              </div>
-              <div class="col-md-6">
-                  <div id="map">
-                      <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+                        <li>
+                            <span>
+                                رقم التليفون(1) : 01102353206 <i class="fa fa-phone"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                رقم التليفون(2) : 010102353206 <i class="fa fa-phone"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                رقم التليفون(3) : 01140181146 <i class="fa fa-phone"></i>
+                            </span>
+                        </li>
 
-    <script>
-      let valueDisplays = document.querySelectorAll(".num2");
-      let interval = 4000;
-      valueDisplays.forEach((valueDisplay) => {
-          let startValue = 0;
-          let endValue = parseInt(valueDisplay.getAttribute("data-val"));
-          let duration = Math.floor(interval / endValue);
-          let counter = setInterval(function() {
-              startValue += 1;
-              valueDisplay.textContent = startValue;
-              if (startValue == endValue) {
-                  clearInterval(counter);
-              }
-          }, duration);
-      });
-  </script>
+                        <li>
+                            <span>
+                                فاكس : 2124552552 <i class="fa fa-fax"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                info@great-academy.com البريد الإلكتروني :<i class="fa fa-envelope-o"></i>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div id="map">
+                        <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 </x-master-layout>

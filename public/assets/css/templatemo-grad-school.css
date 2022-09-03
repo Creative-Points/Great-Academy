@@ -8,7 +8,7 @@ https://templatemo.com/tm-557-grad-school
 
 
 @import url(fontawesome.css);
-@import url("<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">");
+/* @import url("<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">"); */
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -562,8 +562,9 @@ section.why-us {
   display: block;
   margin-bottom: 0.75em;
 }
-#tabs ul .ui-tabs-active {
-}
+/* #tabs ul .ui-tabs-active  {
+  
+} */
 #tabs ul .ui-tabs-active a {
   color: #f5a425;
 }
@@ -838,7 +839,7 @@ section.courses .item .down-content img {
 }
 
 section.courses .item .down-content .text-button-pay {
-    float: right;
+
     display: inline-block;
     margin-top: -30px;
 }
@@ -849,7 +850,7 @@ section.courses .item .down-content .text-button-pay a {
 }
 
 section.courses .item .down-content .text-button-free {
-    float: right;
+    /* float: right; */
     display: inline-block;
     margin-top: -30px;
 }
@@ -1593,20 +1594,19 @@ footer p a:hover {
   }
 }
 .wrapper2 {
-  padding: 20px;
-  text-indent: 120px;
+  padding: 18px;
+  text-indent: 110px;
   margin-left: -61px;
-  background-color: #564f4f;
+  background-color: #9f7944;
   display: flex;
 }
-.num2{
+.num2 {
   display: block;
   margin-left: 74px;
   font-size: 2rem;
-    font-weight: 900;
-    line-height: 3.236rem;
-    color: #63BD66;
-
+  font-weight: 900;
+  line-height: 3.236rem;
+  color: white;
 }
 .text2{
   display: block;
@@ -1618,7 +1618,7 @@ footer p a:hover {
   line-height: 2.5rem;
   color: white;
   opacity: 0.6;
-  text-shadow: 0px 0px 3px rgb(0 0 0 / 7%);
+  /* text-shadow: 0px 0px 3px rgb(0 0 0 / 7%); */
 
 }
 .img-2{
@@ -1668,4 +1668,205 @@ footer p a:hover {
   font-size: 14px;
   color: white;
   text-align: right;
+}
+/* slider */
+
+
+
+.home {
+  height: 87vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.home .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    display: none;
+    padding: 0 15px;
+    animation: slide 2s ease;
+}
+
+.home .slide.active {
+    display: flex;
+}
+
+@keyframes slide {
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+
+}
+
+.home .container {
+    flex-grow: 1;
+}
+
+.home .caption {
+    width: 50%;
+}
+
+.home .caption h1 {
+    font-size: 42px;
+    color: #000000;
+    margin: 0;
+
+}
+
+.home .slide.active .caption h1 {
+    opacity: 0;
+    animation: captionText .5s ease forwards;
+    animation-delay: 1s;
+}
+
+.home .caption p {
+    font-size: 18px;
+    margin: 15px 0 30px;
+    color: #222222;
+}
+
+.home .slide.active .caption p {
+    opacity: 0;
+    animation: captionText .5s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.home .caption a {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #000000;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.home .slide.active .caption a {
+    opacity: 0;
+    animation: captionText .5s ease forwards;
+    animation-delay: 1.4s;
+}
+
+@keyframes captionText {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.home .controls .prev,
+.home .controls .next {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    margin-top: -20px;
+    color: #ffffff;
+    background-color: #FF5722;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all .5s ease;
+    background: black;
+    border-radius: 5px;
+}
+
+.home .controls .prev:hover,
+.home .controls .next:hover {
+    background-color: #000000;
+}
+
+.home .controls .prev {
+    left: 16px;
+}
+
+.home .controls .next {
+    right: 16px;
+    ;
+}
+
+.home .indicator {
+    position: absolute;
+    left: 63%;
+    bottom: 38px;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.home .indicator div {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    color: #ffffff;
+    background-color: #FF5722;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    margin: 0 3px;
+}
+
+.home .indicator div.active {
+    background-color: #000;
+}
+.home .indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 149px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+/*responsive*/
+@media(max-width: 767px) {
+  .controls {
+      display: none;
+  }
+}
+@media(max-width: 767px) {
+  .home .indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    z-index: 2;
+    transform: translateX(-54%);
+}
+}
+/* maequee */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid cadetblue;
+  border-bottom: 1px solid cadetblue ;
+  border-radius: 3px;
+  background-color: cadetblue;
+  display: flex;
+  color: white;
+  
+  
+}
+
+
+.marquee h1{
+  font-size: 1em;
+  white-space: nowrap;
+  text-transform: uppercase
 }

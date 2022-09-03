@@ -104,3 +104,136 @@
 	})()
 
 })(jQuery);
+// slider
+
+let valueDisplays = document.querySelectorAll(".num2");
+let interval = 4000;
+valueDisplays.forEach((valueDisplay) => {
+	let startValue = 0;
+	let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+	let duration = Math.floor(interval / endValue);
+	let counter = setInterval(function() {
+		startValue += 1;
+		valueDisplay.textContent = startValue;
+		if (startValue == endValue) {
+			clearInterval(counter);
+		}
+	}, duration);
+});
+
+
+const slides = document.querySelector(".slider").children;
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const indicator = document.querySelector(".indicator");
+let index = 0;
+
+
+prev.addEventListener("click", function() {
+	prevSlide();
+	updateCircleIndicator();
+	resetTimer();
+})
+
+next.addEventListener("click", function() {
+	nextSlide();
+	updateCircleIndicator();
+	resetTimer();
+
+})
+
+// create circle indicators
+function circleIndicator() {
+	for (let i = 0; i < slides.length; i++) {
+		const div = document.createElement("div");
+		div.innerHTML = i + 1;
+		div.setAttribute("onclick", "indicateSlide(this)")
+		div.id = i;
+		if (i == 0) {
+			div.className = "active";
+		}
+		indicator.appendChild(div);
+	}
+}
+circleIndicator();
+
+function indicateSlide(element) {
+	index = element.id;
+	changeSlide();
+	updateCircleIndicator();
+	resetTimer();
+}
+
+function updateCircleIndicator() {
+	for (let i = 0; i < indicator.children.length; i++) {
+		indicator.children[i].classList.remove("active");
+	}
+	indicator.children[index].classList.add("active");
+}
+
+function prevSlide() {
+	if (index == 0) {
+		index = slides.length - 1;
+	} else {
+		index--;
+	}
+	changeSlide();
+}
+
+function nextSlide() {
+	if (index == slides.length - 1) {
+		index = 0;
+	} else {
+		index++;
+	}
+	changeSlide();
+}
+
+function changeSlide() {
+	for (let i = 0; i < slides.length; i++) {
+		slides[i].classList.remove("active");
+	}
+
+	slides[index].classList.add("active");
+}
+
+function resetTimer() {
+	// when click to indicator or controls button 
+	// stop timer 
+	clearInterval(timer);
+	// then started again timer
+	timer = setInterval(autoPlay, 4000);
+}
+
+
+function autoPlay() {
+	nextSlide();
+	updateCircleIndicator();
+}
+
+let timer = setInterval(autoPlay, 4000);
+// marquee
+function Marquee(selector, speed) {
+	const parentSelector = document.querySelector(selector);
+	const clone = parentSelector.innerHTML;
+	const firstElement = parentSelector.children[0];
+	let i = 0;
+	console.log(firstElement);
+	parentSelector.insertAdjacentHTML('beforeend', clone);
+	parentSelector.insertAdjacentHTML('beforeend', clone);
+  
+	setInterval(function () {
+	  firstElement.style.marginLeft = `-${i}px`;
+	  if (i > firstElement.clientWidth) {
+		i = 0;
+	  }
+	  i = i + speed;
+	}, 0);
+  }
+  
+  //after window is completed load
+  //1 class selector for marquee
+  //2 marquee speed 0.2
+  window.addEventListener('load', Marquee('.marquee', 0.2))
+  
+  

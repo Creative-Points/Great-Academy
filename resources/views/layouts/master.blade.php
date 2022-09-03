@@ -19,7 +19,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-grad-school.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-grad-school.css?v=').time() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css') }}">
 </head>
@@ -47,7 +47,7 @@
     <script src="{{ asset('assets/js/tabs.js') }}"></script>
     <script src="{{ asset('assets/js/video.js') }}"></script>
     <script src="{{ asset('assets/js/slick-slider.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js?v=').time() }}"></script>
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
