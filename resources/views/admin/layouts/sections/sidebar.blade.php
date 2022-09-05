@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
-            {{-- <span class="app-brand-logo demo">
+            <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
@@ -44,12 +44,12 @@
                         </g>
                     </g>
                 </svg>
-            </span> --}}
+            </span>
             <span class="app-brand-text h3 menu-text fw-bolder ms-2">Great Academy</span>
         </a>
 
         <a href="javascript:void(0);"
-            class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            class="layout-menu-toggle menu-link text-large ms-auto d-block">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
@@ -58,7 +58,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item active ">
             <a href="{{route('dashboard.home')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
@@ -76,22 +76,22 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="layouts-without-navbar.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <div data-i18n="Without navbar">Roles</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="layouts-without-menu.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <div data-i18n="Without menu">Employees</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="layouts-without-menu.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <div data-i18n="Without menu">Instructors</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="layouts-without-menu.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <div data-i18n="Without menu">Students</div>
                         </a>
                     </li>

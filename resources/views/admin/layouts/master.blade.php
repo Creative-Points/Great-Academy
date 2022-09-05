@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="❴❴ session()->get('locale') ?? app()->getLocale() ❵❵" class="light-style" dir="ltr"
-    data-theme="theme-default" data-framework="laravel">
+<html lang="{{ session()->get('locale') ?? app()->getLocale() }} " class="light-style" dir="rtl"
+    data-theme="theme-default" data-assets-path="{{ asset('admin/asset/') }}/" data-template="vertical-menu-template" data-framework="laravel">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
     <title>@yield('title')</title>
     <meta name="description" content="" />
     <meta name="keywords" content="">
+    
     <!-- laravel CRUD token -->
     <meta name="csrf-token" content="❴❴ csrf_token() ❵❵">
     <!-- Favicon -->

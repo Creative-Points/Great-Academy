@@ -6,17 +6,20 @@
   rel="stylesheet"
 />
 
-<!-- Icons. Uncomment required icon fonts -->
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/fonts/boxicons.css')}}" />
+<!-- Icons -->
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/boxicons.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/fontawesome.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/flag-icons.css')}}" />
 
 <!-- Core CSS -->
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
-<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/css/rtl/core.css?v='.time())}}" class="template-customizer-core-css" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/css/rtl/theme-default.css')}}" class="template-customizer-theme-css" />
+<link rel="stylesheet" href="{{asset('admin/asset/css/demo.css')}}" />
 
 <!-- Vendors CSS -->
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/libs/typeahead-js/typeahead.css')}}" />
 
-<link rel="stylesheet" href="{{asset('admin/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/libs/apex-charts/apex-charts.css')}}" />
 
 <!-- Page CSS -->
