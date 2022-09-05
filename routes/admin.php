@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,21 @@ Route::name('dashboard.')->middleware(['auth', 'role:admin'])->prefix('dashboard
     //     return redirect()->route('admin.home');
     // })->name('index');
     Route::get('/', [DashboardController::class, 'index'])->name('home');
+
+    // Employee
+    Route::name('employee.')->prefix('employee')->group(function(){
+        Route::get('manage', [EmployeeController::class, 'index'])->name('manage');
+    });
+    
+    // Instructor
+    Route::name('instructor.')->prefix('instructor')->group(function(){
+        Route::get('manage', [InstructorController::class, 'index'])->name('manage');
+    });
+    
+    // Student
+    Route::name('student.')->prefix('student')->group(function(){
+        Route::get('manage', [StudentController::class, 'index'])->name('manage');
+    });
 });
 
 require __DIR__.'/auth.php';

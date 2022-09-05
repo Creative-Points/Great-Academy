@@ -58,7 +58,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active ">
+        <li class="menu-item @if(request()->routeIs('dashboard.home') == route('dashboard.home')) active @endif ">
             <a href="{{route('dashboard.home')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Dashboard</div>
@@ -67,7 +67,7 @@
 
         <!-- Layouts -->
         @role('admin')
-            <li class="menu-item">
+            <li class="menu-item  @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif ">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
@@ -75,24 +75,19 @@
                 </a>
 
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
-                            <div data-i18n="Without navbar">Roles</div>
+                    <li class="menu-item @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif">
+                        <a href="{{ route('dashboard.employee.manage') }}" class="menu-link">
+                            <div>Employees</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <div data-i18n="Without menu">Employees</div>
+                            <div >Instructors</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <div data-i18n="Without menu">Instructors</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
-                            <div data-i18n="Without menu">Students</div>
+                            <div >Students</div>
                         </a>
                     </li>
                 </ul>
