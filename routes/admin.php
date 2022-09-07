@@ -38,6 +38,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:admin'])->prefix('dashboard
     // Student
     Route::name('student.')->prefix('student')->group(function(){
         Route::get('manage', [StudentController::class, 'index'])->name('manage');
+        Route::post('add', [StudentController::class, 'store'])->name('add');
     });
 });
 

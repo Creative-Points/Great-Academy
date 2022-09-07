@@ -64,29 +64,33 @@
                 <div>Dashboard</div>
             </a>
         </li>
-
+        @php
+            $stmt =  request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
+            || request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
+            || request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage');
+        @endphp
         <!-- Layouts -->
         @role('admin')
-            <li class="menu-item  @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif ">
+            <li class="menu-item @if($stmt) active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
                     <div>Users</div>
                 </a>
 
-                <ul class="menu-sub">
+                <ul class="menu-sub open">
                     <li class="menu-item @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif">
                         <a href="{{ route('dashboard.employee.manage') }}" class="menu-link">
                             <div>Employees</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item @if(request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')) active @endif">
+                        <a href="{{ route('dashboard.instructor.manage') }}" class="menu-link">
                             <div >Instructors</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item @if(request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage')) active @endif">
+                        <a href="{{ route('dashboard.student.manage') }}" class="menu-link">
                             <div >Students</div>
                         </a>
                     </li>

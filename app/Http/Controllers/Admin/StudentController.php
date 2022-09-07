@@ -15,4 +15,9 @@ class StudentController extends Controller
         })->get();
         return view('admin.student.index', compact('users'));
     }
+
+    public function store(Request $request, User $user)
+    {
+        return back();
+    }
 }
