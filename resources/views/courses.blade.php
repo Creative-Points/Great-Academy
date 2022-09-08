@@ -8,7 +8,7 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
     <div class="breadcrumbs-img">
-        <img src="assets/images/bg/1.jpg" alt="Breadcrumbs Image">
+        <img src="assets/images/bg/1.jpg" alt="Breadcrumbs Imagee">
     </div>
     <div class="breadcrumbs-text">
         <h1 class="page-title">Courses</h1>
