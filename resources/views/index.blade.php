@@ -72,8 +72,8 @@
 
             <!-- controls  -->
             <div class="controls">
-                <div class="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
-                <div class="next"><i class="fa-solid fa-circle-arrow-right"></i></div>
+                <div class="prev"  style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-left"></i></div>
+                <div class="next" style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-right"></i></div>
             </div>
 
             <!-- indicators -->

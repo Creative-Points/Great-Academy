@@ -5,5 +5,6 @@
 <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
 <script src="{{asset('admin/asset/vendor/js/template-customizer.js?v='.time())}}"></script>
 
+
 <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 <script src="{{asset('admin/asset/js/config.js?v='.time())}}"></script>
