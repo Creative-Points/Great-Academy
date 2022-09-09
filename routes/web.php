@@ -30,6 +30,10 @@ Route::get('/courses', function () {
 Route::get('/simple-courses', function () {
     return view('simple-courses');
 })->name('simple-courses');
+// login-studetn
+Route::get('/login-studetn', function () {
+    return view('login-studetn');
+})->name('login-studetn');
 // workshops
 Route::get('/workshops', function () {
     return view('workshops');
