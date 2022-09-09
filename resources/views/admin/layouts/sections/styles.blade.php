@@ -8,7 +8,7 @@
 
 <!-- Icons -->
 <link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/boxicons.css')}}" />
-<link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/fontawesome.css')}}" />
+<link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/css/all.min.css')}}" />
 <link rel="stylesheet" href="{{asset('admin/asset/vendor/fonts/flag-icons.css')}}" />
 
 <!-- Core CSS -->

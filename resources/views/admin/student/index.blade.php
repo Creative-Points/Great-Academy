@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
+    @if (session('success'))
+        <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
     <!-- Users List Table -->
     <div class="card">
         <div class="card-datatable table-responsive">
@@ -122,10 +132,11 @@
                             {{-- <td><span class="badge bg-label-secondary">Inactive</span></td> --}}
                             {{-- <td><span class="badge bg-label-warning">Pending</span></td> --}}
                             <td>
-                                <div class="d-inline-block"><button
-                                        class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
+                                <div class="d-inline-block">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end"><a href="app-user-view-account.html"
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="{{ route('dashboard.student.view', $user->id) }}"
                                             class="dropdown-item">View</a><a href="javascript:;"
                                             class="dropdown-item">Suspend</a>
                                         <div class="dropdown-divider"></div><a href="javascript:;"
@@ -149,66 +160,53 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" id="addNewUserForm" method="POST" action="{{ route('dashboard.student.add') }}">
+                <form class="add-new-user pt-0" id="" method="POST"
+                    action="{{ route('dashboard.student.add') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-user-fullname">Full Name</label>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="add-user-fullname" 
-                            placeholder="Nabil Hamada"
-                            name="name"
-                            required>
+                        <input type="text" class="form-control" id="add-user-fullname" placeholder="Nabil Hamada"
+                            name="name" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-email">Email</label>
-                        <input 
-                            type="email" 
-                            id="add-user-email" 
-                            class="form-control"
-                            placeholder="nabil.hamada@example.com" 
-                            name="email"
-                            required>
+                        <input type="email" id="add-user-email" class="form-control"
+                            placeholder="nabil.hamada@example.com" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-contact">Phone</label>
-                        <input 
-                            type="text" 
-                            id="add-user-contact" 
-                            class="form-control phone-mask"
-                            placeholder="01234567890"
-                            name="phone"
-                            required>
+                        <input type="text" id="add-user-contact" class="form-control phone-mask"
+                            placeholder="01234567890" name="phone" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-address">Address</label>
-                        <input 
-                            type="text" 
-                            id="add-user-address" 
-                            class="form-control" 
-                            placeholder="Country, City, Street .."
-                            name="address"
-                            required>
+                        <input type="text" id="add-user-address" class="form-control"
+                            placeholder="Country, City, Street .." name="address" required>
+                    </div>
+                    {{-- <div class="mb-3">
+                        <label class="form-label" for="add-user-password">Password</label>
+                        <input type="password" id="add-user-password" class="form-control"
+                            placeholder="Type Password here ..">
+                    </div> --}}
+                    <div class="form-password-toggle">
+                        <label class="form-label" for="basic-default-password12">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="basic-default-password12"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                name="password" required>
+                            <span id="basic-default-password2" class="input-group-text cursor-pointer"><i
+                                    class="bx bx-hide"></i></span>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-university">University</label>
-                        <input 
-                            type="text" 
-                            id="add-user-university" 
-                            class="form-control" 
-                            placeholder="Cairo University"
-                            name="university"
-                            required>
+                        <input type="text" id="add-user-university" class="form-control"
+                            placeholder="Cairo University" name="university" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-faculty">Faculty of</label>
-                        <input 
-                            type="text" id="add-user-company" 
-                            class="form-control" 
-                            placeholder="Country, City, Street .."
-                            name="faculty"
-                            required>
+                        <input type="text" id="add-user-company" class="form-control"
+                            placeholder="Country, City, Street .." name="faculty" required>
                     </div>
                     <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
                     <button type="reset" class="btn btn-label-secondary"

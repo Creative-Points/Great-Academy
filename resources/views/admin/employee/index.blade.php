@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <table class="datatables-users table border-top">
+            <table class="table border-top">
                 <thead>
                     <tr>
                         <th>#</th>

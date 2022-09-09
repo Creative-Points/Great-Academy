@@ -82,13 +82,13 @@
             </div>
         </section>
         <div class="marquee">
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-        <h1>Nepal * Himalayas * Mountains * Everest</h1>
-</div>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+    </div>
     </section>
     <!-- ***** Main Banner Area End ***** -->
 
@@ -144,7 +144,7 @@
         <div class="wrapper2">
             <div class="container2">
                 <img class="img-2" src="assets/images/university-campus.svg" alt="عدد سنوات الخبرة">
-                <span class="num2" data-val="40000">000</span>
+                <span class="num2" data-val="16">000</span>
                 <span class="text2">عدد سنوات الخبرة</span>
             </div>
 

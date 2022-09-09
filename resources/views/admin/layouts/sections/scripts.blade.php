@@ -8,6 +8,7 @@
     <script src="{{asset('admin/asset/vendor/libs/hammer/hammer.js')}}"></script>
     <script src="{{asset('admin/asset/vendor/libs/i18n/i18n.js')}}"></script>
     <script src="{{asset('admin/asset/vendor/libs/typeahead-js/typeahead.js')}}"></script>
+    <script src="{{asset('admin/asset/vendor/libs/toastr/toastr.js')}}"></script>
 
 
     <script src="{{asset('admin/asset/vendor/js/menu.js')}}"></script>
@@ -21,6 +22,4 @@
 
     <!-- Page JS -->
     <script src="{{asset('admin/asset/js/dashboards-analytics.js')}}"></script>
-
-
-
+    <script src="{{asset('admin/asset/js/ui-toasts.js')}}"></script>

@@ -66,8 +66,11 @@
         </li>
         @php
             $stmt =  request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
-            || request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
-            || request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage');
+                    || request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
+                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
+                    || request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage');
+            $stu = request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage')
+                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
         @endphp
         <!-- Layouts -->
         @role('admin')
@@ -89,7 +92,7 @@
                             <div >Instructors</div>
                         </a>
                     </li>
-                    <li class="menu-item @if(request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage')) active @endif">
+                    <li class="menu-item @if($stu) active @endif">
                         <a href="{{ route('dashboard.student.manage') }}" class="menu-link">
                             <div >Students</div>
                         </a>
