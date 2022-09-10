@@ -1,7 +1,17 @@
 <x-admin-layout>
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">User / View /</span> Account
+        <span class="text-muted fw-light">Users / Student / View /</span> Account
     </h4>
+    @if (session('success'))
+        <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
     <div class="row">
         <!-- User Sidebar -->
         <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
@@ -48,7 +58,13 @@
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Status:</span>
-                                <span class="badge bg-label-success">Active</span>
+                                @if ($users->status == 1)
+                                    <span class="badge bg-label-success">Active</span>
+                                @elseif ($users->status == 2)
+                                    <span class="badge bg-label-secondary">Inactive</span>
+                                @else
+                                    <span class="badge bg-label-danger">Suspended</span>
+                                @endif
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Role:</span>
@@ -56,7 +72,7 @@
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Code:</span>
-                                <span>Tax-8965</span>
+                                <span>{{$users->code}}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Contact:</span>
@@ -76,7 +92,11 @@
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center pt-3">
-                            <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
+                            @if ($users->status == 1 || $users->status == 2)
+                                <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
+                            @elseif($users->status == 3)
+                                <a href="javascript:;" class="btn btn-label-success suspend-user">Active</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -123,7 +143,9 @@
                             <h3>Edit User Information</h3>
                             <p>Updating Student details will receive a privacy audit.</p>
                         </div>
-                        <form id="editUserForm" class="row g-3" onsubmit="return false">
+                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', $users->id) }}">
+                            @method('PUT')
+                            @csrf
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-fullname">Full Name</label>
                                 <input type="text" class="form-control" id="add-user-fullname"
@@ -141,12 +163,12 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalEditUserStatus">Status</label>
-                                <select id="modalEditUserStatus" name="modalEditUserStatus" class="form-select"
+                                <select id="modalEditUserStatus" name="status" class="form-select"
                                     aria-label="Default select example">
                                     <option selected="">Status</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">Inactive</option>
-                                    <option value="3">Suspended</option>
+                                    <option value="1" @if($users->status == 1)selected @endif>Active</option>
+                                    <option value="2" @if($users->status == 2)selected @endif>Inactive</option>
+                                    <option value="3" @if($users->status == 3)selected @endif>Suspended</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
@@ -161,8 +183,8 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-faculty">Faculty of</label>
-                                <input type="text" id="add-user-company" class="form-control"
-                                    placeholder="Country, City, Street .." name="faculty" value="{{ $users->faculty }}" required>
+                                <input type="text" id="add-user-faculty" class="form-control"
+                                    placeholder="IS" name="faculty" value="{{ $users->faculty }}" required>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>

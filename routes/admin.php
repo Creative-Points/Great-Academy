@@ -39,6 +39,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:admin'])->prefix('dashboard
     Route::name('student.')->prefix('student')->group(function(){
         Route::get('manage', [StudentController::class, 'index'])->name('manage');
         Route::post('add', [StudentController::class, 'store'])->name('add');
+        Route::put('{user}/update', [StudentController::class, 'update'])->name('update');
         Route::get('{user}/view', [StudentController::class, 'show'])->name('view');
     });
 });

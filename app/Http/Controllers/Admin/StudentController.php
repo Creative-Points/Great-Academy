@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -35,17 +36,51 @@ class StudentController extends Controller
         {
             return back()->withInput()->withErrors($validation);
         } else {
-            User::create([
+            $user->create([
                 'name'          => $request->name,
                 'email'         => $request->email,
                 'phone'         => $request->phone,
                 'address'       => $request->address,
                 'university'    => $request->university,
                 'faculty'       => $request->faculty,
+                'code'          => 'std-'.Str::random(16).'@great-academy.com',
                 'password'      => Hash::make($request->password),
             ])->assignRole('student');
 
             return back()->with('success', 'Student has been added successfully.');
+        }
+    }
+
+    public function update(Request $request, $user)
+    {
+        // return back();
+        $validation = Validator::make($request->all(), [
+            'name'          => 'required|string|min:5',
+            'email'         => 'required|email|unique:users,email,'.$user,
+            'phone'         => 'required|numeric|unique:users,phone,'.$user,
+            'address'       => 'required|string',
+            'university'    => 'required|string',
+            'faculty'       => 'required|string',
+        ]);
+
+        if($validation->fails())
+        {
+            return back()->withInput()->withErrors($validation);
+        } else {
+            $u = User::find($user);
+            $u->name        = $request->name;
+            $u->email       = $request->email;
+            $u->phone       = $request->phone;
+            $u->address     = $request->address;
+            if(empty($u->code)){
+                $u->code    = 'std-'.Str::random(16).'@great-academy.com';
+            }
+            $u->university  = $request->university;
+            $u->faculty     = $request->faculty;
+            $u->status      = $request->status;
+            $u->update();
+
+            return back()->with('success', 'Student has been Updated successfully.');
         }
     }
 
