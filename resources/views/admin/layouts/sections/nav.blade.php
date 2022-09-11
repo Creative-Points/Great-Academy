@@ -354,7 +354,7 @@
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
                                     <small class="text-muted">
-                                        @role('admin')
+                                        @role('Admin')
                                             Admin
                                         @endrole
                                         @role('instructor')
@@ -369,7 +369,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('dashboard.account') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

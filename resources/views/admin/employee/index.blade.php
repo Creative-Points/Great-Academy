@@ -115,7 +115,7 @@
 
                             @if ($user->roles)
                                 @foreach ($user->roles as $user_role)
-                                    @if ($user_role->name == 'admin')
+                                    @if ($user_role->name == 'Admin')
                                         <td>
                                             <span class="text-truncate d-flex align-items-center">
                                                 <span
@@ -125,7 +125,7 @@
                                                 {{ $user_role->name }}
                                             </span>
                                         </td>
-                                    @elseif ($user_role->name == 'instructor')
+                                    @elseif ($user_role->name == 'Employee')
                                         <td>
                                             <span class="text-truncate d-flex align-items-center">
                                                 <span

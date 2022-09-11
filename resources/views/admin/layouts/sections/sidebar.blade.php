@@ -45,7 +45,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text h3 menu-text fw-bolder ms-2">Great Academy</span>
+            <span class="app-brand-text h3 menu-text fw-bolder ms-2 mt-4">Great Academy</span>
         </a>
 
         <a href="javascript:void(0);"
@@ -73,7 +73,7 @@
                     || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
         @endphp
         <!-- Layouts -->
-        @role('admin')
+        @role('Admin')
             <li class="menu-item @if($stmt) active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
@@ -115,6 +115,13 @@
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>Settings</div>
+            </a>
+        </li>
+        
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>My Profile</div>
             </a>
         </li>
     </ul>

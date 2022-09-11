@@ -1,3 +1,4 @@
+@section('title', 'Home | Great Academy')
 <x-admin-layout>
 
     <div class="row">
