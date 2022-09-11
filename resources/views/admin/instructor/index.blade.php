@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
+    @if (session('success'))
+        <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
     <!-- Users List Table -->
     <div class="card">
         <div class="card-datatable table-responsive">
@@ -70,8 +80,22 @@
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="avatar-wrapper">
                                         <div class="avatar avatar-sm me-3">
-                                            <img src="/admin/asset//img/avatars/2.png" alt="Avatar"
-                                                class="rounded-circle">
+                                            @php
+                                                $r = rand(1, 5);
+                                                if ($r == 1) {
+                                                    $class = 'bg-label-warning';
+                                                } elseif ($r == 2) {
+                                                    $class = 'bg-label-danger';
+                                                } elseif ($r == 3) {
+                                                    $class = 'bg-label-success';
+                                                } elseif ($r == 4) {
+                                                    $class = 'bg-label-primary';
+                                                } elseif ($r == 5) {
+                                                    $class = 'bg-label-secondary';
+                                                }
+                                            @endphp
+                                            <span
+                                                class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] }}</span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
@@ -118,18 +142,39 @@
                                     @endif
                                 @endforeach
                             @endif
-                            <td><span class="badge bg-label-success">Active</span></td>
-                            {{-- <td><span class="badge bg-label-secondary">Inactive</span></td> --}}
-                            {{-- <td><span class="badge bg-label-warning">Pending</span></td> --}}
+                            <td>
+                                @if ($user->status == 1)
+                                    <span class="badge bg-label-success">Active</span>
+                                @elseif ($user->status == 2)
+                                    <span class="badge bg-label-secondary">Inactive</span>
+                                @else
+                                    <span class="badge bg-label-danger">Suspended</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-inline-block"><button
                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end"><a href="app-user-view-account.html"
-                                            class="dropdown-item">View</a><a href="javascript:;"
-                                            class="dropdown-item">Suspend</a>
-                                        <div class="dropdown-divider"></div><a href="javascript:;"
-                                            class="dropdown-item text-danger delete-record">Delete</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="{{ route('dashboard.instructor.view', $user->id) }}"
+                                            class="dropdown-item">View</a>
+                                        @if ($user->status == 3 || $user->status == 2)
+                                            <a href="{{ route('dashboard.instructor.active', $user->id) }}"
+                                                class="dropdown-item">Active</a>
+                                        @else
+                                            <a href="{{ route('dashboard.instructor.suspended', $user->id) }}"
+                                                class="dropdown-item">Suspend</a>
+                                        @endif
+
+                                        <div class="dropdown-divider"></div>
+                                        <form class="" method="POST"
+                                            action="{{ route('dashboard.employee.delete', $user->id) }}"
+                                            onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="dropdown-item text-danger delete-record">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>

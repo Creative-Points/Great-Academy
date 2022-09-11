@@ -89,4 +89,45 @@ class StudentController extends Controller
         $users = User::find($user);
         return view('admin.student.view', compact('users'));
     }
+
+    public function suspended($user)
+    {
+        $user = User::find($user);
+        $user->status = 3;
+        $user->update();
+
+        return back()->with('success', 'Student account has been Suspened is successfully.');
+    }
+
+    public function active($user)
+    {
+        $user = User::find($user);
+        $user->status = 1;
+        $user->update();
+
+        return back()->with('success', 'Student account has been Activated is successfully.');
+    }
+
+    public function changePassword(Request $request, $user)
+    {
+        $validation = Validator::make($request->all(),[
+            'password'  => 'required|string|min:8|max:18|same:confirmPassword'
+        ]);
+        if($validation->fails())
+        {
+            return back()->withInput()->withErrors($validation);
+        }else{
+            $user = User::find($user);
+            $user->password = Hash::make($request->password);
+            $user->update();
+            
+            return back()->with('success', 'The password is Changed.');
+        }
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+        return back()->with('success', 'Student account has been deleted.');
+    }
 }

@@ -1,11 +1,24 @@
 <x-admin-layout>
-
+    @section('title', 'Manage Employees | Great Academy')
 
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
+    @if (session('success'))
+        <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if (session('error'))
+        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+    @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
     <!-- Users List Table -->
     <div class="card">
         {{-- <div class="card-header border-bottom">
@@ -28,7 +41,7 @@
                         <option value="Team">Team</option>
                     </select>
                 </div> --}}
-                {{-- <div class="col-md-4 user_status">
+        {{-- <div class="col-md-4 user_status">
                     <select id="FilterTransaction" class="form-select text-capitalize">
                         <option value=""> Select Status </option>
                         <option value="Pending" class="text-capitalize">Pending</option>
@@ -100,13 +113,32 @@
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="avatar-wrapper">
                                         <div class="avatar avatar-sm me-3">
-                                            <img src="/admin/asset//img/avatars/2.png" alt="Avatar"
-                                                class="rounded-circle">
+                                            @php
+                                                $r = rand(1, 5);
+                                                if ($r == 1) {
+                                                    $class = 'bg-label-warning';
+                                                } elseif ($r == 2) {
+                                                    $class = 'bg-label-danger';
+                                                } elseif ($r == 3) {
+                                                    $class = 'bg-label-success';
+                                                } elseif ($r == 4) {
+                                                    $class = 'bg-label-primary';
+                                                } elseif ($r == 5) {
+                                                    $class = 'bg-label-secondary';
+                                                }
+                                            @endphp
+                                            <span
+                                                class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] }}</span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <a href="app-user-view-account.html" class="text-body text-truncate">
-                                            <span class="fw-semibold">{{ $user->name }}</span>
+                                            <span class="fw-semibold">
+                                                {{ $user->name }}
+                                                @if ($user->id == auth()->user()->id)
+                                                    <span class='text-danger'>[ME]</span>
+                                                @endif
+                                            </span>
                                         </a>
                                         <small class="text-muted">{{ $user->email }}</small>
                                     </div>
@@ -148,18 +180,39 @@
                                     @endif
                                 @endforeach
                             @endif
-                            <td><span class="badge bg-label-success">Active</span></td>
-                            {{-- <td><span class="badge bg-label-secondary">Inactive</span></td> --}}
-                            {{-- <td><span class="badge bg-label-warning">Pending</span></td> --}}
+                            <td>
+                                @if ($user->status == 1)
+                                    <span class="badge bg-label-success">Active</span>
+                                @elseif ($user->status == 2)
+                                    <span class="badge bg-label-secondary">Inactive</span>
+                                @else
+                                    <span class="badge bg-label-danger">Suspended</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-inline-block"><button
                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end"><a href="app-user-view-account.html"
-                                            class="dropdown-item">View</a><a href="javascript:;"
-                                            class="dropdown-item">Suspend</a>
-                                        <div class="dropdown-divider"></div><a href="javascript:;"
-                                            class="dropdown-item text-danger delete-record">Delete</a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="{{ route('dashboard.employee.view', $user->id) }}"
+                                            class="dropdown-item">View</a>
+                                        @if ($user->status == 3 || $user->status == 2)
+                                            <a href="{{ route('dashboard.employee.active', $user->id) }}"
+                                                class="dropdown-item">Active</a>
+                                        @else
+                                            <a href="{{ route('dashboard.employee.suspended', $user->id) }}"
+                                                class="dropdown-item">Suspend</a>
+                                        @endif
+
+                                        <div class="dropdown-divider"></div>
+                                        <form class="" method="POST"
+                                            action="{{ route('dashboard.employee.delete', $user->id) }}"
+                                            onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="dropdown-item text-danger delete-record">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
@@ -179,75 +232,61 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" id="addNewUserForm" onsubmit="return false">
+                <form class="add-new-user pt-0" id="" method="POST"
+                    action="{{ route('dashboard.employee.add') }}">
+                    @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-user-fullname">Full Name</label>
-                        <input type="text" class="form-control" id="add-user-fullname" placeholder="John Doe"
-                            name="userFullname" aria-label="John Doe">
+                        <input type="text" class="form-control" id="add-user-fullname" placeholder="Nabil Hamada"
+                            name="name" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-user-email">Email</label>
-                        <input type="text" id="add-user-email" class="form-control"
-                            placeholder="john.doe@example.com" aria-label="john.doe@example.com" name="userEmail">
+                        <input type="email" id="add-user-email" class="form-control"
+                            placeholder="nabil.hamada@example.com" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-contact">Contact</label>
+                        <label class="form-label" for="add-user-contact">Phone</label>
                         <input type="text" id="add-user-contact" class="form-control phone-mask"
-                            placeholder="+1 (609) 988-44-11" aria-label="john.doe@example.com" name="userContact">
+                            placeholder="01234567890" name="phone" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-company">Company</label>
-                        <input type="text" id="add-user-company" class="form-control" placeholder="Web Developer"
-                            aria-label="jdoe1" name="companyName">
+                        <label class="form-label" for="add-user-address">Address</label>
+                        <input type="text" id="add-user-address" class="form-control"
+                            placeholder="Country, City, Street .." name="address" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="country">Country</label>
-                        <select id="country" class="select2 form-select">
-                            <option value="">Select</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="Canada">Canada</option>
-                            <option value="China">China</option>
-                            <option value="France">France</option>
-                            <option value="Germany">Germany</option>
-                            <option value="India">India</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Israel">Israel</option>
-                            <option value="Italy">Italy</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Korea">Korea, Republic of</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Philippines">Philippines</option>
-                            <option value="Russia">Russian Federation</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="Turkey">Turkey</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="United Arab Emirates">United Arab Emirates</option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="United States">United States</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="user-role">User Role</label>
-                        <select id="user-role" class="form-select">
-                            <option value="subscriber">Subscriber</option>
-                            <option value="editor">Editor</option>
-                            <option value="maintainer">Maintainer</option>
-                            <option value="author">Author</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
+                    {{-- <div class="mb-3">
+                        <label class="form-label" for="add-user-password">Password</label>
+                        <input type="password" id="add-user-password" class="form-control"
+                            placeholder="Type Password here ..">
+                    </div> --}}
+
                     <div class="mb-4">
-                        <label class="form-label" for="user-plan">Select Plan</label>
-                        <select id="user-plan" class="form-select">
-                            <option value="basic">Basic</option>
-                            <option value="enterprise">Enterprise</option>
-                            <option value="company">Company</option>
-                            <option value="team">Team</option>
+                        <label class="form-label" for="user-role">Select Role</label>
+                        <select id="user-role" name="role" class="form-select" required>
+                            <option value="admin">Admin</option>
+                            <option value="employee" selected>Employee</option>
                         </select>
+                    </div>
+                    <div class="form-password-toggle">
+                        <label class="form-label" for="basic-default-password12">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="basic-default-password12"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                name="password" required>
+                            <span id="basic-default-password2" class="input-group-text cursor-pointer"><i
+                                    class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="add-user-university">University</label>
+                        <input type="text" id="add-user-university" class="form-control"
+                            placeholder="Cairo University" name="university">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="add-user-faculty">Faculty of</label>
+                        <input type="text" id="add-user-company" class="form-control"
+                            placeholder="Country, City, Street .." name="faculty">
                     </div>
                     <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
                     <button type="reset" class="btn btn-label-secondary"

@@ -30,11 +30,25 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     // Employee
     Route::name('employee.')->prefix('employee')->group(function(){
         Route::get('manage', [EmployeeController::class, 'index'])->name('manage');
+        Route::post('add', [EmployeeController::class, 'store'])->name('add');
+        Route::put('{user}/update', [EmployeeController::class, 'update'])->name('update');
+        Route::get('{user}/view', [EmployeeController::class, 'show'])->name('view');
+        Route::get('{user}/suspended', [EmployeeController::class, 'suspended'])->name('suspended');
+        Route::get('{user}/active', [EmployeeController::class, 'active'])->name('active');
+        Route::delete('{user}/delete', [EmployeeController::class, 'delete'])->name('delete');
+        Route::post('{user}/change-password', [EmployeeController::class, 'changePassword'])->name('password');
     });
 
     // Instructor
     Route::name('instructor.')->prefix('instructor')->group(function(){
         Route::get('manage', [InstructorController::class, 'index'])->name('manage');
+        Route::post('add', [InstructorController::class, 'store'])->name('add');
+        Route::put('{user}/update', [InstructorController::class, 'update'])->name('update');
+        Route::get('{user}/view', [InstructorController::class, 'show'])->name('view');
+        Route::get('{user}/suspended', [InstructorController::class, 'suspended'])->name('suspended');
+        Route::get('{user}/active', [InstructorController::class, 'active'])->name('active');
+        Route::delete('{user}/delete', [InstructorController::class, 'delete'])->name('delete');
+        Route::post('{user}/change-password', [InstructorController::class, 'changePassword'])->name('password');
     });
 
     // Student
@@ -43,6 +57,10 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::post('add', [StudentController::class, 'store'])->name('add');
         Route::put('{user}/update', [StudentController::class, 'update'])->name('update');
         Route::get('{user}/view', [StudentController::class, 'show'])->name('view');
+        Route::get('{user}/suspended', [StudentController::class, 'suspended'])->name('suspended');
+        Route::get('{user}/active', [StudentController::class, 'active'])->name('active');
+        Route::delete('{user}/delete', [StudentController::class, 'delete'])->name('delete');
+        Route::post('{user}/change-password', [StudentController::class, 'changePassword'])->name('password');
     });
 });
 

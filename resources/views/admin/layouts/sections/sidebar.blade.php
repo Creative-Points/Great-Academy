@@ -68,9 +68,15 @@
             $stmt =  request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
                     || request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
                     || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
+                    || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1)
+                    || request()->routeIs('dashboard.employee.view', 1) == route('dashboard.employee.view', 1)
                     || request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage');
             $stu = request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage')
-                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
+                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1);
+            $emp = request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
+                    || request()->routeIs('dashboard.employee.view', 1) == route('dashboard.employee.view', 1);
+            $ins = request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
+                    || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1);
         @endphp
         <!-- Layouts -->
         @role('Admin')
@@ -82,12 +88,12 @@
                 </a>
 
                 <ul class="menu-sub open">
-                    <li class="menu-item @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif">
+                    <li class="menu-item @if($emp) active @endif">
                         <a href="{{ route('dashboard.employee.manage') }}" class="menu-link">
                             <div>Employees</div>
                         </a>
                     </li>
-                    <li class="menu-item @if(request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')) active @endif">
+                    <li class="menu-item @if($ins) active @endif">
                         <a href="{{ route('dashboard.instructor.manage') }}" class="menu-link">
                             <div >Instructors</div>
                         </a>
