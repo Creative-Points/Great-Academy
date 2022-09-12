@@ -105,6 +105,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item @if(request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')) active @endif ">
+                <a href="{{route('dashboard.course.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                    <div>Courses</div>
+                </a>
+            </li>
         @endrole
 
         {{-- <li class="menu-item ">

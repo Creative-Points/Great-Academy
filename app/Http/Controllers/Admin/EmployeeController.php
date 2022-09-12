@@ -13,9 +13,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $users = User::whereHas("roles", function ($q){
-            $q->where('name', 'admin');
-        })->get();
+        $users = User::role(['admin', 'employee'])->get();
         return view('admin.employee.index', compact('users'));
     }
 
@@ -39,23 +37,32 @@ class EmployeeController extends Controller
             
             if(!empty($request->role) && is_string($request->role))
             {
-                $user->create([
-                    'name'          => $request->name,
-                    'email'         => $request->email,
-                    'phone'         => $request->phone,
-                    'address'       => $request->address,
-                    'university'    => $request->university,
-                    'faculty'       => $request->faculty,
-                    // 'code'          => 'std-'.Str::random(16).'@great-academy.com',
-                    'password'      => Hash::make($request->password),
-                ]);
+                
                 if($request->role == 'admin')
                 {
-                    $user->assignRole('Admin');
+                    $user->create([
+                        'name'          => $request->name,
+                        'email'         => $request->email,
+                        'phone'         => $request->phone,
+                        'address'       => $request->address,
+                        'university'    => $request->university,
+                        'faculty'       => $request->faculty,
+                        // 'code'          => 'std-'.Str::random(16).'@great-academy.com',
+                        'password'      => Hash::make($request->password),
+                    ])->assignRole('Admin');
                 }
                 elseif($request->role == 'employee')
                 {
-                    $user->assignRole('Employee');
+                    $user->create([
+                        'name'          => $request->name,
+                        'email'         => $request->email,
+                        'phone'         => $request->phone,
+                        'address'       => $request->address,
+                        'university'    => $request->university,
+                        'faculty'       => $request->faculty,
+                        // 'code'          => 'std-'.Str::random(16).'@great-academy.com',
+                        'password'      => Hash::make($request->password),
+                    ])->assignRole('Employee');
                 }
                 else
                 {

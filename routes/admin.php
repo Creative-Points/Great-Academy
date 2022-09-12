@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\InstructorController;
@@ -61,6 +62,18 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::get('{user}/active', [StudentController::class, 'active'])->name('active');
         Route::delete('{user}/delete', [StudentController::class, 'delete'])->name('delete');
         Route::post('{user}/change-password', [StudentController::class, 'changePassword'])->name('password');
+    });
+
+    // Course
+    Route::name('course.')->prefix('course')->group(function(){
+        Route::get('manage', [CourseController::class, 'index'])->name('manage');
+        Route::post('add', [CourseController::class, 'store'])->name('add');
+        Route::put('{id}/update', [CourseController::class, 'update'])->name('update');
+        Route::get('{id}/view', [CourseController::class, 'show'])->name('view');
+        Route::get('{id}/suspended', [CourseController::class, 'suspended'])->name('suspended');
+        Route::get('{id}/active', [CourseController::class, 'active'])->name('active');
+        Route::delete('{id}/delete', [CourseController::class, 'delete'])->name('delete');
+        Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
     });
 });
 
