@@ -1,4 +1,22 @@
 <x-master-layout>
+<div class="padding-y-40 bg-light-v5">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div style="margin-bottom: -83px; padding-top: 24px;">
+
+
+                        <h1><bdi>تواصل معنا ..</bdi></h1>
+                        <ul class="breadcrumb breadcrumb-tringle bg-transparent">
+                            <li class="breadcrumb-item"><bdi><a href="">الرئيسية</a></bdi></li>
+                            <li class="breadcrumb-item"><bdi>تواصل معنا ..</bdi></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="contact-page-section orange-color pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
             <div class="row align-items-end contact-bg1">

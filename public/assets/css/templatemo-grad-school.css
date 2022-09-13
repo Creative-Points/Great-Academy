@@ -590,6 +590,12 @@ section.why-us {
     margin-bottom: 30px;
 }
 
+.bg-sc{
+    background:url('assets/images/sections/test1.png');
+}
+#prev{
+    background: rgba(22,34,57,0.95);
+}
 #tabs p {
     color: #fff;
     font-size: 15px;

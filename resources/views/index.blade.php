@@ -72,9 +72,10 @@
             </div>
 
             <!-- controls  -->
+         
             <div class="controls">
-                <div class="prev" style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-left"></i></div>
-                <div class="next" style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-right"></i></div>
+                <div class="prev" id="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
+                <div class="next" id="prev"><i class="fa-solid fa-circle-arrow-right"></i></div>
             </div>
 
             <!-- indicators -->
@@ -94,7 +95,7 @@
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <section class="pt-5 bg-cover bg-center lazyloaded" data-primary-overlay="8" style="background:url(/../../uploads/images/cache/37/378bbe_indicators-min.jpg) no-repeat">
+    <section class="pt-5 bg-cover bg-center lazyloaded" data-primary-overlay="8" style="background:url('assets/images/sections/test1.png');">
         <div class="container">
             <div class="row text-center text-white">
                 <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".1s" style="visibility: visible;">
