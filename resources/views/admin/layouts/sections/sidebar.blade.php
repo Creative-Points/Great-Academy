@@ -45,7 +45,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text h3 menu-text fw-bolder ms-2">Great Academy</span>
+            <span class="app-brand-text h3 menu-text fw-bolder ms-2 mt-4">Great Academy</span>
         </a>
 
         <a href="javascript:void(0);"
@@ -68,12 +68,18 @@
             $stmt =  request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
                     || request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
                     || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
+                    || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1)
+                    || request()->routeIs('dashboard.employee.view', 1) == route('dashboard.employee.view', 1)
                     || request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage');
             $stu = request()->routeIs('dashboard.student.manage') == route('dashboard.student.manage')
-                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1)
+                    || request()->routeIs('dashboard.student.view', 1) == route('dashboard.student.view', 1);
+            $emp = request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')
+                    || request()->routeIs('dashboard.employee.view', 1) == route('dashboard.employee.view', 1);
+            $ins = request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')
+                    || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1);
         @endphp
         <!-- Layouts -->
-        @role('admin')
+        @role('Admin')
             <li class="menu-item @if($stmt) active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
@@ -82,12 +88,12 @@
                 </a>
 
                 <ul class="menu-sub open">
-                    <li class="menu-item @if(request()->routeIs('dashboard.employee.manage') == route('dashboard.employee.manage')) active @endif">
+                    <li class="menu-item @if($emp) active @endif">
                         <a href="{{ route('dashboard.employee.manage') }}" class="menu-link">
                             <div>Employees</div>
                         </a>
                     </li>
-                    <li class="menu-item @if(request()->routeIs('dashboard.instructor.manage') == route('dashboard.instructor.manage')) active @endif">
+                    <li class="menu-item @if($ins) active @endif">
                         <a href="{{ route('dashboard.instructor.manage') }}" class="menu-link">
                             <div >Instructors</div>
                         </a>
@@ -98,6 +104,12 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="menu-item @if(request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')) active @endif ">
+                <a href="{{route('dashboard.course.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                    <div>Courses</div>
+                </a>
             </li>
         @endrole
 
@@ -115,6 +127,13 @@
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>Settings</div>
+            </a>
+        </li>
+        
+        <li class="menu-item">
+            <a href="" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>My Profile</div>
             </a>
         </li>
     </ul>

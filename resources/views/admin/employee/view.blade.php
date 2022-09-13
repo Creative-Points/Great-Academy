@@ -1,7 +1,7 @@
-@section('title', 'View Student | Great Academy')
+@section('title', 'View Employee | Great Academy')
 <x-admin-layout>
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Users / Student /</span> View
+        <span class="text-muted fw-light">Users / Employee /</span> View
     </h4>
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
@@ -25,7 +25,19 @@
                                 width="110" alt="User avatar">
                             <div class="user-info text-center">
                                 <h4 class="mb-2">{{ $users->name }}</h4>
-                                <span class="badge bg-label-secondary">Student</span>
+                                <span class="badge bg-label-primary">
+                                    @if ($users->roles)
+                                        @foreach ($users->roles as $role)
+                                            @if($role->name == 'Admin')
+                                                Admin
+                                            @elseif ($role->name == 'Employee')
+                                                Employee
+                                            @elseif ($role->name == 'instructor')
+                                                Instructor
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </span>
                                 @if ($users->status == 1)
                                     <span class="badge bg-label-success">Active</span>
                                 @elseif ($users->status == 2)
@@ -36,23 +48,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around flex-wrap my-3 py-3">
-                        <div class="d-flex align-items-start me-1 mt-2 gap-3">
-                            <span class="badge bg-label-primary p-2 rounded"><i class='bx bxs-graduation bx-sm'></i></span>
+                    {{-- <div class="d-flex justify-content-around flex-wrap my-4 py-3">
+                        <div class="d-flex align-items-start me-4 mt-3 gap-3">
+                            <span class="badge bg-label-primary p-2 rounded"><i class='bx bx-check bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">11</h5>
-                                <span>Courses</span>
+                                <h5 class="mb-0">1.23k</h5>
+                                <span>Tasks Done</span>
                             </div>
                         </div>
-                        <div class="d-flex align-items-start mt-2 gap-3">
+                        <div class="d-flex align-items-start mt-3 gap-3">
                             <span class="badge bg-label-primary p-2 rounded"><i
-                                    class='bx bx-chalkboard bx-sm'></i></span>
+                                    class='bx bx-customize bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">0</h5>
-                                <span>Workshops</span>
+                                <h5 class="mb-0">568</h5>
+                                <span>Projects Done</span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <h5 class="pb-2 border-bottom mb-4">Details</h5>
                     <div class="info-container">
                         <ul class="list-unstyled">
@@ -76,12 +88,24 @@
                             </li> --}}
                             {{-- <li class="mb-3">
                                 <span class="fw-bold me-2">Role:</span>
-                                <span>Student</span>
+                                <span>
+                                    @if ($users->roles)
+                                        @foreach ($users->roles as $role)
+                                            @if($role->name == 'Admin')
+                                                Admin
+                                            @elseif ($role->name == 'Employee')
+                                                Employee
+                                            @elseif ($role->name == 'instructor')
+                                                Instructor
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </span>
                             </li> --}}
-                            <li class="mb-3">
+                            {{-- <li class="mb-3">
                                 <span class="fw-bold me-2">Code:</span>
                                 <span>{{$users->code}}</span>
-                            </li>
+                            </li> --}}
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Contact:</span>
                                 <span>{{ $users->phone }}</span>
@@ -101,9 +125,9 @@
                         </ul>
                         <div class="d-flex justify-content-center pt-3">
                             @if ($users->status == 1 || $users->status == 2)
-                                <a href="{{ route('dashboard.student.suspended', $users->id) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route('dashboard.employee.suspended', $users->id) }}" class="btn btn-label-danger suspend-user">Suspended</a>
                             @elseif($users->status == 3)
-                                <a href="{{ route('dashboard.student.active', $users->id) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route('dashboard.employee.active', $users->id) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div>
                     </div>
@@ -132,7 +156,7 @@
                             aria-controls="navs-pills-justified-security" aria-selected="false"><i
                                 class="bx bx-lock-alt me-1"></i>Security</button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-course" aria-controls="navs-pills-justified-security"
                             aria-selected="false"><i class='bx bxs-graduation me-1'></i>Courses</button>
@@ -141,7 +165,7 @@
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-workshop" aria-selected="false">
                             <i class='bx bx-chalkboard me-1'></i>Workshops</button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="navs-pills-justified-account" role="tabpanel">
@@ -149,9 +173,9 @@
                         {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                         <div class="text-center mb-4">
                             <h3>Edit User Information</h3>
-                            <p>Updating Student details will receive a privacy audit.</p>
+                            <p>Updating Employee details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', $users->id) }}">
+                        <form method="POST" class="row g-3" action="{{ route('dashboard.employee.update', $users->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -196,7 +220,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.student.manage') }}"
+                                <a href="{{ route('dashboard.employee.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -205,8 +229,7 @@
                         <!-- Change Password -->
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
-                            <form id="formChangePassword" method="POST" action="{{ route('dashboard.student.password', $users->id) }}">
-                                @csrf
+                            <form id="formChangePassword" method="POST" action="{{ route('dashboard.employee.password', $users->id) }}">
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met
                                     </h6>
@@ -216,11 +239,15 @@
                                     <div class="mb-3 col-12 col-sm-6 form-password-toggle">
                                         <label class="form-label" for="newPassword">New Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input class="form-control" type="password" id="newPassword"
+                                            <input 
+                                                class="form-control" 
+                                                type="password" 
+                                                id="newPassword"
                                                 name="password"
                                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;">
-                                            <span class="input-group-text cursor-pointer"><i
-                                                    class="bx bx-hide"></i></span>
+                                            <span class="input-group-text cursor-pointer">
+                                                <i class="bx bx-hide"></i>
+                                            </span>
                                         </div>
                                     </div>
 

@@ -1,7 +1,7 @@
-@section('title', 'View Student | Great Academy')
+@section('title', 'Profile | Great Academy')
 <x-admin-layout>
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Users / Student /</span> View
+        <span class="text-muted fw-light">Employee /</span> My Profile
     </h4>
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
@@ -24,86 +24,93 @@
                             <img class="img-fluid rounded my-4" src="/admin/asset/img/avatars/10.png" height="110"
                                 width="110" alt="User avatar">
                             <div class="user-info text-center">
-                                <h4 class="mb-2">{{ $users->name }}</h4>
-                                <span class="badge bg-label-secondary">Student</span>
-                                @if ($users->status == 1)
-                                    <span class="badge bg-label-success">Active</span>
-                                @elseif ($users->status == 2)
-                                    <span class="badge bg-label-secondary">Inactive</span>
-                                @else
-                                    <span class="badge bg-label-danger">Suspended</span>
-                                @endif
+                                <h4 class="mb-2">{{ auth()->user()->name }}</h4>
+                                <span class="badge bg-label-primary">
+                                    @if (auth()->user()->roles)
+                                        @foreach (auth()->user()->roles as $role)
+                                            @if($role->name == 'Admin')
+                                                Admin
+                                            @elseif ($role->name == 'Employee')
+                                                Employee
+                                            @elseif ($role->name == 'instructor')
+                                                Instructor
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around flex-wrap my-3 py-3">
-                        <div class="d-flex align-items-start me-1 mt-2 gap-3">
-                            <span class="badge bg-label-primary p-2 rounded"><i class='bx bxs-graduation bx-sm'></i></span>
+                    {{-- <div class="d-flex justify-content-around flex-wrap my-4 py-3">
+                        <div class="d-flex align-items-start me-4 mt-3 gap-3">
+                            <span class="badge bg-label-primary p-2 rounded"><i class='bx bx-check bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">11</h5>
-                                <span>Courses</span>
+                                <h5 class="mb-0">1.23k</h5>
+                                <span>Tasks Done</span>
                             </div>
                         </div>
-                        <div class="d-flex align-items-start mt-2 gap-3">
+                        <div class="d-flex align-items-start mt-3 gap-3">
                             <span class="badge bg-label-primary p-2 rounded"><i
-                                    class='bx bx-chalkboard bx-sm'></i></span>
+                                    class='bx bx-customize bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">0</h5>
-                                <span>Workshops</span>
+                                <h5 class="mb-0">568</h5>
+                                <span>Projects Done</span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <h5 class="pb-2 border-bottom mb-4">Details</h5>
                     <div class="info-container">
                         <ul class="list-unstyled">
-                            {{-- <li class="mb-3">
+                            <li class="mb-3">
                                 <span class="fw-bold me-2">Name:</span>
-                                <span>{{ $users->name }}</span>
-                            </li> --}}
+                                <span>{{ auth()->user()->name }}</span>
+                            </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Email:</span>
-                                <span>{{ $users->email }}</span>
+                                <span>{{ auth()->user()->email }}</span>
                             </li>
-                            {{-- <li class="mb-3">
+                            <li class="mb-3">
                                 <span class="fw-bold me-2">Status:</span>
-                                @if ($users->status == 1)
+                                @if (auth()->user()->status == 1)
                                     <span class="badge bg-label-success">Active</span>
-                                @elseif ($users->status == 2)
+                                @elseif (auth()->user()->status == 2)
                                     <span class="badge bg-label-secondary">Inactive</span>
                                 @else
                                     <span class="badge bg-label-danger">Suspended</span>
                                 @endif
-                            </li> --}}
-                            {{-- <li class="mb-3">
+                            </li>
+                            <li class="mb-3">
                                 <span class="fw-bold me-2">Role:</span>
-                                <span>Student</span>
-                            </li> --}}
+                                <span>
+                                    {{ '5' }}
+                                </span>
+                            </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Code:</span>
-                                <span>{{$users->code}}</span>
+                                <span>{{auth()->user()->code}}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Contact:</span>
-                                <span>{{ $users->phone }}</span>
+                                <span>{{ auth()->user()->phone }}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Address:</span>
-                                <span>{{ $users->address }}</span>
+                                <span>{{ auth()->user()->address }}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">University:</span>
-                                <span>{{ $users->university }}</span>
+                                <span>{{ auth()->user()->university }}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Faculty Of:</span>
-                                <span>{{ $users->faculty }}</span>
+                                <span>{{ auth()->user()->faculty }}</span>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center pt-3">
-                            @if ($users->status == 1 || $users->status == 2)
-                                <a href="{{ route('dashboard.student.suspended', $users->id) }}" class="btn btn-label-danger suspend-user">Suspended</a>
-                            @elseif($users->status == 3)
-                                <a href="{{ route('dashboard.student.active', $users->id) }}" class="btn btn-label-success suspend-user">Active</a>
+                            @if (auth()->user()->status == 1 || auth()->user()->status == 2)
+                                <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
+                            @elseif(auth()->user()->status == 3)
+                                <a href="javascript:;" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div>
                     </div>
@@ -151,48 +158,48 @@
                             <h3>Edit User Information</h3>
                             <p>Updating Student details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', $users->id) }}">
+                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', auth()->user()->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-fullname">Full Name</label>
                                 <input type="text" class="form-control" id="add-user-fullname"
-                                    placeholder="Nabil Hamada" name="name" value="{{ $users->name }}" required>
+                                    placeholder="Nabil Hamada" name="name" value="{{ auth()->user()->name }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-contact">Phone</label>
                                 <input type="text" id="add-user-contact" class="form-control phone-mask"
-                                    placeholder="01234567890" name="phone" value="{{ $users->phone }}" required>
+                                    placeholder="01234567890" name="phone" value="{{ auth()->user()->phone }}" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label" for="add-user-email">Email</label>
                                 <input type="email" id="add-user-email" class="form-control"
-                                    placeholder="nabil.hamada@example.com" name="email" value="{{ $users->email }}" required>
+                                    placeholder="nabil.hamada@example.com" name="email" value="{{ auth()->user()->email }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalEditUserStatus">Status</label>
                                 <select id="modalEditUserStatus" name="status" class="form-select"
                                     aria-label="Default select example">
                                     <option selected="">Status</option>
-                                    <option value="1" @if($users->status == 1)selected @endif>Active</option>
-                                    <option value="2" @if($users->status == 2)selected @endif>Inactive</option>
-                                    <option value="3" @if($users->status == 3)selected @endif>Suspended</option>
+                                    <option value="1" @if(auth()->user()->status == 1)selected @endif>Active</option>
+                                    <option value="2" @if(auth()->user()->status == 2)selected @endif>Inactive</option>
+                                    <option value="3" @if(auth()->user()->status == 3)selected @endif>Suspended</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-address">Address</label>
                                 <input type="text" id="add-user-address" class="form-control"
-                                    placeholder="Country, City, Street .." name="address" value="{{ $users->address }}" required>
+                                    placeholder="Country, City, Street .." name="address" value="{{ auth()->user()->address }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-university">University</label>
                                 <input type="text" id="add-user-university" class="form-control"
-                                    placeholder="Cairo University" name="university" value="{{ $users->university }}" required>
+                                    placeholder="Cairo University" name="university" value="{{ auth()->user()->university }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-faculty">Faculty of</label>
                                 <input type="text" id="add-user-faculty" class="form-control"
-                                    placeholder="IS" name="faculty" value="{{ $users->faculty }}" required>
+                                    placeholder="IS" name="faculty" value="{{ auth()->user()->faculty }}" required>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
@@ -205,8 +212,7 @@
                         <!-- Change Password -->
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
-                            <form id="formChangePassword" method="POST" action="{{ route('dashboard.student.password', $users->id) }}">
-                                @csrf
+                            <form id="formChangePassword" method="POST" onsubmit="return false">
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met
                                     </h6>
@@ -217,7 +223,7 @@
                                         <label class="form-label" for="newPassword">New Password</label>
                                         <div class="input-group input-group-merge">
                                             <input class="form-control" type="password" id="newPassword"
-                                                name="password"
+                                                name="newPassword"
                                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;">
                                             <span class="input-group-text cursor-pointer"><i
                                                     class="bx bx-hide"></i></span>

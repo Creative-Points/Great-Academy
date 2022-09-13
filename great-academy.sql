@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2022 at 12:09 AM
+-- Generation Time: Sep 10, 2022 at 01:08 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.1.6
 
@@ -115,6 +115,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (2, 'App\\Models\\User', 6),
 (2, 'App\\Models\\User', 7),
 (2, 'App\\Models\\User', 9),
+(2, 'App\\Models\\User', 10),
+(2, 'App\\Models\\User', 11),
 (4, 'App\\Models\\User', 2);
 
 -- --------------------------------------------------------
@@ -219,31 +221,34 @@ CREATE TABLE `sections` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `faculty` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `university` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `address` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `faculty` varchar(255) DEFAULT NULL,
+  `university` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 active 2 Inactive 3 Suspended',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `faculty`, `university`, `address`, `phone`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nabil Hamada', 'admin@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'qQqXbNgG7TV1p6UeRCyfc1Na0YT2R7nNR4eGlpocOo3IVTjubKCeIxWtTBPN', NULL, '', '', '', 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
-(2, 'Instructor', 'instructor@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '8Lu82pvrgtOuGZVM0Zz30Rptd9M2EsBZK2IHRG0jh0kdYe6PWY1lcYYj8oSG', NULL, '', '', '', 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
-(3, 'Student', 'student@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '', '', '01118172639', 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
-(6, 'Nabil Hamada', 'Nabilhamada421@gmail.com', NULL, '$2y$10$BunKbhysF3woulL3nax9Xef9GZhHnxMPDtn5m2vA4xkb18xgBVFbC', NULL, '', '', '', '', 1, '2022-09-09 19:03:29', '2022-09-09 19:03:29'),
-(7, 'Nabil Hamada 34', 'Nabilhamadar21@gmail.com', NULL, '$2y$10$yBq9cjUH48ALQpiS.P2KSuy.3TVgd/opKFfAeCd202o3dQmOjGZd2', NULL, '', '', '', '', 1, '2022-09-09 19:14:24', '2022-09-09 19:14:24'),
-(9, 'Nabil Hamada', 'moali78@gmail.com', NULL, '$2y$10$FMWfYpzouaYp/7vTNxHNW.0Wr8opuHd8GDbwJKDs/.EzPtWHRUTyq', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '123237765', 1, '2022-09-09 19:25:58', '2022-09-09 19:25:58');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `faculty`, `university`, `address`, `phone`, `code`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nabil Hamada', 'admin@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'qQqXbNgG7TV1p6UeRCyfc1Na0YT2R7nNR4eGlpocOo3IVTjubKCeIxWtTBPN', NULL, '', '', '', NULL, 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
+(2, 'Instructor', 'instructor@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '8Lu82pvrgtOuGZVM0Zz30Rptd9M2EsBZK2IHRG0jh0kdYe6PWY1lcYYj8oSG', NULL, '', '', '', NULL, 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
+(3, 'Student', 'student@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, '', '', '01118172639', NULL, 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
+(6, 'Nabil Hamada', 'Nabilhamada421@gmail.com', NULL, '$2y$10$BunKbhysF3woulL3nax9Xef9GZhHnxMPDtn5m2vA4xkb18xgBVFbC', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599674', 'std-S5Pf1CqWs9jxHN5t@great-academy.com', 2, '2022-09-09 19:03:29', '2022-09-09 21:31:30'),
+(7, 'Nabil Hamada 34', 'Nabilhamadar21@gmail.com', NULL, '$2y$10$yBq9cjUH48ALQpiS.P2KSuy.3TVgd/opKFfAeCd202o3dQmOjGZd2', NULL, '', '', '', '', NULL, 1, '2022-09-09 19:14:24', '2022-09-09 19:14:24'),
+(9, 'Nabil Hamada', 'moali78@gmail.com', NULL, '$2y$10$FMWfYpzouaYp/7vTNxHNW.0Wr8opuHd8GDbwJKDs/.EzPtWHRUTyq', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '123237765', NULL, 1, '2022-09-09 19:25:58', '2022-09-09 19:25:58'),
+(10, 'Nabil Hamada', 'Nabilhamada4521@gmail.com', NULL, '$2y$10$B5a7H.0xsH0otXy4jJsAveD/tvA0dcTYs2FX/g9.dIVR5sb3mmxWm', NULL, 'MIS', 'Madina Academy', 'Egypt - Giza - El Ayyat', '817263967', 'std-weHvMpyy@great-academy.com', 1, '2022-09-09 20:37:03', '2022-09-09 20:37:03'),
+(11, 'Ahmed Owais', 'yousef123@gamil.com', NULL, '$2y$10$csq7RiUHhKlCRVUlX1iYpee.q5Z62IQY.D4XPexpU.z6VFB5CHRzK', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599675', 'std-huSd0hGx1NU1lhJ1@great-academy.com', 1, '2022-09-09 20:53:36', '2022-09-09 20:53:36');
 
 -- --------------------------------------------------------
 
@@ -408,7 +413,7 @@ ALTER TABLE `sections`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `workshop`
