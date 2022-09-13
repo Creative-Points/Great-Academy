@@ -26,6 +26,14 @@ Route::get('sections', function () {
 Route::get('/courses', function () {
     return view('courses');
 })->name('courses');
+// about
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+// contact-us
+Route::get('/contact-us', function () {
+    return view('contact-us');
+})->name('contact-us');
 // simple-courses
 Route::get('/simple-courses', function () {
     return view('simple-courses');

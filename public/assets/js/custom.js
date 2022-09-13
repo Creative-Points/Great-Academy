@@ -235,5 +235,19 @@ function Marquee(selector, speed) {
   //1 class selector for marquee
   //2 marquee speed 0.2
   window.addEventListener('load', Marquee('.marquee', 0.2))
+//   scroll-top
+let scrollPercentage = () => {
+    let scrollProgress = document.getElementById("progress");
+    let progressValue = document.getElementById("progress-value");
+    let pos = document.documentElement.scrollTop;
+    let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrollValue = Math.round( pos * 100 / calcHeight);
+
+    scrollProgress.style.background = `conic-gradient(#008fff ${scrollValue}%, #c0c0ff ${scrollValue}%)`;
+    progressValue.textContent = `${scrollValue}%`;
+}
+
+window.onscroll = scrollPercentage;
+window.onload = scrollPercentage;
   
   

@@ -1,5 +1,6 @@
 <x-master-layout>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- ***** Main Banner Area Start ***** -->
     <section class="section main-banner" id="top" data-section="section1">
@@ -72,13 +73,13 @@
 
             <!-- controls  -->
             <div class="controls">
-                <div class="prev"  style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-left"></i></div>
+                <div class="prev" style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-left"></i></div>
                 <div class="next" style="background: rgba(22,34,57,0.95);"><i class="fa-solid fa-circle-arrow-right"></i></div>
             </div>
 
             <!-- indicators -->
             <div class="indicator">
- 
+
             </div>
         </section>
         <div class="marquee">
@@ -88,84 +89,52 @@
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
-    </div>
+        </div>
     </section>
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <section class="features">
-        <!-- <div class="container">
-          <div class="row">
-             
-              <div class="col-lg-4 col-12">
-                  <div class="features-post second-features">
-                      <div class="features-content" style="padding: 10px;">
-                          <div class="content-show">
-                              <h4><img style="    margin: 8px;" src="assets/images/graduate-cap.svg" alt="عدد الخريجين" >عدد الخريجين</h4>
-                          </div>
-                          <div class="content-hide">
-                              <p></p>
-                              <p class="hidden-sm"></p>
-                              <div class="scroll-to-section"><a href="#section3">Details</a></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-12">
-                  <div class="features-post third-features">
-                      <div class="features-content" style="padding: 0px;">
-                          <div class="content-show">
-                              <h4><img style="    margin: 8px;" src="assets/images/deparments.svg" alt="" >عدد أقسام الأكاديمية</h4>
-                          </div>
-                          <div class="content-hide">
-                              <p></p>
-                              <p class="hidden-sm"></p>
-                              <div class="scroll-to-section"><a href="#section4">Read More</a></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-12">
-                  <div class="features-post third-features">
-                      <div class="features-content" style="padding: 0px;">
-                          <div class="content-show">
-                              <h4><img style="    margin: 8px;" src="assets/images/multiple-users-silhouette.svg" alt="" >عدد أعضاء هيئة التدريس</h4>
-                          </div>
-                          <div class="content-hide">
-                              <p></p>
-                              <p class="hidden-sm"></p>
-                              <div class="scroll-to-section"><a href="#section4">Read More</a></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div> -->
-        <div class="wrapper2">
-            <div class="container2">
-                <img class="img-2" src="assets/images/university-campus.svg" alt="عدد سنوات الخبرة">
-                <span class="num2" data-val="16">000</span>
-                <span class="text2">عدد سنوات الخبرة</span>
-            </div>
+    <section class="pt-5 bg-cover bg-center lazyloaded" data-primary-overlay="8" style="background:url(/../../uploads/images/cache/37/378bbe_indicators-min.jpg) no-repeat">
+        <div class="container">
+            <div class="row text-center text-white">
+                <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".1s" style="visibility: visible;">
+                    <div class="mb-0">
+                        
+                        <i class="fas fa-thin fa-display display-4"></i>
+                    </div>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to=" 829">829</p>
+                    <p class="lead my-0">
+                        دورة اونلاين </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".2s" style="visibility: visible;">
+                    <div class="mb-0">
+                        <i class="fas fa-user display-4"></i>
+                    </div>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="509">509</p>
+                    <p class="lead my-0">
+                        محاضر معتمد </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".3s" style="visibility: visible;">
+                    <div class="mb-0">
+                        <i class="fas fa-users font-size-56"></i>
 
-            <div class="container2">
-                <img class="img-2" src="assets/images/deparments.svg" alt="">
-                <span class="num2" data-val="340">000</span>
-                <span class="text2">عدد أقسام الأكاديمية</span>
-
+                    </div>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="399720">
+                        399720 </p>
+                    <p class="lead my-0">
+                        طالب اونلاين </p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".4s" style="visibility: visible;">
+                    <div class="mb-0">
+              
+                        <i class="fas fa-users font-size-56"></i>
+                    </div>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="68362">
+                        68362 </p>
+                    <p class="lead my-0">
+                        شهادة اونلاين </p>
+                </div>
             </div>
-
-            <div class="container2">
-                <img class="img-2" src="assets/images/multiple-users-silhouette.svg" alt="">
-                <span class="num2" data-val="225">000</span>
-                <span class="text2">عدد أعضاء هيئة التدريس</span>
-            </div>
-            <div class="container2">
-                <img class="img-2" src="assets/images/graduate-cap.svg" alt="عدد الخريجين">
-                <span class="num2" style="margin-top:16px;" data-val="280">000</span>
-                <span class="text2">عدد المتخرجين</span>
-            </div>
-
         </div>
     </section>
 

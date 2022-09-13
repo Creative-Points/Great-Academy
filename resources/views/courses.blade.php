@@ -6,21 +6,24 @@
 
 
         <!-- Breadcrumbs Start -->
-        <div class="rs-breadcrumbs breadcrumbs-overlay">
-    <div class="breadcrumbs-img">
-        <img src="assets/images/bg/1.jpg" alt="Breadcrumbs Imagee">
-    </div>
-    <div class="breadcrumbs-text">
-        <h1 class="page-title">Courses</h1>
-        <!-- <ul>
-            <li>
-                <a class="active" href="">Home</a>
-            </li>
+        <div class="padding-y-40 bg-light-v5">
+            <div class="container">
+                <div class="row">
 
-            <li> Courses</li>
-        </ul> -->
-    </div>
-</div>
+                    <div class="col-md-12">
+                        <div style="margin-bottom: -83px; padding-top: 24px;">
+
+
+                        <h1><bdi>الكورسات</bdi></h1>
+                        <ul class="breadcrumb breadcrumb-tringle bg-transparent">
+                            <li class="breadcrumb-item"><bdi><a href="">الرئيسية</a></bdi></li>
+                            <li class="breadcrumb-item"><bdi>الكورسات</bdi></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Breadcrumbs End -->
 
         <!-- Popular Course Section Start -->
