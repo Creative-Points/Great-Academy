@@ -111,6 +111,12 @@
                     <div>Courses</div>
                 </a>
             </li>
+            <li class="menu-item @if(request()->routeIs('dashboard.section.manage') == route('dashboard.section.manage')) active @endif ">
+                <a href="{{route('dashboard.section.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-category"></i>
+                    <div>Sections</div>
+                </a>
+            </li>
         @endrole
 
         {{-- <li class="menu-item ">

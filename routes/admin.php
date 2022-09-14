@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,7 +74,19 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::get('{id}/suspended', [CourseController::class, 'suspended'])->name('suspended');
         Route::get('{id}/active', [CourseController::class, 'active'])->name('active');
         Route::delete('{id}/delete', [CourseController::class, 'delete'])->name('delete');
-        Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
+        // Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
+    });
+
+    // Section
+    Route::name('section.')->prefix('section')->group(function(){
+        Route::get('manage', [SectionController::class, 'index'])->name('manage');
+        Route::post('add', [SectionController::class, 'store'])->name('add');
+        Route::put('{id}/update', [SectionController::class, 'update'])->name('update');
+        Route::get('{id}/view', [SectionController::class, 'show'])->name('view');
+        Route::get('{id}/suspended', [SectionController::class, 'suspended'])->name('suspended');
+        Route::get('{id}/active', [SectionController::class, 'active'])->name('active');
+        Route::delete('{id}/delete', [SectionController::class, 'delete'])->name('delete');
+        // Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
     });
 });
 

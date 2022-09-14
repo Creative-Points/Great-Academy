@@ -1,10 +1,10 @@
 <x-admin-layout>
 
 
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
+    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css"> --}}
+    {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css"> --}}
     <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
@@ -253,7 +253,7 @@
 
 
     <!-- Vendors JS -->
-    <script src="/admin/asset/vendor/libs/moment/moment.js"></script>
+    {{-- <script src="/admin/asset/vendor/libs/moment/moment.js"></script>
     <script src="/admin/asset/vendor/libs/datatables/jquery.dataTables.js"></script>
     <script src="/admin/asset/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="/admin/asset/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
@@ -271,6 +271,6 @@
     <script src="/admin/asset/vendor/libs/cleavejs/cleave.js"></script>
     <script src="/admin/asset/vendor/libs/cleavejs/cleave-phone.js"></script>
     <!-- Page JS -->
-    <script src="/admin/asset/js/app-user-list.js"></script>
+    <script src="/admin/asset/js/app-user-list.js"></script> --}}
 
 </x-admin-layout>

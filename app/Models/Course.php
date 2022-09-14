@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $table = "course";
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
