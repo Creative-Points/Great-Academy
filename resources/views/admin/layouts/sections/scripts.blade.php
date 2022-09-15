@@ -16,6 +16,7 @@
 
     <!-- Vendors JS -->
     <script src="{{asset('admin/asset/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{asset('admin/asset/vendor/libs/sweetalert2/sweetalert2.js')}}"></script>
 
     <!-- Main JS -->
     <script src="{{asset('admin/asset/js/main.js')}}"></script>
@@ -23,3 +24,4 @@
     <!-- Page JS -->
     <script src="{{asset('admin/asset/js/dashboards-analytics.js')}}"></script>
     <script src="{{asset('admin/asset/js/ui-toasts.js')}}"></script>
+    <script src="{{asset('admin/asset/js/extended-ui-sweetalert2.js')}}"></script>

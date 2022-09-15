@@ -69,11 +69,12 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     Route::name('course.')->prefix('course')->group(function(){
         Route::get('manage', [CourseController::class, 'index'])->name('manage');
         Route::post('add', [CourseController::class, 'store'])->name('add');
-        Route::put('{id}/update', [CourseController::class, 'update'])->name('update');
-        Route::get('{id}/view', [CourseController::class, 'show'])->name('view');
-        Route::get('{id}/suspended', [CourseController::class, 'suspended'])->name('suspended');
-        Route::get('{id}/active', [CourseController::class, 'active'])->name('active');
-        Route::delete('{id}/delete', [CourseController::class, 'delete'])->name('delete');
+        Route::put('{slug}/update', [CourseController::class, 'update'])->name('update');
+        Route::put('{slug}/update/image', [CourseController::class, 'image'])->name('image');
+        Route::get('{slug}/view', [CourseController::class, 'show'])->name('view');
+        Route::get('{slug}/inactive', [CourseController::class, 'inactive'])->name('inactive');
+        Route::get('{slug}/active', [CourseController::class, 'active'])->name('active');
+        Route::delete('{slug}/delete', [CourseController::class, 'delete'])->name('delete');
         // Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
     });
 

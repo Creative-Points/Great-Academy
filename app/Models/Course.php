@@ -23,5 +23,6 @@ class Course extends Model
         'hours',
         'section_id',
         'status',
+        'slug',
     ];
 }

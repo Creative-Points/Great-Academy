@@ -105,7 +105,11 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-item @if(request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')) active @endif ">
+            @php
+                $cor = request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')
+                        || request()->routeIs('dashboard.course.view', 1) == route('dashboard.course.view', 1)
+            @endphp
+            <li class="menu-item @if($cor) active @endif ">
                 <a href="{{route('dashboard.course.manage')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-graduation"></i>
                     <div>Courses</div>

@@ -99,7 +99,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Image</th>
+                        {{-- <th>Image</th> --}}
                         <th>Name</th>
                         <th>Levels</th>
                         <th>Price</th>
@@ -126,7 +126,9 @@
                                                 {{ $item->name }}
                                             </span>
                                         </a>
-                                        <small class="text-muted">{{ $item->section_name }}</small>
+                                        <a href="{{ route('dashboard.section.view', $item->section_id) }}">
+                                            <small class="text-muted">{{ $item->section_name }}</small>
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -134,8 +136,8 @@
                             <td>
                                 <span class="text-truncate d-flex align-items-center">
                                     <span
-                                        class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
-                                        <i class="bx bx-cog bx-xs"></i>
+                                        class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                        <i class="bx bx-history bx-xs"></i>
                                     </span>
                                     {{ $item->level }}
                                 </span>
@@ -144,7 +146,7 @@
                                 <span class="text-truncate d-flex align-items-center">
                                     <span
                                         class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
-                                        <i class="bx bx-cog bx-xs"></i>
+                                        <i class="bx bx-dollar bx-xs"></i>
                                     </span>
                                     {{ $item->price }}
                                 </span>
@@ -152,8 +154,8 @@
                             <td>
                                 <span class="text-truncate d-flex align-items-center">
                                     <span
-                                        class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
-                                        <i class="bx bx-cog bx-xs"></i>
+                                        class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
+                                        <i class="bx bx-time bx-xs"></i>
                                     </span>
                                     {{ $item->hours }}
                                 </span>
@@ -172,21 +174,22 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.couse.view', $item->id) }}" class="dropdown-item">View</a>
+                                        <a href="{{ route('dashboard.course.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
                                         @if ($item->status == 3 || $item->status == 2)
-                                            <a href="{{ route('dashboard.course.active', $item->id) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route('dashboard.course.active', $item->slug) }}" class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.course.suspended', $item->id) }}" class="dropdown-item">Suspend</a>
+                                            <a href="{{ route('dashboard.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                         @endif
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.course.delete', $item->id) }}"
-                                            onsubmit="return confirm('Are you sure?');">
+                                            action="{{ route('dashboard.course.delete', $item->slug) }}"
+                                            {{-- onsubmit="return confirm('Are you sure?');" --}}
+                                            >
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="dropdown-item text-danger delete-record">Delete</button>
+                                                class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
                                         </form>
                                     </div>
                                 </div>
@@ -208,11 +211,11 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" id="" method="POST" action="{{ route('dashboard.course.add') }}">
+                <form class="add-new-user pt-0" enctype="multipart/form-data" method="POST" action="{{ route('dashboard.course.add') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-course-image">Select Image</label>
-                        <input type="file" class="form-control" id="add-course-image" 
+                        <input type="file" class="form-control" id="add-course-image"
                             name="image" accept=".gif, .jpg, .jpeg, .png" required>
                     </div>
                     <div class="mb-3">
@@ -223,7 +226,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="add-course-desc">Description</label>
                         <textarea name="desc" placeholder="Describe your course .." id="add-course-desc" class="form-control" cols="30" rows="10" required></textarea>
-                        
+
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-course-price">Price</label>
