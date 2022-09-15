@@ -115,7 +115,7 @@
                     <div>Courses</div>
                 </a>
             </li>
-            {{-- @php
+            @php
                 $wor = request()->routeIs('dashboard.workshop.manage') == route('dashboard.workshop.manage')
                         || request()->routeIs('dashboard.workshop.view', 1) == route('dashboard.workshop.view', 1)
             @endphp
@@ -124,7 +124,7 @@
                     <i class="menu-icon tf-icons bx bx-chalkboard"></i>
                     <div>Workshops</div>
                 </a>
-            </li> --}}
+            </li>
             @php
                 $sec = request()->routeIs('dashboard.section.manage') == route('dashboard.section.manage')
                         || request()->routeIs('dashboard.section.view', 1) == route('dashboard.section.view', 1)

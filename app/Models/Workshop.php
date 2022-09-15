@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Workshop extends Model
 {
     use HasFactory;
+    protected $table = "workshop";
     /**
      * The attributes that are mass assignable.
      *
@@ -15,9 +16,13 @@ class Section extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'image',
+        'price',
+        'level',
+        'hours',
+        'section_id',
         'status',
-        'count',
-        'workshops',
+        'slug',
     ];
 }

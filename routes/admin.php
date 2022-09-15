@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\WorkshopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,6 +76,18 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::get('{slug}/inactive', [CourseController::class, 'inactive'])->name('inactive');
         Route::get('{slug}/active', [CourseController::class, 'active'])->name('active');
         Route::delete('{slug}/delete', [CourseController::class, 'delete'])->name('delete');
+    });
+
+    // Workshop
+    Route::name('workshop.')->prefix('workshop')->group(function(){
+        Route::get('manage', [WorkshopController::class, 'index'])->name('manage');
+        Route::post('add', [WorkshopController::class, 'store'])->name('add');
+        Route::put('{slug}/update', [WorkshopController::class, 'update'])->name('update');
+        Route::put('{slug}/update/image', [WorkshopController::class, 'image'])->name('image');
+        Route::get('{slug}/view', [WorkshopController::class, 'show'])->name('view');
+        Route::get('{slug}/inactive', [WorkshopController::class, 'inactive'])->name('inactive');
+        Route::get('{slug}/active', [WorkshopController::class, 'active'])->name('active');
+        Route::delete('{slug}/delete', [WorkshopController::class, 'delete'])->name('delete');
     });
 
     // Section
