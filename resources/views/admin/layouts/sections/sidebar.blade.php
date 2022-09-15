@@ -115,7 +115,21 @@
                     <div>Courses</div>
                 </a>
             </li>
-            <li class="menu-item @if(request()->routeIs('dashboard.section.manage') == route('dashboard.section.manage')) active @endif ">
+            {{-- @php
+                $wor = request()->routeIs('dashboard.workshop.manage') == route('dashboard.workshop.manage')
+                        || request()->routeIs('dashboard.workshop.view', 1) == route('dashboard.workshop.view', 1)
+            @endphp
+            <li class="menu-item @if($wor) active @endif ">
+                <a href="{{route('dashboard.workshop.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+                    <div>Workshops</div>
+                </a>
+            </li> --}}
+            @php
+                $sec = request()->routeIs('dashboard.section.manage') == route('dashboard.section.manage')
+                        || request()->routeIs('dashboard.section.view', 1) == route('dashboard.section.view', 1)
+            @endphp
+            <li class="menu-item @if($sec) active @endif ">
                 <a href="{{route('dashboard.section.manage')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-category"></i>
                     <div>Sections</div>

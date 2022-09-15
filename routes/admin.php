@@ -75,19 +75,18 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::get('{slug}/inactive', [CourseController::class, 'inactive'])->name('inactive');
         Route::get('{slug}/active', [CourseController::class, 'active'])->name('active');
         Route::delete('{slug}/delete', [CourseController::class, 'delete'])->name('delete');
-        // Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
     });
 
     // Section
     Route::name('section.')->prefix('section')->group(function(){
         Route::get('manage', [SectionController::class, 'index'])->name('manage');
         Route::post('add', [SectionController::class, 'store'])->name('add');
-        Route::put('{id}/update', [SectionController::class, 'update'])->name('update');
-        Route::get('{id}/view', [SectionController::class, 'show'])->name('view');
-        Route::get('{id}/suspended', [SectionController::class, 'suspended'])->name('suspended');
-        Route::get('{id}/active', [SectionController::class, 'active'])->name('active');
-        Route::delete('{id}/delete', [SectionController::class, 'delete'])->name('delete');
-        // Route::post('{id}/change-password', [CourseController::class, 'changePassword'])->name('password');
+        Route::put('{slug}/update', [SectionController::class, 'update'])->name('update');
+        Route::put('{slug}/update/image', [SectionController::class, 'image'])->name('image');
+        Route::get('{slug}/view', [SectionController::class, 'show'])->name('view');
+        Route::get('{slug}/inactive', [SectionController::class, 'inactive'])->name('inactive');
+        Route::get('{slug}/active', [SectionController::class, 'active'])->name('active');
+        Route::delete('{slug}/delete', [SectionController::class, 'delete'])->name('delete');
     });
 });
 

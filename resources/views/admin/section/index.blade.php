@@ -140,16 +140,16 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.section.view', $item->id) }}" class="dropdown-item">View</a>
+                                        <a href="{{ route('dashboard.section.view', $item->slug) }}" class="dropdown-item">View</a>
                                         @if ($item->status == 3 || $item->status == 2)
-                                            <a href="{{ route('dashboard.section.active', $item->id) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route('dashboard.section.active', $item->slug) }}" class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.section.suspended', $item->id) }}" class="dropdown-item">Suspend</a>
+                                            <a href="{{ route('dashboard.section.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                         @endif
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.course.delete', $item->id) }}"
+                                            action="{{ route('dashboard.course.delete', $item->slug) }}"
                                             onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
