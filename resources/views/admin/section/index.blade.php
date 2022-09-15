@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.course.view', $item->id) }}" class="text-body text-truncate">
+                                        <a href="{{ route('dashboard.section.view', $item->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $item->name }}
                                             </span>
