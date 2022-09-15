@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use App\Models\Course;
+use App\Models\Workshop;
 
 class SectionController extends Controller
 {
@@ -126,7 +127,8 @@ class SectionController extends Controller
     {
         $section = Section::where('sections.slug', '=', $slug)->first();
         $courses = Course::where('section_id', $section->id)->get();
-        return view('admin.section.view', compact('section', 'courses'));
+        $workshops = Workshop::where('section_id', $section->id)->get();
+        return view('admin.section.view', compact('section', 'courses', 'workshops'));
     }
 
     public function inactive($slug)

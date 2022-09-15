@@ -122,7 +122,7 @@
                                                 {{ $item->name }}
                                             </span>
                                         </a>
-                                        <small class="text-muted">{{ $item->count }} Courses</small>
+                                        <small class="text-muted">{{ $item->count }} Courses & {{ $item->workshops }} Workshops</small>
                                     </div>
                                 </div>
                             </td>

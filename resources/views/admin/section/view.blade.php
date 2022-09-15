@@ -1,4 +1,4 @@
-@section('title', 'View Course | Great Academy')
+@section('title', 'View Section | Great Academy')
 <x-admin-layout>
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Sections / {{ $section->name }} /</span> View
@@ -25,9 +25,12 @@
                                 width="110" alt="User avatar">
                             <div class="user-info text-center">
                                 <h4 class="mb-2">{{ $section->name }}</h4>
-                                <span class="badge bg-label-primary">
+                                {{-- <span class="badge bg-label-primary">
                                     {{ $section->count }} Courses
                                 </span>
+                                <span class="badge bg-label-primary">
+                                    {{ $section->workshops }} Workshops
+                                </span> --}}
                                 @if ($section->status == 1)
                                     <span class="badge bg-label-success">Active</span>
                                 @elseif ($section->status == 2)
@@ -36,26 +39,26 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="d-flex justify-content-around flex-wrap my-4 py-3">
-                        <div class="d-flex align-items-start me-4 mt-3 gap-3">
+                    <div class="d-flex justify-content-around flex-wrap my-3 py-3">
+                        <div class="d-flex align-items-start me-1 mt-2 gap-3">
                             <span class="badge bg-label-primary p-2 rounded"><i class='bx bx-check bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">1.23k</h5>
-                                <span>Tasks Done</span>
+                                <h5 class="mb-0">{{ $section->count }}</h5>
+                                <span>Courses</span>
                             </div>
                         </div>
-                        <div class="d-flex align-items-start mt-3 gap-3">
+                        <div class="d-flex align-items-start mt-2 gap-3">
                             <span class="badge bg-label-primary p-2 rounded"><i
                                     class='bx bx-customize bx-sm'></i></span>
                             <div>
-                                <h5 class="mb-0">568</h5>
-                                <span>Projects Done</span>
+                                <h5 class="mb-0">{{ $section->workshops }}</h5>
+                                <span>Workshops</span>
                             </div>
                         </div>
-                    </div> --}}
-                    <h5 class="pb-2 border-bottom mb-4">Details</h5>
+                    </div>
+                    {{-- <h5 class="pb-2 border-bottom mb-4">Status</h5> --}}
                     <div class="info-container">
-                        <ul class="list-unstyled">
+                        {{-- <ul class="list-unstyled">
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Name:</span>
                                 <span>{{ $section->name }}</span>
@@ -64,7 +67,7 @@
                                 <span class="fw-bold me-2">Courses:</span>
                                 <span>{{ $section->count }}</span>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <div class="d-flex justify-content-center pt-3">
                             @if ($section->status == 1)
                                 <a href="{{ route('dashboard.section.inactive', $section->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
@@ -287,12 +290,104 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            {{-- <th>Image</th> --}}
                                             <th>Name</th>
-                                            <th class="text-nowrap">Level</th>
-                                            <th>Progress</th>
+                                            <th>Levels</th>
+                                            <th>Price</th>
                                             <th>Hours</th>
+                                            {{-- <th>Section</th> --}}
+                                            <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach ($workshops as $item)
+                                            <tr class="odd">
+                                                <td class=" control" tabindex="0" style="">{{ $item->id }}</td>
+                                                <td class="sorting_1">
+                                                    <div class="d-flex justify-content-start align-items-center">
+                                                        <div class="avatar-wrapper">
+                                                            <div class="avatar avatar-sm me-3">
+                                                                <img src="/uploads/workshop/{{ $item->image }}" alt="{{ $item->name }}" class="rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-column">
+                                                            <a href="{{ route('dashboard.workshop.view', $item->id) }}" class="text-body text-truncate">
+                                                                <span class="fw-semibold">
+                                                                    {{ $item->name }}
+                                                                </span>
+                                                            </a>
+                                                            <a href="{{ route('dashboard.section.view', $item->section_id) }}">
+                                                                <small class="text-muted">{{ $item->section_name }}</small>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                    
+                                                <td>
+                                                    <span class="text-truncate d-flex align-items-center">
+                                                        <span
+                                                            class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                                            <i class="bx bx-history bx-xs"></i>
+                                                        </span>
+                                                        {{ $item->level }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-truncate d-flex align-items-center">
+                                                        <span
+                                                            class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
+                                                            <i class="bx bx-dollar bx-xs"></i>
+                                                        </span>
+                                                        {{ $item->price }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-truncate d-flex align-items-center">
+                                                        <span
+                                                            class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
+                                                            <i class="bx bx-time bx-xs"></i>
+                                                        </span>
+                                                        {{ $item->hours }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        <span class="badge bg-label-success">Active</span>
+                                                    @elseif ($item->status == 2)
+                                                        <span class="badge bg-label-danger">Inactive</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="d-inline-block">
+                                                        <button
+                                                            class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a href="{{ route('dashboard.workshop.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                                            @if ($item->status == 3 || $item->status == 2)
+                                                                <a href="{{ route('dashboard.workshop.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                                            @else
+                                                                <a href="{{ route('dashboard.workshop.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                                            @endif
+                    
+                                                            <div class="dropdown-divider"></div>
+                                                            <form class="" method="POST"
+                                                                action="{{ route('dashboard.workshop.delete', $item->slug) }}"
+                                                                {{-- onsubmit="return confirm('Are you sure?');" --}}
+                                                                >
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
