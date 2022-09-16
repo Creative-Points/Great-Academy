@@ -4,7 +4,7 @@
 	  $('body').addClass('js');
 	  var $menu = $('#menu'),
 	    $menulink = $('.menu-link');
-	  
+
 	$menulink.click(function() {
 	  $menulink.toggleClass('active');
 	  $menu.toggleClass('active');
@@ -55,7 +55,7 @@
 	   // fade:true,
 	    draggable:false,
 	    prevArrow:'<button class="PrevArrow"></button>',
-	    nextArrow:'<button class="NextArrow"></button>', 
+	    nextArrow:'<button class="NextArrow"></button>',
 	});
 
 
@@ -72,36 +72,36 @@
 	$( "#tabs" ).tabs();
 
 
-	(function init() {
-	  function getTimeRemaining(endtime) {
-	    var t = Date.parse(endtime) - Date.parse(new Date());
-	    var seconds = Math.floor((t / 1000) % 60);
-	    var minutes = Math.floor((t / 1000 / 60) % 60);
-	    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-	    var days = Math.floor(t / (1000 * 60 * 60 * 24));
-	    return {
-	      'total': t,
-	      'days': days,
-	      'hours': hours,
-	      'minutes': minutes,
-	      'seconds': seconds
-	    };
-	  }
-	  
-	  function initializeClock(endtime){
-	  var timeinterval = setInterval(function(){
-	    var t = getTimeRemaining(endtime);
-	    document.querySelector(".days > .value").innerText=t.days;
-	    document.querySelector(".hours > .value").innerText=t.hours;
-	    document.querySelector(".minutes > .value").innerText=t.minutes;
-	    document.querySelector(".seconds > .value").innerText=t.seconds;
-	    if(t.total<=0){
-	      clearInterval(timeinterval);
-	    }
-	  },1000);
-	}
-	initializeClock(((new Date()).getFullYear()+1) + "/1/1")
-	})()
+	// (function init() {
+	//   function getTimeRemaining(endtime) {
+	//     var t = Date.parse(endtime) - Date.parse(new Date());
+	//     var seconds = Math.floor((t / 1000) % 60);
+	//     var minutes = Math.floor((t / 1000 / 60) % 60);
+	//     var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+	//     var days = Math.floor(t / (1000 * 60 * 60 * 24));
+	//     return {
+	//       'total': t,
+	//       'days': days,
+	//       'hours': hours,
+	//       'minutes': minutes,
+	//       'seconds': seconds
+	//     };
+	//   }
+
+	//   function initializeClock(endtime){
+	//   var timeinterval = setInterval(function(){
+	//     var t = getTimeRemaining(endtime);
+	//     document.querySelector(".days > .value").innerText=t.days;
+	//     document.querySelector(".hours > .value").innerText=t.hours;
+	//     document.querySelector(".minutes > .value").innerText=t.minutes;
+	//     document.querySelector(".seconds > .value").innerText=t.seconds;
+	//     if(t.total<=0){
+	//       clearInterval(timeinterval);
+	//     }
+	//   },1000);
+	// }
+	// initializeClock(((new Date()).getFullYear()+1) + "/1/1")
+	// })()
 
 })(jQuery);
 // slider
@@ -198,8 +198,8 @@ function changeSlide() {
 }
 
 function resetTimer() {
-	// when click to indicator or controls button 
-	// stop timer 
+	// when click to indicator or controls button
+	// stop timer
 	clearInterval(timer);
 	// then started again timer
 	timer = setInterval(autoPlay, 4000);
@@ -218,10 +218,10 @@ function Marquee(selector, speed) {
 	const clone = parentSelector.innerHTML;
 	const firstElement = parentSelector.children[0];
 	let i = 0;
-	console.log(firstElement);
+	// console.log(firstElement);
 	parentSelector.insertAdjacentHTML('beforeend', clone);
 	parentSelector.insertAdjacentHTML('beforeend', clone);
-  
+
 	setInterval(function () {
 	  firstElement.style.marginLeft = `-${i}px`;
 	  if (i > firstElement.clientWidth) {
@@ -230,7 +230,7 @@ function Marquee(selector, speed) {
 	  i = i + speed;
 	}, 0);
   }
-  
+
   //after window is completed load
   //1 class selector for marquee
   //2 marquee speed 0.2
@@ -249,5 +249,4 @@ let scrollPercentage = () => {
 
 window.onscroll = scrollPercentage;
 window.onload = scrollPercentage;
-  
-  
+
