@@ -19,5 +19,6 @@ class Section extends Model
         'status',
         'count',
         'workshops',
+        'slug',
     ];
 }

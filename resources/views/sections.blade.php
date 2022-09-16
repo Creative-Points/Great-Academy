@@ -1,6 +1,6 @@
 <x-master-layout>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    @section('title', 'الاقسام')
     <div class="main-content">
 
 
@@ -29,7 +29,27 @@
         <div class="rs-popular-courses style1 course-view-style orange-color rs-inner-blog white-bg pt-100 pb-100 md-pt-70 md-pb-70">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 mb-4">
+                    @forelse ($sections as $section)
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <a href="" class="card text-white height-100p hover:parent wow fadeInUp" data-wow-delay="0.1s" title="كورسات برمجة الحاسب بشهاده معتمده مجانا" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                                <img class="hover:zoomin transition-0_3 opacity-07 lazyloaded" title="{{ $section->name }}" alt="{{ $section->name }}" src="uploads/section/{{ $section->image }}">
+                                <div class="card-img-overlay bg-black-0_6 flex-center">
+                                    <h3 class="text-center h4">
+                                        <bdi>{{ $section->name }}</bdi>
+                                    </h3>
+                                    <button class="btn btn-primary btn-sm btn-pill">
+                                        أكثر من {{ $section->count + $section->workshops }} دورة </button>
+                                </div>
+                            </a>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="text-center text-warning h3">
+                                لم يتم اضافة اي بيانات بعد. <a href="{{ route('home') }}">اضغط هنا للعودة</a>
+                            </div>
+                        </div>
+                    @endforelse
+                    {{-- <div class="col-md-4 col-sm-6 mb-4">
                         <a href="/ar/category/computer-programming" class="card text-white height-100p hover:parent wow fadeInUp" data-wow-delay="0.1s" title="كورسات برمجة الحاسب بشهاده معتمده مجانا" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                             <img class="hover:zoomin transition-0_3 opacity-07 lazyloaded" data-src="/../../uploads/images/cache/1b/1b05c0_computer-programming.jpg" title="برمجة الحاسب" alt="برمجة الحاسب" src="assets/images/sections/computer-programming.jpg">
                             <div class="card-img-overlay bg-black-0_6 flex-center">
@@ -40,8 +60,8 @@
                                     أكثر من 224 دورة </button>
                             </div>
                         </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-4">
+                    </div> --}}
+                    {{-- <div class="col-md-4 col-sm-6 mb-4">
                         <a href="/ar/category/engineering-programs" class="card text-white height-100p hover:parent wow fadeInUp" data-wow-delay="0.2s" title="كورسات البرامج الهندسية احترافيه للمبتدئين اونلاين" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <img class="hover:zoomin transition-0_3 opacity-07 ls-is-cached lazyloaded" data-src="assets/images/sections/front_1627325042.png" title="المواد والبرامج الهندسية" alt="المواد والبرامج الهندسية" src="assets/images/sections/engineering-programs.jpg">
                             <div class="card-img-overlay bg-black-0_6 flex-center">
@@ -174,7 +194,7 @@
                                     أكثر من 36 دورة </button>
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 })->name('home');
+
+Route::get('test', [TestController::class, 'index']);
 // sections
-Route::get('sections', function () {
-    return view('sections');
-})->name('sections');
+Route::get('sections', [SectionController::class, 'index'])->name('sections');
 // courses
 Route::get('/courses', function () {
     return view('courses');
@@ -49,7 +51,7 @@ Route::get('/workshops', function () {
 
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
-    Route::get('/home', [StudentController::class, 'index'])->name('home');
+    Route::get('/home', [StudentController::class, 'index'])->name('dashboard');
 });
 
 

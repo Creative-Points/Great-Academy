@@ -31,7 +31,7 @@ class SectionController extends Controller
         {
             return back()->withInput()->withErrors($valid);
         }else{
-            $slug = Str::slug($request->name);
+            $slug = Str::slug($request->input('name'));
             $count = Section::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
             $slug = $count ? "{$slug}-{$count}" : $slug;
             $slug = strtolower($slug);
@@ -49,6 +49,7 @@ class SectionController extends Controller
             Section::create([
                 'name'      => $request->name,
                 'image'     => $image,
+                'slug'      => $slug,
             ]);
             return back()->with('success', 'Section has been added successfully.');
         }
@@ -60,7 +61,7 @@ class SectionController extends Controller
         // var_dump($section);
         // $id = $section->id;
         $valid = Validator::make($request->all(), [
-            'name'      => 'required|string|min:8|unique:sections,name,'.$slug .',slug',
+            'name'      => 'required|string|min:3|unique:sections,name,'.$slug .',slug',
             'status'    => 'required|numeric',
         ]);
 
@@ -73,7 +74,7 @@ class SectionController extends Controller
             $slug = $section->slug;
             if($section->name != $request->name)
             {
-                $slug = Str::slug($request->name);
+                $slug = Str::slug($request->name, "-");
                 $count = Section::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
                 $slug = $count ? "{$slug}-{$count}" : $slug;
                 $slug = strtolower($slug);
@@ -152,10 +153,8 @@ class SectionController extends Controller
     public function delete($slug)
     {
         $section = Section::where('slug', $slug)->first();
-        if($section->count > 0)
+        if($section->count == 0 && $section->workshops == 0)
         {
-            return back()->with('error', 'Can not delete this Section (' . $section->name . ').');
-        }else{
             // delete image
             $image = $section->image;
             if(File::exists('uploads/section/'.$image))
@@ -165,6 +164,8 @@ class SectionController extends Controller
             // delete course
             $section->delete();
             return back()->with('success', 'Section has been Deleted is Successfully.');
+        }else{
+            return back()->with('error', 'Can not delete this Section (' . $section->name . ').');
         }
     }
 }

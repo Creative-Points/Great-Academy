@@ -34,3 +34,5 @@
 - **Settings**
 
 
+#### More Functions
+- **Add all current students and graduate students from the course to the course display page**

@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return view('auth.student.login');
     }
 
     /**
@@ -32,12 +32,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Auth::user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Employee')) {
             return redirect()->route('dashboard.home');
         }elseif(Auth::user()->hasRole('instructor')){
             return redirect()->route('instructor.home');
         }elseif(Auth::user()->hasRole('student')){
-            return redirect()->route('student.home');
+            return redirect()->route('student.dashboard');
         }
 
     }

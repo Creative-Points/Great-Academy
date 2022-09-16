@@ -12,6 +12,14 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        @if (session('error'))
+            <div class="mb-4">
+                <div class="font-medium text-red-600">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

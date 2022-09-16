@@ -235,6 +235,7 @@
                                     </h6>
                                     <span>Minimum 8 characters long, uppercase & symbol</span>
                                 </div>
+                                @csrf
                                 <div class="row">
                                     <div class="mb-3 col-12 col-sm-6 form-password-toggle">
                                         <label class="form-label" for="newPassword">New Password</label>

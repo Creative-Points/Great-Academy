@@ -149,7 +149,7 @@
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.course.delete', $item->slug) }}"
+                                            action="{{ route('dashboard.section.delete', $item->slug) }}"
                                             onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')

@@ -1,5 +1,5 @@
 /*
-    
+
 TemplateMo 557 Grad School
 
 https://templatemo.com/tm-557-grad-school
@@ -15,7 +15,7 @@ https://templatemo.com/tm-557-grad-school
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 /* Basic */
@@ -137,7 +137,7 @@ a.menu-link { display: none; }
   nav[role="navigation"] li.active a {
       color: #f5a425;
   }
-  
+
   @media screen and (min-width: 951px) {
     .js nav[role="navigation"] {
       max-height: none;
@@ -568,7 +568,7 @@ section.why-us {
   margin-bottom: 0.75em;
 }
 /* #tabs ul .ui-tabs-active  {
-  
+
 } */
 #tabs ul .ui-tabs-active a {
   color: #f5a425;
@@ -608,7 +608,7 @@ section.why-us {
 }
 
 @media screen and (max-width: 767px) {
-  
+
   .tabs-content {
       text-align: center;
   }
@@ -807,7 +807,7 @@ section.coming-soon form button {
 /* Courses */
 
 section.courses {
-  
+
     background-color: white ;
     padding-bottom: 100px;
     padding: 0px 30px 100px 30px;
@@ -1168,7 +1168,7 @@ button::-moz-focus-inner {
   color: #FFF;
   font-style: normal;
   font-size: 28px;
-  font-family: Arial, Baskerville, monospace;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .mfp-close:hover,
@@ -1474,7 +1474,7 @@ section.contact form {
 }
 
 
-@media screen and (max-width: 767px) {  
+@media screen and (max-width: 767px) {
   section.contact form {
       margin-bottom: 30px;
   }
@@ -1645,7 +1645,7 @@ footer p a:hover {
   }
   .num2{
 
-  
+
   }
   .text2{
     display: block;
@@ -1658,13 +1658,13 @@ footer p a:hover {
     color: white;
     opacity: 0.6;
     text-shadow: 0px 0px 3px rgb(0 0 0 / 7%);
-  
+
   }
   .img-2{
     margin-left: 74px;
     width: 5.313rem;
     flex: 0 0 30%;
-  
+
   }
 }
 .info-contact{
@@ -1863,8 +1863,8 @@ footer p a:hover {
   background-color: cadetblue;
   display: flex;
   color: white;
-  
-  
+
+
 }
 
 
@@ -1875,7 +1875,7 @@ footer p a:hover {
 }
 /* courses-style */
 /*
-    
+
 TemplateMo 557 Grad School
 
 https://templatemo.com/tm-557-grad-school
@@ -1886,7 +1886,7 @@ https://templatemo.com/tm-557-grad-school
 @import url(fontawesome.css);
 /* @import url("<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">"); */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 /* Basic */
@@ -2008,7 +2008,7 @@ a.menu-link { display: none; }
   nav[role="navigation"] li.active a {
       color: #f5a425;
   }
-  
+
   @media screen and (min-width: 951px) {
     .js nav[role="navigation"] {
       max-height: none;
@@ -2439,7 +2439,7 @@ section.why-us {
   margin-bottom: 0.75em;
 }
 /* #tabs ul .ui-tabs-active  {
-  
+
 } */
 #tabs ul .ui-tabs-active a {
   color: #f5a425;
@@ -2473,7 +2473,7 @@ section.why-us {
 }
 
 @media screen and (max-width: 767px) {
-  
+
   .tabs-content {
       text-align: center;
   }
@@ -2672,7 +2672,7 @@ section.coming-soon form button {
 /* Courses */
 
 section.courses {
-    
+
     padding-bottom: 100px;
     padding: 0px 30px 100px 30px;
 }
@@ -3029,7 +3029,7 @@ button::-moz-focus-inner {
   color: #FFF;
   font-style: normal;
   font-size: 28px;
-  font-family: Arial, Baskerville, monospace;
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .mfp-close:hover,
@@ -3335,7 +3335,7 @@ section.contact form {
 }
 
 
-@media screen and (max-width: 767px) {  
+@media screen and (max-width: 767px) {
   section.contact form {
       margin-bottom: 30px;
   }
@@ -3509,8 +3509,8 @@ footer p a:hover {
     display: block;
   }
   .num2{
- 
-  
+
+
   }
   .text2{
     display: block;
@@ -3523,13 +3523,13 @@ footer p a:hover {
     color: white;
     opacity: 0.6;
     text-shadow: 0px 0px 3px rgb(0 0 0 / 7%);
-  
+
   }
   .img-2{
     margin-left: 74px;
     width: 5.313rem;
     flex: 0 0 30%;
-  
+
   }
 }
 .info-contact{
@@ -3728,8 +3728,8 @@ footer p a:hover {
   background-color: white;
   display: flex;
   color: white;
-  
-  
+
+
 }
 
 
@@ -3742,17 +3742,17 @@ footer p a:hover {
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900');
 
 
-/** 
+/**
 * 1976D2
 * #1976D2
 * -----------------------------------------------------------------------------
 *
 * Template : Educavo - Education HTML Template
 * Author : rs-theme
-* Author URI : http://www.rstheme.com/ 
+* Author URI : http://www.rstheme.com/
 *
 * -----------------------------------------------------------------------------
-* 
+*
 **/
 
 
@@ -3809,7 +3809,7 @@ html,
 body {
     font-size: 15px;
     color: #505050;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     vertical-align: baseline;
     line-height: 26px;
     font-weight: 400;
@@ -4332,7 +4332,7 @@ blockquote p {
     display: inline-block;
     text-transform: uppercase;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 700;
     color: #111111;
     background: #f3f8f9;
@@ -4510,7 +4510,7 @@ blockquote p {
     display: inline-block;
     text-transform: capitalize;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
 }
@@ -4542,7 +4542,7 @@ blockquote p {
     display: inline-block;
     text-transform: capitalize;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
     background: #1976D2;
@@ -4660,7 +4660,7 @@ blockquote p {
     display: inline-block;
     text-transform: uppercase;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
     background: #1976D2;
@@ -20812,7 +20812,7 @@ body .modal-backdrop {
 
 .rs-footer .footer-top .site-map li {
     padding-left: 15px;
-    
+
     position: relative;
     margin-bottom: 11px;
 }
@@ -22137,17 +22137,17 @@ body .modal-backdrop {
 /* responsive */
 
 
-/** 
+/**
 *
 * -----------------------------------------------------------------------------
 *
-* Template : Educavo - Education HTML Template 
+* Template : Educavo - Education HTML Template
 * Author : rs-theme
 * Author URI : http://www.rstheme.com/
 *
 * -----------------------------------------------------------------------------
 *
-**/ 
+**/
 
 /* Important CSS */
 .rs-degree.style1 .degree-wrap .content-part,
@@ -22475,7 +22475,7 @@ body .modal-backdrop {
     .full-width-header.header-style2 .rs-header .menu-area .rs-menu-area .main-menu .rs-menu .rs-mega-menu .mega-menu{
         right: 52px;
     }
-   
+
 }
 
 @media only screen and (max-width: 1199px) {
@@ -22625,7 +22625,7 @@ body .modal-backdrop {
     .rs-popular-courses.main-home.home12-style .courses-item .courses-grid .content-part .title {
         line-height: 29px;
         font-size: 20px;
-    } 
+    }
     .rs-popular-courses.main-home.home12-style .courses-item .courses-grid .content-part {
         padding: 32px 25px 35px 25px;
     }
@@ -22679,7 +22679,7 @@ body .modal-backdrop {
     .rs-banner.style9 .banner-content .desc {
         font-size: 17px;
         line-height: 28px;
-      
+
     }
     .rs-banner.style9 .shape-img{
         display: none;
@@ -22843,7 +22843,7 @@ body .modal-backdrop {
     }
     .rs-event.modify2 .event-item .event-short .content-part {
         padding: 30px 20px;
-        
+
     }
     .rs-services.style6 .services-wrap .services-item .services-desc .title {
         font-size: 21px;
@@ -22852,14 +22852,14 @@ body .modal-backdrop {
     .rs-services.style6 .services-wrap {
         padding: 40px 10px 40px;
     }
-   
+
     .rs-event .event-item .event-short .content-part .title {
         font-size: 26px;
         line-height: 28px;
     }
 
     .rs-features .features-wrap {
-        padding: 25px; 
+        padding: 25px;
     }
 
     .rs-blog.main-home .blog-item .blog-content .title {
@@ -22893,8 +22893,8 @@ body .modal-backdrop {
         margin-right: -35px;
     }
 
-    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-80, 
-    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-90, 
+    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-80,
+    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-90,
     .full-width-header.header-style2 .rs-header .menu-area .logo-cat-wrap .logo-part.pr-90 {
         padding-right: 50px;
     }
@@ -23309,7 +23309,7 @@ body .modal-backdrop {
     .rs-popular-courses.home13-style .courses-item .courses-grid .content-part .title {
         font-size: 20px;
     }
-  
+
     .rs-faq-part.style1 .main-part {
         padding: 60px 50px 70px;
     }
@@ -23319,7 +23319,7 @@ body .modal-backdrop {
     .lg-pl-0 {
         padding-left: 0;
     }
-    .nav-menu .rs-mega-menu > a:after, 
+    .nav-menu .rs-mega-menu > a:after,
     .nav-menu > .menu-item-has-children > a:after {
         content: "\f107";
         font-family: FontAwesome;
@@ -23327,7 +23327,7 @@ body .modal-backdrop {
         margin: 2px 0 0 5px;
         display: none;
     }
-    .sticky{ 
+    .sticky{
         background: #fff !important;
         position: fixed !important;
         top: 0px;
@@ -23419,7 +23419,7 @@ body .modal-backdrop {
     }
     .rs-cta.home-style14{
         text-align: center;
-    }   
+    }
     .rs-popular-courses.style1.modify1 .courses-item .content-part .title {
         font-size: 18px;
         line-height: 28px;
@@ -23477,7 +23477,7 @@ body .modal-backdrop {
     .rs-banner.style13 .rs-animation-part,
     .rs-banner.style10 .img-part {
        display: none;
-      
+
     }
     .rs-banner.style10 .banner-intro-box .intro-img {
         position: absolute;
@@ -23515,7 +23515,7 @@ body .modal-backdrop {
         width: 33px;
         height: 33px;
         line-height: 36px;
-    
+
     }
     .rs-features.style3 .features-item .content-part {
         top: 54%;
@@ -23524,7 +23524,7 @@ body .modal-backdrop {
     }
     .rs-cta.home11-style .content .sec-title2 .desc br{
         display: none;
-    } 
+    }
     .rs-cta.home11-style .content{
         max-width: 600px;
         margin: 0 auto;
@@ -23544,7 +23544,7 @@ body .modal-backdrop {
     }
     .rs-popular-courses.home11-style .courses-item .content-part .course-body p {
         font-size: 15px;
-      
+
     }
     .rs-gallery.home11-style .gallery-part .gallery-img img{
        width: 100%;
@@ -23565,7 +23565,7 @@ body .modal-backdrop {
     }
     .contact-page-section .inner-part .title {
         font-size: 32px;
-        line-height: 1.2;      
+        line-height: 1.2;
     }
     .full-width-header.header-style3.modify .rs-header .menu-area .rs-menu-area {
         margin-left: 0;
@@ -23615,7 +23615,7 @@ body .modal-backdrop {
     }
     .rs-cta.home9-style .partition-bg-wrap::after {
         display: none;
-    } 
+    }
     .rs-testimonial.home9-style .img-part img{
       width: 80px;
     }
@@ -23679,7 +23679,7 @@ body .modal-backdrop {
         padding: 60px 30px 70px 60px;
     }
     .rs-about.style9 .content-part .about-img {
-        position: unset;      
+        position: unset;
     }
 
     .rs-features .features-wrap {
@@ -23824,7 +23824,7 @@ body .modal-backdrop {
     }
     .rs-about.video-img .shape-img.right {
         display: none;
-    } 
+    }
     .rs-about.video-img .shape-img.center{
         display: none;
     }
@@ -23859,11 +23859,11 @@ body .modal-backdrop {
     .rs-testimonial.home1-style .testi-item .author-desc {
         padding: 70px 15px;
     }
-    .rs-faq-part.style1 .img-part {     
+    .rs-faq-part.style1 .img-part {
         height: 70%;
         min-height: 570px;
     }
- 
+
     .rs-faq-part.style1 .main-part .title .text-part {
         font-size: 30px;
         line-height: 40px;
@@ -23897,7 +23897,7 @@ body .modal-backdrop {
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .rs-menu-area .main-menu .rs-menu ul.sub-menu,
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .rs-menu-area .main-menu .rs-menu .rs-mega-menu .mega-menu .mega-menu-container .single-megamenu .sub-menu {
         background: #fff !important;
-    }  
+    }
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .header-logo{
         position: relative;
     }
@@ -24223,7 +24223,7 @@ body .modal-backdrop {
         font-size: 20px;
     }
 
-    .rs-cta.style2 .partition-bg-wrap.home2:after, 
+    .rs-cta.style2 .partition-bg-wrap.home2:after,
     .rs-cta.style2 .partition-bg-wrap.home2:before {
         height: 50%;
     }
@@ -24235,10 +24235,10 @@ body .modal-backdrop {
         top: 0;
     }
     .rs-cta.style2 .partition-bg-wrap:after {
-        width: 100%;        
+        width: 100%;
         right: unset;
         top: unset;
-        
+
     }
     .rs-cta.style2 .partition-bg-wrap.inner-page:after,
     .rs-cta.style2 .partition-bg-wrap.inner-page:before {
@@ -24419,7 +24419,7 @@ body .modal-backdrop {
         line-height: 35px;
         border-radius: 35px;
         right: 40%;
-        bottom: 50px;    
+        bottom: 50px;
     }
     .rs-banner.style11 {
         min-height: 750px;
@@ -24590,7 +24590,7 @@ body .modal-backdrop {
     .rs-features {
         margin-top: 70px;
     }
- 
+
     .container {
         max-width: 540px;
     }
@@ -24621,12 +24621,12 @@ body .modal-backdrop {
     }
     .rs-banner.style7 .banner-content .banner-title {
         font-size: 34px;
-        line-height: 48px;      
+        line-height: 48px;
     }
     .rs-banner.style7 .img-part {
         display: none;
     }
-   
+
     .rs-publication .product-list:hover .image-product .overley i {
         bottom: 420px;
     }
@@ -24665,7 +24665,7 @@ body .modal-backdrop {
     }
 
     .rs-testimonial.home1-style .testi-item .author-desc .desc {
-        padding: 60px 20px 20px;       
+        padding: 60px 20px 20px;
     }
 
     .hidden-sm {
@@ -24866,7 +24866,7 @@ body .modal-backdrop {
     .rs-cart .container{
         max-width: 550px;
     }
-   
+
     .rs-cart .cart-wrap table.cart-table .action .coupon input {
         margin-bottom: 20px;
         width: 100%;
@@ -24877,8 +24877,8 @@ body .modal-backdrop {
     }
     .rs-cart .btn-shop{
         width: 100%;
-    } 
-  
+    }
+
     .rs-cart .cart-wrap table.cart-table td {
         display: block;
         border-right: 1px solid #e6e6e6;
@@ -24935,7 +24935,7 @@ body .modal-backdrop {
 @media only screen and (max-width: 575px) {
     .rs-banner.style11 .icons-spiner .spine2 img {
         width: 70px;
-    } 
+    }
     .rs-banner.style11 .icons-spiner .circle img {
         width: 70px;
     }
@@ -24975,12 +24975,12 @@ body .modal-backdrop {
         max-width: 400px;
         margin-left: 50px;
     }
-      
+
     .rs-banner.style9 .banner-content {
         max-width: 323px;
         margin-left: 50px;
     }
-    
+
     .rs-banner.style9 .banner-content .banner-title {
         font-size: 42px;
         line-height: 1.2;
@@ -25021,7 +25021,7 @@ body .modal-backdrop {
     }
     .rs-facilities .choose-part {
         padding: 50px 25px;
-      
+
     }
     .rs-facilities .choose-part .our-facilities .content-part .text-part .desc {
         font-size: 14px;
@@ -25225,7 +25225,7 @@ body .modal-backdrop {
         display: block;
     }
     .intro-section .intro-tabs .tab-btns {
-        width: 100%; 
+        width: 100%;
         margin: 0 0 15px;
     }
     .rs-banner.style13 .banner-content .search-widget .search-wrap [type="search"] {
@@ -25457,7 +25457,7 @@ body .modal-backdrop {
         min-height: 600px;
     }
     .rs-banner.style9 .banner-content {
-        max-width: 260px;        
+        max-width: 260px;
         margin: 0 auto;
     }
     .rs-banner.style9 .social-icon {
@@ -25466,7 +25466,7 @@ body .modal-backdrop {
     }
     .rs-cta.home11-style .content .sec-title2 .title{
         font-size: 17px;
-    } 
+    }
     .rs-cta.home11-style .content {
         max-width: 286px;
         margin: 0 auto;
@@ -25632,7 +25632,7 @@ body .modal-backdrop {
     .rs-popular-courses.main-home .courses-item .courses-grid .content-part .title {
         font-size: 20px;
     }
-  
+
     .rs-about.style8 .sec-title3 .title{
         font-size: 20px;
         line-height: 30px;
@@ -25682,7 +25682,7 @@ body .modal-backdrop {
         max-width: 250px;
         margin: 0 auto;
     }
-   
+
     .rs-cta.style7 .partition-bg-wrap .sec-title2 .title{
         font-size: 29px;
         line-height: 39px;
@@ -25748,7 +25748,7 @@ body .modal-backdrop {
     .rs-newsletter.style6 .newsletter-wrap .newsletter-form button {
         padding: 5px 34px;
     }
-    .rs-newsletter.style6 .newsletter-wrap .newsletter-form input {     
+    .rs-newsletter.style6 .newsletter-wrap .newsletter-form input {
         padding: 10px 16px;
         padding-right: 0px;
     }
@@ -25836,7 +25836,7 @@ body .modal-backdrop {
     }
     .rs-degree.style1 .title {
         font-size: 25px;
-    }    
+    }
     .rs-degree.style1.modify .title {
         font-size: 20px;
     }
@@ -25888,7 +25888,7 @@ body .modal-backdrop {
     .rs-popular-courses.style2 .course-wrap {
         padding: 25px;
     }
-    .rs-cta.style2 .partition-bg-wrap.inner-page:after, 
+    .rs-cta.style2 .partition-bg-wrap.inner-page:after,
     .rs-cta.style2 .partition-bg-wrap.inner-page:before {
         max-height: 350px;
     }
@@ -29566,12 +29566,12 @@ Version: 1.0.0
   .rs-topbar-part .topbar-sl-share .icon-part li:last-child {
     margin: 0;
   }
-  
-  
+
+
   .main-menu {
       position: relative;
   }
-  
+
   .main-menu::after {
       display: block;
       clear: both;
@@ -29583,7 +29583,7 @@ Version: 1.0.0
      width: 100%;
      font-size: 0;
   }
-  
+
   .rs-menu ul,
   .rs-menu li,
   .rs-menu p,
@@ -29594,24 +29594,24 @@ Version: 1.0.0
      margin: 0;
      padding: 0;
   }
-  
+
   .rs-menu li {
      display: block;
      position: relative;
   }
-  
+
   .rs-menu a {
      display: block;
      padding: 16px;
   }
-  
+
   .rs-menu .row {
       float: left;
       width: 100%;
       position: relative;
   }
-  
-  
+
+
   .rs-header .menu-area .logo-area {
       position: relative;
       width: 150px;
@@ -29631,7 +29631,7 @@ Version: 1.0.0
   }
   .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a {
     transition: all 0.3s ease 0s;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-size: 16px;
     text-transform: capitalize;
     height: 96px;
@@ -29653,28 +29653,28 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu ul li.current-menu-item > a {
     color: #ffa000;
   }
-  
-  
+
+
   /*-----------------------------------------------------------------------------------*/
-  /*	SUB-MENUS SETTINGS 
+  /*	SUB-MENUS SETTINGS
   /*-----------------------------------------------------------------------------------*/
   /* Hide sub-menus */
   .rs-menu ul ul {
       position: absolute;
       top: 100%;
       width: 100%;
-      background-color: #111111; 
+      background-color: #111111;
   }
-  .rs-menu ul ul.visible, .rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {	
+  .rs-menu ul ul.visible, .rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {
       display:block;
      z-index: 110;
   }
-  
+
   /* Adjust position of mega-menu */
   .rs-menu li:hover > ul.mega-menu > li > ul {
       position:relative;
   }
-  
+
   .rs-header .menu-area .main-menu .rs-menu ul.sub-menu {
     background-color: #ffffff;
     margin: 0;
@@ -29704,27 +29704,27 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu ul.sub-menu li.active a {
     color: #ffa000 !important;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
-  /*  APPEARANCE SETTINGS 
+  /*  APPEARANCE SETTINGS
   /*-----------------------------------------------------------------------------------*/
   .rs-menu a {
       color:#bbb;
-      
+
       /* Remove the blue Webkit background when element is tapped */
       -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
-  
+
   /* Modifies position of icons on the menu */
   .rs-menu li i {
       margin-right:10px;
       font-size:16px;
       /* Make the font smoother for Chrome */
-      transform:translate3d(0, 0, 0);    
+      transform:translate3d(0, 0, 0);
   }
-  
+
   /* Put down arrows */
   .nav-menu .rs-mega-menu > a span:after, .nav-menu > .menu-item-has-children > a span:after {
       content:"\f107";
@@ -29732,40 +29732,40 @@ Version: 1.0.0
       float:right;
       margin:2px 0 0 5px;
   }
-  
+
   .mega-menu h1, .mega-menu h2, .mega-menu h3 {
       margin-bottom:24px;
   }
-  
+
   /*-----------------------------------------------------------------------------------*/
   /*  Typography
   /*-----------------------------------------------------------------------------------*/
   .rs-menu li {
       font-size:14px;
   }
-  
+
   .rs-menu .sub-menu li a {
       padding: 10px 14px;
   }
-  
+
   /* Sub-menus - font size and text alignment*/
-  .rs-menu ul ul a {   
-      font-size: 15px;	
+  .rs-menu ul ul a {
+      font-size: 15px;
       text-align: left;
   }
-  
-  
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  MEGA MENU
   /*-----------------------------------------------------------------------------------*/
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu {
       position: absolute;
-      left: 0;  
+      left: 0;
       background-color: #ffffff;
       min-width: 700px;
   }
-  
-  
+
+
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .mega-menu-container {
       float:left;
       width:100%;
@@ -29773,16 +29773,16 @@ Version: 1.0.0
       padding: 0;
       margin: 0;
   }
-  
+
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu {
       display:block;
       position:relative;
       width:auto;
       padding:0;
       min-height:initial;
-      box-shadow:none;   
+      box-shadow:none;
   }
-  .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu li, 
+  .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu li,
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu a {
       width:100%;
   }
@@ -29803,14 +29803,14 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .single-megamenu:hover .sub-menu .menu-title {
     color: #043d72;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  Off Canvas Part CSS
   /*-----------------------------------------------------------------------------------*/
   /*Nav Expandar Part*/
-  
+
   .expand-btn {
     float: right;
     position: relative;
@@ -29853,7 +29853,7 @@ Version: 1.0.0
     background: #fff;
     color: #333333;
   }
-  
+
   .expand-btn .offcanvas-icon li span {
     background: #fff;
     height: 2px;
@@ -29875,8 +29875,8 @@ Version: 1.0.0
     width: 15px;
     transform: rotate(180deg);
   }
-  
-  
+
+
   /*Off Canvas Menu*/
   .nav-expanded {
       position: relative;
@@ -29884,7 +29884,7 @@ Version: 1.0.0
   .nav-expanded nav {
       right: 0 !important;
   }
-  .off-wrap {	
+  .off-wrap {
       position: absolute;
       width: 100%;
       background: #000;
@@ -29899,7 +29899,7 @@ Version: 1.0.0
       opacity: 0.5;
       z-index: 99;
   }
-  
+
   /*-----------------------------------------------------------------------------------*/
   /*  TRANSITIONS AND EFECTS
   /*-----------------------------------------------------------------------------------*/
@@ -29910,14 +29910,14 @@ Version: 1.0.0
       -o-transition:all .3s ease-in-out;
       transition:all .3s ease-in-out;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  MEDIA QUERIES
   /*-----------------------------------------------------------------------------------*/
   @media screen and (min-width: 992px) {
-      
+
       /*RESPONSE MENU*/
       .rs-menu {
           height: auto !important;
@@ -29925,73 +29925,73 @@ Version: 1.0.0
       .rs-menu li {
           display:inline-block;
       }
-      
+
       .nav-menu .rs-mega-menu {
           position: static;
       }
-      
+
       .rs-menu ul ul.visible {
           visibility: hidden;
           opacity:0;
       }
-      
+
       /* Remove arrows if not in mobile */
-      .nav-menu .menu-item-has-children > span, 
+      .nav-menu .menu-item-has-children > span,
       .nav-menu .rs-mega-menu > span {
           display:none;
       }
-      
-      /* Remove Menu Toggle if not in mobile */	
+
+      /* Remove Menu Toggle if not in mobile */
       .rs-menu-toggle {
           display:none;
       }
-      
+
       /* Remove Menu Close if not in mobile */
       .nav-menu div.sub-menu-close {
           display:none;
       }
-      
-      
+
+
       /* Show sub-menus in hover */
-      .rs-menu li:active > ul, 
-      .rs-menu li:focus > ul, 
-      .rs-menu li:hover > ul, 
-      .rs-menu li:hover > ul.mega-menu > li > ul, 
-      .rs-menu li:hover ul.mega-menu .sub-menu {		
+      .rs-menu li:active > ul,
+      .rs-menu li:focus > ul,
+      .rs-menu li:hover > ul,
+      .rs-menu li:hover > ul.mega-menu > li > ul,
+      .rs-menu li:hover ul.mega-menu .sub-menu {
           display:block;
-          z-index: 17;	
+          z-index: 17;
       }
-  
+
       /* Adjust position the sub-menus in the left */
       .rs-menu ul ul li > ul {
           left: auto;
           right: 100%;
       }
-      
+
       /* Adjust position the sub-menus on the top */
       .rs-menu ul ul ul {
           top: 0;
-      }	
-      
+      }
+
       .rs-menu ul ul {
           width:auto;
       }
-      
+
       /* Sub-menus - width */
       .rs-menu ul ul a {
           width: 260px;	/* <- Modify for width change */
       }
-      
+
       .nav-menu .mega-menu li div.mega-menu-innner .single-magemenu {
           width: 25%;
           float: left;
           padding: 0 12px;
       }
-  
+
       .rs-header .menu-area.menu-sticky {
           transition: all 0.3s ease 0s;
       }
-  
+
       .rs-header .menu-area.menu-sticky.sticky {
         background: #fff;
           position: fixed;
@@ -30024,38 +30024,38 @@ Version: 1.0.0
         background: #161616;
         color: #fff;
       }
-  
+
       /* Menu Transition*/
       .rs-menu ul ul {
           opacity: 0;
-          visibility: hidden;	
+          visibility: hidden;
           transform: translateY(-10px);
           transform: scaleY(0);
           transform-origin: 0 0 0;
       }
-  
-      .rs-menu li:active > ul, .rs-menu li:focus > ul, .rs-menu li:hover > ul, .rs-menu li:hover > ul.mega-menu > li > ul {    
+
+      .rs-menu li:active > ul, .rs-menu li:focus > ul, .rs-menu li:hover > ul, .rs-menu li:hover > ul.mega-menu > li > ul {
            opacity: 1;
-           visibility:visible;		
+           visibility:visible;
            transform: translateY(0px);
            transform: scaleY(1);
       }
-  
+
       ul.mega-menu .sub-menu {
           transform: unset;
       }
-  
+
       .rs-menu li:hover ul.mega-menu .sub-menu {
           transform: unset;
           opacity: 1;
           visibility: visible;
           transform: scaleY(1);
       }
-          
+
   }
-  
+
   @media only screen and (max-width: 991px) {
-      
+
       .rs-header .menu-area .logo-area {
           position: absolute;
           z-index: 1;
@@ -30063,7 +30063,7 @@ Version: 1.0.0
       .rs-header .expand-btn {
           display: none;
       }
-  
+
       .rs-menu {
           position: absolute;
           z-index: 999;
@@ -30074,37 +30074,37 @@ Version: 1.0.0
           margin-left: 0!important;
           margin-right: 0!important;
       }
-         
+
       .nav-menu > li > a {
           border-bottom:1px solid #131313;
           text-align: left;
-      }	
+      }
       .nav-menu > li:last-child a {
           border-bottom:none;
       }
-  
+
       .rs-menu ul ul {
           display: none;
       }
-  
+
       /*Options Menu Closed*/
       .nav-menu div.sub-menu-close {
           float:left;
           width:100%;
           cursor:pointer;
-          background:#f6f3ed;		
+          background:#f6f3ed;
           color:#000;
           font-size:14px;
-          text-align:center;	
+          text-align:center;
           height: 50px;
           line-height: 50px;
       }
-      
-      .nav-menu div.sub-menu-close i {		
+
+      .nav-menu div.sub-menu-close i {
           font-size:16px;
           margin-right: 5px;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.nav-menu {
           background: #fff;
       }
@@ -30112,13 +30112,13 @@ Version: 1.0.0
           display: block !important;
           margin-right: 0 !important;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a {
           height: 70px !important;
           line-height: 70px !important;
           padding: 0 0 0 20px !important;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.sub-menu {
           padding: 15px 0 0 !important;
       }
@@ -30130,7 +30130,7 @@ Version: 1.0.0
       .rs-menu .rs-mega-menu .sub-menu div.sub-menu-close {
           display: none;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu {
           min-width: unset;
           width: 100%;
@@ -30148,8 +30148,8 @@ Version: 1.0.0
       .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .mega-menu-container .single-megamenu .sub-menu .menu-title {
           padding: 10px 15px;
       }
-  
-      .nav-menu > .menu-item-has-children > span.rs-menu-parent {		
+
+      .nav-menu > .menu-item-has-children > span.rs-menu-parent {
           display: block;
           position: absolute;
           right: 0;
@@ -30161,11 +30161,11 @@ Version: 1.0.0
           cursor:pointer;
           background: #ddd;
           z-index: 9;
-          
+
           /* Remove the blue Webkit background when element is tapped */
-          -webkit-tap-highlight-color:rgba(0,0,0,0);    
-      }	
-      .nav-menu > .menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {		
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+      }
+      .nav-menu > .menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {
           display: block;
           position: absolute;
           background: #ddd;
@@ -30176,20 +30176,20 @@ Version: 1.0.0
           width: 45px;
           text-align: center;
           cursor: pointer;
-          border-left:none;	
-          z-index: 9;	
+          border-left:none;
+          z-index: 9;
           /* Remove the blue Webkit background when element is tapped */
-          -webkit-tap-highlight-color:rgba(0,0,0,0);    
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
       }
-      .nav-menu span.rs-menu-parent i { 
+      .nav-menu span.rs-menu-parent i {
           margin:0;
       }
-  
+
       .rs-menu-close {
-          height: 0;		
+          height: 0;
           overflow: hidden!important;
       }
-      
+
       /*Menu Toggle Appearance*/
       .rs-menu-toggle {
           display: block;
@@ -30197,16 +30197,16 @@ Version: 1.0.0
           position: relative;
           height: 90px;
           line-height: 90px;
-          cursor:pointer;		
+          cursor:pointer;
           color: #333 !important;
           font-size: 22px;
-          text-transform: uppercase;	
+          text-transform: uppercase;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
-      }	
-      
+      }
+
   }
-  
-  @media only screen and (max-width: 1080px) {	
+
+  @media only screen and (max-width: 1080px) {
       .nav-menu > li > a i {
           display:none;
       }
@@ -30310,49 +30310,49 @@ Version: 1.0.0
       direction: rtl; }
     .owl-carousel.owl-rtl .owl-item {
       float: right; }
-  
+
   /* No Js */
   .no-js .owl-carousel {
     display: block; }
-  
+
   /*
    *  Owl Carousel - Animate Plugin
    */
   .owl-carousel .animated {
     animation-duration: 1000ms;
     animation-fill-mode: both; }
-  
+
   .owl-carousel .owl-animated-in {
     z-index: 0; }
-  
+
   .owl-carousel .owl-animated-out {
     z-index: 1; }
-  
+
   .owl-carousel .fadeOut {
     animation-name: fadeOut; }
-  
+
   @keyframes fadeOut {
     0% {
       opacity: 1; }
     100% {
       opacity: 0; } }
-  
+
   /*
    * 	Owl Carousel - Auto Height Plugin
    */
   .owl-height {
     transition: height 500ms ease-in-out; }
-  
+
   /*
    * 	Owl Carousel - Lazy Load Plugin
    */
   .owl-carousel .owl-item .owl-lazy {
     opacity: 0;
     transition: opacity 400ms ease; }
-  
+
   .owl-carousel .owl-item img.owl-lazy {
     transform-style: preserve-3d; }
-  
+
   /*
    * 	Owl Carousel - Video Plugin
    */
@@ -30360,7 +30360,7 @@ Version: 1.0.0
     position: relative;
     height: 100%;
     background: #000; }
-  
+
   .owl-carousel .owl-video-play-icon {
     position: absolute;
     height: 80px;
@@ -30374,15 +30374,15 @@ Version: 1.0.0
     z-index: 1;
     -webkit-backface-visibility: hidden;
     transition: transform 100ms ease; }
-  
+
   .owl-carousel .owl-video-play-icon:hover {
     -ms-transform: scale(1.3, 1.3);
         transform: scale(1.3, 1.3); }
-  
+
   .owl-carousel .owl-video-playing .owl-video-tn,
   .owl-carousel .owl-video-playing .owl-video-play-icon {
     display: none; }
-  
+
   .owl-carousel .owl-video-tn {
     opacity: 0;
     height: 100%;
@@ -30390,14 +30390,14 @@ Version: 1.0.0
     background-repeat: no-repeat;
     background-size: contain;
     transition: opacity 400ms ease; }
-  
+
   .owl-carousel .owl-video-frame {
     position: relative;
     z-index: 1;
     height: 100%;
     width: 100%; }
   /* off-canvas */
-  
+
 
 /**
 *
@@ -30435,9 +30435,9 @@ a.nav-expander {
     -webkit-transition: right 0.3s ease-in-out 0s;
     -moz-transition: right 0.3s ease-in-out 0s;
     -o-transition: right 0.3s ease-in-out 0s;
- 
+
 }
- 
+
 a.nav-expander:hover {
   cursor: pointer;
 }
@@ -30461,7 +30461,7 @@ nav.right_menu_togle {
 .nav-expanded nav {
   right: 0 !important;
 }
- 
+
 body.nav-expanded {
   margin-left: 0em;
   transition: right 0.4s ease-in-out 0s;
@@ -30587,13 +30587,13 @@ span#nav-close {
   -ms-transition: 0.4s;
 }
 .sidebarnav_menu.main-menu li ul li a {
-  padding: 8px 0 8px 40px; 
+  padding: 8px 0 8px 40px;
 }
 .sidebarnav_menu.main-menu li a:hover {
   color: #FFFFFF;
   text-decoration: none;
 }
- 
+
 .sidebarnav_menu.main-menu a .caret {
 	width: 0;
 	height: 0;
@@ -30605,22 +30605,22 @@ span#nav-close {
 	content: "";
     margin-top: 8px;
 }
- 
+
 .sidebarnav_menu.main-menu a:hover .caret {
 	border-top-color: #4f5963;
 }
- 
+
 .sidebarnav_menu.main-menu li.open > a > .caret {
 	border-top: none;
 	border-bottom: 4px solid #4f5963;
 	border-right: 4px solid transparent;
 	border-left: 4px solid transparent;
 }
- 
+
 .sidebarnav_menu.main-menu li.open > a:hover > .caret {
 	border-bottom-color: #4f5963;
 }
- 
+
 .icon:before {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -30630,7 +30630,7 @@ span#nav-close {
   text-transform: none;
   content: '\f105';
 }
- 
+
 .sidebarnav_menu.main-menu li > a > span.icon {
   float: right;
   margin: 0.1em 1.7em -0.1em 0;
@@ -30639,9 +30639,9 @@ span#nav-close {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
- 
+
 }
- 
+
 .sidebarnav_menu.main-menu li > a:hover > span.icon {
   float: right;
   margin: 0.1em 0.8em -0.1em 0;
@@ -30670,7 +30670,7 @@ span#nav-close {
     position: fixed;
     background: #0b0b0b;
     opacity: 0.8; }
-  
+
   .mfp-wrap {
     top: 0;
     left: 0;
@@ -30681,7 +30681,7 @@ span#nav-close {
     outline: none !important;
     -webkit-backface-visibility: hidden;
   }
-  
+
   .mfp-container {
     text-align: center;
     position: absolute;
@@ -30691,16 +30691,16 @@ span#nav-close {
     top: 0;
     padding: 0 8px;
     box-sizing: border-box; }
-  
+
   .mfp-container:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle; }
-  
+
   .mfp-align-top .mfp-container:before {
     display: none; }
-  
+
   .mfp-content {
     position: relative;
     display: inline-block;
@@ -30708,29 +30708,29 @@ span#nav-close {
     margin: 0 auto;
     text-align: left;
     z-index: 1045; }
-  
+
   .mfp-inline-holder .mfp-content,
   .mfp-ajax-holder .mfp-content {
     width: 100%;
     cursor: auto; }
-  
+
   .mfp-ajax-cur {
     cursor: progress; }
-  
+
   .mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
     cursor: -moz-zoom-out;
     cursor: -webkit-zoom-out;
     cursor: zoom-out; }
-  
+
   .mfp-zoom {
     cursor: pointer;
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
-  
+
   .mfp-auto-cursor .mfp-content {
     cursor: auto; }
-  
+
   .mfp-close,
   .mfp-arrow,
   .mfp-preloader,
@@ -30738,13 +30738,13 @@ span#nav-close {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none; }
-  
+
   .mfp-loading.mfp-figure {
     display: none; }
-  
+
   .mfp-hide {
     display: none !important; }
-  
+
   .mfp-preloader {
     color: #CCC;
     position: absolute;
@@ -30759,13 +30759,13 @@ span#nav-close {
       color: #CCC; }
       .mfp-preloader a:hover {
         color: #FFF; }
-  
+
   .mfp-s-ready .mfp-preloader {
     display: none; }
-  
+
   .mfp-s-error .mfp-content {
     display: none; }
-  
+
   button.mfp-close,
   button.mfp-arrow {
     overflow: visible;
@@ -30779,11 +30779,11 @@ span#nav-close {
     z-index: 1046;
     box-shadow: none;
     touch-action: manipulation; }
-  
+
   button::-moz-focus-inner {
     padding: 0;
     border: 0; }
-  
+
   .mfp-close {
     width: 44px;
     height: 44px;
@@ -30804,10 +30804,10 @@ span#nav-close {
       opacity: 1; }
     .mfp-close:active {
       top: 1px; }
-  
+
   .mfp-close-btn-in .mfp-close {
     color: #333; }
-  
+
   .mfp-image-holder .mfp-close,
   .mfp-iframe-holder .mfp-close {
     color: #FFF;
@@ -30815,7 +30815,7 @@ span#nav-close {
     text-align: right;
     padding-right: 6px;
     width: 100%; }
-  
+
   .mfp-counter {
     position: absolute;
     top: 0;
@@ -30824,7 +30824,7 @@ span#nav-close {
     font-size: 12px;
     line-height: 18px;
     white-space: nowrap; }
-  
+
   .mfp-arrow {
     position: absolute;
     opacity: 0.65;
@@ -30860,7 +30860,7 @@ span#nav-close {
       border-top-width: 21px;
       border-bottom-width: 21px;
       opacity: 0.7; }
-  
+
   .mfp-arrow-left {
     left: 0; }
     .mfp-arrow-left:after {
@@ -30869,7 +30869,7 @@ span#nav-close {
     .mfp-arrow-left:before {
       margin-left: 25px;
       border-right: 27px solid #3F3F3F; }
-  
+
   .mfp-arrow-right {
     right: 0; }
     .mfp-arrow-right:after {
@@ -30877,7 +30877,7 @@ span#nav-close {
       margin-left: 39px; }
     .mfp-arrow-right:before {
       border-left: 27px solid #3F3F3F; }
-  
+
   .mfp-iframe-holder {
     padding-top: 40px;
     padding-bottom: 40px; }
@@ -30887,7 +30887,7 @@ span#nav-close {
       max-width: 900px; }
     .mfp-iframe-holder .mfp-close {
       top: -40px; }
-  
+
   .mfp-iframe-scaler {
     width: 100%;
     height: 0;
@@ -30902,7 +30902,7 @@ span#nav-close {
       height: 100%;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
       background: #000; }
-  
+
   /* Main image in popup */
   img.mfp-img {
     width: auto;
@@ -30913,7 +30913,7 @@ span#nav-close {
     box-sizing: border-box;
     padding: 40px 0 40px;
     margin: 0 auto; }
-  
+
   /* The shadow behind the image */
   .mfp-figure {
     line-height: 0; }
@@ -30937,7 +30937,7 @@ span#nav-close {
       line-height: 14px; }
     .mfp-figure figure {
       margin: 0; }
-  
+
   .mfp-bottom-bar {
     margin-top: -36px;
     position: absolute;
@@ -30945,20 +30945,20 @@ span#nav-close {
     left: 0;
     width: 100%;
     cursor: auto; }
-  
+
   .mfp-title {
     text-align: left;
     line-height: 18px;
     color: #F3F3F3;
     word-wrap: break-word;
     padding-right: 36px; }
-  
+
   .mfp-image-holder .mfp-content {
     max-width: 100%; }
-  
+
   .mfp-gallery .mfp-image-holder .mfp-figure {
     cursor: pointer; }
-  
+
   @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
     /**
          * Remove all paddings around the image on small screen
@@ -30997,7 +30997,7 @@ span#nav-close {
       position: fixed;
       text-align: center;
       padding: 0; } }
-  
+
   @media all and (max-width: 900px) {
     .mfp-arrow {
       -webkit-transform: scale(0.75);
@@ -34454,7 +34454,7 @@ a.menu-link { display: none; }
   nav[role="navigation"] li.active a {
       color: #f5a425;
   }
-  
+
   @media screen and (min-width: 951px) {
     .js nav[role="navigation"] {
       max-height: none;
@@ -34885,7 +34885,7 @@ section.why-us {
   margin-bottom: 0.75em;
 }
 /* #tabs ul .ui-tabs-active  {
-  
+
 } */
 #tabs ul .ui-tabs-active a {
   color: #f5a425;
@@ -34919,7 +34919,7 @@ section.why-us {
 }
 
 @media screen and (max-width: 767px) {
-  
+
   .tabs-content {
       text-align: center;
   }
@@ -35118,7 +35118,7 @@ section.coming-soon form button {
 /* Courses */
 
 section.courses {
-  
+
     background-color: white ;
     padding-bottom: 100px;
     padding: 0px 30px 100px 30px;
@@ -35785,7 +35785,7 @@ section.contact form {
 }
 
 
-@media screen and (max-width: 767px) {  
+@media screen and (max-width: 767px) {
   section.contact form {
       margin-bottom: 30px;
   }
@@ -35955,8 +35955,8 @@ footer p a:hover {
     display: block;
   }
   .num2{
-   
-  
+
+
   }
   .text2{
     display: block;
@@ -35969,13 +35969,13 @@ footer p a:hover {
     color: white;
     opacity: 0.6;
     text-shadow: 0px 0px 3px rgb(0 0 0 / 7%);
-  
+
   }
   .img-2{
     margin-left: 74px;
     width: 5.313rem;
     flex: 0 0 30%;
-  
+
   }
 }
 .info-contact{
@@ -36174,8 +36174,8 @@ footer p a:hover {
   background-color: cadetblue;
   display: flex;
   color: white;
-  
-  
+
+
 }
 
 
@@ -36186,7 +36186,7 @@ footer p a:hover {
 }
 /* courses-style */
 /*
-    
+
 TemplateMo 557 Grad School
 
 https://templatemo.com/tm-557-grad-school
@@ -36319,7 +36319,7 @@ a.menu-link { display: none; }
   nav[role="navigation"] li.active a {
       color: #f5a425;
   }
-  
+
   @media screen and (min-width: 951px) {
     .js nav[role="navigation"] {
       max-height: none;
@@ -36750,7 +36750,7 @@ section.why-us {
   margin-bottom: 0.75em;
 }
 /* #tabs ul .ui-tabs-active  {
-  
+
 } */
 #tabs ul .ui-tabs-active a {
   color: #f5a425;
@@ -36784,7 +36784,7 @@ section.why-us {
 }
 
 @media screen and (max-width: 767px) {
-  
+
   .tabs-content {
       text-align: center;
   }
@@ -36983,7 +36983,7 @@ section.coming-soon form button {
 /* Courses */
 
 section.courses {
-    
+
     padding-bottom: 100px;
     padding: 0px 30px 100px 30px;
 }
@@ -37646,7 +37646,7 @@ section.contact form {
 }
 
 
-@media screen and (max-width: 767px) {  
+@media screen and (max-width: 767px) {
   section.contact form {
       margin-bottom: 30px;
   }
@@ -37821,7 +37821,7 @@ footer p a:hover {
     font-size: 2rem;
       font-weight: 900;
       line-height: 3.236rem;
-  
+
   }
   .text2{
     display: block;
@@ -37834,13 +37834,13 @@ footer p a:hover {
     color: white;
     opacity: 0.6;
     text-shadow: 0px 0px 3px rgb(0 0 0 / 7%);
-  
+
   }
   .img-2{
     margin-left: 74px;
     width: 5.313rem;
     flex: 0 0 30%;
-  
+
   }
 }
 .info-contact{
@@ -38039,8 +38039,8 @@ footer p a:hover {
   background-color: white;
   display: flex;
   color: white;
-  
-  
+
+
 }
 
 
@@ -38053,17 +38053,17 @@ footer p a:hover {
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900');
 
 
-/** 
+/**
 * 1976D2
 * #1976D2
 * -----------------------------------------------------------------------------
 *
 * Template : Educavo - Education HTML Template
 * Author : rs-theme
-* Author URI : http://www.rstheme.com/ 
+* Author URI : http://www.rstheme.com/
 *
 * -----------------------------------------------------------------------------
-* 
+*
 **/
 
 
@@ -38120,7 +38120,7 @@ html,
 body {
     font-size: 15px;
     color: #505050;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     vertical-align: baseline;
     line-height: 26px;
     font-weight: 400;
@@ -38643,7 +38643,7 @@ blockquote p {
     display: inline-block;
     text-transform: uppercase;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 700;
     color: #111111;
     background: #f3f8f9;
@@ -38821,7 +38821,7 @@ blockquote p {
     display: inline-block;
     text-transform: capitalize;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
 }
@@ -38853,7 +38853,7 @@ blockquote p {
     display: inline-block;
     text-transform: capitalize;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
     background: #1976D2;
@@ -38928,7 +38928,7 @@ blockquote p {
     background: #ff5421;
     color: #ffffff;
     border-radius: 3px 3px 3px 3px;
-    font-family: "Rubik", Sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
@@ -38944,7 +38944,7 @@ blockquote p {
     background: #ff5421;
     color: #ffffff;
     border-radius: 3px 3px 3px 3px;
-    font-family: "Rubik", Sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
@@ -38971,7 +38971,7 @@ blockquote p {
     display: inline-block;
     text-transform: uppercase;
     font-size: 16px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #ffffff;
     background: #1976D2;
@@ -54525,7 +54525,7 @@ body .modal-backdrop {
     -ms-transition: all 300ms ease;
     -o-transition: all 300ms ease;
     transition: all 300ms ease;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 .styled-form .form-group .check-box label:before {
@@ -54590,7 +54590,7 @@ body .modal-backdrop {
     color: #626262;
     cursor: pointer;
     margin-bottom: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
     -ms-transition: all 300ms ease;
@@ -55123,7 +55123,7 @@ body .modal-backdrop {
 
 .rs-footer .footer-top .site-map li {
     padding-left: 15px;
-    
+
     position: relative;
     margin-bottom: 11px;
 }
@@ -56448,17 +56448,17 @@ body .modal-backdrop {
 /* responsive */
 
 
-/** 
+/**
 *
 * -----------------------------------------------------------------------------
 *
-* Template : Educavo - Education HTML Template 
+* Template : Educavo - Education HTML Template
 * Author : rs-theme
 * Author URI : http://www.rstheme.com/
 *
 * -----------------------------------------------------------------------------
 *
-**/ 
+**/
 
 /* Important CSS */
 .rs-degree.style1 .degree-wrap .content-part,
@@ -56786,7 +56786,7 @@ body .modal-backdrop {
     .full-width-header.header-style2 .rs-header .menu-area .rs-menu-area .main-menu .rs-menu .rs-mega-menu .mega-menu{
         right: 52px;
     }
-   
+
 }
 
 @media only screen and (max-width: 1199px) {
@@ -56936,7 +56936,7 @@ body .modal-backdrop {
     .rs-popular-courses.main-home.home12-style .courses-item .courses-grid .content-part .title {
         line-height: 29px;
         font-size: 20px;
-    } 
+    }
     .rs-popular-courses.main-home.home12-style .courses-item .courses-grid .content-part {
         padding: 32px 25px 35px 25px;
     }
@@ -56990,7 +56990,7 @@ body .modal-backdrop {
     .rs-banner.style9 .banner-content .desc {
         font-size: 17px;
         line-height: 28px;
-      
+
     }
     .rs-banner.style9 .shape-img{
         display: none;
@@ -57154,7 +57154,7 @@ body .modal-backdrop {
     }
     .rs-event.modify2 .event-item .event-short .content-part {
         padding: 30px 20px;
-        
+
     }
     .rs-services.style6 .services-wrap .services-item .services-desc .title {
         font-size: 21px;
@@ -57163,14 +57163,14 @@ body .modal-backdrop {
     .rs-services.style6 .services-wrap {
         padding: 40px 10px 40px;
     }
-   
+
     .rs-event .event-item .event-short .content-part .title {
         font-size: 26px;
         line-height: 28px;
     }
 
     .rs-features .features-wrap {
-        padding: 25px; 
+        padding: 25px;
     }
 
     .rs-blog.main-home .blog-item .blog-content .title {
@@ -57204,8 +57204,8 @@ body .modal-backdrop {
         margin-right: -35px;
     }
 
-    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-80, 
-    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-90, 
+    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-80,
+    .full-width-header.header-style2 .rs-header .menu-area .main-menu.pr-90,
     .full-width-header.header-style2 .rs-header .menu-area .logo-cat-wrap .logo-part.pr-90 {
         padding-right: 50px;
     }
@@ -57620,7 +57620,7 @@ body .modal-backdrop {
     .rs-popular-courses.home13-style .courses-item .courses-grid .content-part .title {
         font-size: 20px;
     }
-  
+
     .rs-faq-part.style1 .main-part {
         padding: 60px 50px 70px;
     }
@@ -57630,7 +57630,7 @@ body .modal-backdrop {
     .lg-pl-0 {
         padding-left: 0;
     }
-    .nav-menu .rs-mega-menu > a:after, 
+    .nav-menu .rs-mega-menu > a:after,
     .nav-menu > .menu-item-has-children > a:after {
         content: "\f107";
         font-family: FontAwesome;
@@ -57638,7 +57638,7 @@ body .modal-backdrop {
         margin: 2px 0 0 5px;
         display: none;
     }
-    .sticky{ 
+    .sticky{
         background: #fff !important;
         position: fixed !important;
         top: 0px;
@@ -57730,7 +57730,7 @@ body .modal-backdrop {
     }
     .rs-cta.home-style14{
         text-align: center;
-    }   
+    }
     .rs-popular-courses.style1.modify1 .courses-item .content-part .title {
         font-size: 18px;
         line-height: 28px;
@@ -57788,7 +57788,7 @@ body .modal-backdrop {
     .rs-banner.style13 .rs-animation-part,
     .rs-banner.style10 .img-part {
        display: none;
-      
+
     }
     .rs-banner.style10 .banner-intro-box .intro-img {
         position: absolute;
@@ -57826,7 +57826,7 @@ body .modal-backdrop {
         width: 33px;
         height: 33px;
         line-height: 36px;
-    
+
     }
     .rs-features.style3 .features-item .content-part {
         top: 54%;
@@ -57835,7 +57835,7 @@ body .modal-backdrop {
     }
     .rs-cta.home11-style .content .sec-title2 .desc br{
         display: none;
-    } 
+    }
     .rs-cta.home11-style .content{
         max-width: 600px;
         margin: 0 auto;
@@ -57855,7 +57855,7 @@ body .modal-backdrop {
     }
     .rs-popular-courses.home11-style .courses-item .content-part .course-body p {
         font-size: 15px;
-      
+
     }
     .rs-gallery.home11-style .gallery-part .gallery-img img{
        width: 100%;
@@ -57876,7 +57876,7 @@ body .modal-backdrop {
     }
     .contact-page-section .inner-part .title {
         font-size: 32px;
-        line-height: 1.2;      
+        line-height: 1.2;
     }
     .full-width-header.header-style3.modify .rs-header .menu-area .rs-menu-area {
         margin-left: 0;
@@ -57926,7 +57926,7 @@ body .modal-backdrop {
     }
     .rs-cta.home9-style .partition-bg-wrap::after {
         display: none;
-    } 
+    }
     .rs-testimonial.home9-style .img-part img{
       width: 80px;
     }
@@ -57990,7 +57990,7 @@ body .modal-backdrop {
         padding: 60px 30px 70px 60px;
     }
     .rs-about.style9 .content-part .about-img {
-        position: unset;      
+        position: unset;
     }
 
     .rs-features .features-wrap {
@@ -58135,7 +58135,7 @@ body .modal-backdrop {
     }
     .rs-about.video-img .shape-img.right {
         display: none;
-    } 
+    }
     .rs-about.video-img .shape-img.center{
         display: none;
     }
@@ -58170,11 +58170,11 @@ body .modal-backdrop {
     .rs-testimonial.home1-style .testi-item .author-desc {
         padding: 70px 15px;
     }
-    .rs-faq-part.style1 .img-part {     
+    .rs-faq-part.style1 .img-part {
         height: 70%;
         min-height: 570px;
     }
- 
+
     .rs-faq-part.style1 .main-part .title .text-part {
         font-size: 30px;
         line-height: 40px;
@@ -58208,7 +58208,7 @@ body .modal-backdrop {
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .rs-menu-area .main-menu .rs-menu ul.sub-menu,
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .rs-menu-area .main-menu .rs-menu .rs-mega-menu .mega-menu .mega-menu-container .single-megamenu .sub-menu {
         background: #fff !important;
-    }  
+    }
     .full-width-header.header-style3.home-style15 .rs-header .menu-area .custom-table .header-logo{
         position: relative;
     }
@@ -58534,7 +58534,7 @@ body .modal-backdrop {
         font-size: 20px;
     }
 
-    .rs-cta.style2 .partition-bg-wrap.home2:after, 
+    .rs-cta.style2 .partition-bg-wrap.home2:after,
     .rs-cta.style2 .partition-bg-wrap.home2:before {
         height: 50%;
     }
@@ -58546,10 +58546,10 @@ body .modal-backdrop {
         top: 0;
     }
     .rs-cta.style2 .partition-bg-wrap:after {
-        width: 100%;        
+        width: 100%;
         right: unset;
         top: unset;
-        
+
     }
     .rs-cta.style2 .partition-bg-wrap.inner-page:after,
     .rs-cta.style2 .partition-bg-wrap.inner-page:before {
@@ -58730,7 +58730,7 @@ body .modal-backdrop {
         line-height: 35px;
         border-radius: 35px;
         right: 40%;
-        bottom: 50px;    
+        bottom: 50px;
     }
     .rs-banner.style11 {
         min-height: 750px;
@@ -58901,7 +58901,7 @@ body .modal-backdrop {
     .rs-features {
         margin-top: 70px;
     }
- 
+
     .container {
         max-width: 540px;
     }
@@ -58932,12 +58932,12 @@ body .modal-backdrop {
     }
     .rs-banner.style7 .banner-content .banner-title {
         font-size: 34px;
-        line-height: 48px;      
+        line-height: 48px;
     }
     .rs-banner.style7 .img-part {
         display: none;
     }
-   
+
     .rs-publication .product-list:hover .image-product .overley i {
         bottom: 420px;
     }
@@ -58976,7 +58976,7 @@ body .modal-backdrop {
     }
 
     .rs-testimonial.home1-style .testi-item .author-desc .desc {
-        padding: 60px 20px 20px;       
+        padding: 60px 20px 20px;
     }
 
     .hidden-sm {
@@ -59177,7 +59177,7 @@ body .modal-backdrop {
     .rs-cart .container{
         max-width: 550px;
     }
-   
+
     .rs-cart .cart-wrap table.cart-table .action .coupon input {
         margin-bottom: 20px;
         width: 100%;
@@ -59188,8 +59188,8 @@ body .modal-backdrop {
     }
     .rs-cart .btn-shop{
         width: 100%;
-    } 
-  
+    }
+
     .rs-cart .cart-wrap table.cart-table td {
         display: block;
         border-right: 1px solid #e6e6e6;
@@ -59246,7 +59246,7 @@ body .modal-backdrop {
 @media only screen and (max-width: 575px) {
     .rs-banner.style11 .icons-spiner .spine2 img {
         width: 70px;
-    } 
+    }
     .rs-banner.style11 .icons-spiner .circle img {
         width: 70px;
     }
@@ -59286,12 +59286,12 @@ body .modal-backdrop {
         max-width: 400px;
         margin-left: 50px;
     }
-      
+
     .rs-banner.style9 .banner-content {
         max-width: 323px;
         margin-left: 50px;
     }
-    
+
     .rs-banner.style9 .banner-content .banner-title {
         font-size: 42px;
         line-height: 1.2;
@@ -59332,7 +59332,7 @@ body .modal-backdrop {
     }
     .rs-facilities .choose-part {
         padding: 50px 25px;
-      
+
     }
     .rs-facilities .choose-part .our-facilities .content-part .text-part .desc {
         font-size: 14px;
@@ -59536,7 +59536,7 @@ body .modal-backdrop {
         display: block;
     }
     .intro-section .intro-tabs .tab-btns {
-        width: 100%; 
+        width: 100%;
         margin: 0 0 15px;
     }
     .rs-banner.style13 .banner-content .search-widget .search-wrap [type="search"] {
@@ -59768,7 +59768,7 @@ body .modal-backdrop {
         min-height: 600px;
     }
     .rs-banner.style9 .banner-content {
-        max-width: 260px;        
+        max-width: 260px;
         margin: 0 auto;
     }
     .rs-banner.style9 .social-icon {
@@ -59777,7 +59777,7 @@ body .modal-backdrop {
     }
     .rs-cta.home11-style .content .sec-title2 .title{
         font-size: 17px;
-    } 
+    }
     .rs-cta.home11-style .content {
         max-width: 286px;
         margin: 0 auto;
@@ -59943,7 +59943,7 @@ body .modal-backdrop {
     .rs-popular-courses.main-home .courses-item .courses-grid .content-part .title {
         font-size: 20px;
     }
-  
+
     .rs-about.style8 .sec-title3 .title{
         font-size: 20px;
         line-height: 30px;
@@ -59993,7 +59993,7 @@ body .modal-backdrop {
         max-width: 250px;
         margin: 0 auto;
     }
-   
+
     .rs-cta.style7 .partition-bg-wrap .sec-title2 .title{
         font-size: 29px;
         line-height: 39px;
@@ -60059,7 +60059,7 @@ body .modal-backdrop {
     .rs-newsletter.style6 .newsletter-wrap .newsletter-form button {
         padding: 5px 34px;
     }
-    .rs-newsletter.style6 .newsletter-wrap .newsletter-form input {     
+    .rs-newsletter.style6 .newsletter-wrap .newsletter-form input {
         padding: 10px 16px;
         padding-right: 0px;
     }
@@ -60147,7 +60147,7 @@ body .modal-backdrop {
     }
     .rs-degree.style1 .title {
         font-size: 25px;
-    }    
+    }
     .rs-degree.style1.modify .title {
         font-size: 20px;
     }
@@ -60199,7 +60199,7 @@ body .modal-backdrop {
     .rs-popular-courses.style2 .course-wrap {
         padding: 25px;
     }
-    .rs-cta.style2 .partition-bg-wrap.inner-page:after, 
+    .rs-cta.style2 .partition-bg-wrap.inner-page:after,
     .rs-cta.style2 .partition-bg-wrap.inner-page:before {
         max-height: 350px;
     }
@@ -63877,12 +63877,12 @@ Version: 1.0.0
   .rs-topbar-part .topbar-sl-share .icon-part li:last-child {
     margin: 0;
   }
-  
-  
+
+
   .main-menu {
       position: relative;
   }
-  
+
   .main-menu::after {
       display: block;
       clear: both;
@@ -63894,7 +63894,7 @@ Version: 1.0.0
      width: 100%;
      font-size: 0;
   }
-  
+
   .rs-menu ul,
   .rs-menu li,
   .rs-menu p,
@@ -63905,24 +63905,24 @@ Version: 1.0.0
      margin: 0;
      padding: 0;
   }
-  
+
   .rs-menu li {
      display: block;
      position: relative;
   }
-  
+
   .rs-menu a {
      display: block;
      padding: 16px;
   }
-  
+
   .rs-menu .row {
       float: left;
       width: 100%;
       position: relative;
   }
-  
-  
+
+
   .rs-header .menu-area .logo-area {
       position: relative;
       width: 150px;
@@ -63942,7 +63942,7 @@ Version: 1.0.0
   }
   .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a {
     transition: all 0.3s ease 0s;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-size: 16px;
     text-transform: capitalize;
     height: 96px;
@@ -63964,28 +63964,28 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu ul li.current-menu-item > a {
     color: #ffa000;
   }
-  
-  
+
+
   /*-----------------------------------------------------------------------------------*/
-  /*	SUB-MENUS SETTINGS 
+  /*	SUB-MENUS SETTINGS
   /*-----------------------------------------------------------------------------------*/
   /* Hide sub-menus */
   .rs-menu ul ul {
       position: absolute;
       top: 100%;
       width: 100%;
-      background-color: #111111; 
+      background-color: #111111;
   }
-  .rs-menu ul ul.visible, .rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {	
+  .rs-menu ul ul.visible, .rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {
       display:block;
      z-index: 110;
   }
-  
+
   /* Adjust position of mega-menu */
   .rs-menu li:hover > ul.mega-menu > li > ul {
       position:relative;
   }
-  
+
   .rs-header .menu-area .main-menu .rs-menu ul.sub-menu {
     background-color: #ffffff;
     margin: 0;
@@ -64015,27 +64015,27 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu ul.sub-menu li.active a {
     color: #ffa000 !important;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
-  /*  APPEARANCE SETTINGS 
+  /*  APPEARANCE SETTINGS
   /*-----------------------------------------------------------------------------------*/
   .rs-menu a {
       color:#bbb;
-      
+
       /* Remove the blue Webkit background when element is tapped */
       -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
-  
+
   /* Modifies position of icons on the menu */
   .rs-menu li i {
       margin-right:10px;
       font-size:16px;
       /* Make the font smoother for Chrome */
-      transform:translate3d(0, 0, 0);    
+      transform:translate3d(0, 0, 0);
   }
-  
+
   /* Put down arrows */
   .nav-menu .rs-mega-menu > a span:after, .nav-menu > .menu-item-has-children > a span:after {
       content:"\f107";
@@ -64043,40 +64043,40 @@ Version: 1.0.0
       float:right;
       margin:2px 0 0 5px;
   }
-  
+
   .mega-menu h1, .mega-menu h2, .mega-menu h3 {
       margin-bottom:24px;
   }
-  
+
   /*-----------------------------------------------------------------------------------*/
   /*  Typography
   /*-----------------------------------------------------------------------------------*/
   .rs-menu li {
       font-size:14px;
   }
-  
+
   .rs-menu .sub-menu li a {
       padding: 10px 14px;
   }
-  
+
   /* Sub-menus - font size and text alignment*/
-  .rs-menu ul ul a {   
-      font-size: 15px;	
+  .rs-menu ul ul a {
+      font-size: 15px;
       text-align: left;
   }
-  
-  
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  MEGA MENU
   /*-----------------------------------------------------------------------------------*/
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu {
       position: absolute;
-      left: 0;  
+      left: 0;
       background-color: #ffffff;
       min-width: 700px;
   }
-  
-  
+
+
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .mega-menu-container {
       float:left;
       width:100%;
@@ -64084,16 +64084,16 @@ Version: 1.0.0
       padding: 0;
       margin: 0;
   }
-  
+
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu {
       display:block;
       position:relative;
       width:auto;
       padding:0;
       min-height:initial;
-      box-shadow:none;   
+      box-shadow:none;
   }
-  .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu li, 
+  .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu li,
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .sub-menu a {
       width:100%;
   }
@@ -64114,14 +64114,14 @@ Version: 1.0.0
   .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .single-megamenu:hover .sub-menu .menu-title {
     color: #043d72;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  Off Canvas Part CSS
   /*-----------------------------------------------------------------------------------*/
   /*Nav Expandar Part*/
-  
+
   .expand-btn {
     float: right;
     position: relative;
@@ -64158,13 +64158,13 @@ Version: 1.0.0
     display: inline-block;
     border-radius: 5px;
     font-weight: 600;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
   }
   .expand-btn .header-btn:hover {
     background: #fff;
     color: #333333;
   }
-  
+
   .expand-btn .offcanvas-icon li span {
     background: #fff;
     height: 2px;
@@ -64186,8 +64186,8 @@ Version: 1.0.0
     width: 15px;
     transform: rotate(180deg);
   }
-  
-  
+
+
   /*Off Canvas Menu*/
   .nav-expanded {
       position: relative;
@@ -64195,7 +64195,7 @@ Version: 1.0.0
   .nav-expanded nav {
       right: 0 !important;
   }
-  .off-wrap {	
+  .off-wrap {
       position: absolute;
       width: 100%;
       background: #000;
@@ -64210,7 +64210,7 @@ Version: 1.0.0
       opacity: 0.5;
       z-index: 99;
   }
-  
+
   /*-----------------------------------------------------------------------------------*/
   /*  TRANSITIONS AND EFECTS
   /*-----------------------------------------------------------------------------------*/
@@ -64221,14 +64221,14 @@ Version: 1.0.0
       -o-transition:all .3s ease-in-out;
       transition:all .3s ease-in-out;
   }
-  
-  
-  
+
+
+
   /*-----------------------------------------------------------------------------------*/
   /*  MEDIA QUERIES
   /*-----------------------------------------------------------------------------------*/
   @media screen and (min-width: 992px) {
-      
+
       /*RESPONSE MENU*/
       .rs-menu {
           height: auto !important;
@@ -64236,73 +64236,73 @@ Version: 1.0.0
       .rs-menu li {
           display:inline-block;
       }
-      
+
       .nav-menu .rs-mega-menu {
           position: static;
       }
-      
+
       .rs-menu ul ul.visible {
           visibility: hidden;
           opacity:0;
       }
-      
+
       /* Remove arrows if not in mobile */
-      .nav-menu .menu-item-has-children > span, 
+      .nav-menu .menu-item-has-children > span,
       .nav-menu .rs-mega-menu > span {
           display:none;
       }
-      
-      /* Remove Menu Toggle if not in mobile */	
+
+      /* Remove Menu Toggle if not in mobile */
       .rs-menu-toggle {
           display:none;
       }
-      
+
       /* Remove Menu Close if not in mobile */
       .nav-menu div.sub-menu-close {
           display:none;
       }
-      
-      
+
+
       /* Show sub-menus in hover */
-      .rs-menu li:active > ul, 
-      .rs-menu li:focus > ul, 
-      .rs-menu li:hover > ul, 
-      .rs-menu li:hover > ul.mega-menu > li > ul, 
-      .rs-menu li:hover ul.mega-menu .sub-menu {		
+      .rs-menu li:active > ul,
+      .rs-menu li:focus > ul,
+      .rs-menu li:hover > ul,
+      .rs-menu li:hover > ul.mega-menu > li > ul,
+      .rs-menu li:hover ul.mega-menu .sub-menu {
           display:block;
-          z-index: 17;	
+          z-index: 17;
       }
-  
+
       /* Adjust position the sub-menus in the left */
       .rs-menu ul ul li > ul {
           left: auto;
           right: 100%;
       }
-      
+
       /* Adjust position the sub-menus on the top */
       .rs-menu ul ul ul {
           top: 0;
-      }	
-      
+      }
+
       .rs-menu ul ul {
           width:auto;
       }
-      
+
       /* Sub-menus - width */
       .rs-menu ul ul a {
           width: 260px;	/* <- Modify for width change */
       }
-      
+
       .nav-menu .mega-menu li div.mega-menu-innner .single-magemenu {
           width: 25%;
           float: left;
           padding: 0 12px;
       }
-  
+
       .rs-header .menu-area.menu-sticky {
           transition: all 0.3s ease 0s;
       }
-  
+
       .rs-header .menu-area.menu-sticky.sticky {
         background: #fff;
           position: fixed;
@@ -64335,38 +64335,38 @@ Version: 1.0.0
         background: #161616;
         color: #fff;
       }
-  
+
       /* Menu Transition*/
       .rs-menu ul ul {
           opacity: 0;
-          visibility: hidden;	
+          visibility: hidden;
           transform: translateY(-10px);
           transform: scaleY(0);
           transform-origin: 0 0 0;
       }
-  
-      .rs-menu li:active > ul, .rs-menu li:focus > ul, .rs-menu li:hover > ul, .rs-menu li:hover > ul.mega-menu > li > ul {    
+
+      .rs-menu li:active > ul, .rs-menu li:focus > ul, .rs-menu li:hover > ul, .rs-menu li:hover > ul.mega-menu > li > ul {
            opacity: 1;
-           visibility:visible;		
+           visibility:visible;
            transform: translateY(0px);
            transform: scaleY(1);
       }
-  
+
       ul.mega-menu .sub-menu {
           transform: unset;
       }
-  
+
       .rs-menu li:hover ul.mega-menu .sub-menu {
           transform: unset;
           opacity: 1;
           visibility: visible;
           transform: scaleY(1);
       }
-          
+
   }
-  
+
   @media only screen and (max-width: 991px) {
-      
+
       .rs-header .menu-area .logo-area {
           position: absolute;
           z-index: 1;
@@ -64374,7 +64374,7 @@ Version: 1.0.0
       .rs-header .expand-btn {
           display: none;
       }
-  
+
       .rs-menu {
           position: absolute;
           z-index: 999;
@@ -64385,37 +64385,37 @@ Version: 1.0.0
           margin-left: 0!important;
           margin-right: 0!important;
       }
-         
+
       .nav-menu > li > a {
           border-bottom:1px solid #131313;
           text-align: left;
-      }	
+      }
       .nav-menu > li:last-child a {
           border-bottom:none;
       }
-  
+
       .rs-menu ul ul {
           display: none;
       }
-  
+
       /*Options Menu Closed*/
       .nav-menu div.sub-menu-close {
           float:left;
           width:100%;
           cursor:pointer;
-          background:#f6f3ed;		
+          background:#f6f3ed;
           color:#000;
           font-size:14px;
-          text-align:center;	
+          text-align:center;
           height: 50px;
           line-height: 50px;
       }
-      
-      .nav-menu div.sub-menu-close i {		
+
+      .nav-menu div.sub-menu-close i {
           font-size:16px;
           margin-right: 5px;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.nav-menu {
           background: #fff;
       }
@@ -64423,13 +64423,13 @@ Version: 1.0.0
           display: block !important;
           margin-right: 0 !important;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a {
           height: 70px !important;
           line-height: 70px !important;
           padding: 0 0 0 20px !important;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu ul.sub-menu {
           padding: 15px 0 0 !important;
       }
@@ -64441,7 +64441,7 @@ Version: 1.0.0
       .rs-menu .rs-mega-menu .sub-menu div.sub-menu-close {
           display: none;
       }
-  
+
       .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu {
           min-width: unset;
           width: 100%;
@@ -64459,8 +64459,8 @@ Version: 1.0.0
       .rs-header .menu-area .main-menu .rs-menu .nav-menu .mega-menu .mega-menu-container .single-megamenu .sub-menu .menu-title {
           padding: 10px 15px;
       }
-  
-      .nav-menu > .menu-item-has-children > span.rs-menu-parent {		
+
+      .nav-menu > .menu-item-has-children > span.rs-menu-parent {
           display: block;
           position: absolute;
           right: 0;
@@ -64472,11 +64472,11 @@ Version: 1.0.0
           cursor:pointer;
           background: #ddd;
           z-index: 9;
-          
+
           /* Remove the blue Webkit background when element is tapped */
-          -webkit-tap-highlight-color:rgba(0,0,0,0);    
-      }	
-      .nav-menu > .menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {		
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+      }
+      .nav-menu > .menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {
           display: block;
           position: absolute;
           background: #ddd;
@@ -64487,20 +64487,20 @@ Version: 1.0.0
           width: 45px;
           text-align: center;
           cursor: pointer;
-          border-left:none;	
-          z-index: 9;	
+          border-left:none;
+          z-index: 9;
           /* Remove the blue Webkit background when element is tapped */
-          -webkit-tap-highlight-color:rgba(0,0,0,0);    
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
       }
-      .nav-menu span.rs-menu-parent i { 
+      .nav-menu span.rs-menu-parent i {
           margin:0;
       }
-  
+
       .rs-menu-close {
-          height: 0;		
+          height: 0;
           overflow: hidden!important;
       }
-      
+
       /*Menu Toggle Appearance*/
       .rs-menu-toggle {
           display: block;
@@ -64508,16 +64508,16 @@ Version: 1.0.0
           position: relative;
           height: 90px;
           line-height: 90px;
-          cursor:pointer;		
+          cursor:pointer;
           color: #333 !important;
           font-size: 22px;
-          text-transform: uppercase;	
+          text-transform: uppercase;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
-      }	
-      
+      }
+
   }
-  
-  @media only screen and (max-width: 1080px) {	
+
+  @media only screen and (max-width: 1080px) {
       .nav-menu > li > a i {
           display:none;
       }
@@ -64621,49 +64621,49 @@ Version: 1.0.0
       direction: rtl; }
     .owl-carousel.owl-rtl .owl-item {
       float: right; }
-  
+
   /* No Js */
   .no-js .owl-carousel {
     display: block; }
-  
+
   /*
    *  Owl Carousel - Animate Plugin
    */
   .owl-carousel .animated {
     animation-duration: 1000ms;
     animation-fill-mode: both; }
-  
+
   .owl-carousel .owl-animated-in {
     z-index: 0; }
-  
+
   .owl-carousel .owl-animated-out {
     z-index: 1; }
-  
+
   .owl-carousel .fadeOut {
     animation-name: fadeOut; }
-  
+
   @keyframes fadeOut {
     0% {
       opacity: 1; }
     100% {
       opacity: 0; } }
-  
+
   /*
    * 	Owl Carousel - Auto Height Plugin
    */
   .owl-height {
     transition: height 500ms ease-in-out; }
-  
+
   /*
    * 	Owl Carousel - Lazy Load Plugin
    */
   .owl-carousel .owl-item .owl-lazy {
     opacity: 0;
     transition: opacity 400ms ease; }
-  
+
   .owl-carousel .owl-item img.owl-lazy {
     transform-style: preserve-3d; }
-  
+
   /*
    * 	Owl Carousel - Video Plugin
    */
@@ -64671,7 +64671,7 @@ Version: 1.0.0
     position: relative;
     height: 100%;
     background: #000; }
-  
+
   .owl-carousel .owl-video-play-icon {
     position: absolute;
     height: 80px;
@@ -64685,15 +64685,15 @@ Version: 1.0.0
     z-index: 1;
     -webkit-backface-visibility: hidden;
     transition: transform 100ms ease; }
-  
+
   .owl-carousel .owl-video-play-icon:hover {
     -ms-transform: scale(1.3, 1.3);
         transform: scale(1.3, 1.3); }
-  
+
   .owl-carousel .owl-video-playing .owl-video-tn,
   .owl-carousel .owl-video-playing .owl-video-play-icon {
     display: none; }
-  
+
   .owl-carousel .owl-video-tn {
     opacity: 0;
     height: 100%;
@@ -64701,14 +64701,14 @@ Version: 1.0.0
     background-repeat: no-repeat;
     background-size: contain;
     transition: opacity 400ms ease; }
-  
+
   .owl-carousel .owl-video-frame {
     position: relative;
     z-index: 1;
     height: 100%;
     width: 100%; }
   /* off-canvas */
-  
+
 
 /**
 *
@@ -64746,9 +64746,9 @@ a.nav-expander {
     -webkit-transition: right 0.3s ease-in-out 0s;
     -moz-transition: right 0.3s ease-in-out 0s;
     -o-transition: right 0.3s ease-in-out 0s;
- 
+
 }
- 
+
 a.nav-expander:hover {
   cursor: pointer;
 }
@@ -64772,7 +64772,7 @@ nav.right_menu_togle {
 .nav-expanded nav {
   right: 0 !important;
 }
- 
+
 body.nav-expanded {
   margin-left: 0em;
   transition: right 0.4s ease-in-out 0s;
@@ -64898,13 +64898,13 @@ span#nav-close {
   -ms-transition: 0.4s;
 }
 .sidebarnav_menu.main-menu li ul li a {
-  padding: 8px 0 8px 40px; 
+  padding: 8px 0 8px 40px;
 }
 .sidebarnav_menu.main-menu li a:hover {
   color: #FFFFFF;
   text-decoration: none;
 }
- 
+
 .sidebarnav_menu.main-menu a .caret {
 	width: 0;
 	height: 0;
@@ -64916,22 +64916,22 @@ span#nav-close {
 	content: "";
     margin-top: 8px;
 }
- 
+
 .sidebarnav_menu.main-menu a:hover .caret {
 	border-top-color: #4f5963;
 }
- 
+
 .sidebarnav_menu.main-menu li.open > a > .caret {
 	border-top: none;
 	border-bottom: 4px solid #4f5963;
 	border-right: 4px solid transparent;
 	border-left: 4px solid transparent;
 }
- 
+
 .sidebarnav_menu.main-menu li.open > a:hover > .caret {
 	border-bottom-color: #4f5963;
 }
- 
+
 .icon:before {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -64941,7 +64941,7 @@ span#nav-close {
   text-transform: none;
   content: '\f105';
 }
- 
+
 .sidebarnav_menu.main-menu li > a > span.icon {
   float: right;
   margin: 0.1em 1.7em -0.1em 0;
@@ -64950,9 +64950,9 @@ span#nav-close {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
- 
+
 }
- 
+
 .sidebarnav_menu.main-menu li > a:hover > span.icon {
   float: right;
   margin: 0.1em 0.8em -0.1em 0;
@@ -64981,7 +64981,7 @@ span#nav-close {
     position: fixed;
     background: #0b0b0b;
     opacity: 0.8; }
-  
+
   .mfp-wrap {
     top: 0;
     left: 0;
@@ -64992,7 +64992,7 @@ span#nav-close {
     outline: none !important;
     -webkit-backface-visibility: hidden;
   }
-  
+
   .mfp-container {
     text-align: center;
     position: absolute;
@@ -65002,16 +65002,16 @@ span#nav-close {
     top: 0;
     padding: 0 8px;
     box-sizing: border-box; }
-  
+
   .mfp-container:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle; }
-  
+
   .mfp-align-top .mfp-container:before {
     display: none; }
-  
+
   .mfp-content {
     position: relative;
     display: inline-block;
@@ -65019,29 +65019,29 @@ span#nav-close {
     margin: 0 auto;
     text-align: left;
     z-index: 1045; }
-  
+
   .mfp-inline-holder .mfp-content,
   .mfp-ajax-holder .mfp-content {
     width: 100%;
     cursor: auto; }
-  
+
   .mfp-ajax-cur {
     cursor: progress; }
-  
+
   .mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
     cursor: -moz-zoom-out;
     cursor: -webkit-zoom-out;
     cursor: zoom-out; }
-  
+
   .mfp-zoom {
     cursor: pointer;
     cursor: -webkit-zoom-in;
     cursor: -moz-zoom-in;
     cursor: zoom-in; }
-  
+
   .mfp-auto-cursor .mfp-content {
     cursor: auto; }
-  
+
   .mfp-close,
   .mfp-arrow,
   .mfp-preloader,
@@ -65049,13 +65049,13 @@ span#nav-close {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none; }
-  
+
   .mfp-loading.mfp-figure {
     display: none; }
-  
+
   .mfp-hide {
     display: none !important; }
-  
+
   .mfp-preloader {
     color: #CCC;
     position: absolute;
@@ -65070,13 +65070,13 @@ span#nav-close {
       color: #CCC; }
       .mfp-preloader a:hover {
         color: #FFF; }
-  
+
   .mfp-s-ready .mfp-preloader {
     display: none; }
-  
+
   .mfp-s-error .mfp-content {
     display: none; }
-  
+
   button.mfp-close,
   button.mfp-arrow {
     overflow: visible;
@@ -65090,11 +65090,11 @@ span#nav-close {
     z-index: 1046;
     box-shadow: none;
     touch-action: manipulation; }
-  
+
   button::-moz-focus-inner {
     padding: 0;
     border: 0; }
-  
+
   .mfp-close {
     width: 44px;
     height: 44px;
@@ -65109,16 +65109,16 @@ span#nav-close {
     color: #FFF;
     font-style: normal;
     font-size: 28px;
-    font-family: Arial, Baskerville, monospace; }
+    font-family: 'Noto Sans Arabic', sans-serif; }
     .mfp-close:hover,
     .mfp-close:focus {
       opacity: 1; }
     .mfp-close:active {
       top: 1px; }
-  
+
   .mfp-close-btn-in .mfp-close {
     color: #333; }
-  
+
   .mfp-image-holder .mfp-close,
   .mfp-iframe-holder .mfp-close {
     color: #FFF;
@@ -65126,7 +65126,7 @@ span#nav-close {
     text-align: right;
     padding-right: 6px;
     width: 100%; }
-  
+
   .mfp-counter {
     position: absolute;
     top: 0;
@@ -65135,7 +65135,7 @@ span#nav-close {
     font-size: 12px;
     line-height: 18px;
     white-space: nowrap; }
-  
+
   .mfp-arrow {
     position: absolute;
     opacity: 0.65;
@@ -65171,7 +65171,7 @@ span#nav-close {
       border-top-width: 21px;
       border-bottom-width: 21px;
       opacity: 0.7; }
-  
+
   .mfp-arrow-left {
     left: 0; }
     .mfp-arrow-left:after {
@@ -65180,7 +65180,7 @@ span#nav-close {
     .mfp-arrow-left:before {
       margin-left: 25px;
       border-right: 27px solid #3F3F3F; }
-  
+
   .mfp-arrow-right {
     right: 0; }
     .mfp-arrow-right:after {
@@ -65188,7 +65188,7 @@ span#nav-close {
       margin-left: 39px; }
     .mfp-arrow-right:before {
       border-left: 27px solid #3F3F3F; }
-  
+
   .mfp-iframe-holder {
     padding-top: 40px;
     padding-bottom: 40px; }
@@ -65198,7 +65198,7 @@ span#nav-close {
       max-width: 900px; }
     .mfp-iframe-holder .mfp-close {
       top: -40px; }
-  
+
   .mfp-iframe-scaler {
     width: 100%;
     height: 0;
@@ -65213,7 +65213,7 @@ span#nav-close {
       height: 100%;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
       background: #000; }
-  
+
   /* Main image in popup */
   img.mfp-img {
     width: auto;
@@ -65224,7 +65224,7 @@ span#nav-close {
     box-sizing: border-box;
     padding: 40px 0 40px;
     margin: 0 auto; }
-  
+
   /* The shadow behind the image */
   .mfp-figure {
     line-height: 0; }
@@ -65248,7 +65248,7 @@ span#nav-close {
       line-height: 14px; }
     .mfp-figure figure {
       margin: 0; }
-  
+
   .mfp-bottom-bar {
     margin-top: -36px;
     position: absolute;
@@ -65256,20 +65256,20 @@ span#nav-close {
     left: 0;
     width: 100%;
     cursor: auto; }
-  
+
   .mfp-title {
     text-align: left;
     line-height: 18px;
     color: #F3F3F3;
     word-wrap: break-word;
     padding-right: 36px; }
-  
+
   .mfp-image-holder .mfp-content {
     max-width: 100%; }
-  
+
   .mfp-gallery .mfp-image-holder .mfp-figure {
     cursor: pointer; }
-  
+
   @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
     /**
          * Remove all paddings around the image on small screen
@@ -65308,7 +65308,7 @@ span#nav-close {
       position: fixed;
       text-align: center;
       padding: 0; } }
-  
+
   @media all and (max-width: 900px) {
     .mfp-arrow {
       -webkit-transform: scale(0.75);
@@ -68634,8 +68634,8 @@ Copyright (c) 2015 Daniel Eden
 }
 /* sections */
 
-         
-          
+
+
 @import "https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap";
 
 
@@ -68678,7 +68678,7 @@ select:focus {
 
 button,
 .btn {
-    font-family: cairo, sans-serif
+    font-family: 'Noto Sans Arabic', sans-serif
 }
 
 button:focus,
@@ -68699,7 +68699,7 @@ h5,
 .h5,
 h6,
 .h6 {
-    font-family: cairo, sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
     color: #202428;
     letter-spacing: 0;
@@ -69787,7 +69787,7 @@ sup.sup {
     transition: .3s;
     cursor: default !important;
     font-weight: 500;
-    font-family: cairo, sans-serif
+    font-family: 'Noto Sans Arabic', sans-serif
 }
 
 .btn:focus {

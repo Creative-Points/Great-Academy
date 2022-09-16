@@ -357,6 +357,9 @@
                                         @role('Admin')
                                             Admin
                                         @endrole
+                                        @role('Employee')
+                                            Employee
+                                        @endrole
                                         @role('instructor')
                                             Instructor
                                         @endrole

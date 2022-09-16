@@ -79,7 +79,7 @@
                     || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1);
         @endphp
         <!-- Layouts -->
-        @role('Admin')
+        @role('Admin|Employee')
             <li class="menu-item @if($stmt) active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
@@ -154,7 +154,7 @@
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item @if(request()->routeIs('dashboard.account') == route('dashboard.account'))active @endif">
             <a href="{{ route('dashboard.account') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div>My Profile</div>

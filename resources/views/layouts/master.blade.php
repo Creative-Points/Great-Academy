@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -13,13 +13,18 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-grad-school.css?v=').time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-grad-school.css?v=') . time() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css') }}">
 </head>
@@ -47,7 +52,7 @@
     <script src="{{ asset('assets/js/tabs.js') }}"></script>
     <script src="{{ asset('assets/js/video.js') }}"></script>
     <script src="{{ asset('assets/js/slick-slider.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js?v=').time() }}"></script>
+    <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
     {{-- <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');

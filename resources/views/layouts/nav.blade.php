@@ -40,8 +40,8 @@
                 اتصل بنا
             </x-navbar>
 
-            <x-navbar :href="route('login-studetn')" :active="request()->routeIs('login-studetn')">
-                تسجيل
+            <x-navbar :href="route('login')" :active="request()->routeIs('login')">
+                دخول
             </x-navbar>
             @endrole
         </ul>
