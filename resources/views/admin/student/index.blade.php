@@ -98,11 +98,11 @@
                                                     $class = "bg-label-secondary";
                                                 }
                                             @endphp
-                                            <span class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] }}</span>
+                                            <span class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] . $user->name[1] }}</span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="app-user-view-account.html" class="text-body text-truncate">
+                                        <a href="{{ route('dashboard.student.view', $user->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">{{ $user->name }}</span>
                                         </a>
                                         <small class="text-muted">{{ $user->email }}</small>

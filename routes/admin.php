@@ -31,75 +31,75 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('
     Route::get('/profile', [ProfileController::class, 'account'])->name('account');
 
     // Employee
-    Route::name('employee.')->prefix('employee')->group(function(){
-        Route::get('manage', [EmployeeController::class, 'index'])->name('manage');
-        Route::post('add', [EmployeeController::class, 'store'])->name('add');
-        Route::put('{user}/update', [EmployeeController::class, 'update'])->name('update');
-        Route::get('{user}/view', [EmployeeController::class, 'show'])->name('view');
-        Route::get('{user}/suspended', [EmployeeController::class, 'suspended'])->name('suspended');
-        Route::get('{user}/active', [EmployeeController::class, 'active'])->name('active');
-        Route::delete('{user}/delete', [EmployeeController::class, 'delete'])->name('delete');
-        Route::post('{user}/change-password', [EmployeeController::class, 'changePassword'])->name('password');
+    Route::controller(EmployeeController::class)->name('employee.')->prefix('employee')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{user:id}/update', 'update')->name('update');
+        Route::get('{users:id}/view', 'show')->name('view');
+        Route::get('{user:id}/suspended', 'suspended')->name('suspended');
+        Route::get('{user:id}/active', 'active')->name('active');
+        Route::delete('{user:id}/delete', 'delete')->name('delete');
+        Route::post('{user:id}/change-password', 'changePassword')->name('password');
     });
 
     // Instructor
-    Route::name('instructor.')->prefix('instructor')->group(function(){
-        Route::get('manage', [InstructorController::class, 'index'])->name('manage');
-        Route::post('add', [InstructorController::class, 'store'])->name('add');
-        Route::put('{user}/update', [InstructorController::class, 'update'])->name('update');
-        Route::get('{user}/view', [InstructorController::class, 'show'])->name('view');
-        Route::get('{user}/suspended', [InstructorController::class, 'suspended'])->name('suspended');
-        Route::get('{user}/active', [InstructorController::class, 'active'])->name('active');
-        Route::delete('{user}/delete', [InstructorController::class, 'delete'])->name('delete');
-        Route::post('{user}/change-password', [InstructorController::class, 'changePassword'])->name('password');
+    Route::controller(InstructorController::class)->name('instructor.')->prefix('instructor')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{user}/update', 'update')->name('update');
+        Route::get('{user}/view', 'show')->name('view');
+        Route::get('{user}/suspended', 'suspended')->name('suspended');
+        Route::get('{user}/active', 'active')->name('active');
+        Route::delete('{user}/delete', 'delete')->name('delete');
+        Route::post('{user}/change-password', 'changePassword')->name('password');
     });
 
     // Student
-    Route::name('student.')->prefix('student')->group(function(){
-        Route::get('manage', [StudentController::class, 'index'])->name('manage');
-        Route::post('add', [StudentController::class, 'store'])->name('add');
-        Route::put('{user}/update', [StudentController::class, 'update'])->name('update');
-        Route::get('{user}/view', [StudentController::class, 'show'])->name('view');
-        Route::get('{user}/suspended', [StudentController::class, 'suspended'])->name('suspended');
-        Route::get('{user}/active', [StudentController::class, 'active'])->name('active');
-        Route::delete('{user}/delete', [StudentController::class, 'delete'])->name('delete');
-        Route::post('{user}/change-password', [StudentController::class, 'changePassword'])->name('password');
+    Route::controller(StudentController::class)->name('student.')->prefix('student')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{user}/update', 'update')->name('update');
+        Route::get('{user}/view', 'show')->name('view');
+        Route::get('{user}/suspended', 'suspended')->name('suspended');
+        Route::get('{user}/active', 'active')->name('active');
+        Route::delete('{user}/delete', 'delete')->name('delete');
+        Route::post('{user}/change-password', 'changePassword')->name('password');
     });
 
     // Course
-    Route::name('course.')->prefix('course')->group(function(){
-        Route::get('manage', [CourseController::class, 'index'])->name('manage');
-        Route::post('add', [CourseController::class, 'store'])->name('add');
-        Route::put('{slug}/update', [CourseController::class, 'update'])->name('update');
-        Route::put('{slug}/update/image', [CourseController::class, 'image'])->name('image');
-        Route::get('{slug}/view', [CourseController::class, 'show'])->name('view');
-        Route::get('{slug}/inactive', [CourseController::class, 'inactive'])->name('inactive');
-        Route::get('{slug}/active', [CourseController::class, 'active'])->name('active');
-        Route::delete('{slug}/delete', [CourseController::class, 'delete'])->name('delete');
+    Route::controller(CourseController::class)->name('course.')->prefix('course')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{slug}/update', 'update')->name('update');
+        Route::put('{slug}/update/image', 'image')->name('image');
+        Route::get('{course:slug}/view', 'show')->name('view');
+        Route::get('{slug}/inactive', 'inactive')->name('inactive');
+        Route::get('{slug}/active', 'active')->name('active');
+        Route::delete('{slug}/delete', 'delete')->name('delete');
     });
 
     // Workshop
-    Route::name('workshop.')->prefix('workshop')->group(function(){
-        Route::get('manage', [WorkshopController::class, 'index'])->name('manage');
-        Route::post('add', [WorkshopController::class, 'store'])->name('add');
-        Route::put('{slug}/update', [WorkshopController::class, 'update'])->name('update');
-        Route::put('{slug}/update/image', [WorkshopController::class, 'image'])->name('image');
-        Route::get('{slug}/view', [WorkshopController::class, 'show'])->name('view');
-        Route::get('{slug}/inactive', [WorkshopController::class, 'inactive'])->name('inactive');
-        Route::get('{slug}/active', [WorkshopController::class, 'active'])->name('active');
-        Route::delete('{slug}/delete', [WorkshopController::class, 'delete'])->name('delete');
+    Route::controller(WorkshopController::class)->name('workshop.')->prefix('workshop')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{slug}/update', 'update')->name('update');
+        Route::put('{slug}/update/image', 'image')->name('image');
+        Route::get('{slug}/view', 'show')->name('view');
+        Route::get('{slug}/inactive', 'inactive')->name('inactive');
+        Route::get('{slug}/active', 'active')->name('active');
+        Route::delete('{slug}/delete', 'delete')->name('delete');
     });
 
     // Section
-    Route::name('section.')->prefix('section')->group(function(){
-        Route::get('manage', [SectionController::class, 'index'])->name('manage');
-        Route::post('add', [SectionController::class, 'store'])->name('add');
-        Route::put('{slug}/update', [SectionController::class, 'update'])->name('update');
-        Route::put('{slug}/update/image', [SectionController::class, 'image'])->name('image');
-        Route::get('{slug}/view', [SectionController::class, 'show'])->name('view');
-        Route::get('{slug}/inactive', [SectionController::class, 'inactive'])->name('inactive');
-        Route::get('{slug}/active', [SectionController::class, 'active'])->name('active');
-        Route::delete('{slug}/delete', [SectionController::class, 'delete'])->name('delete');
+    Route::controller(SectionController::class)->name('section.')->prefix('section')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        Route::put('{slug}/update', 'update')->name('update');
+        Route::put('{slug}/update/image', 'image')->name('image');
+        Route::get('{slug}/view', 'show')->name('view');
+        Route::get('{slug}/inactive', 'inactive')->name('inactive');
+        Route::get('{slug}/active', 'active')->name('active');
+        Route::delete('{slug}/delete', 'delete')->name('delete');
     });
 });
 

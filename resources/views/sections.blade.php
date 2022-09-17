@@ -31,7 +31,7 @@
                 <div class="row">
                     @forelse ($sections as $section)
                         <div class="col-md-4 col-sm-6 mb-4">
-                            <a href="" class="card text-white height-100p hover:parent wow fadeInUp" data-wow-delay="0.1s" title="كورسات برمجة الحاسب بشهاده معتمده مجانا" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <a href="{{ route('section', [$section->slug, 'courses']) }}" class="card text-white height-100p hover:parent wow fadeInUp" data-wow-delay="0.1s" title="كورسات برمجة الحاسب بشهاده معتمده مجانا" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                                 <img class="hover:zoomin transition-0_3 opacity-07 lazyloaded" title="{{ $section->name }}" alt="{{ $section->name }}" src="uploads/section/{{ $section->image }}">
                                 <div class="card-img-overlay bg-black-0_6 flex-center">
                                     <h3 class="text-center h4">

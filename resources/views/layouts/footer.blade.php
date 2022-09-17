@@ -69,7 +69,7 @@
             <div class="row y-middle">
                 <div class="col-lg-4 md-mb-20">
                     <div class="footer-logo md-text-center">
-                        <a href="index-2.html"><img src="" alt="logo-footer"></a>
+                        <a href=""><img src="/assets/images/logo.png" alt="logo-footer"></a>
                     </div>
                 </div>
                 <div class="copyright text-center md-text-left">

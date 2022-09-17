@@ -16,8 +16,8 @@
 
                         <h1><bdi>ورش العمل</bdi></h1>
                         <ul class="breadcrumb breadcrumb-tringle bg-transparent">
-                            <li class="breadcrumb-item"><bdi><a href="">الرئيسية</a></bdi></li>
-                            <li class="breadcrumb-item"><bdi>ورش العمل</bdi></li>
+                            <li class="breadcrumb-item"><bdi><a href="{{ route('home') }}">الرئيسية</a></bdi></li>
+                            <li class="breadcrumb-item"><bdi> ورش العمل</bdi></li>
                         </ul>
                         </div>
                     </div>
@@ -33,23 +33,20 @@
                     <div class="col-lg-4 col-md-12 order-last">
                         <div class="widget-area">
                             <div class="search-widget mb-50">
-                                <h3 class="widget-title">Workshop Search</h3>
+                                <h3 class="widget-title">البحث</h3>
                                 <form class="search-wrap" method="GET" action="courses-search">
-                                    <input type="search" name="search" placeholder="Searching..." class="search-input" value="">
+                                    <input type="search" name="search" placeholder="بحث..." class="search-input" value="">
                                     <button type="submit" value="Search"><i class=" flaticon-search"></i></button>
                                 </form>
                             </div>
 
                             <div class="widget-archives mb-50">
-                                <h3 class="widget-title">Workshop Categories</h3>
+                                <h3 class="widget-title">الاقسام</h3>
                                 <ul class="categories">
-                                    <li><a href="#category/1">web development</a></li>
-                                    <li><a href="#category/2">mobile development</a></li>
-                                    <li><a href="#category/3">Artificial Intelligence</a>
-                                    </li>
-                                    <li><a href="#category/4">Computer Science</a></li>
-                                    <li><a href="#category/5">UI/UX</a></li>
-                                    <li><a href="#category/6">training</a></li>
+                                    @foreach ($sections as $section)
+                                        <li><a href="{{ route('section', $section->slug) }}">{{ $section->name }}</a>
+                                        </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
@@ -59,234 +56,50 @@
 
                         <div class="course-part clearfix">
 
-                          
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#5">
-                                        <img src="assets/images/bg/Full-stack_1627389481.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 20$ </span></li>
-                                        <li><a class="categorie" href="#category/1">web
-                                                development</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#5">full stack web diploma</a>
-                                    </h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
+                            @forelse ($workshops as $item)
+                                <div class="courses-item">
+                                    <div class="img-part">
+                                        <a href="{{ route('workshop', $item->slug) }}">
+                                            <img src="/uploads/workshop/{{ $item->image }}" style="height:200px;"
+                                                alt="">
+                                        </a>
+                                    </div>
+                                    <div class="content-part">
+                                        <ul class="meta-part">
+                                            <li>
+                                                <span class="price"> {{ $item->price }} جنية </span>
+                                            </li>
+                                            <li>
+                                                <a class="categorie">{{ $item->sec }}</a>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#5"><i class="fa-solid fa-right-long"></i></a>
+                                        </ul>
+                                        <h3 class="title">
+                                            <a href="{{ route('workshop', $item->slug) }}">{{ $item->name }}</a>
+                                            </h3>
+                                        <div class="bottom-part">
+                                            <div class="info-meta">
+                                                <ul>
+                                                    <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
+                                                    <li class="ratings">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i> (05)
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="{{ route('workshop', $item->slug) }}">
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#5">
-                                        <img src="assets/images/bg/front_1627325042.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 20$ </span></li>
-                                        <li><a class="categorie" href="#category/1">web
-                                                development</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#5">Front End diploma</a>
-                                    </h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#5"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#6">
-                                        <img src="assets/images/bg/back-2_1627326624.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 20$ </span></li>
-                                        <li><a class="categorie" href="#category/1">web
-                                                development</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#6">Back end diploma</a></h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#6"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#7">
-                                        <img src="assets/images/bg/intro_1627393210.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 10$ </span></li>
-                                        <li><a class="categorie" href="#category/4">Computer
-                                                Science</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#7">Intro To computer
-                                            science</a></h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#7"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#8">
-                                        <img src="assets/images/bg/Flutter_1627325075.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 10$ </span></li>
-                                        <li><a class="categorie" href="#category/2">mobile
-                                                development</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#8">Flutter Diploma</a></h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#8"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#9">
-                                        <img src="assets/images/bg/laravel_1627393225.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 20$ </span></li>
-                                        <li><a class="categorie" href="#category/6">training</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#9">laravel training</a></h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#9"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <a href="#10">
-                                        <img src="assets/images/bg/Deep-earning_1627325665.png" style="height:200px;" alt="">
-                                    </a>
-                                </div>
-                                <div class="content-part">
-                                    <ul class="meta-part">
-                                        <li><span class="price"> 10$ </span></li>
-                                        <li><a class="categorie" href="#category/3">Artificial
-                                                Intelligence</a></li>
-                                    </ul>
-                                    <h3 class="title"><a href="#10">Computer Vision &amp;
-                                            Deep Learning</a></h3>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <ul>
-                                                <!-- <li class="user"><i class="fa fa-user"></i> 245</li> -->
-                                                <li class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> (05)
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#10"><i class="fa-solid fa-right-long"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <div class="text-center text-warning h3">لا يوجد بيانات الان.</div>
+                            @endforelse
 
 
                         </div>

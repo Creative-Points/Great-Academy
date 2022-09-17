@@ -13,18 +13,20 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                <img src="assets/images/bg/1.jpg" alt="Breadcrumbs Image">
+                <img src="/assets/images/bg/1.jpg" alt="Breadcrumbs Image">
             </div>
             <div class="breadcrumbs-text">
-                <h1 class="page-title">Courses</h1>
+                <h1 class="page-title">ورش العمل</h1>
                 <ul>
                     <li>
-                        <a class="active" href="">Home</a>
+                        <a class="active" href="{{ route('home') }}">الرئيسية</a>
                     </li>
                     <li>
-                        <a href="">Courses</a>
+                        <a href="{{ route('workshops') }}">ورش العمل</a>
                     </li>
-                    <li>Front End diploma</li>
+                    <li>
+                        <a>{{ $workshop->name }}</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,44 +40,41 @@
                     <div class="col-lg-6 md-mb-50">
                         <!-- Intro Info Tabs-->
                         <div class="intro-info-tabs">
-                            <ul class="nav nav-tabs intro-tabs tabs-box" id="myTab" role="tablist">
+                            {{-- <ul class="nav nav-tabs intro-tabs tabs-box" id="myTab" role="tablist">
                                 <li class="nav-item tab-btns">
                                     <a class="nav-link tab-btn active" id="prod-overview-tab" data-toggle="tab" href="#prod-overview" role="tab" aria-controls="prod-overview" aria-selected="true">Content</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                             <div class="tab-content tabs-content" id="myTabContent">
                                 <div class="tab-pane tab fade show active" id="prod-overview" role="tabpanel" aria-labelledby="prod-overview-tab">
                                     <div class="content white-bg pt-30">
                                         <!-- Cource Overview -->
                                         <div class="course-overview">
-                                            <div class="inner-box">
-                                                <p><b>About Course</b></p>
-                                                <p>
+                                            <div class="inner-box text-right">
+                                                {{-- <p>اسم الكورس:</p> --}}
+                                                <h2 class="text-center"><b>{{ $workshop->name }}</b></h2>
+                                                <div class="image w-100">
+                                                    <img class="w-100" src="/uploads/workshop/{{ $workshop->image }}" alt="{{ $workshop->name }}">
+                                                </div>
+                                                <br>
+                                                <p><b>تفاصيل الكورس:</b></p>
+                                                {{-- <p>
                                                     <font style="background-color: rgb(0, 0, 0);" color="#efefef">
                                                     </font><b><br></b>
-                                                </p>
-                                                <p>Course Content: Windows 7 + Office 2010 (Win, Word, It, Power Point, Excel, Access, Net) Duration Of Study: One Month And A Half: Two And A Half Months</p>
-                                                <p><span style="font-weight: bolder;">Level:</span> 3</p>
-                                                <p>Course Hours: 24</p>
-
-                                                <p><br></p>
+                                                </p> --}}
+                                                <p>{{ $workshop->description }}</p>
+                                                <p><span style="font-weight: bolder;">المستويات:</span> {{ $workshop->level }} مستوى</p>
+                                                <p><span style="font-weight: bolder;">الساعات:</span> {{ $workshop->hours }} ساعة</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="tab-pane fade" id="prod-reviews" role="tabpanel" aria-labelledby="prod-reviews-tab">
                                     
                                 </div>
-                               
-
-
-
                             </div>
                         </div>
                     </div>
-
                     <!-- Video Column -->
                     <div class="video-column col-lg-6">
                         <div class="inner-column">
@@ -83,31 +82,35 @@
 
                             <!-- End Video Box -->
                             <div class="course-features-info">
-                                <h3 class="text-center  p-3">Apply Now</h3>
-                                <div class="border p-2 my-2">
+                                <h3 class="text-center  p-3">قدم الان</h3>
+                                {{-- <div class="border p-2 my-2">
                                     <img src="https://eraasoft.com/front/course.jpeg" alt="">
-                                </div>
-                                <form action="https://eraasoft.com/courses/apply/5" method="POST">
+                                </div> --}}
+                                <form action="" method="POST" class="text-right">
 
-                                    <input type="hidden" name="_token" value="3NQY1eGvnaBdnxwMe2esiXDUB3l1nFjG13Fz1XZg">
+                                    @csrf
                                     <div>
 
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="name">Full Name <b>*</b></label>
+                                        <label for="name">الاسم الكامل <b>*</b></label>
                                         <input type="text" value="" id="name" class="form-control" name="name" />
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <label for="Phone">Phone / WhatsApp <b>*</b></label>
+                                        <label for="Phone">رقم الهاتف <b>*</b></label>
                                         <input type="text" value="" id="Phone" class="form-control" name="phone" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="email mb-3">Email</label>
+                                        <label for="email mb-3">الايميل <b>*</b></label>
                                         <input type="text" value="" id="email" class="form-control" name="email" />
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="Phone">Fuculty</label>
+                                        <label for="Phone">جامعة <b>*</b></label>
+                                        <input type="text" value="" id="fuculty" class="form-control" name="fuculty" />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="Phone">كلية <b>*</b></label>
                                         <input type="text" value="" id="fuculty" class="form-control" name="fuculty" />
                                     </div>
                                     <div class="form-group mb-3">

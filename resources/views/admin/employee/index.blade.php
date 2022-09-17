@@ -128,11 +128,11 @@
                                                 }
                                             @endphp
                                             <span
-                                                class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] }}</span>
+                                                class="avatar-initial rounded-circle {{ $class }} ">{{ $user->name[0] . $user->name[1] }}</span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="app-user-view-account.html" class="text-body text-truncate">
+                                        <a href="{{ route('dashboard.employee.view', $user->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $user->name }}
                                                 @if ($user->id == auth()->user()->id)

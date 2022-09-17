@@ -184,12 +184,12 @@ class CourseController extends Controller
         }
     }
 
-    public function show($slug)
+    public function show(Course $course)
     {
         $course = DB::table('course')
                     ->select('course.*', 'sections.name as section_name')
                     ->join('sections', 'course.section_id', '=', 'sections.id')
-                    ->where('course.slug', '=', $slug)
+                    ->where('course.slug', '=', $course->slug)
                     ->first();
         $sections = Section::all();
         return view('admin.course.view', compact('course', 'sections'));

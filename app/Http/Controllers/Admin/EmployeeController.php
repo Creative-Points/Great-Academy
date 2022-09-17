@@ -77,7 +77,7 @@ class EmployeeController extends Controller
         }
     }
 
-    public function update(Request $request, $user)
+    public function update(Request $request,User $user)
     {
         // return back();
         $validation = Validator::make($request->all(), [
@@ -93,48 +93,48 @@ class EmployeeController extends Controller
         {
             return back()->withInput()->withErrors($validation);
         } else {
-            $u = User::find($user);
-            $u->name        = $request->name;
-            $u->email       = $request->email;
-            $u->phone       = $request->phone;
-            $u->address     = $request->address;
+            $user->name        = $request->name;
+            $user->email       = $request->email;
+            $user->phone       = $request->phone;
+            $user->address     = $request->address;
             // if(empty($u->code)){
             //     $u->code    = 'std-'.Str::random(16).'@great-academy.com';
             // }
-            $u->university  = $request->university;
-            $u->faculty     = $request->faculty;
-            $u->status      = $request->status;
-            $u->update();
+            $user->university  = $request->university;
+            $user->faculty     = $request->faculty;
+            $user->status      = $request->status;
+            $user->update();
 
             return back()->with('success', 'Employee account has been Updated successfully.');
         }
     }
 
-    public function show( $user)
+    public function show(User $users)
     {
-        $users = User::find($user);
         return view('admin.employee.view', compact('users'));
     }
 
-    public function suspended($user)
+    public function suspended(User $user)
     {
-        $user = User::find($user);
-        $user->status = 3;
-        $user->update();
-
-        return back()->with('success', 'Employee account has been Suspened is Successfully.');
+        if($user->id == auth()->user()->id)
+        {
+            return back()->with('error', 'You can not Suspeded your self.');
+        }else{
+            $user->status = 3;
+            $user->update();
+            return back()->with('success', 'Employee account has been Suspened is Successfully.');
+        }
     }
 
-    public function active($user)
+    public function active(User $user)
     {
-        $user = User::find($user);
         $user->status = 1;
         $user->update();
 
         return back()->with('success', 'Employee account has been Activated is Successfully.');
     }
 
-    public function changePassword(Request $request, $user)
+    public function changePassword(Request $request,User $user)
     {
         $validation = Validator::make($request->all(),[
             'password'  => 'required|string|min:8|max:18|same:confirmPassword'
@@ -143,7 +143,6 @@ class EmployeeController extends Controller
         {
             return back()->withInput()->withErrors($validation);
         }else{
-            $user = User::find($user);
             $user->password = Hash::make($request->password);
             $user->update();
             
