@@ -13,17 +13,17 @@
                 <x-navbar :href="route('student.dashboard')" :part="'m'" :active="request()->routeIs('student.dashboard')">
                     لوحة التحكم
                 </x-navbar>
-                <li style="@if(request()->routeIs('sections') == route('sections') || request()->routeIs('section', 1) == route('section', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('sections') == route('sections') || request()->routeIs('section', 1) == route('section', 1))background: #02b918; @endif">
                     <a href="{{ route('sections') }}">
                         الاقسام
                     </a>
                 </li>
-                <li style="@if(request()->routeIs('courses') == route('courses') || request()->routeIs('course', 1) == route('course', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('courses') == route('courses') || request()->routeIs('course', 1) == route('course', 1))background: #02b918; @endif">
                     <a href="{{ route('courses') }}">
                         كورسات
                     </a>
                 </li>
-                <li style="@if(request()->routeIs('workshops') == route('workshops') || request()->routeIs('workshop', 1) == route('workshop', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('workshops') == route('workshops') || request()->routeIs('workshop', 1) == route('workshop', 1))background: #02b918; @endif">
                     <a href="{{ route('workshops') }}">
                         ورش العمل
                     </a>
@@ -45,17 +45,17 @@
                 <x-navbar :href="route('home')" :part="null" :active="request()->routeIs('home')">
                     الصفحة الرئيسية
                 </x-navbar>
-                <li style="@if(request()->routeIs('sections') == route('sections') || request()->routeIs('section', 1) == route('section', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('sections') == route('sections') || request()->routeIs('section', 1) == route('section', 1))background: #02b918; @endif">
                     <a href="{{ route('sections') }}">
                         الاقسام
                     </a>
                 </li>
-                <li style="@if(request()->routeIs('courses') == route('courses') || request()->routeIs('course', 1) == route('course', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('courses') == route('courses') || request()->routeIs('course', 1) == route('course', 1))background: #02b918; @endif">
                     <a href="{{ route('courses') }}">
                         كورسات
                     </a>
                 </li>
-                <li style="@if(request()->routeIs('workshops') == route('workshops') || request()->routeIs('workshop', 1) == route('workshop', 1))background: #008510; @endif">
+                <li style="@if(request()->routeIs('workshops') == route('workshops') || request()->routeIs('workshop', 1) == route('workshop', 1))background: #02b918; @endif">
                     <a href="{{ route('workshops') }}">
                         ورش العمل
                     </a>

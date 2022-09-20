@@ -10,12 +10,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-
+use Illuminate\Support\Facades\DB;
 class TestController extends Controller
 {
     public function index()
     {
-        $string = "المهارات الشخصية";
-        return Str::slug($string, "-");
+        // $string = "المهارات الشخصية";
+        // return Str::slug($string, "-");
+        // $data = "ana";
+        // $id = DB::table('test')->insertGetId([
+        //     'data' => $data,
+        // ]);
+        // return $id;
+        return Str::random(8);
     }
 }

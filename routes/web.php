@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TestController;
@@ -29,7 +30,7 @@ Route::controller(FrontendController::class)->group(function() {
     Route::get('contact-us', 'contact')->name('contact-us');
 });
 
-// Route::get('test', [TestController::class, 'index']);
+Route::get('test', [TestController::class, 'index']);
 // sections
 Route::controller(SectionController::class)->group(function() {
     Route::get('sections', 'index')->name('sections');
@@ -45,7 +46,10 @@ Route::controller(WorkshopController::class)->group(function() {
     Route::get('/workshops', 'index')->name('workshops');
     Route::get('workshop/{workshop:slug}', 'workshop')->name('workshop');
 });
-
+// pre order
+Route::controller(OrderController::class)->group(function(){
+    Route::post('/preorder/{course:slug}', 'courseNewUser')->name('order');
+});
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
     Route::get('/home', [StudentController::class, 'index'])->name('dashboard');

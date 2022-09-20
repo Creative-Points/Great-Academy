@@ -213,7 +213,7 @@
         <!-- Search Modal End -->
 
         <!-- modernizr js -->
-        <div class="rs-newsletter style1 orange-color mb--90 sm-mb-0 sm-pb-70">
+        {{-- <div class="rs-newsletter style1 orange-color mb--90 sm-mb-0 sm-pb-70">
             <div class="container">
                 <div class="newsletter-wrap">
                     <div class="row y-middle">
@@ -270,7 +270,7 @@
                 })
 
             });
-        </script>
+        </script> --}}
 
 
 </x-master-layout>

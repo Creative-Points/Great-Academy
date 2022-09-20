@@ -46,7 +46,7 @@
     <script src="{{ asset('assets/js/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('assets/js/isotope.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/isotope.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
     <script src="{{ asset('assets/js/lightbox.js') }}"></script>
     <script src="{{ asset('assets/js/tabs.js') }}"></script>

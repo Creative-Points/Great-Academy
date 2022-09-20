@@ -4,7 +4,7 @@
 // $classes = ($active ?? false)
 //             ? 'active'
 //             : 'active';
-$classes = $active == $href ? 'background: #008510;' : ''; 
+$classes = $active == $href ? 'background: #02b918;' : ''; 
 @endphp
 <li {{ $attributes->merge(['style' => $classes]) }}>
     <a href="{{$href}}">

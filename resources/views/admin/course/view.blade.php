@@ -62,7 +62,7 @@
                             </li> --}}
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Description:</span><br>
-                                <span>{{ $course->description }}</span>
+                                <span style="white-space: pre">{{ $course->description }}</span>
                             </li>
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Levels:</span>
