@@ -87,9 +87,17 @@
                                     <img src="https://eraasoft.com/front/course.jpeg" alt="">
                                 </div> --}}
 
-                                @csrf
-                                @role ('student')
-                                    <form action="{{ route('') }}" method="POST" class="text-right">
+                                @role('student')
+                                    <h3 class="text-center  p-3">اشترك الان</h3>
+                                    @if (session('success'))
+                                        <h6 class="alert alert-success">{{ session('success') }}</h6>
+                                    @endif
+                                    @if (session('error'))
+                                        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+                                    @endif
+                                    <form action="{{ route('order.courseRegisterUser', $course->slug) }}" method="POST"
+                                        class="text-right">
+                                        @csrf
                                         <div class="form-group mb-3">
                                             <button type="submit" class="btn btn-success btn-block">تقديم</button>
                                         </div>
@@ -99,6 +107,9 @@
                                     @if (session('success'))
                                         <h6 class="alert alert-success">{{ session('success') }}</h6>
                                     @endif
+                                    @if (session('error'))
+                                        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+                                    @endif
                                     @if ($errors->any())
                                         <ul class="alert alert-danger">
                                             @foreach ($errors->all() as $err)
@@ -106,30 +117,33 @@
                                             @endforeach
                                         </ul>
                                     @endif
-                                    <form action="{{ route('order', $course->slug) }}" method="POST" class="text-right">
+                                    <form action="{{ route('order.courseNewUser', $course->slug) }}" method="POST"
+                                        class="text-right">
                                         @csrf
                                         <div class="form-group mb-3">
                                             <label for="name">الاسم الكامل <b>*</b></label>
-                                            <input type="text" id="name" class="form-control" name="name" required/>
+                                            <input type="text" id="name" class="form-control" name="name"
+                                                required />
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="Phone">رقم الهاتف <b>*</b></label>
-                                            <input type="text" id="Phone" class="form-control" name="phone" required/>
+                                            <input type="text" id="Phone" class="form-control" name="phone"
+                                                required />
                                         </div>
                                         <div class="form-group">
                                             <label for="email mb-3">الايميل <b>*</b></label>
-                                            <input type="text" id="email" class="form-control"
-                                                name="email" required/>
+                                            <input type="text" id="email" class="form-control" name="email"
+                                                required />
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="university">جامعة <b>*</b></label>
-                                            <input type="text" id="university" class="form-control"
-                                                name="university" required/>
+                                            <input type="text" id="university" class="form-control" name="university"
+                                                required />
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="faculty">كلية <b>*</b></label>
-                                            <input type="text" id="faculty" class="form-control"
-                                                name="faculty" required/>
+                                            <input type="text" id="faculty" class="form-control" name="faculty"
+                                                required />
                                         </div>
                                         <div class="form-group mb-3">
                                             <button type="submit" class="btn btn-success btn-block">سجل الان</button>

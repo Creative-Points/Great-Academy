@@ -47,8 +47,11 @@ Route::controller(WorkshopController::class)->group(function() {
     Route::get('workshop/{workshop:slug}', 'workshop')->name('workshop');
 });
 // pre order
-Route::controller(OrderController::class)->group(function(){
-    Route::post('/preorder/{course:slug}', 'courseNewUser')->name('order');
+Route::controller(OrderController::class)->name('order.')->prefix('preorder')->group(function(){
+    Route::post('course/n/{course:slug}', 'courseNewUser')->name('courseNewUser');
+    Route::post('course/r/{course:slug}', 'courseRegisterUser')->name('courseRegisterUser');
+    Route::post('workshop/n/{workshop:slug}', 'workshopNewUser')->name('workshopNewUser');
+    Route::post('workshop/r/{workshop:slug}', 'workshopRegisterUser')->name('workshopRegisterUser');
 });
 // student routes
 Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {

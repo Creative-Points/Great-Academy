@@ -46,7 +46,8 @@
                                 </li>
                             </ul> --}}
                             <div class="tab-content tabs-content" id="myTabContent">
-                                <div class="tab-pane tab fade show active" id="prod-overview" role="tabpanel" aria-labelledby="prod-overview-tab">
+                                <div class="tab-pane tab fade show active" id="prod-overview" role="tabpanel"
+                                    aria-labelledby="prod-overview-tab">
                                     <div class="content white-bg pt-30">
                                         <!-- Cource Overview -->
                                         <div class="course-overview">
@@ -54,7 +55,8 @@
                                                 {{-- <p>اسم الكورس:</p> --}}
                                                 <h2 class="text-center"><b>{{ $workshop->name }}</b></h2>
                                                 <div class="image w-100">
-                                                    <img class="w-100" src="/uploads/workshop/{{ $workshop->image }}" alt="{{ $workshop->name }}">
+                                                    <img class="w-100" src="/uploads/workshop/{{ $workshop->image }}"
+                                                        alt="{{ $workshop->name }}">
                                                 </div>
                                                 <br>
                                                 <p><b>تفاصيل الكورس:</b></p>
@@ -62,15 +64,18 @@
                                                     <font style="background-color: rgb(0, 0, 0);" color="#efefef">
                                                     </font><b><br></b>
                                                 </p> --}}
-                                                <p>{{ $workshop->description }}</p>
-                                                <p><span style="font-weight: bolder;">المستويات:</span> {{ $workshop->level }} مستوى</p>
-                                                <p><span style="font-weight: bolder;">الساعات:</span> {{ $workshop->hours }} ساعة</p>
+                                                <p style="white-space: pre">{{ $workshop->description }}</p>
+                                                <p><span style="font-weight: bolder;">المستويات:</span>
+                                                    {{ $workshop->level }} مستوى</p>
+                                                <p><span style="font-weight: bolder;">الساعات:</span>
+                                                    {{ $workshop->hours }} ساعة</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="prod-reviews" role="tabpanel" aria-labelledby="prod-reviews-tab">
-                                    
+                                <div class="tab-pane fade" id="prod-reviews" role="tabpanel"
+                                    aria-labelledby="prod-reviews-tab">
+
                                 </div>
                             </div>
                         </div>
@@ -82,43 +87,74 @@
 
                             <!-- End Video Box -->
                             <div class="course-features-info">
-                                <h3 class="text-center  p-3">قدم الان</h3>
+                                {{-- <h3 class="text-center  p-3">قدم الان</h3> --}}
                                 {{-- <div class="border p-2 my-2">
                                     <img src="https://eraasoft.com/front/course.jpeg" alt="">
                                 </div> --}}
-                                <form action="" method="POST" class="text-right">
-
-                                    @csrf
-                                    <div>
-
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="name">الاسم الكامل <b>*</b></label>
-                                        <input type="text" value="" id="name" class="form-control" name="name" />
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label for="Phone">رقم الهاتف <b>*</b></label>
-                                        <input type="text" value="" id="Phone" class="form-control" name="phone" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email mb-3">الايميل <b>*</b></label>
-                                        <input type="text" value="" id="email" class="form-control" name="email" />
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="Phone">جامعة <b>*</b></label>
-                                        <input type="text" value="" id="fuculty" class="form-control" name="fuculty" />
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="Phone">كلية <b>*</b></label>
-                                        <input type="text" value="" id="fuculty" class="form-control" name="fuculty" />
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <button type="submit" class="btn btn-success btn-block">Apply Now</button>
-                                    </div>
-                                    <h3 class="text-center apply-btn p-3">Contact Us 01068268354</h3>
-
-                                </form>
+                                @role('student')
+                                    <h3 class="text-center  p-3">اشترك الان</h3>
+                                    @if (session('success'))
+                                        <h6 class="alert alert-success">{{ session('success') }}</h6>
+                                    @endif
+                                    @if (session('error'))
+                                        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+                                    @endif
+                                    <form action="{{ route('order.workshopRegisterUser', $workshop->slug) }}"
+                                        method="POST" class="text-right">
+                                        @csrf
+                                        <div class="form-group mb-3">
+                                            <button type="submit" class="btn btn-success btn-block">تقديم</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <h3 class="text-center  p-3"> سجل حساب جديد الان وقدم على ورشة العمل </h3>
+                                    @if (session('success'))
+                                        <h6 class="alert alert-success">{{ session('success') }}</h6>
+                                    @endif
+                                    @if (session('error'))
+                                        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+                                    @endif
+                                    @if ($errors->any())
+                                        <ul class="alert alert-danger">
+                                            @foreach ($errors->all() as $err)
+                                                <li>{{ $err }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                    <form action="{{ route('order.workshopNewUser', $workshop->slug) }}" method="POST"
+                                        class="text-right">
+                                        @csrf
+                                        <div class="form-group mb-3">
+                                            <label for="name">الاسم الكامل <b>*</b></label>
+                                            <input type="text" id="name" class="form-control" name="name"
+                                                required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="Phone">رقم الهاتف <b>*</b></label>
+                                            <input type="text" id="Phone" class="form-control" name="phone"
+                                                required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email mb-3">الايميل <b>*</b></label>
+                                            <input type="text" id="email" class="form-control" name="email"
+                                                required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="university">جامعة <b>*</b></label>
+                                            <input type="text" id="university" class="form-control" name="university"
+                                                required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="faculty">كلية <b>*</b></label>
+                                            <input type="text" id="faculty" class="form-control" name="faculty"
+                                                required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <button type="submit" class="btn btn-success btn-block">سجل الان</button>
+                                        </div>
+                                        <h3 class="text-center apply-btn p-3">او تواصل معنا من خلال 01068268354</h3>
+                                    </form>
+                                @endrole
                             </div>
 
 
@@ -140,7 +176,8 @@
                             <div class="content-part">
                                 <div class="sec-title">
                                     <div class="title-icon md-mb-15">
-                                        <img src="https://eraasoft.com/front/assets/images/newsletter.png" alt="images">
+                                        <img src="https://eraasoft.com/front/assets/images/newsletter.png"
+                                            alt="images">
                                     </div>
                                     <h2 class="title mb-0 white-color">Subscribe to Newsletter</h2>
                                 </div>
@@ -148,9 +185,11 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <form class="newsletter-form" id="newsLetter" action="https://eraasoft.com/news-letter">
-                                <input class="input" type="email" name="email" placeholder="Enter Your Email" required="">
+                                <input class="input" type="email" name="email" placeholder="Enter Your Email"
+                                    required="">
                                 <button type="submit">Submit</button>
-                                <input type="hidden" name="_token" value="3NQY1eGvnaBdnxwMe2esiXDUB3l1nFjG13Fz1XZg">
+                                <input type="hidden" name="_token"
+                                    value="3NQY1eGvnaBdnxwMe2esiXDUB3l1nFjG13Fz1XZg">
                             </form>
                             <div class="row">
                                 <div id="errors-newsletter" class="col-md-12 mx-auto my-2"></div>
