@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -92,7 +91,7 @@ class OrderController extends Controller
         {
             $code = $this->code();
             Order::create([
-                'course_id'     => $workshop->id,
+                'workshop_id'   => $workshop->id,
                 'student_id'    => Auth::user()->id,
                 'code'          => $code,
             ]);
