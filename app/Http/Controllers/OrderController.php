@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -36,17 +37,18 @@ class OrderController extends Controller
             return back()->withInput()->withErrors($valid);
         }else{
             $cid = $course->id;
-            $stdId = DB::table('users')->insertGetId([
+            $std = User::create([
                 'name'          => $request->name,
                 'phone'         => $request->phone,
                 'email'         => $request->email,
                 'university'    => $request->university,
                 'faculty'       => $request->faculty,
-            ]);
+                'status'        => 2,
+            ])->assignRole('student');
             $code = Str::random(8);
             Order::create([
                 'course_id'     =>  $cid,
-                'student_id'    =>  $stdId,
+                'student_id'    =>  $std->id,
                 'code'          =>  $code,
             ]);
 

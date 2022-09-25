@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Test;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +24,12 @@ class TestController extends Controller
         //     'data' => $data,
         // ]);
         // return $id;
-        return Str::random(8);
+        // return Str::random(8);
+        $user = Test::create([
+            'data'      =>  'abc'
+        ]);
+
+        return $user->id;
+
     }
 }
