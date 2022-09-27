@@ -22,4 +22,6 @@
 
 <link rel="stylesheet" href="{{asset('admin/asset/vendor/libs/apex-charts/apex-charts.css')}}" />
 
+
 <!-- Page CSS -->
+<link rel="stylesheet" href="{{ asset('admin/asset/vendor/libs/sweetalert2/sweetalert2.css') }}">

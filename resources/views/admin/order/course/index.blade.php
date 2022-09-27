@@ -162,7 +162,7 @@
                                 @elseif ($item->ostatus == 2)
                                     <span class="badge bg-label-secondary">Inactive</span>
                                 @elseif ($item->ostatus == 3)
-                                        <span class="badge bg-label-danger">Inactive</span>
+                                        <span class="badge bg-label-danger">Suspend</span>
                                 @endif
                             </td>
                             <td>
@@ -172,16 +172,16 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.order.workshop.view', $item->oid) }}" id='confirm-color' class="dropdown-item">View</a>
+                                        <a href="{{ route('dashboard.order.workshop.view', $item->ocode) }}" id='confirm-color' class="dropdown-item">View</a>
                                         @if ($item->ostatus == 3 || $item->ostatus == 2)
-                                            <a href="{{ route('dashboard.order.workshop.active', $item->oid) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route('dashboard.order.workshop.active', $item->ocode) }}" class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.order.workshop.inactive', $item->oid) }}" class="dropdown-item">Inactive</a>
+                                            <a href="{{ route('dashboard.order.workshop.inactive', $item->ocode) }}" class="dropdown-item">Inactive</a>
                                         @endif
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.workshop.delete', $item->oid) }}"
+                                            action="{{ route('dashboard.workshop.delete', $item->ocode) }}"
                                             {{-- onsubmit="return confirm('Are you sure?');" --}}
                                             >
                                             @csrf

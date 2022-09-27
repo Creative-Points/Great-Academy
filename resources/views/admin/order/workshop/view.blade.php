@@ -6,6 +6,9 @@
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
     @endif
+    @if (session('error'))
+        <h6 class="alert alert-danger">{{ session('error') }}</h6>
+    @endif
     @if ($errors->any())
         <ul class="alert alert-danger">
             @foreach ($errors->all() as $err)
@@ -32,6 +35,13 @@
                                     <span class="badge bg-label-secondary">Inactive</span>
                                 @else
                                     <span class="badge bg-label-danger">Suspended</span>
+                                @endif
+                                @if ($order->progress == 2)
+                                    <span class="badge bg-label-success">Graduation</span>
+                                @elseif ($order->progress == 0)
+                                    <span class="badge bg-label-secondary">Not Studying</span>
+                                @else
+                                    <span class="badge bg-label-info">Studying</span>
                                 @endif
                             </div>
                         </div>
@@ -281,7 +291,9 @@
                                 <span>{{ $rem = $order->price - $order->amount_paid }}</span>
                             </li>
                         </ul>
-                        <hr>
+                        <div class="divider">
+                            <div class="divider-text">Order Pay</div>
+                        </div>
                         <form method="POST" class="row g-3"
                             action="{{ route('dashboard.order.workshop.pay', $order->ocode) }}">
                             @method('PUT')
@@ -289,8 +301,8 @@
                             <div class="col-12 col-md-6">
                                 <input type="hidden" name="rem" value="{{ $rem }}">
                                 <label class="form-label" for="add-order-amount">Amount</label>
-                                <input type="number" class="form-control" id="add-order-amount"
-                                    placeholder="000" name="amount" value="{{ $rem }}" required>
+                                <input type="number" class="form-control" id="add-order-amount" placeholder="000"
+                                    name="amount" value="{{ $rem }}" required>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Pay</button>
@@ -298,11 +310,86 @@
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
+                        <div class="divider">
+                            <div class="divider-text">Student progression in this course</div>
+                        </div>
+                        <form method="POST" class="row g-3"
+                            action="{{ route('dashboard.order.course.update', $order->ocode) }}">
+                            @method('PUT')
+                            @csrf
+                            <div class="col-12 col-md-6">
+                                {{-- <input type="hidden" name="rem" value="{{ $rem }}"> --}}
+                                <label class="form-label" for="add-order-progress">Progress</label>
+                                {{-- <input type="radio" class="form-control" id="add-order-progress"
+                                    placeholder="000" name="amount" value="" required> --}}
+                                <div class="row">
+                                    <div class="col-12 mb-md-0 mb-2">
+                                        <div
+                                            class="form-check custom-option custom-option-basic {{ $order->progress == 0 ? 'checked' : '' }}">
+                                            <label class="form-check-label custom-option-content"
+                                                for="customRadioTemp1">
+                                                <input name="progress" class="form-check-input" type="radio"
+                                                    value="0" id="customRadioTemp1" required
+                                                    {{ $order->progress == 0 ? 'checked' : '' }}>
+                                                <span class="custom-option-header">
+                                                    <span class="h6 mb-0">Not Studying</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div
+                                            class="form-check custom-option custom-option-basic {{ $order->progress == 1 ? 'checked' : '' }}">
+                                            <label class="form-check-label custom-option-content"
+                                                for="customRadioTemp2">
+                                                <input name="progress" class="form-check-input" type="radio"
+                                                    value="1" id="customRadioTemp2" required
+                                                    {{ $order->progress == 1 ? 'checked' : '' }}>
+                                                <span class="custom-option-header">
+                                                    <span class="h6 mb-0">Studying</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div
+                                            class="form-check custom-option custom-option-basic {{ $order->progress == 2 ? 'checked' : '' }}">
+                                            <label class="form-check-label custom-option-content"
+                                                for="customRadioTemp3">
+                                                <input name="progress" class="form-check-input" type="radio"
+                                                    value="2" id="customRadioTemp3" required
+                                                    {{ $order->progress == 2 ? 'checked' : '' }}>
+                                                <span class="custom-option-header">
+                                                    <span class="h6 mb-0">Graduation</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
+                                <a href="{{ route('dashboard.order.course.manage') }}"
+                                    class="btn btn-label-secondary">Cancel</a>
+                            </div>
+                        </form>
+                        <div class="divider">
+                            <div class="divider-text">Order Status</div>
+                        </div>
                         <div class="d-flex justify-content-center pt-3">
                             @if ($order->ostatus == 1)
-                                <a href="{{ route('dashboard.order.workshop.suspended', $order->ocode) }}"
+                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
                                     class="btn btn-label-danger suspend-user">Suspended</a>
-                            @elseif($order->ostatus == 3 || $order->ostatus == 2)
+                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                    class="btn btn-label-secondary suspend-user">Inactive</a>
+                            @elseif($order->ostatus == 2)
+                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
+                                    class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
+                                    class="btn btn-label-success suspend-user">Active</a>
+                            @elseif($order->ostatus == 3)
+                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                    class="btn btn-label-secondary suspend-user">Inactive</a>
                                 <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
                                     class="btn btn-label-success suspend-user">Active</a>
                             @endif

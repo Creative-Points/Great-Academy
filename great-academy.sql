@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 01:36 AM
+-- Generation Time: Sep 27, 2022 at 10:04 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,6 +39,7 @@ CREATE TABLE `course` (
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `section_id` int(11) NOT NULL,
   `slug` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL DEFAULT 'course',
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,9 +47,9 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`id`, `name`, `description`, `image`, `price`, `level`, `hours`, `created_at`, `status`, `section_id`, `slug`, `updated_at`) VALUES
-(1, 'Front End', '- html\r\n- css\r\n- js', 'ZmB1fpdRfdZXhhUU.png', 250, 3, 12, '2022-09-14 16:57:35', 1, 2, 'front-end-2', '2022-09-15 16:58:14'),
-(2, 'Python 2', 'jhfgjf', 'f4TZDG2aq9ZfYKx1.png', 355, 1, 10, '2022-09-14 20:07:49', 2, 2, 'python-2', '2022-09-15 15:02:24');
+INSERT INTO `course` (`id`, `name`, `description`, `image`, `price`, `level`, `hours`, `created_at`, `status`, `section_id`, `slug`, `type`, `updated_at`) VALUES
+(1, 'Front End Web Developer', '- html\r\n- css\r\n- js', 'QZBTsFh11KnbpjMg.png', 2500, 3, 30, '2022-09-14 16:57:35', 1, 2, 'front-end-web-developer', 'course', '2022-09-19 13:15:52'),
+(2, 'Python 2 Basics', 'jhfgjf', 'VabMxnnUSViJ8Cyi.png', 355, 1, 10, '2022-09-14 20:07:49', 1, 2, 'python-2-basics', 'course', '2022-09-17 16:29:32');
 
 -- --------------------------------------------------------
 
@@ -144,8 +145,38 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (2, 'App\\Models\\User', 7),
 (2, 'App\\Models\\User', 10),
 (2, 'App\\Models\\User', 11),
+(2, 'App\\Models\\User', 15),
 (3, 'App\\Models\\User', 13),
 (4, 'App\\Models\\User', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) NOT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  `workshop_id` int(11) DEFAULT NULL,
+  `student_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 2,
+  `code` varchar(255) NOT NULL,
+  `is_paid` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 => false\r\n1 => true',
+  `amount_paid` int(11) NOT NULL DEFAULT 0,
+  `progress` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0->Not start 1->started 2->completed',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `course_id`, `workshop_id`, `student_id`, `status`, `code`, `is_paid`, `amount_paid`, `progress`, `created_at`, `updated_at`) VALUES
+(1, 2, NULL, 14, 2, 'FMi3GcoN', 0, 0, 0, '2022-09-26 16:31:36', '2022-09-26 14:31:36'),
+(2, 2, NULL, 15, 2, 'ekqWVDdz', 0, 0, 0, '2022-09-25 11:11:07', '2022-09-25 11:11:07'),
+(7, NULL, 1, 3, 2, '9Kr6vsXr', 0, 500, 0, '2022-09-26 23:53:11', '2022-09-26 21:53:11');
 
 -- --------------------------------------------------------
 
@@ -250,8 +281,42 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `name`, `count`, `image`, `status`, `workshops`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'AI', 0, 'AI.png', 1, 0, 'ai', '2022-09-14 12:46:32', '2022-09-15 20:49:35'),
-(2, 'Hand Made', 2, 'hand-made.png', 2, 1, 'hand-made', '2022-09-14 12:48:46', '2022-09-15 21:08:42');
+(1, 'AI', 0, 'ai.png', 2, 0, 'ai', '2022-09-14 12:46:32', '2022-09-26 23:57:39'),
+(2, 'برمجة الحاسب', 2, 'brmg-alhasb.jpg', 1, 1, 'brmg-alhasb', '2022-09-14 12:48:46', '2022-09-17 16:29:18'),
+(3, 'المهارات الشخصية', 0, 'almharat-alshkhsy.jpg', 1, 0, 'almharat-alshkhsy', '2022-09-16 19:43:42', '2022-09-16 22:24:05'),
+(4, 'المحاسبة', 0, 'almhasb.jpg', 1, 0, 'almhasb', '2022-09-16 19:56:21', '2022-09-16 22:23:58'),
+(5, 'ادارة الاعمال', 0, 'adar-alaaamal.png', 2, 0, 'adar-alaaamal', '2022-09-16 20:01:41', '2022-09-16 21:15:29'),
+(6, 'قواعد البيانات', 0, 'koaaad-albyanat.png', 2, 0, 'koaaad-albyanat', '2022-09-16 20:03:57', '2022-09-16 21:09:46'),
+(7, 'تصميم الجرافيك', 0, 'tsmym-algrafyk.png', 2, 0, 'x1', '2022-09-16 20:06:14', '2022-09-16 21:09:50'),
+(9, 'تسويق', 0, 'tsoyk.jpg', 2, 0, 'tsoyk', '2022-09-16 21:24:04', '2022-09-16 21:24:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id`, `data`, `created_at`, `updated_at`) VALUES
+(1, 'ana', '2022-09-25 13:06:47', NULL),
+(2, 'ana', '2022-09-25 13:06:47', NULL),
+(3, 'ana', '2022-09-25 13:06:47', NULL),
+(4, 'ana', '2022-09-25 13:06:47', NULL),
+(5, 'abc', '2022-09-25 11:06:59', '2022-09-25 11:06:59'),
+(6, 'abc', '2022-09-25 11:07:02', '2022-09-25 11:07:02'),
+(7, 'abc', '2022-09-25 12:52:36', '2022-09-25 12:52:36'),
+(8, 'abc', '2022-09-25 16:01:45', '2022-09-25 16:01:45'),
+(9, 'abc', '2022-09-26 10:18:31', '2022-09-26 10:18:31');
 
 -- --------------------------------------------------------
 
@@ -264,7 +329,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `faculty` varchar(255) DEFAULT NULL,
   `university` varchar(255) DEFAULT NULL,
@@ -281,14 +346,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `faculty`, `university`, `address`, `phone`, `code`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Nabil Hamada', 'admin@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'qQqXbNgG7TV1p6UeRCyfc1Na0YT2R7nNR4eGlpocOo3IVTjubKCeIxWtTBPN', NULL, '', 'Giza', '', NULL, 1, '2022-08-29 20:18:38', '2022-08-29 20:18:38'),
+(1, 'Nabil Hamada', 'admin@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'h5S1d9vUkn5OnTk6bxG5kRVhm3S7erR8xIDwD0B9mEF6JyEKsgmjCRWIQuZB', NULL, '', 'Giza', '', NULL, 1, '2022-08-29 20:18:38', '2022-09-17 17:39:59'),
 (2, 'Instructor', 'instructor@gmail.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '8Lu82pvrgtOuGZVM0Zz30Rptd9M2EsBZK2IHRG0jh0kdYe6PWY1lcYYj8oSG', NULL, '', '', '', NULL, 1, '2022-08-29 20:18:38', '2022-09-11 21:06:47'),
-(3, 'Student Name', 'student@gamil.com', '2022-08-29 20:18:38', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599672', 'std-aVbsZH050IQ4sqxi@great-academy.com', 1, '2022-08-29 20:18:38', '2022-09-11 18:51:39'),
+(3, 'Student Name', 'student@gmail.com', '2022-08-29 20:18:38', '$2y$10$gjGHp.Ex0KLVjm/K7yiHt.FeWswcQhN6gPmLrPJdZvgYi58LV9WZ.', 'O1K7M75h0ShgTyiX9K23S8Wg57A4UZA0E7GAR4sEZTGd8KhFjinNPeA2wuAx', 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599672', 'std-aVbsZH050IQ4sqxi@great-academy.com', 1, '2022-08-29 20:18:38', '2022-09-16 12:55:58'),
 (6, 'Nabil Hamada', 'Nabilhamada421@gmail.com', NULL, '$2y$10$BunKbhysF3woulL3nax9Xef9GZhHnxMPDtn5m2vA4xkb18xgBVFbC', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599674', 'std-S5Pf1CqWs9jxHN5t@great-academy.com', 2, '2022-09-09 19:03:29', '2022-09-09 21:31:30'),
-(7, 'Nabil Hamada 34', 'Nabilhamadar21@gmail.com', NULL, '$2y$10$yBq9cjUH48ALQpiS.P2KSuy.3TVgd/opKFfAeCd202o3dQmOjGZd2', NULL, 'MIS', 'Cairo', 'sdnm', '78328746', 'std-xmSuCnDyaZ1TFR6v@great-academy.com', 1, '2022-09-09 19:14:24', '2022-09-11 20:22:10'),
+(7, 'Nabil Hamada 34', 'Nabilhamadar21@gmail.com', NULL, '$2y$10$yBq9cjUH48ALQpiS.P2KSuy.3TVgd/opKFfAeCd202o3dQmOjGZd2', NULL, 'MIS', 'Cairo', 'sdnm', '78328746', 'std-xmSuCnDyaZ1TFR6v@great-academy.com', 3, '2022-09-09 19:14:24', '2022-09-17 17:44:26'),
 (10, 'Nabil Hamada', 'Nabilhamada4521@gmail.com', NULL, '$2y$10$B5a7H.0xsH0otXy4jJsAveD/tvA0dcTYs2FX/g9.dIVR5sb3mmxWm', NULL, 'MIS', 'Madina Academy', 'Egypt - Giza - El Ayyat', '817263967', 'std-weHvMpyy@great-academy.com', 1, '2022-09-09 20:37:03', '2022-09-12 19:12:42'),
-(11, 'Ahmed Owais', 'yousef123@gamil.com', NULL, '$2y$10$csq7RiUHhKlCRVUlX1iYpee.q5Z62IQY.D4XPexpU.z6VFB5CHRzK', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599675', 'std-huSd0hGx1NU1lhJ1@great-academy.com', 1, '2022-09-09 20:53:36', '2022-09-12 19:12:49'),
-(13, 'Nabil Hamada', 'Nabilhamada521@gmail.com', NULL, '$2y$10$gHPN8UnjWGYMcYqkt9XPaeXd7gwUFL5o90.uQHVWgLk0Leqmvbxk6', NULL, 'Eng', 'Giza', 'Egypt - Giza - El Ayyat', '817263911', NULL, 1, '2022-09-12 19:39:54', '2022-09-12 19:39:54');
+(11, 'Ahmed Owais', 'ahmed@gamil.com', NULL, '$2y$10$csq7RiUHhKlCRVUlX1iYpee.q5Z62IQY.D4XPexpU.z6VFB5CHRzK', NULL, 'MIS', 'Madina Academy', 'القطوري شارع سيد ابو يس السقاري', '01148599675', 'std-huSd0hGx1NU1lhJ1@great-academy.com', 1, '2022-09-09 20:53:36', '2022-09-16 12:13:06'),
+(13, 'Nabil Hamada', 'Nabilhamada521@gmail.com', NULL, '$2y$10$lfVF5BSYrQGTlcNHKnEBAOVr9JOBFomEysF90.svoMCb0I89OdHjq', NULL, 'Eng', 'Giza', 'Egypt - Giza - El Ayyat', '817263911', NULL, 1, '2022-09-12 19:39:54', '2022-09-17 17:43:38'),
+(14, 'Nabil Hamada', 'Nabilhamada3321@gmail.com', NULL, NULL, NULL, 'Eng', 'Cairo', NULL, '01118172630', NULL, 1, '2022-09-25 12:57:06', NULL),
+(15, 'Cell Phones', 'yousef123@gamil.com', NULL, NULL, NULL, 'Eng', 'Madina Academy', 'Egypt', '01148599670', 'std-USxqYuEf0pM8L9TT@great-academy.com', 2, '2022-09-25 11:11:07', '2022-09-27 14:21:47');
 
 -- --------------------------------------------------------
 
@@ -316,7 +383,7 @@ CREATE TABLE `workshop` (
 --
 
 INSERT INTO `workshop` (`id`, `name`, `description`, `image`, `price`, `level`, `hours`, `slug`, `status`, `section_id`, `created_at`, `updated_at`) VALUES
-(1, 'Workshop new title', '_html\r\n-css\r\n-js\r\n-bootstrap\r\n-jquery', 'mUkjbVRENFEB7dCk.png', 1500, 1, 30, 'workshop-new-title', 1, 2, '2022-09-15 20:45:01', '2022-09-15 20:49:35');
+(1, 'Programming Workshop', '_html\r\n-css\r\n-js\r\n-bootstrap\r\n-jquery\r\n- python', 'mUkjbVRENFEB7dCk.png', 1500, 5, 45, 'programming-workshop', 1, 2, '2022-09-15 20:45:01', '2022-09-19 13:19:23');
 
 --
 -- Indexes for dumped tables
@@ -364,6 +431,12 @@ ALTER TABLE `model_has_roles`
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -405,6 +478,12 @@ ALTER TABLE `sections`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
   ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -450,6 +529,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -471,13 +556,19 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `test`
+--
+ALTER TABLE `test`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `workshop`

@@ -84,6 +84,31 @@ class OrderController extends Controller
         }
     }
 
+    public function update(Request $request, Order $order)
+    {
+        $valid = Validator::make($request->all(), [
+            'progress'    => 'required|numeric',
+        ]);
+        if($valid->fails())
+        {
+            return back()->withInput()->withErrors($valid);
+        }else{
+            if($order->status == 2)
+            {
+                return back()->with('error', 'You can\'t change this order because it isn\'t activated');
+            }
+            elseif($order->status == 3)
+            {
+                return back()->with('error', 'You can\'t change this order because it\'s Suspended');
+            }else{
+                $order->progress = $request->progress;
+                $order->update();
+                return back()->with('success', 'Order progress is changed Successfully.');
+            }
+            
+        }
+    }
+
     public function active(Order $order)
     {
         $order->status = 1;
@@ -98,7 +123,7 @@ class OrderController extends Controller
         return back()->with('success', 'Order Inactivated.');
     }
     
-    public function suspened(Order $order)
+    public function suspend(Order $order)
     {
         $order->status = 3;
         $order->update();

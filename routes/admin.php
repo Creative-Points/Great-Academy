@@ -110,7 +110,9 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('
             Route::get('manage', 'cIndex')->name('manage');
             Route::get('{order:code}/view', 'cShow')->name('view');
             Route::put('{order:code}/pay', 'pay')->name('pay');
+            Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
+            Route::get('{order:code}/suspend', 'suspend')->name('suspend');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
@@ -119,7 +121,9 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('
             Route::get('manage', 'wIndex')->name('manage');
             Route::get('{order:code}/view', 'wShow')->name('view');
             Route::put('{order:code}/pay', 'pay')->name('pay');
+            Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
+            Route::get('{order:code}/suspend', 'suspend')->name('suspend');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });

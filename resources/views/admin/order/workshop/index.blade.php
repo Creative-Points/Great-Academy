@@ -181,7 +181,7 @@
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.workshop.delete', $item->oid) }}"
+                                            action="{{ route('dashboard.workshop.delete', $item->ocode) }}"
                                             {{-- onsubmit="return confirm('Are you sure?');" --}}
                                             >
                                             @csrf
