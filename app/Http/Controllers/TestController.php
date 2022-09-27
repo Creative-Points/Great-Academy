@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 class TestController extends Controller
 {
     public function index()
@@ -25,11 +27,16 @@ class TestController extends Controller
         // ]);
         // return $id;
         // return Str::random(8);
-        $user = Test::create([
-            'data'      =>  'abc'
-        ]);
+        // $user = Test::create([
+        //     'data'      =>  'abc'
+        // ]);
 
-        return $user->id;
+        // return $user->id;
+        return response()->file("uploads/material/file.pdf", [
+            'Content-Type' => 'application/pdf'
+        ]);
+        // return Storage::mimeType('uploads/material/file.pdf');
+        // return Storage::putFileAs('uploads/material', 'uploads/material/file.pdf', 'nabil.pdf');
 
     }
 }

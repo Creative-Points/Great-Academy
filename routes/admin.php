@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SectionController;
@@ -100,6 +101,29 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('
         Route::get('{slug}/inactive', 'inactive')->name('inactive');
         Route::get('{slug}/active', 'active')->name('active');
         Route::delete('{slug}/delete', 'delete')->name('delete');
+    });
+
+    // Order
+    Route::controller(OrderController::class)->name('order.')->prefix('order')->group(function(){
+        // course
+        Route::name('course.')->prefix('course')->group(function(){
+            Route::get('manage', 'cIndex')->name('manage');
+            Route::get('{order:code}/view', 'cShow')->name('view');
+            Route::put('{order:code}/pay', 'pay')->name('pay');
+            Route::get('{order:code}/active', 'active')->name('active');
+            Route::get('{order:code}/inactive', 'inactive')->name('inactive');
+            Route::delete('{order:code}/delete', 'delete')->name('delete');
+        });
+        // workshops
+        Route::name('workshop.')->prefix('workshop')->group(function(){
+            Route::get('manage', 'wIndex')->name('manage');
+            Route::get('{order:code}/view', 'wShow')->name('view');
+            Route::put('{order:code}/pay', 'pay')->name('pay');
+            Route::get('{order:code}/active', 'active')->name('active');
+            Route::get('{order:code}/inactive', 'inactive')->name('inactive');
+            Route::delete('{order:code}/delete', 'delete')->name('delete');
+        });
+        
     });
 });
 

@@ -106,6 +106,36 @@
                 </ul>
             </li>
             @php
+                $ord =  request()->routeIs('dashboard.order.course.manage') == route('dashboard.order.course.manage')
+                        || request()->routeIs('dashboard.order.workshop.manage') == route('dashboard.order.workshop.manage')
+                        || request()->routeIs('dashboard.order.course.view', 1) == route('dashboard.order.course.view', 1)
+                        || request()->routeIs('dashboard.order.workshop.view', 1) == route('dashboard.order.workshop.view', 1);
+                $cord = request()->routeIs('dashboard.order.course.manage') == route('dashboard.order.course.manage')
+                        || request()->routeIs('dashboard.order.course.view', 1) == route('dashboard.order.course.view', 1);
+                $word = request()->routeIs('dashboard.order.workshop.manage') == route('dashboard.order.workshop.manage')
+                        || request()->routeIs('dashboard.order.workshop.view', 1) == route('dashboard.order.workshop.view', 1);
+            @endphp
+            <li class="menu-item @if($ord) active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
+                    {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
+                    <div>Orders</div>
+                </a>
+
+                <ul class="menu-sub open">
+                    <li class="menu-item @if($word) active @endif">
+                        <a href="{{ route('dashboard.order.workshop.manage') }}" class="menu-link">
+                            <div>Workshop</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if($cord) active @endif">
+                        <a href="{{ route('dashboard.order.course.manage') }}" class="menu-link">
+                            <div >Course</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @php
                 $cor = request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')
                         || request()->routeIs('dashboard.course.view', 1) == route('dashboard.course.view', 1)
             @endphp
