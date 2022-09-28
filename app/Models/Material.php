@@ -19,6 +19,6 @@ class Material extends Model
         'status',
         'slug',
         'course_id',
-        'workshop_id',
+        'type',
     ];
 }

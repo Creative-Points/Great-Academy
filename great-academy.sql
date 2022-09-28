@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2022 at 10:04 PM
+-- Generation Time: Sep 28, 2022 at 04:53 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.1.6
 
@@ -80,10 +80,19 @@ CREATE TABLE `materials` (
   `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `course_id` int(11) DEFAULT NULL,
-  `workshop_id` int(11) DEFAULT NULL,
+  `type` varchar(199) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `materials`
+--
+
+INSERT INTO `materials` (`id`, `name`, `material`, `slug`, `status`, `course_id`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'Nabil Hamada', 'nabil-hamada.pdf', 'nabil-hamada', 2, 1, 'Course', '2022-09-28 02:52:09', '2022-09-28 00:52:09'),
+(2, 'MIS Level 1', 'mis-level-1.pdf', 'mis-level-1', 1, 1, 'Workshop', '2022-09-28 02:52:21', '2022-09-28 00:52:21'),
+(5, 'mis level 2', 'mis-level-2.pdf', 'mis-level-2', 1, 1, 'Course', '2022-09-28 00:38:22', '2022-09-28 00:38:22');
 
 -- --------------------------------------------------------
 
@@ -174,7 +183,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `course_id`, `workshop_id`, `student_id`, `status`, `code`, `is_paid`, `amount_paid`, `progress`, `created_at`, `updated_at`) VALUES
-(1, 2, NULL, 14, 2, 'FMi3GcoN', 0, 0, 0, '2022-09-26 16:31:36', '2022-09-26 14:31:36'),
+(1, 2, NULL, 14, 1, 'FMi3GcoN', 0, 0, 0, '2022-09-27 21:36:53', '2022-09-27 19:36:53'),
 (2, 2, NULL, 15, 2, 'ekqWVDdz', 0, 0, 0, '2022-09-25 11:11:07', '2022-09-25 11:11:07'),
 (7, NULL, 1, 3, 2, '9Kr6vsXr', 0, 500, 0, '2022-09-26 23:53:11', '2022-09-26 21:53:11');
 
@@ -282,13 +291,13 @@ CREATE TABLE `sections` (
 
 INSERT INTO `sections` (`id`, `name`, `count`, `image`, `status`, `workshops`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'AI', 0, 'ai.png', 2, 0, 'ai', '2022-09-14 12:46:32', '2022-09-26 23:57:39'),
-(2, 'برمجة الحاسب', 2, 'brmg-alhasb.jpg', 1, 1, 'brmg-alhasb', '2022-09-14 12:48:46', '2022-09-17 16:29:18'),
+(2, 'برمجة الحاسب', 2, 'brmg-alhasb.jpg', 1, 0, 'brmg-alhasb', '2022-09-14 12:48:46', '2022-09-27 23:59:55'),
 (3, 'المهارات الشخصية', 0, 'almharat-alshkhsy.jpg', 1, 0, 'almharat-alshkhsy', '2022-09-16 19:43:42', '2022-09-16 22:24:05'),
 (4, 'المحاسبة', 0, 'almhasb.jpg', 1, 0, 'almhasb', '2022-09-16 19:56:21', '2022-09-16 22:23:58'),
 (5, 'ادارة الاعمال', 0, 'adar-alaaamal.png', 2, 0, 'adar-alaaamal', '2022-09-16 20:01:41', '2022-09-16 21:15:29'),
 (6, 'قواعد البيانات', 0, 'koaaad-albyanat.png', 2, 0, 'koaaad-albyanat', '2022-09-16 20:03:57', '2022-09-16 21:09:46'),
 (7, 'تصميم الجرافيك', 0, 'tsmym-algrafyk.png', 2, 0, 'x1', '2022-09-16 20:06:14', '2022-09-16 21:09:50'),
-(9, 'تسويق', 0, 'tsoyk.jpg', 2, 0, 'tsoyk', '2022-09-16 21:24:04', '2022-09-16 21:24:36');
+(9, 'تسويق', 0, 'tsoyk.jpg', 2, 1, 'tsoyk', '2022-09-16 21:24:04', '2022-09-27 23:59:55');
 
 -- --------------------------------------------------------
 
@@ -383,7 +392,7 @@ CREATE TABLE `workshop` (
 --
 
 INSERT INTO `workshop` (`id`, `name`, `description`, `image`, `price`, `level`, `hours`, `slug`, `status`, `section_id`, `created_at`, `updated_at`) VALUES
-(1, 'Programming Workshop', '_html\r\n-css\r\n-js\r\n-bootstrap\r\n-jquery\r\n- python', 'mUkjbVRENFEB7dCk.png', 1500, 5, 45, 'programming-workshop', 1, 2, '2022-09-15 20:45:01', '2022-09-19 13:19:23');
+(1, 'Programming Workshop', '_html\r\n-css\r\n-js\r\n-bootstrap\r\n-jquery\r\n- python', 'mUkjbVRENFEB7dCk.png', 1500, 5, 45, 'programming-workshop', 1, 9, '2022-09-15 20:45:01', '2022-09-27 23:59:55');
 
 --
 -- Indexes for dumped tables
@@ -520,7 +529,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`

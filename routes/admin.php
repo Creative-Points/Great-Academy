@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -101,6 +102,18 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('
         Route::get('{slug}/inactive', 'inactive')->name('inactive');
         Route::get('{slug}/active', 'active')->name('active');
         Route::delete('{slug}/delete', 'delete')->name('delete');
+    });
+
+    // Material
+    Route::controller(MaterialController::class)->name('material.')->prefix('material')->group(function(){
+        Route::get('manage', 'index')->name('manage');
+        Route::post('add', 'store')->name('add');
+        // Route::put('{material:slug}/update', 'update')->name('update');
+        // Route::put('{material:slug}/update/file', 'file')->name('file');
+        Route::get('display/{material:slug}', 'display')->name('display');
+        Route::get('{material:slug}/inactive', 'inactive')->name('inactive');
+        Route::get('{material:slug}/active', 'active')->name('active');
+        Route::delete('{material:slug}/delete', 'delete')->name('delete');
     });
 
     // Order
