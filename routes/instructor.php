@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\WorkshopController;
+use App\Http\Controllers\Admin\MaterialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,8 +102,8 @@ Route::middleware(['auth', 'role:instructor'])->name('dashboard.')->prefix('dash
         Route::put('{material:slug}/update', 'update')->name('update');
         Route::put('{material:slug}/update/file', 'file')->name('file');
         Route::get('display/{material:slug}', 'display')->name('display');
-        Route::get('{material:slug}/inactive', 'inactive')->name('inactive');
-        Route::get('{material:slug}/active', 'active')->name('active');
+        // Route::get('{material:slug}/inactive', 'inactive')->name('inactive');
+        // Route::get('{material:slug}/active', 'active')->name('active');
         // Route::delete('{material:slug}/delete', 'delete')->name('delete');
     });
 
