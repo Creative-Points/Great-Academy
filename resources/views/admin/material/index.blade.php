@@ -188,6 +188,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $materials->links() }}
         </div>
         <!-- Offcanvas to add new section -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"

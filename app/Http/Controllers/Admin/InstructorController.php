@@ -14,7 +14,7 @@ class InstructorController extends Controller
     {
         $users = User::whereHas("roles", function ($q){
             $q->where('name', 'instructor');
-        })->get();
+        })->paginate();
         return view('admin.instructor.index', compact('users'));
     }
 

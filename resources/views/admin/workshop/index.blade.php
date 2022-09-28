@@ -206,6 +206,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $workshops->links() }}
         </div>
         <!-- Offcanvas to add new workshop -->
         @role('Admin')

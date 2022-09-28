@@ -16,7 +16,7 @@ class StudentController extends Controller
     {
         $users = User::whereHas("roles", function ($q) {
             $q->where('name', 'student');
-        })->get();
+        })->paginate();
         return view('admin.student.index', compact('users'));
     }
 
@@ -92,14 +92,14 @@ class StudentController extends Controller
                     ->join('course', 'course.id', '=', 'orders.course_id')
                     ->join('sections', 'sections.id', '=', 'course.section_id')
                     // ->groupBy('orders.student_id')
-                    ->get();
+                    ->paginate();
         $workshops = DB::table('orders')
                     ->where('orders.student_id', '=', $user)
                     ->select('orders.*', 'orders.code as ocode', 'workshop.*', 'sections.name as section_name', 'sections.slug as sslug')
                     ->join('workshop', 'workshop.id', '=', 'orders.workshop_id')
                     ->join('sections', 'sections.id', '=', 'workshop.section_id')
                     // ->groupBy('orders.student_id')
-                    ->get();
+                    ->paginate();
         $c_courses = count($courses);
         $c_workshops = count($workshops);
         return view('admin.student.view', compact('users', 'courses', 'workshops', 'c_courses', 'c_workshops'));

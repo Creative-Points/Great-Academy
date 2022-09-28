@@ -211,6 +211,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $courses->links() }}
         </div>
         @role('Admin')
             <!-- Offcanvas to add new course -->

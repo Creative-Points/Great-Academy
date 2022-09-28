@@ -18,7 +18,7 @@ class WorkshopController extends Controller
         $workshops = DB::table('workshop')
                     ->select('workshop.*', 'sections.name as section_name')
                     ->join('sections', 'workshop.section_id', '=', 'sections.id')
-                    ->get();
+                    ->paginate();
         $sections  = Section::all();
         return view('admin.workshop.index', compact('workshops', 'sections'));
     }

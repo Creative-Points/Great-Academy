@@ -224,7 +224,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                    
+
                                                 <td>
                                                     <span class="text-truncate d-flex align-items-center">
                                                         <span
@@ -273,7 +273,7 @@
                                                             @else
                                                                 <a href="{{ route($routeName.'.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                             @endif
-                    
+
                                                             <div class="dropdown-divider"></div>
                                                             <form class="" method="POST"
                                                                 action="{{ route($routeName.'.course.delete', $item->slug) }}"
@@ -294,6 +294,7 @@
                                 </table>
                             </div>
                         </div>
+                        {{ $courses->links() }}
                         <!-- /Project table -->
                     </div>
                     <div class="tab-pane fade" id="navs-pills-justified-workshop" role="tabpanel">
@@ -338,7 +339,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                    
+
                                                 <td>
                                                     <span class="text-truncate d-flex align-items-center">
                                                         <span
@@ -387,7 +388,7 @@
                                                             @else
                                                                 <a href="{{ route($routeName.'.workshop.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                             @endif
-                    
+
                                                             <div class="dropdown-divider"></div>
                                                             <form class="" method="POST"
                                                                 action="{{ route($routeName.'.workshop.delete', $item->slug) }}"
@@ -408,6 +409,7 @@
                                 </table>
                             </div>
                         </div>
+                        {{ $workshops->links() }}
                         <!-- /Project table -->
                     </div>
                 </div>

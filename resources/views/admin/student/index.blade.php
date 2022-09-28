@@ -195,6 +195,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $users->links() }}
         </div>
         @role('Admin|Employee')
         <!-- Offcanvas to add new user -->

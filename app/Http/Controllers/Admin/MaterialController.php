@@ -28,7 +28,7 @@ class MaterialController extends Controller
                             ->join('sections as wSections', 'wSections.id', '=', 'workshop.section_id')
                             ->join('sections', 'sections.id', '=', 'course.section_id')
                             ->select('materials.*', 'course.name as cBelongTo', 'workshop.name as wBelongTo', 'sections.name as csection', 'wSections.name as wsection')
-                            ->get();
+                            ->paginate();
         $courses = Course::all();
         $workshops = Workshop::all();
         return view('admin.material.index', compact('materials', 'courses', 'workshops'));

@@ -13,7 +13,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $users = User::role(['admin', 'employee'])->get();
+        $users = User::role(['admin', 'employee'])->paginate();
         return view('admin.employee.index', compact('users'));
     }
 

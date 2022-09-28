@@ -408,6 +408,7 @@
                                 </table>
                             </div>
                         </div>
+                        {{ $courses->links() }}
                         <!-- /Project table -->
                     </div>
                     <div class="tab-pane fade" id="navs-pills-justified-workshop" role="tabpanel">
@@ -551,6 +552,7 @@
                                 </table>
                             </div>
                         </div>
+                        {{ $workshops->links() }}
                         <!-- /Project table -->
                     </div>
                 </div>

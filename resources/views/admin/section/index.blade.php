@@ -177,6 +177,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $sections->links() }}
         </div>
         <!-- Offcanvas to add new section -->
         @role('Admin')

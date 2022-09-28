@@ -19,7 +19,7 @@ class OrderController extends Controller
                         ->select('orders.*', 'orders.id as oid', 'orders.code as ocode', 'orders.status as ostatus', 'users.*', 'users.id as uid', 'users.name AS username', 'workshop.*')
                         ->join('users', 'orders.student_id', '=', 'users.id')
                         ->join('workshop', 'orders.workshop_id', '=', 'workshop.id')
-                        ->get();
+                        ->paginate();
         return view('admin.order.workshop.index', compact('orders'));
     }
 
@@ -44,7 +44,7 @@ class OrderController extends Controller
                         ->select('orders.*', 'orders.id as oid', 'orders.code as ocode', 'orders.status as ostatus', 'users.*', 'users.id as uid', 'users.name AS username', 'course.*')
                         ->join('users', 'orders.student_id', '=', 'users.id')
                         ->join('course', 'orders.course_id', '=', 'course.id')
-                        ->get();
+                        ->paginate();
         return view('admin.order.course.index', compact('orders'));
     }
 

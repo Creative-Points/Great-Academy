@@ -18,7 +18,7 @@ class CourseController extends Controller
         $courses = DB::table('course')
                     ->select('course.*', 'sections.name as section_name')
                     ->join('sections', 'course.section_id', '=', 'sections.id')
-                    ->get();
+                    ->paginate();
         $sections  = Section::all();
         return view('admin.course.index', compact('courses', 'sections'));
     }

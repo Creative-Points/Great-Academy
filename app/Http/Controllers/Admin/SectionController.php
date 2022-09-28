@@ -15,7 +15,7 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::all();
+        $sections = Section::paginate(10);
         return view('admin.section.index', compact('sections'));
     }
 
@@ -127,8 +127,8 @@ class SectionController extends Controller
     public function show($slug)
     {
         $section = Section::where('sections.slug', '=', $slug)->first();
-        $courses = Course::where('section_id', $section->id)->get();
-        $workshops = Workshop::where('section_id', $section->id)->get();
+        $courses = Course::where('section_id', $section->id)->paginate();
+        $workshops = Workshop::where('section_id', $section->id)->paginate();
         return view('admin.section.view', compact('section', 'courses', 'workshops'));
     }
 
