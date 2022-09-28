@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth', 'role:instructor'])->name('instructor.')->prefix('instructor')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+Route::middleware(['auth', 'role:instructor'])->name('dashboard.')->prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'account'])->name('account');
 
     // Employee

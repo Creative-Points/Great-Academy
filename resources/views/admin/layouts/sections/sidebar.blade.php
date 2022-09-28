@@ -167,7 +167,7 @@
             </li>
             @php
                 $mat = request()->routeIs('dashboard.material.manage') == route('dashboard.material.manage')
-                        || request()->routeIs('dashboard.material.view', 1) == route('dashboard.material.view', 1)
+                        || request()->routeIs('dashboard.material.display', 1) == route('dashboard.material.display', 1)
             @endphp
             <li class="menu-item @if($mat) active @endif ">
                 <a href="{{route('dashboard.material.manage')}}" class="menu-link">
@@ -260,7 +260,7 @@
             </li>
             @php
                 $mat = request()->routeIs('dashboard.material.manage') == route('dashboard.material.manage')
-                        || request()->routeIs('dashboard.material.view', 1) == route('dashboard.material.view', 1)
+                        || request()->routeIs('dashboard.material.display', 1) == route('dashboard.material.display', 1)
             @endphp
             <li class="menu-item @if($mat) active @endif ">
                 <a href="{{route('dashboard.material.manage')}}" class="menu-link">
@@ -308,7 +308,7 @@
             </li>
             @php
                 $mat = request()->routeIs('dashboard.material.manage') == route('dashboard.material.manage')
-                        || request()->routeIs('dashboard.material.view', 1) == route('dashboard.material.view', 1)
+                        || request()->routeIs('dashboard.material.display', 1) == route('dashboard.material.display', 1)
             @endphp
             <li class="menu-item @if($mat) active @endif ">
                 <a href="{{route('dashboard.material.manage')}}" class="menu-link">
