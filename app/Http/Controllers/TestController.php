@@ -32,11 +32,13 @@ class TestController extends Controller
         // ]);
 
         // return $user->id;
-        return response()->file("uploads/material/file.pdf", [
-            'Content-Type' => 'application/pdf'
-        ]);
+        // return response()->file("uploads/material/file.pdf", [
+        //     'Content-Type' => 'application/pdf'
+        // ]);
         // return Storage::mimeType('uploads/material/file.pdf');
         // return Storage::putFileAs('uploads/material', 'uploads/material/file.pdf', 'nabil.pdf');
 
+        $route = 'emp';
+        return route($route . '.instructor.manage');
     }
 }

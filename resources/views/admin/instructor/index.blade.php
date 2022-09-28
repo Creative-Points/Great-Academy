@@ -1,13 +1,23 @@
 <x-admin-layout>
+    @section('title', 'Manage Instructor | Great Academy')
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
 
-
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
+    <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css"> --}}
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if (session('error'))
+        <h6 class="alert alert-success">{{session('error')}}</h6>
     @endif
     @if ($errors->any())
         <ul class="alert alert-danger">
@@ -99,7 +109,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.instructor.view', $user->id) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.instructor.view', $user->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">{{ $user->name }}</span>
                                         </a>
                                         <small class="text-muted">{{ $user->email }}</small>
@@ -112,8 +122,7 @@
                                     @if ($user_role->name == 'admin')
                                         <td>
                                             <span class="text-truncate d-flex align-items-center">
-                                                <span
-                                                    class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
+                                                <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
                                                     <i class="bx bx-cog bx-xs"></i>
                                                 </span>
                                                 {{ $user_role->name }}
@@ -122,8 +131,7 @@
                                     @elseif ($user_role->name == 'instructor')
                                         <td>
                                             <span class="text-truncate d-flex align-items-center">
-                                                <span
-                                                    class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2">
+                                                <span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30 me-2">
                                                     <i class="bx bx-edit bx-xs"></i>
                                                 </span>
                                                 {{ $user_role->name }}
@@ -132,8 +140,7 @@
                                     @elseif ($user_role->name == 'student')
                                         <td>
                                             <span class="text-truncate d-flex align-items-center">
-                                                <span
-                                                    class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
+                                                <span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
                                                     <i class="bx bx-user bx-xs"></i>
                                                 </span>
                                                 {{ $user_role->name }}
@@ -156,25 +163,27 @@
                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.instructor.view', $user->id) }}"
+                                        <a href="{{ route($routeName.'.instructor.view', $user->id) }}"
                                             class="dropdown-item">View</a>
-                                        @if ($user->status == 3 || $user->status == 2)
-                                            <a href="{{ route('dashboard.instructor.active', $user->id) }}"
-                                                class="dropdown-item">Active</a>
-                                        @else
-                                            <a href="{{ route('dashboard.instructor.suspended', $user->id) }}"
-                                                class="dropdown-item">Suspend</a>
-                                        @endif
+                                        @role('Admin')
+                                            @if ($user->status == 3 || $user->status == 2)
+                                                <a href="{{ route($routeName.'.instructor.active', $user->id) }}"
+                                                    class="dropdown-item">Active</a>
+                                            @else
+                                                <a href="{{ route($routeName.'.instructor.suspended', $user->id) }}"
+                                                    class="dropdown-item">Suspend</a>
+                                            @endif
 
-                                        <div class="dropdown-divider"></div>
-                                        <form class="" method="POST"
-                                            action="{{ route('dashboard.employee.delete', $user->id) }}"
-                                            onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item text-danger delete-record">Delete</button>
-                                        </form>
+                                            <div class="dropdown-divider"></div>
+                                            <form class="" method="POST"
+                                                action="{{ route($routeName.'.employee.delete', $user->id) }}"
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item text-danger delete-record">Delete</button>
+                                            </form>
+                                        @endrole
                                     </div>
                                 </div>
                             </td>

@@ -1,6 +1,12 @@
 <x-admin-layout>
     @section('title', 'Manage Workshop | Great Academy')
-
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
@@ -83,14 +89,7 @@
                                 aria-expanded="false">
                                 <span><i class="bx bx-upload me-2"></i>Export</span>
                             </button>
-                            <button class="dt-button add-new btn btn-primary" tabindex="0"
-                                aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasAddUser">
-                                <span>
-                                    <i class="bx bx-plus me-0 me-sm-2"></i>
-                                    <span class="d-none d-lg-inline-block">Add New Workshop</span>
-                                </span>
-                            </button>
+                            
                         </div>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
                             <td>
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.order.course.view', $item->ocode) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.order.course.view', $item->ocode) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $item->ocode }}
                                             </span>
@@ -127,7 +126,7 @@
                             <td class="sorting_1">
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.workshop.view', $item->slug) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.workshop.view', $item->slug) }}" class="text-body text-truncate">
                                             <span class="fw-">
                                                 {{ $item->name }}
                                             </span>
@@ -139,7 +138,7 @@
                             <td>
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.student.view', $item->uid) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.student.view', $item->uid) }}" class="text-body text-truncate">
                                             <span class="fw-">
                                                 {{ $item->username }}
                                             </span>
@@ -172,23 +171,24 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.order.workshop.view', $item->ocode) }}" id='confirm-color' class="dropdown-item">View</a>
+                                        <a href="{{ route($routeName.'.order.workshop.view', $item->ocode) }}" id='confirm-color' class="dropdown-item">View</a>
                                         @if ($item->ostatus == 3 || $item->ostatus == 2)
-                                            <a href="{{ route('dashboard.order.workshop.active', $item->ocode) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route($routeName.'.order.workshop.active', $item->ocode) }}" class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.order.workshop.inactive', $item->ocode) }}" class="dropdown-item">Inactive</a>
+                                            <a href="{{ route($routeName.'.order.workshop.inactive', $item->ocode) }}" class="dropdown-item">Inactive</a>
                                         @endif
-
-                                        <div class="dropdown-divider"></div>
-                                        <form class="" method="POST"
-                                            action="{{ route('dashboard.workshop.delete', $item->ocode) }}"
-                                            {{-- onsubmit="return confirm('Are you sure?');" --}}
-                                            >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
-                                        </form>
+                                        @role('admin')
+                                            <div class="dropdown-divider"></div>
+                                            <form class="" method="POST"
+                                                action="{{ route($routeName.'.order.workshop.delete', $item->ocode) }}"
+                                                {{-- onsubmit="return confirm('Are you sure?');" --}}
+                                                >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
+                                            </form>
+                                        @endrole
                                     </div>
                                 </div>
                             </td>
@@ -202,67 +202,7 @@
             </table>
         </div>
         <!-- Offcanvas to add new workshop -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
-            aria-labelledby="offcanvasAddUserLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add New Workshop</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" enctype="multipart/form-data" method="POST" action="{{ route('dashboard.workshop.add') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-image">Select Image</label>
-                        <input type="file" class="form-control" id="add-workshop-image"
-                            name="image" accept=".gif, .jpg, .jpeg, .png" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-name">Name</label>
-                        <input type="text" class="form-control" id="add-workshop-name" placeholder="Type your workshop name .."
-                            name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-desc">Description</label>
-                        <textarea name="desc" placeholder="Describe your workshop .." id="add-workshop-desc" class="form-control" cols="30" rows="10" required></textarea>
 
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-price">Price</label>
-                        <input type="number" id="add-workshop-price" class="form-control phone-mask"
-                            placeholder="Type price here .." name="price" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-level">Level</label>
-                        <input type="number" id="add-workshop-level" class="form-control"
-                            placeholder="Type level here .." name="level" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-workshop-hours">Hours</label>
-                        <input type="number" id="add-workshop-hours" class="form-control"
-                            placeholder="Type hours here .." name="hours" required>
-                    </div>
-                    {{-- <div class="mb-3">
-                        <label class="form-label" for="add-user-password">Password</label>
-                        <input type="password" id="add-user-password" class="form-control"
-                            placeholder="Type Password here ..">
-                    </div> --}}
-
-                    <div class="mb-4">
-                        <label class="form-label" for="workshop-section">Select Section</label>
-                        <select id="workshop-section" name="section" class="form-select" required>
-                            <option selected>Select Section</option>
-                            {{-- @foreach ($sections as $section)
-                                <option value="{{ $section->id }}">{{ $section->name }}</option>
-                            @endforeach --}}
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
-                    <button type="reset" class="btn btn-label-secondary"
-                        data-bs-dismiss="offcanvas">Cancel</button>
-                </form>
-            </div>
-        </div>
     </div>
 
 

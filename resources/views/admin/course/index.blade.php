@@ -1,5 +1,12 @@
 <x-admin-layout>
     @section('title', 'Manage Courses | Great Academy')
+    @role('Admin')
+        @php($routeName = 'dashboard')
+    @elserole('Employee')
+        @php($routeName='emp')
+    @elserole('instructor')
+        @php($routeName='ins')
+    @endrole
 
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
@@ -121,12 +128,12 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.course.view', $item->slug) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.course.view', $item->slug) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $item->name }}
                                             </span>
                                         </a>
-                                        <a href="{{ route('dashboard.section.view', $item->section_id) }}">
+                                        <a href="{{ route($routeName.'.section.view', $item->section_id) }}">
                                             <small class="text-muted">{{ $item->section_name }}</small>
                                         </a>
                                     </div>
@@ -174,23 +181,25 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.course.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
-                                        @if ($item->status == 3 || $item->status == 2)
-                                            <a href="{{ route('dashboard.course.active', $item->slug) }}" class="dropdown-item">Active</a>
-                                        @else
-                                            <a href="{{ route('dashboard.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
-                                        @endif
+                                        <a href="{{ route($routeName.'.course.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                        @role('Admin')
+                                            @if ($item->status == 3 || $item->status == 2)
+                                                <a href="{{ route($routeName.'.course.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                            @else
+                                                <a href="{{ route($routeName.'.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                            @endif
 
-                                        <div class="dropdown-divider"></div>
-                                        <form class="" method="POST"
-                                            action="{{ route('dashboard.course.delete', $item->slug) }}"
-                                            {{-- onsubmit="return confirm('Are you sure?');" --}}
-                                            >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
-                                        </form>
+                                            <div class="dropdown-divider"></div>
+                                            <form class="" method="POST"
+                                                action="{{ route($routeName.'.course.delete', $item->slug) }}"
+                                                {{-- onsubmit="return confirm('Are you sure?');" --}}
+                                                >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
+                                            </form>
+                                        @endrole
                                     </div>
                                 </div>
                             </td>
@@ -203,68 +212,70 @@
                 </tbody>
             </table>
         </div>
-        <!-- Offcanvas to add new course -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
-            aria-labelledby="offcanvasAddUserLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add New Course</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        @role('Admin')
+            <!-- Offcanvas to add new course -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
+                aria-labelledby="offcanvasAddUserLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add New Course</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body mx-0 flex-grow-0">
+                    <form class="add-new-user pt-0" enctype="multipart/form-data" method="POST" action="{{ route($routeName.'.course.add') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-image">Select Image</label>
+                            <input type="file" class="form-control" id="add-course-image"
+                                name="image" accept=".gif, .jpg, .jpeg, .png" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-name">Name</label>
+                            <input type="text" class="form-control" id="add-course-name" placeholder="Type your course name .."
+                                name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-desc">Description</label>
+                            <textarea name="desc" placeholder="Describe your course .." id="add-course-desc" class="form-control" cols="30" rows="10" required></textarea>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-price">Price</label>
+                            <input type="number" id="add-course-price" class="form-control phone-mask"
+                                placeholder="Type price here .." name="price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-level">Level</label>
+                            <input type="number" id="add-course-level" class="form-control"
+                                placeholder="Type level here .." name="level" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-course-hours">Hours</label>
+                            <input type="number" id="add-course-hours" class="form-control"
+                                placeholder="Type hours here .." name="hours" required>
+                        </div>
+                        {{-- <div class="mb-3">
+                            <label class="form-label" for="add-user-password">Password</label>
+                            <input type="password" id="add-user-password" class="form-control"
+                                placeholder="Type Password here ..">
+                        </div> --}}
+
+                        <div class="mb-4">
+                            <label class="form-label" for="course-section">Select Section</label>
+                            <select id="course-section" name="section" class="form-select" required>
+                                <option selected>Select Section</option>
+                                @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                        <button type="reset" class="btn btn-label-secondary"
+                            data-bs-dismiss="offcanvas">Cancel</button>
+                    </form>
+                </div>
             </div>
-            <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" enctype="multipart/form-data" method="POST" action="{{ route('dashboard.course.add') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-image">Select Image</label>
-                        <input type="file" class="form-control" id="add-course-image"
-                            name="image" accept=".gif, .jpg, .jpeg, .png" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-name">Name</label>
-                        <input type="text" class="form-control" id="add-course-name" placeholder="Type your course name .."
-                            name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-desc">Description</label>
-                        <textarea name="desc" placeholder="Describe your course .." id="add-course-desc" class="form-control" cols="30" rows="10" required></textarea>
-
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-price">Price</label>
-                        <input type="number" id="add-course-price" class="form-control phone-mask"
-                            placeholder="Type price here .." name="price" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-level">Level</label>
-                        <input type="number" id="add-course-level" class="form-control"
-                            placeholder="Type level here .." name="level" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="add-course-hours">Hours</label>
-                        <input type="number" id="add-course-hours" class="form-control"
-                            placeholder="Type hours here .." name="hours" required>
-                    </div>
-                    {{-- <div class="mb-3">
-                        <label class="form-label" for="add-user-password">Password</label>
-                        <input type="password" id="add-user-password" class="form-control"
-                            placeholder="Type Password here ..">
-                    </div> --}}
-
-                    <div class="mb-4">
-                        <label class="form-label" for="course-section">Select Section</label>
-                        <select id="course-section" name="section" class="form-select" required>
-                            <option selected>Select Section</option>
-                            @foreach ($sections as $section)
-                                <option value="{{ $section->id }}">{{ $section->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
-                    <button type="reset" class="btn btn-label-secondary"
-                        data-bs-dismiss="offcanvas">Cancel</button>
-                </form>
-            </div>
-        </div>
+        @endrole
     </div>
 
 

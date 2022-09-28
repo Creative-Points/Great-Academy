@@ -1,5 +1,12 @@
 @section('title', 'View Student | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Orders / Workshop /</span> View
     </h4>
@@ -111,9 +118,9 @@
                         </ul>
                         {{-- <div class="d-flex justify-content-center pt-3">
                             @if ($order->ustatus == 1 || $order->ustatus == 2)
-                                <a href="{{ route('dashboard.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route($routeName.'.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
                             @elseif($order->ustatus == 3)
-                                <a href="{{ route('dashboard.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route($routeName.'.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div> --}}
                     </div>
@@ -202,9 +209,9 @@
                         </ul>
                         {{-- <div class="d-flex justify-content-center pt-3">
                             @if ($order->ustatus == 1 || $order->ustatus == 2)
-                                <a href="{{ route('dashboard.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route($routeName.'.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
                             @elseif($order->ustatus == 3)
-                                <a href="{{ route('dashboard.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route($routeName.'.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div> --}}
                     </div>
@@ -295,7 +302,7 @@
                             <div class="divider-text">Order Pay</div>
                         </div>
                         <form method="POST" class="row g-3"
-                            action="{{ route('dashboard.order.workshop.pay', $order->ocode) }}">
+                            action="{{ route($routeName.'.order.workshop.pay', $order->ocode) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -306,7 +313,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Pay</button>
-                                <a href="{{ route('dashboard.order.workshop.manage') }}"
+                                <a href="{{ route($routeName.'.order.workshop.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -314,7 +321,7 @@
                             <div class="divider-text">Student progression in this course</div>
                         </div>
                         <form method="POST" class="row g-3"
-                            action="{{ route('dashboard.order.course.update', $order->ocode) }}">
+                            action="{{ route($routeName.'.order.course.update', $order->ocode) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -369,7 +376,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.order.course.manage') }}"
+                                <a href="{{ route($routeName.'.order.course.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -378,19 +385,19 @@
                         </div>
                         <div class="d-flex justify-content-center pt-3">
                             @if ($order->ostatus == 1)
-                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.suspend', $order->ocode) }}"
                                     class="btn btn-label-danger suspend-user">Suspended</a>
-                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.inactive', $order->ocode) }}"
                                     class="btn btn-label-secondary suspend-user">Inactive</a>
                             @elseif($order->ostatus == 2)
-                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.suspend', $order->ocode) }}"
                                     class="btn btn-label-danger suspend-user">Suspended</a>
-                                <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.active', $order->ocode) }}"
                                     class="btn btn-label-success suspend-user">Active</a>
                             @elseif($order->ostatus == 3)
-                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.inactive', $order->ocode) }}"
                                     class="btn btn-label-secondary suspend-user">Inactive</a>
-                                <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.active', $order->ocode) }}"
                                     class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div>
@@ -439,7 +446,7 @@
                             <h3>Edit User Information</h3>
                             <p>Updating Student details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', $order->id) }}">
+                        <form method="POST" class="row g-3" action="{{ route($routeName.'.student.update', $order->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -484,7 +491,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.student.manage') }}"
+                                <a href="{{ route($routeName.'.student.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -493,7 +500,7 @@
                         <!-- Change Password -->
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
-                            <form id="formChangePassword" method="POST" action="{{ route('dashboard.student.password', $order->id) }}">
+                            <form id="formChangePassword" method="POST" action="{{ route($routeName.'.student.password', $order->id) }}">
                                 @csrf
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met

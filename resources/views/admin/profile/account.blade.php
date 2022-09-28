@@ -1,5 +1,12 @@
 @section('title', 'Profile | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Employee /</span> My Profile
     </h4>
@@ -80,16 +87,6 @@
                                 @endif
                             </li>
                             <li class="mb-3">
-                                <span class="fw-bold me-2">Role:</span>
-                                <span>
-                                    {{ '5' }}
-                                </span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fw-bold me-2">Code:</span>
-                                <span>{{auth()->user()->code}}</span>
-                            </li>
-                            <li class="mb-3">
                                 <span class="fw-bold me-2">Contact:</span>
                                 <span>{{ auth()->user()->phone }}</span>
                             </li>
@@ -106,13 +103,6 @@
                                 <span>{{ auth()->user()->faculty }}</span>
                             </li>
                         </ul>
-                        <div class="d-flex justify-content-center pt-3">
-                            @if (auth()->user()->status == 1 || auth()->user()->status == 2)
-                                <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
-                            @elseif(auth()->user()->status == 3)
-                                <a href="javascript:;" class="btn btn-label-success suspend-user">Active</a>
-                            @endif
-                        </div>
                     </div>
                 </div>
             </div>
@@ -158,7 +148,7 @@
                             <h3>Edit User Information</h3>
                             <p>Updating Student details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.student.update', auth()->user()->id) }}">
+                        <form method="POST" class="row g-3" action="{{ route($routeName.'.my.update') }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -171,20 +161,10 @@
                                 <input type="text" id="add-user-contact" class="form-control phone-mask"
                                     placeholder="01234567890" name="phone" value="{{ auth()->user()->phone }}" required>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-email">Email</label>
                                 <input type="email" id="add-user-email" class="form-control"
                                     placeholder="nabil.hamada@example.com" name="email" value="{{ auth()->user()->email }}" required>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditUserStatus">Status</label>
-                                <select id="modalEditUserStatus" name="status" class="form-select"
-                                    aria-label="Default select example">
-                                    <option selected="">Status</option>
-                                    <option value="1" @if(auth()->user()->status == 1)selected @endif>Active</option>
-                                    <option value="2" @if(auth()->user()->status == 2)selected @endif>Inactive</option>
-                                    <option value="3" @if(auth()->user()->status == 3)selected @endif>Suspended</option>
-                                </select>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-address">Address</label>
@@ -194,16 +174,16 @@
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-university">University</label>
                                 <input type="text" id="add-user-university" class="form-control"
-                                    placeholder="Cairo University" name="university" value="{{ auth()->user()->university }}" required>
+                                    placeholder="Cairo University" name="university" value="{{ auth()->user()->university }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="add-user-faculty">Faculty of</label>
                                 <input type="text" id="add-user-faculty" class="form-control"
-                                    placeholder="IS" name="faculty" value="{{ auth()->user()->faculty }}" required>
+                                    placeholder="IS" name="faculty" value="{{ auth()->user()->faculty }}" >
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.student.manage') }}"
+                                <a href="{{ route($routeName.'.home') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -212,21 +192,26 @@
                         <!-- Change Password -->
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
-                            <form id="formChangePassword" method="POST" onsubmit="return false">
+                            <form id="formChangePassword" method="POST" action="{{ route($routeName.'.my.password') }}">
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met
                                     </h6>
                                     <span>Minimum 8 characters long, uppercase & symbol</span>
                                 </div>
+                                @csrf
                                 <div class="row">
                                     <div class="mb-3 col-12 col-sm-6 form-password-toggle">
                                         <label class="form-label" for="newPassword">New Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input class="form-control" type="password" id="newPassword"
-                                                name="newPassword"
+                                            <input 
+                                                class="form-control" 
+                                                type="password" 
+                                                id="newPassword"
+                                                name="password"
                                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;">
-                                            <span class="input-group-text cursor-pointer"><i
-                                                    class="bx bx-hide"></i></span>
+                                            <span class="input-group-text cursor-pointer">
+                                                <i class="bx bx-hide"></i>
+                                            </span>
                                         </div>
                                     </div>
 

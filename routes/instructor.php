@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth', 'role:instructor'])->name('dashboard.')->prefix('dashboard')->group(function () {
+Route::middleware(['auth', 'role:instructor'])->name('dashboard.')->prefix('ins')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'account'])->name('account');
 

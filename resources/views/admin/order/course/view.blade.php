@@ -1,5 +1,12 @@
 @section('title', 'View Student | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Orders / Courses /</span> View
     </h4>
@@ -87,9 +94,9 @@
                         </ul>
                         {{-- <div class="d-flex justify-content-center pt-3">
                             @if ($order->ustatus == 1 || $order->ustatus == 2)
-                                <a href="{{ route('dashboard.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route($routeName.'.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
                             @elseif($order->ustatus == 3)
-                                <a href="{{ route('dashboard.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route($routeName.'.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div> --}}
                     </div>
@@ -141,28 +148,10 @@
                     <h5 class="pb-2 border-bottom mb-4">Details</h5>
                     <div class="info-container">
                         <ul class="list-unstyled">
-                            {{-- <li class="mb-3">
-                                <span class="fw-bold me-2">Name:</span>
-                                <span>{{ $order->name }}</span>
-                            </li> --}}
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Description:</span><br>
                                 <span style="white-space: pre">{{ $order->description }}</span>
                             </li>
-                            {{-- <li class="mb-3">
-                                <span class="fw-bold me-2">Status:</span>
-                                @if ($order->status == 1)
-                                    <span class="badge bg-label-success">Active</span>
-                                @elseif ($order->status == 2)
-                                    <span class="badge bg-label-secondary">Inactive</span>
-                                @else
-                                    <span class="badge bg-label-danger">Suspended</span>
-                                @endif
-                            </li> --}}
-                            {{-- <li class="mb-3">
-                                <span class="fw-bold me-2">Role:</span>
-                                <span>Student</span>
-                            </li> --}}
                             <li class="mb-3">
                                 <span class="fw-bold me-2">Price:</span>
                                 <span>{{ $order->price }}</span>
@@ -178,9 +167,9 @@
                         </ul>
                         {{-- <div class="d-flex justify-content-center pt-3">
                             @if ($order->ustatus == 1 || $order->ustatus == 2)
-                                <a href="{{ route('dashboard.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                <a href="{{ route($routeName.'.student.suspended', $order->uid) }}" class="btn btn-label-danger suspend-user">Suspended</a>
                             @elseif($order->ustatus == 3)
-                                <a href="{{ route('dashboard.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route($routeName.'.student.active', $order->uid) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div> --}}
                     </div>
@@ -278,7 +267,7 @@
                             <div class="divider-text">Order Pay</div>
                         </div>
                         <form method="POST" class="row g-3"
-                            action="{{ route('dashboard.order.workshop.pay', $order->ocode) }}">
+                            action="{{ route($routeName.'.order.workshop.pay', $order->ocode) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -289,7 +278,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Pay</button>
-                                <a href="{{ route('dashboard.order.workshop.manage') }}"
+                                <a href="{{ route($routeName.'.order.workshop.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -297,7 +286,7 @@
                             <div class="divider-text">Student progression in this course</div>
                         </div>
                         <form method="POST" class="row g-3"
-                            action="{{ route('dashboard.order.course.update', $order->ocode) }}">
+                            action="{{ route($routeName.'.order.course.update', $order->ocode) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -352,7 +341,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.order.course.manage') }}"
+                                <a href="{{ route($routeName.'.order.course.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -361,19 +350,19 @@
                         </div>
                         <div class="d-flex justify-content-center pt-3">
                             @if ($order->ostatus == 1)
-                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.suspend', $order->ocode) }}"
                                     class="btn btn-label-danger suspend-user">Suspended</a>
-                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.inactive', $order->ocode) }}"
                                     class="btn btn-label-secondary suspend-user">Inactive</a>
                             @elseif($order->ostatus == 2)
-                                <a href="{{ route('dashboard.order.workshop.suspend', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.suspend', $order->ocode) }}"
                                     class="btn btn-label-danger suspend-user">Suspended</a>
-                                <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.active', $order->ocode) }}"
                                     class="btn btn-label-success suspend-user">Active</a>
                             @elseif($order->ostatus == 3)
-                                <a href="{{ route('dashboard.order.workshop.inactive', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.inactive', $order->ocode) }}"
                                     class="btn btn-label-secondary suspend-user">Inactive</a>
-                                <a href="{{ route('dashboard.order.workshop.active', $order->ocode) }}"
+                                <a href="{{ route($routeName.'.order.workshop.active', $order->ocode) }}"
                                     class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div>

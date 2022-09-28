@@ -1,10 +1,12 @@
 <x-admin-layout>
     @section('title', 'Manage Material | Great Academy')
-
-    {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css"> --}}
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+        @elserole('Employee')
+        @php $routeName='emp'; @endphp
+        @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
@@ -119,12 +121,14 @@
                                         </div>
                                     </div> --}}
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.material.display', $item->slug) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName . '.material.display', $item->slug) }}"
+                                            class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $item->name }}
                                             </span>
                                         </a>
-                                        <small class="text-muted">{{ $item->type == 'Course' ? $item->cBelongTo : $item->wBelongTo }}</small>
+                                        <small
+                                            class="text-muted">{{ $item->type == 'Course' ? $item->cBelongTo : $item->wBelongTo }}</small>
                                     </div>
                                 </div>
                             </td>
@@ -147,27 +151,32 @@
                             </td>
                             <td>
                                 <div class="d-inline-block">
-                                    <button
-                                        class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown">
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.material.display', $item->slug) }}" class="dropdown-item">View</a>
+                                        <a href="{{ route($routeName . '.material.display', $item->slug) }}"
+                                            class="dropdown-item">View</a>
+                                        @hasanyrole('Admin|instructor')
                                         @if ($item->status == 3 || $item->status == 2)
-                                            <a href="{{ route('dashboard.material.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route($routeName . '.material.active', $item->slug) }}"
+                                                class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.material.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                            <a href="{{ route($routeName . '.material.inactive', $item->slug) }}"
+                                                class="dropdown-item">Inactive</a>
                                         @endif
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.material.delete', $item->slug) }}"
+                                            action="{{ route($routeName . '.material.delete', $item->slug) }}"
                                             onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="dropdown-item text-danger delete-record">Delete</button>
                                         </form>
+                                        @endhasanyrole
                                     </div>
                                 </div>
                             </td>
@@ -185,26 +194,22 @@
             aria-labelledby="offcanvasAddUserLabel">
             <div class="offcanvas-header">
                 <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add New Material</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" id="" enctype="multipart/form-data" method="POST" action="{{ route('dashboard.material.add') }}">
+                <form class="add-new-user pt-0" id="" enctype="multipart/form-data" method="POST"
+                    action="{{ auth()->user()->hasRole('Admin|instructor') ? route($routeName . '.material.add') : '' }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-course-material">Select File</label>
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="add-course-material"
-                            name="material"
-                            accept=".pdf"
-                            {{-- accept=".xls, .xlsx, .ppt, .pptx, .txt, .docx, .doc, .pdf" --}}
-                            required>
+                        <input type="file" class="form-control" id="add-course-material" name="material"
+                            accept=".pdf" {{-- accept=".xls, .xlsx, .ppt, .pptx, .txt, .docx, .doc, .pdf" --}} required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="add-course-name">Name</label>
-                        <input type="text" class="form-control" id="add-course-name" placeholder="Type your material name .."
-                            name="name" required>
+                        <input type="text" class="form-control" id="add-course-name"
+                            placeholder="Type your material name .." name="name" required>
                     </div>
                     <div class="divider">
                         <div class="divider-text">Select Course</div>
@@ -243,23 +248,11 @@
 
     <!-- Vendors JS -->
     <script src="/admin/asset/vendor/libs/moment/moment.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables/jquery.dataTables.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-buttons/datatables-buttons.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
-    <script src="/admin/asset/vendor/libs/jszip/jszip.js"></script>
-    <script src="/admin/asset/vendor/libs/pdfmake/pdfmake.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-buttons/buttons.html5.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables-buttons/buttons.print.js"></script>
-    <script src="/admin/asset/vendor/libs/select2/select2.js"></script>
-    <script src="/admin/asset/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
-    <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-    <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+    {{-- <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script> --}}
+    {{-- <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script> --}}
     <script src="/admin/asset/vendor/libs/cleavejs/cleave.js"></script>
     <script src="/admin/asset/vendor/libs/cleavejs/cleave-phone.js"></script>
     <!-- Page JS -->
-    <script src="/admin/asset/js/app-user-list.js"></script>
+    {{-- <script src="/admin/asset/js/app-user-list.js"></script> --}}
 
 </x-admin-layout>

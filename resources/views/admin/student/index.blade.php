@@ -1,5 +1,11 @@
 <x-admin-layout>
-
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
 
     {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
@@ -50,14 +56,16 @@
                                 aria-expanded="false">
                                 <span><i class="bx bx-upload me-2"></i>Export</span>
                             </button>
-                            <button class="dt-button add-new btn btn-primary" tabindex="0"
-                                aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasAddUser">
-                                <span>
-                                    <i class="bx bx-plus me-0 me-sm-2"></i>
-                                    <span class="d-none d-lg-inline-block">Add New Student</span>
-                                </span>
-                            </button>
+                            @hasanyrole('Admin|Employee')
+                                <button class="dt-button add-new btn btn-primary" tabindex="0"
+                                    aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasAddUser">
+                                    <span>
+                                        <i class="bx bx-plus me-0 me-sm-2"></i>
+                                        <span class="d-none d-lg-inline-block">Add New Student</span>
+                                    </span>
+                                </button>
+                            @endhasanyrole
                         </div>
                     </div>
                 </div>
@@ -102,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.student.view', $user->id) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.student.view', $user->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">{{ $user->name }}</span>
                                         </a>
                                         <small class="text-muted">{{ $user->email }}</small>
@@ -159,22 +167,25 @@
                                     <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.student.view', $user->id) }}" class="dropdown-item">View</a>
-                                        @if ($user->status == 3 || $user->status == 2)
-                                            <a href="{{ route('dashboard.student.active', $user->id) }}" class="dropdown-item">Active</a>
-                                        @else
-                                            <a href="{{ route('dashboard.student.suspended', $user->id) }}" class="dropdown-item">Suspend</a>
-                                        @endif
-                                        
-                                        <div class="dropdown-divider"></div>
-                                        <form
-                                            method="POST"
-                                            action="{{ route('dashboard.employee.delete', $user->id) }}"
-                                            onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="dropdown-item text-danger delete-record">Delete</button>
-                                        </form>
+                                        <a href="{{ route($routeName.'.student.view', $user->id) }}" class="dropdown-item">View</a>
+                                        @hasanyrole('Admin|Employee')
+                                            @if ($user->status == 3 || $user->status == 2)
+                                                <a href="{{ route($routeName.'.student.active', $user->id) }}" class="dropdown-item">Active</a>
+                                            @else
+                                                <a href="{{ route($routeName.'.student.suspended', $user->id) }}" class="dropdown-item">Suspend</a>
+                                            @endif
+                                            @role('Admin')
+                                                <div class="dropdown-divider"></div>
+                                                <form
+                                                    method="POST"
+                                                    action="{{ route($routeName.'.employee.delete', $user->id) }}"
+                                                    onsubmit="return confirm('Are you sure?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item text-danger delete-record">Delete</button>
+                                                </form>
+                                            @endrole
+                                        @endhasanyrole
                                     </div>
                                 </div>
                             </td>
@@ -185,6 +196,7 @@
                 </tbody>
             </table>
         </div>
+        @role('Admin|Employee')
         <!-- Offcanvas to add new user -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
             aria-labelledby="offcanvasAddUserLabel">
@@ -195,7 +207,7 @@
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
                 <form class="add-new-user pt-0" id="" method="POST"
-                    action="{{ route('dashboard.student.add') }}">
+                    action="{{ route($routeName.'.student.add') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-user-fullname">Full Name</label>
@@ -248,6 +260,7 @@
                 </form>
             </div>
         </div>
+        @endrole
     </div>
 
 

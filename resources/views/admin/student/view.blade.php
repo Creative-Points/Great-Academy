@@ -1,10 +1,20 @@
 @section('title', 'View Student | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Users / Student /</span> View
     </h4>
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
+    @endif
+    @if (session('error'))
+        <h6 class="alert alert-danger">{{ session('error') }}</h6>
     @endif
     @if ($errors->any())
         <ul class="alert alert-danger">
@@ -100,15 +110,17 @@
                                 <span>{{ $users->faculty }}</span>
                             </li>
                         </ul>
-                        <div class="d-flex justify-content-center pt-3">
-                            @if ($users->status == 1 || $users->status == 2)
-                                <a href="{{ route('dashboard.student.suspended', $users->id) }}"
-                                    class="btn btn-label-danger suspend-user">Suspended</a>
-                            @elseif($users->status == 3)
-                                <a href="{{ route('dashboard.student.active', $users->id) }}"
-                                    class="btn btn-label-success suspend-user">Active</a>
-                            @endif
-                        </div>
+                        @hasanyrole('Admin|Employee')
+                            <div class="d-flex justify-content-center pt-3">
+                                @if ($users->status == 1 || $users->status == 2)
+                                    <a href="{{ route($routeName.'.student.suspended', $users->id) }}"
+                                        class="btn btn-label-danger suspend-user">Suspended</a>
+                                @elseif($users->status == 3)
+                                    <a href="{{ route($routeName.'.student.active', $users->id) }}"
+                                        class="btn btn-label-success suspend-user">Active</a>
+                                @endif
+                            </div>
+                        @endhasanyrole
                     </div>
                 </div>
             </div>
@@ -155,7 +167,7 @@
                             <p>Updating Student details will receive a privacy audit.</p>
                         </div>
                         <form method="POST" class="row g-3"
-                            action="{{ route('dashboard.student.update', $users->id) }}">
+                            action="{{ route($routeName.'.student.update', $users->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -206,7 +218,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.student.manage') }}"
+                                <a href="{{ route($routeName.'.student.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -216,7 +228,7 @@
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
                             <form id="formChangePassword" method="POST"
-                                action="{{ route('dashboard.student.password', $users->id) }}">
+                                action="{{ route($routeName.'.student.password', $users->id) }}">
                                 @csrf
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met
@@ -288,14 +300,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <a href="{{ route('dashboard.course.view', $item->slug) }}"
+                                                            <a href="{{ route($routeName.'.course.view', $item->slug) }}"
                                                                 class="text-body text-truncate">
                                                                 <span class="fw-semibold">
                                                                     {{ $item->name }}
                                                                 </span>
                                                             </a>
                                                             <a
-                                                                href="{{ route('dashboard.section.view', $item->sslug) }}">
+                                                                href="{{ route($routeName.'.section.view', $item->sslug) }}">
                                                                 <small
                                                                     class="text-muted">{{ $item->section_name }}</small>
                                                             </a>
@@ -364,24 +376,25 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a href="{{ route('dashboard.order.course.view', $item->ocode) }}"
+                                                            <a href="{{ route($routeName.'.order.course.view', $item->ocode) }}"
                                                                 class="dropdown-item">View</a>
                                                             {{-- @if ($item->status == 3 || $item->status == 2)
-                                                            <a href="{{ route('dashboard.course.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                                            <a href="{{ route($routeName.'.course.active', $item->slug) }}" class="dropdown-item">Active</a>
                                                         @else
-                                                            <a href="{{ route('dashboard.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                                            <a href="{{ route($routeName.'.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                         @endif --}}
-
-                                                            <div class="dropdown-divider"></div>
-                                                            <form class="" method="POST"
-                                                                action="{{ route('dashboard.course.delete', $item->slug) }}"
-                                                                onsubmit="return confirm('Are you sure?');">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                    class="dropdown-item text-danger delete-record"
-                                                                    id="confirm-">Delete</button>
-                                                            </form>
+                                                            @role('Admin')
+                                                                {{-- <div class="dropdown-divider"></div>
+                                                                <form class="" method="POST"
+                                                                    action="{{ route($routeName.'.course.delete', $item->slug) }}"
+                                                                    onsubmit="return confirm('Are you sure?');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="dropdown-item text-danger delete-record"
+                                                                        id="confirm-">Delete</button>
+                                                                </form> --}}
+                                                            @endrole
                                                         </div>
                                                     </div>
                                                 </td>
@@ -430,14 +443,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <a href="{{ route('dashboard.course.view', $item->slug) }}"
+                                                            <a href="{{ route($routeName.'.course.view', $item->slug) }}"
                                                                 class="text-body text-truncate">
                                                                 <span class="fw-semibold">
                                                                     {{ $item->name }}
                                                                 </span>
                                                             </a>
                                                             <a
-                                                                href="{{ route('dashboard.section.view', $item->sslug) }}">
+                                                                href="{{ route($routeName.'.section.view', $item->sslug) }}">
                                                                 <small
                                                                     class="text-muted">{{ $item->section_name }}</small>
                                                             </a>
@@ -506,24 +519,25 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a href="{{ route('dashboard.order.course.view', $item->ocode) }}"
+                                                            <a href="{{ route($routeName.'.order.workshop.view', $item->ocode) }}"
                                                                 class="dropdown-item">View</a>
                                                             {{-- @if ($item->status == 3 || $item->status == 2)
-                                                            <a href="{{ route('dashboard.course.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                                            <a href="{{ route($routeName.'.course.active', $item->slug) }}" class="dropdown-item">Active</a>
                                                         @else
-                                                            <a href="{{ route('dashboard.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                                            <a href="{{ route($routeName.'.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                         @endif --}}
-
-                                                            <div class="dropdown-divider"></div>
-                                                            <form class="" method="POST"
-                                                                action="{{ route('dashboard.course.delete', $item->slug) }}"
-                                                                onsubmit="return confirm('Are you sure?');">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                    class="dropdown-item text-danger delete-record"
-                                                                    id="confirm-">Delete</button>
-                                                            </form>
+                                                            @role('Admin')
+                                                                {{-- <div class="dropdown-divider"></div>
+                                                                <form class="" method="POST"
+                                                                    action="{{ route($routeName.'.course.delete', $item->slug) }}"
+                                                                    onsubmit="return confirm('Are you sure?');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="dropdown-item text-danger delete-record"
+                                                                        id="confirm-">Delete</button>
+                                                                </form> --}}
+                                                            @endrole
                                                         </div>
                                                     </div>
                                                 </td>

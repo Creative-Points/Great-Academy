@@ -1,5 +1,12 @@
 @section('title', 'View Workshop | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Workshops / {{ $workshop->name }} /</span> View
     </h4>
@@ -81,13 +88,15 @@
                                 <span>{{ $workshop->name }}</span>
                             </li> --}}
                         </ul>
-                        <div class="d-flex justify-content-center pt-3">
-                            @if ($workshop->status == 1)
-                                <a href="{{ route('dashboard.workshop.inactive', $workshop->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
-                            @elseif($workshop->status == 2)
-                                <a href="{{ route('dashboard.workshop.active', $workshop->slug) }}" class="btn btn-label-success suspend-user">Active</a>
-                            @endif
-                        </div>
+                        @role('Admin')
+                            <div class="d-flex justify-content-center pt-3">
+                                @if ($workshop->status == 1)
+                                    <a href="{{ route($routeName.'.workshop.inactive', $workshop->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
+                                @elseif($workshop->status == 2)
+                                    <a href="{{ route($routeName.'.workshop.active', $workshop->slug) }}" class="btn btn-label-success suspend-user">Active</a>
+                                @endif
+                            </div>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -95,11 +104,12 @@
         </div>
         <!--/ User Sidebar -->
 
-
+        @role('Admin')
         <!-- User Content -->
         <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
             <div class="nav-align-top mb-4">
                 <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                    @role('Admin')
                     <li class="nav-item">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-account" aria-controls="navs-pills-justified-account"
@@ -114,6 +124,7 @@
                             aria-controls="navs-pills-justified-security" aria-selected="false"><i
                                 class="bx bxs-image me-1"></i>Image</button>
                     </li>
+                    @endrole
                     {{-- <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-workshop" aria-controls="navs-pills-justified-security"
@@ -126,6 +137,7 @@
                     </li> --}}
                 </ul>
                 <div class="tab-content">
+                    @role('Admin')
                     <div class="tab-pane fade show active" id="navs-pills-justified-account" role="tabpanel">
 
                         {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
@@ -133,7 +145,7 @@
                             <h3>Edit Workshop Information</h3>
                             <p>Updating Workshop details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.workshop.update', $workshop->slug) }}">
+                        <form method="POST" class="row g-3" action="{{ route($routeName.'.workshop.update', $workshop->slug) }}">
                             @method('PUT')
                             @csrf
                             {{-- <div class="col-12 col-md-12">
@@ -195,7 +207,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.workshop.manage') }}"
+                                <a href="{{ route($routeName.'.workshop.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -204,7 +216,7 @@
                         <div class="text-center mb-4">
                             <h3>Edit Workshop Image</h3>
                         </div>
-                        <form method="POST" class="row g-3" enctype="multipart/form-data" action="{{ route('dashboard.workshop.image', $workshop->slug) }}">
+                        <form method="POST" class="row g-3" enctype="multipart/form-data" action="{{ route($routeName.'.workshop.image', $workshop->slug) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-12">
@@ -214,11 +226,12 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.workshop.manage') }}"
+                                <a href="{{ route($routeName.'.workshop.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
                     </div>
+                    @endrole
                     <div class="tab-pane fade" id="navs-pills-justified-workshop" role="tabpanel">
                         <!-- Project table -->
                         <div class=" mb-4">
@@ -263,6 +276,7 @@
             </div>
         </div>
         <!--/ User Content -->
+        @endrole
     </div>
 
 

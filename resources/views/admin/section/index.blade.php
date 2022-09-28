@@ -1,6 +1,12 @@
 <x-admin-layout>
     @section('title', 'Manage Sections | Great Academy')
-
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
@@ -83,6 +89,7 @@
                                 aria-expanded="false">
                                 <span><i class="bx bx-upload me-2"></i>Export</span>
                             </button>
+                            @role('Admin')
                             <button class="dt-button add-new btn btn-primary" tabindex="0"
                                 aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasAddUser">
@@ -91,6 +98,7 @@
                                     <span class="d-none d-lg-inline-block">Add New Section</span>
                                 </span>
                             </button>
+                            @endrole
                         </div>
                     </div>
                 </div>
@@ -117,7 +125,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.section.view', $item->slug) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.section.view', $item->slug) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $item->name }}
                                             </span>
@@ -140,22 +148,24 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.section.view', $item->slug) }}" class="dropdown-item">View</a>
+                                        <a href="{{ route($routeName.'.section.view', $item->slug) }}" class="dropdown-item">View</a>
+                                        @role('Admin')
                                         @if ($item->status == 3 || $item->status == 2)
-                                            <a href="{{ route('dashboard.section.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                            <a href="{{ route($routeName.'.section.active', $item->slug) }}" class="dropdown-item">Active</a>
                                         @else
-                                            <a href="{{ route('dashboard.section.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                            <a href="{{ route($routeName.'.section.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                         @endif
 
                                         <div class="dropdown-divider"></div>
                                         <form class="" method="POST"
-                                            action="{{ route('dashboard.section.delete', $item->slug) }}"
+                                            action="{{ route($routeName.'.section.delete', $item->slug) }}"
                                             onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="dropdown-item text-danger delete-record">Delete</button>
                                         </form>
+                                        @endrole
                                     </div>
                                 </div>
                             </td>
@@ -169,6 +179,7 @@
             </table>
         </div>
         <!-- Offcanvas to add new section -->
+        @role('Admin')
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser"
             aria-labelledby="offcanvasAddUserLabel">
             <div class="offcanvas-header">
@@ -176,7 +187,7 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <form class="add-new-user pt-0" id="" enctype="multipart/form-data" method="POST" action="{{ route('dashboard.section.add') }}">
+                <form class="add-new-user pt-0" id="" enctype="multipart/form-data" method="POST" action="{{ route($routeName.'.section.add') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-course-image">Select Image</label>
@@ -200,13 +211,14 @@
                 </form>
             </div>
         </div>
+        @endrole
     </div>
 
 
 
     <!-- Vendors JS -->
     <script src="/admin/asset/vendor/libs/moment/moment.js"></script>
-    <script src="/admin/asset/vendor/libs/datatables/jquery.dataTables.js"></script>
+    {{-- <script src="/admin/asset/vendor/libs/datatables/jquery.dataTables.js"></script>
     <script src="/admin/asset/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="/admin/asset/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
     <script src="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
@@ -221,8 +233,8 @@
     <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
     <script src="/admin/asset/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
     <script src="/admin/asset/vendor/libs/cleavejs/cleave.js"></script>
-    <script src="/admin/asset/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="/admin/asset/vendor/libs/cleavejs/cleave-phone.js"></script> --}}
     <!-- Page JS -->
-    <script src="/admin/asset/js/app-user-list.js"></script>
+    {{-- <script src="/admin/asset/js/app-user-list.js"></script> --}}
 
 </x-admin-layout>

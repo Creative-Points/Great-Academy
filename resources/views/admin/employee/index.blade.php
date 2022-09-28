@@ -1,11 +1,17 @@
 <x-admin-layout>
     @section('title', 'Manage Employees | Great Academy')
-
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
+    {{-- <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
     <link rel="stylesheet" href="/admin/asset/vendor/libs/select2/select2.css">
-    <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css">
+    <link rel="stylesheet" href="/admin/asset/vendor/libs/formvalidation/dist/css/formValidation.min.css"> --}}
     @if (session('success'))
         <h6 class="alert alert-success">{{ session('success') }}</h6>
     @endif
@@ -132,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="{{ route('dashboard.employee.view', $user->id) }}" class="text-body text-truncate">
+                                        <a href="{{ route($routeName.'.employee.view', $user->id) }}" class="text-body text-truncate">
                                             <span class="fw-semibold">
                                                 {{ $user->name }}
                                                 @if ($user->id == auth()->user()->id)
@@ -194,25 +200,27 @@
                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="{{ route('dashboard.employee.view', $user->id) }}"
+                                        <a href="{{ route($routeName.'.employee.view', $user->id) }}"
                                             class="dropdown-item">View</a>
-                                        @if ($user->status == 3 || $user->status == 2)
-                                            <a href="{{ route('dashboard.employee.active', $user->id) }}"
-                                                class="dropdown-item">Active</a>
-                                        @else
-                                            <a href="{{ route('dashboard.employee.suspended', $user->id) }}"
-                                                class="dropdown-item">Suspend</a>
-                                        @endif
+                                        @role('Admin')
+                                            @if ($user->status == 3 || $user->status == 2)
+                                                <a href="{{ route($routeName.'.employee.active', $user->id) }}"
+                                                    class="dropdown-item">Active</a>
+                                            @else
+                                                <a href="{{ route($routeName.'.employee.suspended', $user->id) }}"
+                                                    class="dropdown-item">Suspend</a>
+                                            @endif
 
-                                        <div class="dropdown-divider"></div>
-                                        <form class="" method="POST"
-                                            action="{{ route('dashboard.employee.delete', $user->id) }}"
-                                            onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item text-danger delete-record">Delete</button>
-                                        </form>
+                                            <div class="dropdown-divider"></div>
+                                            <form class="" method="POST"
+                                                action="{{ route($routeName.'.employee.delete', $user->id) }}"
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item text-danger delete-record">Delete</button>
+                                            </form>
+                                        @endrole
                                     </div>
                                 </div>
                             </td>
@@ -233,7 +241,7 @@
             </div>
             <div class="offcanvas-body mx-0 flex-grow-0">
                 <form class="add-new-user pt-0" id="" method="POST"
-                    action="{{ route('dashboard.employee.add') }}">
+                    action="{{ auth()->user()->hasRole('Admin') ?  route($routeName.'.employee.add') : '' }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="add-user-fullname">Full Name</label>

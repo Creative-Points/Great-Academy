@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\WorkshopController;
+use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Admin Dashboard Routes
-Route::name('dashboard.')->middleware(['auth', 'role:Employee'])->prefix('dashboard')->group(function () {
+// Employee Dashboard Routes
+Route::name('dashboard.')->middleware(['auth', 'role:Employee'])->prefix('employee')->group(function () {
     // Route::get('/', function(){
     //     return redirect()->route('admin.home');
     // })->name('index');

@@ -1,5 +1,12 @@
 @section('title', 'View Section | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Sections / {{ $section->name }} /</span> View
     </h4>
@@ -68,13 +75,15 @@
                                 <span>{{ $section->count }}</span>
                             </li>
                         </ul> --}}
+                        @role('Admin')
                         <div class="d-flex justify-content-center pt-3">
                             @if ($section->status == 1)
-                                <a href="{{ route('dashboard.section.inactive', $section->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
+                                <a href="{{ route($routeName.'.section.inactive', $section->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
                             @elseif($section->status == 2)
-                                <a href="{{ route('dashboard.section.active', $section->slug) }}" class="btn btn-label-success suspend-user">Active</a>
+                                <a href="{{ route($routeName.'.section.active', $section->slug) }}" class="btn btn-label-success suspend-user">Active</a>
                             @endif
                         </div>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -87,6 +96,7 @@
         <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
             <div class="nav-align-top mb-4">
                 <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                    @role('Admin')
                     <li class="nav-item">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-account" aria-controls="navs-pills-justified-account"
@@ -101,8 +111,9 @@
                             aria-controls="navs-pills-justified-security" aria-selected="false"><i
                                 class="bx bxs-image me-1"></i>Image</button>
                     </li>
+                    @endrole
                     <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                        <button type="button" class="nav-link {{ !auth()->user()->hasRole('Admin') ? 'active' : '' }}" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-course" aria-controls="navs-pills-justified-security"
                             aria-selected="false"><i class='bx bxs-graduation me-1'></i>Courses</button>
                     </li>
@@ -113,6 +124,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
+                    @role('Admin')
                     <div class="tab-pane fade show active" id="navs-pills-justified-account" role="tabpanel">
 
                         {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
@@ -120,7 +132,7 @@
                             <h3>Edit Section Information</h3>
                             <p>Updating Section details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.section.update', $section->slug) }}">
+                        <form method="POST" class="row g-3" action="{{ route($routeName.'.section.update', $section->slug) }}">
                             @method('PUT')
                             @csrf
                             {{-- <div class="col-12 col-md-12">
@@ -145,7 +157,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.section.manage') }}"
+                                <a href="{{ route($routeName.'.section.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -154,7 +166,7 @@
                         <div class="text-center mb-4">
                             <h3>Edit Section Image</h3>
                         </div>
-                        <form method="POST" class="row g-3" enctype="multipart/form-data" action="{{ route('dashboard.section.image', $section->slug) }}">
+                        <form method="POST" class="row g-3" enctype="multipart/form-data" action="{{ route($routeName.'.section.image', $section->slug) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-12">
@@ -164,12 +176,13 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.section.manage') }}"
+                                <a href="{{ route($routeName.'.section.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="navs-pills-justified-course" role="tabpanel">
+                    @endrole
+                    <div class="tab-pane fade {{ !auth()->user()->hasRole('Admin') ? 'show active' : '' }}" id="navs-pills-justified-course" role="tabpanel">
                         <!-- Project table -->
                         <div class=" mb-4">
                             <h5 class="card-header">Section's Courses List</h5>
@@ -200,12 +213,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <a href="{{ route('dashboard.course.view', $item->id) }}" class="text-body text-truncate">
+                                                            <a href="{{ route($routeName.'.course.view', $item->id) }}" class="text-body text-truncate">
                                                                 <span class="fw-semibold">
                                                                     {{ $item->name }}
                                                                 </span>
                                                             </a>
-                                                            <a href="{{ route('dashboard.section.view', $item->section_id) }}">
+                                                            <a href="{{ route($routeName.'.section.view', $item->section_id) }}">
                                                                 <small class="text-muted">{{ $item->section_name }}</small>
                                                             </a>
                                                         </div>
@@ -253,16 +266,17 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a href="{{ route('dashboard.course.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                                            <a href="{{ route($routeName.'.course.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                                            @role('Admin')
                                                             @if ($item->status == 3 || $item->status == 2)
-                                                                <a href="{{ route('dashboard.course.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                                                <a href="{{ route($routeName.'.course.active', $item->slug) }}" class="dropdown-item">Active</a>
                                                             @else
-                                                                <a href="{{ route('dashboard.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                                                <a href="{{ route($routeName.'.course.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                             @endif
                     
                                                             <div class="dropdown-divider"></div>
                                                             <form class="" method="POST"
-                                                                action="{{ route('dashboard.course.delete', $item->slug) }}"
+                                                                action="{{ route($routeName.'.course.delete', $item->slug) }}"
                                                                 {{-- onsubmit="return confirm('Are you sure?');" --}}
                                                                 >
                                                                 @csrf
@@ -270,6 +284,7 @@
                                                                 <button type="submit"
                                                                     class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
                                                             </form>
+                                                            @endrole
                                                         </div>
                                                     </div>
                                                 </td>
@@ -312,12 +327,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column">
-                                                            <a href="{{ route('dashboard.workshop.view', $item->id) }}" class="text-body text-truncate">
+                                                            <a href="{{ route($routeName.'.workshop.view', $item->id) }}" class="text-body text-truncate">
                                                                 <span class="fw-semibold">
                                                                     {{ $item->name }}
                                                                 </span>
                                                             </a>
-                                                            <a href="{{ route('dashboard.section.view', $item->section_id) }}">
+                                                            <a href="{{ route($routeName.'.section.view', $item->section_id) }}">
                                                                 <small class="text-muted">{{ $item->section_name }}</small>
                                                             </a>
                                                         </div>
@@ -365,16 +380,17 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a href="{{ route('dashboard.workshop.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                                            <a href="{{ route($routeName.'.workshop.view', $item->slug) }}" id='confirm-color' class="dropdown-item">View</a>
+                                                            @role('Admin')
                                                             @if ($item->status == 3 || $item->status == 2)
-                                                                <a href="{{ route('dashboard.workshop.active', $item->slug) }}" class="dropdown-item">Active</a>
+                                                                <a href="{{ route($routeName.'.workshop.active', $item->slug) }}" class="dropdown-item">Active</a>
                                                             @else
-                                                                <a href="{{ route('dashboard.workshop.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
+                                                                <a href="{{ route($routeName.'.workshop.inactive', $item->slug) }}" class="dropdown-item">Inactive</a>
                                                             @endif
                     
                                                             <div class="dropdown-divider"></div>
                                                             <form class="" method="POST"
-                                                                action="{{ route('dashboard.workshop.delete', $item->slug) }}"
+                                                                action="{{ route($routeName.'.workshop.delete', $item->slug) }}"
                                                                 {{-- onsubmit="return confirm('Are you sure?');" --}}
                                                                 >
                                                                 @csrf
@@ -382,6 +398,7 @@
                                                                 <button type="submit"
                                                                     class="dropdown-item text-danger delete-record" id="confirm-color">Delete</button>
                                                             </form>
+                                                            @endrole
                                                         </div>
                                                     </div>
                                                 </td>

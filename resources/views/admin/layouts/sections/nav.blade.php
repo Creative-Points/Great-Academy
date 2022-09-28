@@ -372,7 +372,14 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('dashboard.account') }}">
+                        @role('Admin')
+                            @php $routeName='dashboard'; @endphp
+                        @elserole('Employee')
+                            @php $routeName='emp'; @endphp
+                        @elserole('instructor')
+                            @php $routeName='ins'; @endphp
+                        @endrole
+                        <a class="dropdown-item" href="{{ route($routeName.'.my.account') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

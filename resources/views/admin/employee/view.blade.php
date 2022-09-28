@@ -1,5 +1,12 @@
 @section('title', 'View Employee | Great Academy')
 <x-admin-layout>
+    @role('Admin')
+        @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+        @php $routeName='emp'; @endphp
+    @elserole('instructor')
+        @php $routeName='ins'; @endphp
+    @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Users / Employee /</span> View
     </h4>
@@ -124,11 +131,13 @@
                             </li>
                         </ul>
                         <div class="d-flex justify-content-center pt-3">
-                            @if ($users->status == 1 || $users->status == 2)
-                                <a href="{{ route('dashboard.employee.suspended', $users->id) }}" class="btn btn-label-danger suspend-user">Suspended</a>
-                            @elseif($users->status == 3)
-                                <a href="{{ route('dashboard.employee.active', $users->id) }}" class="btn btn-label-success suspend-user">Active</a>
-                            @endif
+                            @role('Admin')
+                                @if ($users->status == 1 || $users->status == 2)
+                                    <a href="{{ route($routeName.'.employee.suspended', $users->id) }}" class="btn btn-label-danger suspend-user">Suspended</a>
+                                @elseif($users->status == 3)
+                                    <a href="{{ route($routeName.'.employee.active', $users->id) }}" class="btn btn-label-success suspend-user">Active</a>
+                                @endif
+                            @endrole
                         </div>
                     </div>
                 </div>
@@ -175,7 +184,7 @@
                             <h3>Edit User Information</h3>
                             <p>Updating Employee details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{ route('dashboard.employee.update', $users->id) }}">
+                        <form method="POST" class="row g-3" action="{{ route($routeName.'.employee.update', $users->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-6">
@@ -220,7 +229,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route('dashboard.employee.manage') }}"
+                                <a href="{{ route($routeName.'.employee.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -229,7 +238,7 @@
                         <!-- Change Password -->
                         <h5 class="card-header">Change Password</h5>
                         <div class="card-body">
-                            <form id="formChangePassword" method="POST" action="{{ route('dashboard.employee.password', $users->id) }}">
+                            <form id="formChangePassword" method="POST" action="{{auth()->user()->hasRole('Admin') ?  route($routeName.'.employee.password', $users->id) : '' }}">
                                 <div class="alert alert-warning" role="alert">
                                     <h6 class="alert-heading fw-bold mb-1">Ensure that these requirements are met
                                     </h6>

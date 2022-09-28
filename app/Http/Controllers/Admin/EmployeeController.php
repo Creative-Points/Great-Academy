@@ -77,13 +77,13 @@ class EmployeeController extends Controller
         }
     }
 
-    public function update(Request $request,User $user)
+    public function update(Request $request,$id)
     {
         // return back();
         $validation = Validator::make($request->all(), [
             'name'          => 'required|string|min:5',
-            'email'         => 'required|email|unique:users,email,'.$user,
-            'phone'         => 'required|numeric|unique:users,phone,'.$user,
+            'email'         => 'required|email|unique:users,email,'.$id,
+            'phone'         => 'required|numeric|unique:users,phone,'.$id,
             'address'       => 'required|string',
             'university'    => 'nullable|string',
             'faculty'       => 'nullable|string',
@@ -93,6 +93,7 @@ class EmployeeController extends Controller
         {
             return back()->withInput()->withErrors($validation);
         } else {
+            $user = User::find($id);
             $user->name        = $request->name;
             $user->email       = $request->email;
             $user->phone       = $request->phone;
