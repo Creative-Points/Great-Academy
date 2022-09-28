@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Admin Dashboard Routes
-Route::name('dashboard.')->middleware(['auth', 'role:Admin|Employee'])->prefix('dashboard')->group(function () {
+Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard')->group(function () {
     // Route::get('/', function(){
     //     return redirect()->route('admin.home');
     // })->name('index');

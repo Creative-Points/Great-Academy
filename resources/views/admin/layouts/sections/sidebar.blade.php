@@ -79,7 +79,7 @@
                     || request()->routeIs('dashboard.instructor.view', 1) == route('dashboard.instructor.view', 1);
         @endphp
         <!-- Layouts -->
-        @role('Admin|Employee')
+        @role('Admin')
             <li class="menu-item @if($stmt) active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
@@ -163,6 +163,147 @@
                 <a href="{{route('dashboard.section.manage')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-category"></i>
                     <div>Sections</div>
+                </a>
+            </li>
+            @php
+                $mat = request()->routeIs('dashboard.material.manage') == route('dashboard.material.manage')
+                        || request()->routeIs('dashboard.material.view', 1) == route('dashboard.material.view', 1)
+            @endphp
+            <li class="menu-item @if($mat) active @endif ">
+                <a href="{{route('dashboard.material.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-file-doc"></i>
+                    <div>Materials</div>
+                </a>
+            </li>
+        @endrole
+
+        @role('Employee')
+            <li class="menu-item @if($stmt) active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
+                    <div>Users</div>
+                </a>
+
+                <ul class="menu-sub open">
+                    <li class="menu-item @if($ins) active @endif">
+                        <a href="{{ route('dashboard.instructor.manage') }}" class="menu-link">
+                            <div >Instructors</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if($stu) active @endif">
+                        <a href="{{ route('dashboard.student.manage') }}" class="menu-link">
+                            <div >Students</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @php
+                $ord =  request()->routeIs('dashboard.order.course.manage') == route('dashboard.order.course.manage')
+                        || request()->routeIs('dashboard.order.workshop.manage') == route('dashboard.order.workshop.manage')
+                        || request()->routeIs('dashboard.order.course.view', 1) == route('dashboard.order.course.view', 1)
+                        || request()->routeIs('dashboard.order.workshop.view', 1) == route('dashboard.order.workshop.view', 1);
+                $cord = request()->routeIs('dashboard.order.course.manage') == route('dashboard.order.course.manage')
+                        || request()->routeIs('dashboard.order.course.view', 1) == route('dashboard.order.course.view', 1);
+                $word = request()->routeIs('dashboard.order.workshop.manage') == route('dashboard.order.workshop.manage')
+                        || request()->routeIs('dashboard.order.workshop.view', 1) == route('dashboard.order.workshop.view', 1);
+            @endphp
+            <li class="menu-item @if($ord) active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
+                    {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
+                    <div>Orders</div>
+                </a>
+
+                <ul class="menu-sub open">
+                    <li class="menu-item @if($word) active @endif">
+                        <a href="{{ route('dashboard.order.workshop.manage') }}" class="menu-link">
+                            <div>Workshop</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if($cord) active @endif">
+                        <a href="{{ route('dashboard.order.course.manage') }}" class="menu-link">
+                            <div >Course</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @php
+                $cor = request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')
+                        || request()->routeIs('dashboard.course.view', 1) == route('dashboard.course.view', 1)
+            @endphp
+            <li class="menu-item @if($cor) active @endif ">
+                <a href="{{route('dashboard.course.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                    <div>Courses</div>
+                </a>
+            </li>
+            @php
+                $wor = request()->routeIs('dashboard.workshop.manage') == route('dashboard.workshop.manage')
+                        || request()->routeIs('dashboard.workshop.view', 1) == route('dashboard.workshop.view', 1)
+            @endphp
+            <li class="menu-item @if($wor) active @endif ">
+                <a href="{{route('dashboard.workshop.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+                    <div>Workshops</div>
+                </a>
+            </li>
+            @php
+                $sec = request()->routeIs('dashboard.section.manage') == route('dashboard.section.manage')
+                        || request()->routeIs('dashboard.section.view', 1) == route('dashboard.section.view', 1)
+            @endphp
+            <li class="menu-item @if($sec) active @endif ">
+                <a href="{{route('dashboard.section.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-category"></i>
+                    <div>Sections</div>
+                </a>
+            </li>
+            @php
+                $mat = request()->routeIs('dashboard.material.manage') == route('dashboard.material.manage')
+                        || request()->routeIs('dashboard.material.view', 1) == route('dashboard.material.view', 1)
+            @endphp
+            <li class="menu-item @if($mat) active @endif ">
+                <a href="{{route('dashboard.material.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-file-doc"></i>
+                    <div>Materials</div>
+                </a>
+            </li>
+        @endrole
+
+        @role('instructor')
+            <li class="menu-item @if($stmt) active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
+                    <div>Users</div>
+                </a>
+
+                <ul class="menu-sub open">
+                    <li class="menu-item @if($stu) active @endif">
+                        <a href="{{ route('dashboard.student.manage') }}" class="menu-link">
+                            <div >Students</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @php
+                $cor = request()->routeIs('dashboard.course.manage') == route('dashboard.course.manage')
+                        || request()->routeIs('dashboard.course.view', 1) == route('dashboard.course.view', 1)
+            @endphp
+            <li class="menu-item @if($cor) active @endif ">
+                <a href="{{route('dashboard.course.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-graduation"></i>
+                    <div>Courses</div>
+                </a>
+            </li>
+            @php
+                $wor = request()->routeIs('dashboard.workshop.manage') == route('dashboard.workshop.manage')
+                        || request()->routeIs('dashboard.workshop.view', 1) == route('dashboard.workshop.view', 1)
+            @endphp
+            <li class="menu-item @if($wor) active @endif ">
+                <a href="{{route('dashboard.workshop.manage')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-chalkboard"></i>
+                    <div>Workshops</div>
                 </a>
             </li>
             @php
