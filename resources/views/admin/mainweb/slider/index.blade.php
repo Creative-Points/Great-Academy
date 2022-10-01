@@ -1,5 +1,5 @@
 <x-admin-layout>
-    @section('title', 'Manage News | Great Academy')
+    @section('title', 'Manage Slider | Great Academy')
     @role('Admin')
         @php $routeName='dashboard'; @endphp
         @elserole('Employee')
@@ -22,36 +22,6 @@
     @endif
     <!-- Users List Table -->
     <div class="card">
-        {{-- <div class="card-header border-bottom">
-                <h5 class="card-title">Search Filter</h5>
-                <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
-                    <div class="col-md-4 user_role">
-                        <select id="UserRole" class="form-select text-capitalize">
-                            <option value=""> Select Role </option>
-                            <option value="admin">Admin</option>
-                            <option value="Author">Instructor</option>
-                            <option value="Editor">Student</option>
-                        </select>
-                    </div>
-                    {{-- <div class="col-md-4 user_plan">
-                        <select id="UserPlan" class="form-select text-capitalize">
-                            <option value=""> Select Plan </option>
-                            <option value="Basic">Basic</option>
-                            <option value="Company">Company</option>
-                            <option value="Enterprise">Enterprise</option>
-                            <option value="Team">Team</option>
-                        </select>
-                    </div> --}}
-        {{-- <div class="col-md-4 user_status">
-                        <select id="FilterTransaction" class="form-select text-capitalize">
-                            <option value=""> Select Status </option>
-                            <option value="Pending" class="text-capitalize">Pending</option>
-                            <option value="Active" class="text-capitalize">Active</option>
-                            <option value="Inactive" class="text-capitalize">Inactive</option>
-                        </select>
-                    </div> --
-                </div>
-            </div> --}}
         <div class="card-datatable table-responsive">
             <div class="row mx-2 py-2">
                 <div class="col-md-2">
@@ -90,7 +60,7 @@
                                     data-bs-target="#offcanvasAddUser">
                                     <span>
                                         <i class="bx bx-plus me-0 me-sm-2"></i>
-                                        <span class="d-none d-lg-inline-block">Add News</span>
+                                        <span class="d-none d-lg-inline-block">Add Slider</span>
                                     </span>
                                 </button>
                             @endrole
@@ -103,32 +73,68 @@
                     <tr>
                         <th>#</th>
                         {{-- <th>Image</th> --}}
-                        <th>News Text</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Button Text</th>
+                        <th>Link To</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($news as $item)
+                    @forelse ($sliders as $item)
                         <tr class="odd">
                             <td class=" control" tabindex="0" style="">{{ $item->id }}</td>
                             <td class="sorting_1">
                                 <div class="d-flex justify-content-start align-items-center">
                                     <div class="avatar-wrapper">
-                                        {{-- <div class="avatar avatar-sm me-3">
-                                            <img src="/uploads/section/{{ $item->image }}" alt="{{ $item->name }}"
+                                        <div class="avatar avatar-sm me-3">
+                                            <img src="/uploads/main-website/slider/{{ $item->image }}" alt="{{ $item->title }}"
                                                 class="rounded-circle">
-                                        </div> --}}
+                                        </div>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <a
                                             class="text-body text-truncate">
                                             <span class="fw-semibold">
-                                                {{ $item->text }}
+                                                {{ $item->title }}
                                             </span>
                                         </a>
                                         {{-- <small class="text-muted">{{ $item->count }} Courses & {{ $item->workshops }}
                                             Workshops</small> --}}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <a class="text-body text-truncate">
+                                            <span class="fw-">
+                                                {{ $item->subtitle }}
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <a class="text-body text-truncate">
+                                            <span class="fw-">
+                                                {{ $item->btn_text }}
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <a class="text-body text-truncate">
+                                            <span class="fw-">
+                                                {{ $item->link_to }}
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -146,20 +152,20 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        {{-- <a href="{{ route($routeName . '.news.view', $item->slug) }}"
+                                        {{-- <a href="{{ route($routeName . '.slider.view', $item->slug) }}"
                                             class="dropdown-item">View</a> --}}
                                         @role('Admin')
                                             @if ($item->status == 3 || $item->status == 2)
-                                                <a href="{{ route($routeName . '.news.active', $item->id) }}"
+                                                <a href="{{ route($routeName . '.layouts.slider.active', $item->id) }}"
                                                     class="dropdown-item">Active</a>
                                             @else
-                                                <a href="{{ route($routeName . '.news.inactive', $item->id) }}"
+                                                <a href="{{ route($routeName . '.layouts.slider.inactive', $item->id) }}"
                                                     class="dropdown-item">Inactive</a>
                                             @endif
 
                                             <div class="dropdown-divider"></div>
                                             <form class="" method="POST"
-                                                action="{{ route($routeName . '.news.delete', $item->id) }}"
+                                                action="{{ route($routeName . '.layouts.slider.delete', $item->id) }}"
                                                 onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 @method('DELETE')
@@ -178,7 +184,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{ $news->links() }}
+            {{ $sliders->links() }}
         </div>
         <!-- Offcanvas to add new section -->
         @role('Admin')
@@ -190,13 +196,38 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body mx-0 flex-grow-0">
-                    <form class="add-new-user pt-0" method="POST"
-                        action="{{ route($routeName . '.news.add') }}">
+                    <form class="add-new-user pt-0" method="POST" enctype="multipart/form-data"
+                        action="{{ route($routeName . '.layouts.slider.add') }}">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="add-course-name">News Text</label>
-                            <input type="text" class="form-control" id="add-course-name"
-                                placeholder="Type your news text .." name="text" required>
+                            <label class="form-label" for="add-slider-image">Select Image</label>
+                            <input
+                                type="file"
+                                class="form-control"
+                                id="add-slider-image"
+                                name="image"
+                                accept=".gif, .jpg, .jpeg, .png"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-slider-title">Title</label>
+                            <input type="text" class="form-control" id="add-slider-title"
+                                placeholder="Type your title .." name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-slider-subtitle">Subtitle</label>
+                            <input type="text" class="form-control" id="add-slider-subtitle"
+                                placeholder="Type your subtitle .." name="subtitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-slider-linkto">Button Text</label>
+                            <input type="text" class="form-control" id="add-slider-linkto"
+                                placeholder="Type your button text .." name="btn_text" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="add-slider-linkto">Link To</label>
+                            <input type="text" class="form-control" id="add-slider-linkto"
+                                placeholder="Type your linkto .." name="linkto" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>

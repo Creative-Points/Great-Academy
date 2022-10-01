@@ -13,7 +13,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::paginate();
-        return view('admin.news.index', compact('news'));
+        return view('admin.mainweb.news.index', compact('news'));
     }
 
     public function store(Request $request)

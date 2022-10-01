@@ -186,8 +186,10 @@
                 <span class="menu-header-text">Main Website</span>
             </li>
             @php
-                $lay = request()->routeIs($routeName.'.news.manage') == route($routeName.'.news.manage');
-                $news = request()->routeIs($routeName.'.news.manage') == route($routeName.'.news.manage');
+                $lay = request()->routeIs($routeName.'.layouts.news.manage') == route($routeName.'.layouts.news.manage')
+                        || request()->routeIs($routeName.'.layouts.slider.manage') == route($routeName.'.layouts.slider.manage');
+                $news = request()->routeIs($routeName.'.layouts.news.manage') == route($routeName.'.layouts.news.manage');
+                $slider = request()->routeIs($routeName.'.layouts.slider.manage') == route($routeName.'.layouts.slider.manage');
             @endphp
             <li class="menu-item @if($lay)active open @endif">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -197,8 +199,13 @@
                 </a>
 
                 <ul class="menu-sub open">
+                    <li class="menu-item @if($slider) active @endif">
+                        <a href="{{ route($routeName.'.layouts.slider.manage') }}" class="menu-link">
+                            <div>Slider</div>
+                        </a>
+                    </li>
                     <li class="menu-item @if($news) active @endif">
-                        <a href="{{ route($routeName.'.news.manage') }}" class="menu-link">
+                        <a href="{{ route($routeName.'.layouts.news.manage') }}" class="menu-link">
                             <div>News</div>
                         </a>
                     </li>

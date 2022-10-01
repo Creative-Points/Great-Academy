@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\SectionController as AdminSectionController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WorkshopController as AdminWorkshopController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,13 +86,25 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Layouts in Main website
-    Route::controller(NewsController::class)->name('news.')->prefix('news')->group(function(){
-        Route::get('/', 'index')->name('manage');
-        Route::post('/add', 'store')->name('add');
-        Route::get('{news:id}/active', 'active')->name('active');
-        Route::get('{news:id}/inactive', 'inactive')->name('inactive');
-        Route::delete('{news:id}/delete', 'delete')->name('delete');
+    Route::name('layouts.')->prefix('layouts')->group(function(){
+        // news
+        Route::controller(NewsController::class)->name('news.')->prefix('news')->group(function(){
+            Route::get('/', 'index')->name('manage');
+            Route::post('/add', 'store')->name('add');
+            Route::get('{news:id}/active', 'active')->name('active');
+            Route::get('{news:id}/inactive', 'inactive')->name('inactive');
+            Route::delete('{news:id}/delete', 'delete')->name('delete');
+        });
+        // sliders
+        Route::controller(SliderController::class)->name('slider.')->prefix('slider')->group(function(){
+            Route::get('/', 'index')->name('manage');
+            Route::post('/add', 'store')->name('add');
+            Route::get('{slider:id}/active', 'active')->name('active');
+            Route::get('{slider:id}/inactive', 'inactive')->name('inactive');
+            Route::delete('{slider:id}/delete', 'delete')->name('delete');
+        });
     });
+    
 
     // Employee
     Route::controller(AdminEmployeeController::class)->name('employee.')->prefix('employee')->group(function(){

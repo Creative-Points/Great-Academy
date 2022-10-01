@@ -24,7 +24,20 @@
 
         <section class="home">
             <div class="slider">
-                <div class="slide active" style="background-image: url('assets/images/slide-1.jpg')">
+                @php($m = 1)
+                @foreach ($sliders as $item)
+                    <div class="slide @if($m == 1)active @endif" style="background-image: url('uploads/main-website/slider/{{ $item->image }}')">
+                        <div class="container">
+                            <div class="caption">
+                                <h1>{{ $item->title }}</h1>
+                                <p>{{ $item->subtitle }}</p>
+                                <a href="{{ $item->link_to }}">{{ $item->btn_text }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    @php($m++)
+                @endforeach
+                {{-- <div class="slide active" style="background-image: url('assets/images/slide-1.jpg')">
                     <div class="container">
                         <div class="caption">
                             <h1>1. Winter Collection 2022</h1>
@@ -68,7 +81,7 @@
                             <a href="">Shop Now</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- controls  -->
