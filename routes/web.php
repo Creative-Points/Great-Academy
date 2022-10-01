@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EmployeeController as AdminEmployeeController;
 use App\Http\Controllers\Admin\InstructorController as AdminInstructorController;
 use App\Http\Controllers\Admin\MaterialController as AdminMaterialController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
@@ -42,6 +43,7 @@ Route::controller(FrontendController::class)->group(function() {
 });
 
 Route::get('test', [TestController::class, 'index']);
+Route::get('test/data', [TestController::class, 'data']);
 // sections
 Route::controller(SectionController::class)->group(function() {
     Route::get('sections', 'index')->name('sections');
@@ -80,6 +82,15 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
         Route::get('/', 'account')->name('account');
         Route::put('update', 'update')->name('update');
         Route::post('change-password', 'changePassword')->name('password');
+    });
+
+    // Layouts in Main website
+    Route::controller(NewsController::class)->name('news.')->prefix('news')->group(function(){
+        Route::get('/', 'index')->name('manage');
+        Route::post('/add', 'store')->name('add');
+        Route::get('{news:id}/active', 'active')->name('active');
+        Route::get('{news:id}/inactive', 'inactive')->name('inactive');
+        Route::delete('{news:id}/delete', 'delete')->name('delete');
     });
 
     // Employee

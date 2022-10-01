@@ -182,6 +182,38 @@
                     <div>Materials</div>
                 </a>
             </li>
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Main Website</span>
+            </li>
+            @php
+                $lay = request()->routeIs($routeName.'.news.manage') == route($routeName.'.news.manage');
+                $news = request()->routeIs($routeName.'.news.manage') == route($routeName.'.news.manage');
+            @endphp
+            <li class="menu-item @if($lay)active open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    {{-- <i class="menu-icon fas fa-user-tie"></i> --}}
+                    <div>Layouts</div>
+                </a>
+
+                <ul class="menu-sub open">
+                    <li class="menu-item @if($news) active @endif">
+                        <a href="{{ route($routeName.'.news.manage') }}" class="menu-link">
+                            <div>News</div>
+                        </a>
+                    </li>
+                    {{-- <li class="menu-item @if($ins) active @endif">
+                        <a href="{{ route($routeName.'.instructor.manage') }}" class="menu-link">
+                            <div >Instructors</div>
+                        </a>
+                    </li>
+                    <li class="menu-item @if($stu) active @endif">
+                        <a href="{{ route($routeName.'.student.manage') }}" class="menu-link">
+                            <div >Students</div>
+                        </a>
+                    </li> --}}
+                </ul>
+            </li>
         @endrole
 
         @role('Employee')

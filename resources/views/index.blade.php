@@ -84,12 +84,17 @@
             </div>
         </section>
         <div class="marquee">
+            @forelse ($news as $item)
+                <h1>{{ $item->text }} * </h1>
+            @empty
+                {{-- <h1>Recent News </h1> --}}
+            @endforelse
+            {{-- <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
-            <h1>Nepal * Himalayas * Mountains * Everest</h1>
-            <h1>Nepal * Himalayas * Mountains * Everest</h1>
+            <h1>Nepal * Himalayas * Mountains * Everest</h1> --}}
         </div>
     </section>
     <!-- ***** Main Banner Area End ***** -->
