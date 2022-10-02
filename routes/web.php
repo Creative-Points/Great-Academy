@@ -33,7 +33,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// profile-acount 
+Route::get('profile-acount', function(){
+    return view('profile-acount');
+});
+// seting-acount
+Route::get('seting-acount', function(){
+    return view('seting-acount');
+});
+// edit-password-account
+Route::get('edit-password-account', function(){
+    return view('edit-password-account');
+});
 Route::controller(FrontendController::class)->group(function() {
     // home page
     Route::get('/', 'home')->name('home');
