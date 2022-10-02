@@ -110,8 +110,9 @@ class EmployeeController extends Controller
         }
     }
 
-    public function show(User $users)
+    public function show(User $user)
     {
+        $users = $user;
         return view('admin.employee.view', compact('users'));
     }
 
