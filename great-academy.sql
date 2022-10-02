@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2022 at 11:38 PM
+-- Generation Time: Oct 02, 2022 at 12:59 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.1.6
 
@@ -163,6 +163,20 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -300,6 +314,32 @@ INSERT INTO `sections` (`id`, `name`, `count`, `image`, `status`, `workshops`, `
 (6, 'قواعد البيانات', 0, 'koaaad-albyanat.png', 2, 0, 'koaaad-albyanat', '2022-09-16 20:03:57', '2022-09-16 21:09:46'),
 (7, 'تصميم الجرافيك', 0, 'tsmym-algrafyk.png', 2, 0, 'x1', '2022-09-16 20:06:14', '2022-09-16 21:09:50'),
 (9, 'تسويق', 0, 'tsoyk.jpg', 2, 1, 'tsoyk', '2022-09-16 21:24:04', '2022-09-27 23:59:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `subtitle` varchar(255) NOT NULL,
+  `link_to` varchar(255) NOT NULL,
+  `btn_text` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `image`, `title`, `subtitle`, `link_to`, `btn_text`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'a4l54y0UAi967YM.jpg', 'تخفيضات على الكورسات', 'استمتع بتخفيضات تصل 50% على كل الكورسات. العرض ساري لمدة يوم', '/courses', 'استمتع الان', 1, NULL, NULL),
+(3, 'ImfOf9rUHrJuwMG.jpg', 'سلايدر غير مفعل', 'هذا سلايدر غير مفعل', '/', 'اضغط هنا', 2, NULL, '2022-10-01 17:57:27');
 
 -- --------------------------------------------------------
 
@@ -444,6 +484,12 @@ ALTER TABLE `model_has_roles`
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -491,6 +537,12 @@ ALTER TABLE `sections`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
   ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test`
@@ -542,6 +594,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -569,7 +627,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `test`
