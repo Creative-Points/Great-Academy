@@ -33,18 +33,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// profile-acount 
-Route::get('profile-acount', function(){
-    return view('profile-acount');
-});
-// seting-acount
-Route::get('seting-acount', function(){
-    return view('seting-acount');
-});
-// edit-password-account
-Route::get('edit-password-account', function(){
-    return view('edit-password-account');
-});
+
 Route::controller(FrontendController::class)->group(function() {
     // home page
     Route::get('/', 'home')->name('home');
@@ -78,9 +67,21 @@ Route::controller(OrderController::class)->name('order.')->prefix('preorder')->g
     Route::post('workshop/n/{workshop:slug}', 'workshopNewUser')->name('workshopNewUser');
     Route::post('workshop/r/{workshop:slug}', 'workshopRegisterUser')->name('workshopRegisterUser');
 });
+// Route::get('/profile', function(){
+//         return view('profile-acount');
+//     });
 // student routes
-Route::middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
-    Route::get('/home', [StudentController::class, 'index'])->name('dashboard');
+Route::controller(StudentController::class)->middleware(['auth', 'role:student'])->name('student.')->prefix('student')->group(function () {
+
+    Route::get('/home', 'index')->name('dashboard');
+    Route::get('my-courses', 'myCourses')->name('myCourses');
+    Route::get('my-workshops', 'myWorkshops')->name('myWorkshops');
+    // profile-acount
+    
+    // seting-acount
+    Route::get('setting', 'settings')->name('settings');
+    // edit-password-account
+    Route::get('changePassword', 'password')->name('password');
 });
 
 // =================================================================
@@ -115,7 +116,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::delete('{slider:id}/delete', 'delete')->name('delete');
         });
     });
-    
+
 
     // Employee
     Route::controller(AdminEmployeeController::class)->name('employee.')->prefix('employee')->group(function(){
@@ -225,7 +226,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
-        
+
     });
 });
 
@@ -238,7 +239,7 @@ Route::name('emp.')->middleware(['auth', 'role:Employee'])->prefix('emp/dashboar
         Route::put('update', 'update')->name('update');
         Route::post('change-password', 'changePassword')->name('password');
     });
-    
+
     // Route::put('/profile/update', [AdminProfileController::class, 'update'])->name('update');
 
 
@@ -338,7 +339,7 @@ Route::name('emp.')->middleware(['auth', 'role:Employee'])->prefix('emp/dashboar
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             // Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
-        
+
     });
 });
 
@@ -362,7 +363,7 @@ Route::middleware(['auth', 'role:instructor'])->name('ins.')->prefix('ins/dashbo
         //     // Route::delete('{user}/delete', 'delete')->name('delete');
         //     // Route::post('{user}/change-password', 'changePassword')->name('password');
         // });
-    
+
         // Course
         Route::controller(AdminCourseController::class)->name('course.')->prefix('course')->group(function(){
             Route::get('manage', 'index')->name('manage');
@@ -374,7 +375,7 @@ Route::middleware(['auth', 'role:instructor'])->name('ins.')->prefix('ins/dashbo
             // Route::get('{slug}/active', 'active')->name('active');
             // Route::delete('{slug}/delete', 'delete')->name('delete');
         });
-    
+
         // Workshop
         Route::controller(AdminWorkshopController::class)->name('workshop.')->prefix('workshop')->group(function(){
             Route::get('manage', 'index')->name('manage');
@@ -386,7 +387,7 @@ Route::middleware(['auth', 'role:instructor'])->name('ins.')->prefix('ins/dashbo
             // Route::get('{slug}/active', 'active')->name('active');
             // Route::delete('{slug}/delete', 'delete')->name('delete');
         });
-    
+
         // Section
         Route::controller(AdminSectionController::class)->name('section.')->prefix('section')->group(function(){
             Route::get('manage', 'index')->name('manage');
@@ -398,7 +399,7 @@ Route::middleware(['auth', 'role:instructor'])->name('ins.')->prefix('ins/dashbo
             // Route::get('{slug}/active', 'active')->name('active');
             // Route::delete('{slug}/delete', 'delete')->name('delete');
         });
-    
+
         // Material
         Route::controller(AdminMaterialController::class)->name('material.')->prefix('material')->group(function(){
             Route::get('manage', 'index')->name('manage');

@@ -24,6 +24,15 @@ class CourseController extends Controller
 
     public function course(Course $course)
     {
-        return view('course', compact('course'));
+        if(auth()->check() && auth()->user()->id)
+        {
+            $orderStatus = DB::table('orders')
+                            ->where('student_id', '=', auth()->user()->id)
+                            ->where('course_id', '=', $course->id)
+                            ->count();
+            return view('course', compact('course', 'orderStatus'));
+        }else{
+            return view('course', compact('course'));
+        }
     }
 }

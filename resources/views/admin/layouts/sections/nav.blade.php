@@ -1,3 +1,10 @@
+@role('Admin')
+    @php $routeName='dashboard'; @endphp
+    @elserole('Employee')
+    @php $routeName='emp'; @endphp
+    @elserole('instructor')
+    @php $routeName='ins'; @endphp
+@endrole
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -343,7 +350,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route($routeName . '.my.account') }}">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -372,14 +379,8 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        @role('Admin')
-                            @php $routeName='dashboard'; @endphp
-                        @elserole('Employee')
-                            @php $routeName='emp'; @endphp
-                        @elserole('instructor')
-                            @php $routeName='ins'; @endphp
-                        @endrole
-                        <a class="dropdown-item" href="{{ route($routeName.'.my.account') }}">
+
+                        <a class="dropdown-item" href="{{ route($routeName . '.my.account') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

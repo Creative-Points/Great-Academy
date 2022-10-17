@@ -62,6 +62,8 @@
                                                 {{ $course->level }} مستوى</p>
                                             <p><span style="font-weight: bolder;">الساعات:</span>
                                                 {{ $course->hours }} ساعة</p>
+                                            <p><span style="font-weight: bolder;">السعر:</span>
+                                                {{ $course->price }} جنية</p>
                                         </div>
                                     </div>
                                 </div>
@@ -95,13 +97,17 @@
                                     @if (session('error'))
                                         <h6 class="alert alert-danger">{{ session('error') }}</h6>
                                     @endif
-                                    <form action="{{ route('order.courseRegisterUser', $course->slug) }}" method="POST"
-                                        class="text-right">
-                                        @csrf
-                                        <div class="form-group mb-3">
-                                            <button type="submit" class="btn btn-success btn-block">تقديم</button>
-                                        </div>
-                                    </form>
+                                    @if($orderStatus !== 1)
+                                        <form action="{{ route('order.courseRegisterUser', $course->slug) }}" method="POST"
+                                            class="text-right">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <button type="submit" class="btn btn-success btn-block">تقديم</button>
+                                            </div>
+                                        </form>
+                                    @else
+                                        <h3 class="text-success text-center">انت مشترك في هذا الكورس</h3>
+                                    @endif
                                 @else
                                     <h3 class="text-center  p-3"> سجل حساب جديد الان وقدم على الكورس </h3>
                                     @if (session('success'))

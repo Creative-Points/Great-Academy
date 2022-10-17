@@ -1,5 +1,5 @@
 <x-master-layout>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -85,7 +85,7 @@
             </div>
 
             <!-- controls  -->
-         
+
             <div class="controls">
                 <div class="prev" id="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
                 <div class="next" id="prev"><i class="fa-solid fa-circle-arrow-right"></i></div>
@@ -118,7 +118,7 @@
             <div class="row text-center text-white">
                 <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".1s" style="visibility: visible;">
                     <div class="mb-0">
-                        
+
                         <i class="fas fa-thin fa-display display-4"></i>
                     </div>
                     <p class="num2 font-size-46 font-semiBold mb-0" data-to=" 829">829</p>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 wow zoomIn" data-wow-delay=".4s" style="visibility: visible;">
                     <div class="mb-0">
-              
+
                         <i class="fas fa-users font-size-56"></i>
                     </div>
                     <p class="num2 font-size-46 font-semiBold mb-0" data-to="68362">
@@ -223,7 +223,7 @@
           </div>
       </div>
   </section> -->
-    <!-- 
+    <!--
   <section class="section coming-soon" data-section="section3">
       <div class="container">
           <div class="row">

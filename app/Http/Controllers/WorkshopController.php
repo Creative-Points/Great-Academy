@@ -23,6 +23,15 @@ class WorkshopController extends Controller
 
     public function workshop(Workshop $workshop)
     {
-        return view('workshop', compact('workshop'));
+        if(auth()->check() && auth()->user()->id)
+        {
+            $orderStatus = DB::table('orders')
+                            ->where('student_id', '=', auth()->user()->id)
+                            ->where('workshop_id', '=', $workshop->id)
+                            ->count();
+            return view('workshop', compact('workshop', 'orderStatus'));
+        }else{
+            return view('workshop', compact('workshop'));
+        }
     }
 }

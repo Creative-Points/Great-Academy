@@ -10,8 +10,13 @@
                 {{-- <x-navbar :href="route('home')" :part="'m'" :active="request()->routeIs('home')">
                     الصفحه الرئيسية
                 </x-navbar> --}}
-                <x-navbar :href="route('student.dashboard')" :part="'m'" :active="request()->routeIs('student.dashboard')">
-                    لوحة التحكم
+                @php
+                    $stmt = request()->routeIs('student.dashboard') == route('student.dashboard')
+                            || request()->routeIs('student.password') == route('student.password')
+                            || request()->routeIs('student.settings') == route('student.settings');
+                @endphp
+                <x-navbar :href="route('student.dashboard')" :part="'m'" :active="$stmt">
+                    بروفايل
                 </x-navbar>
                 <li style="@if(request()->routeIs('sections') == route('sections') || request()->routeIs('section', 1) == route('section', 1))background: #02b918; @endif">
                     <a href="{{ route('sections') }}">
@@ -28,9 +33,6 @@
                         ورش العمل
                     </a>
                 </li>
-                <x-navbar :href="route('contact-us')" :part="'m'" :active="request()->routeIs('contact-us')">
-                    بروفايل
-                </x-navbar>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

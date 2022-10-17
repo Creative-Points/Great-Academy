@@ -99,13 +99,17 @@
                                     @if (session('error'))
                                         <h6 class="alert alert-danger">{{ session('error') }}</h6>
                                     @endif
-                                    <form action="{{ route('order.workshopRegisterUser', $workshop->slug) }}"
-                                        method="POST" class="text-right">
-                                        @csrf
-                                        <div class="form-group mb-3">
-                                            <button type="submit" class="btn btn-success btn-block">تقديم</button>
-                                        </div>
-                                    </form>
+                                    @if($orderStatus !== 1)
+                                        <form action="{{ route('order.workshopRegisterUser', $workshop->slug) }}"
+                                            method="POST" class="text-right">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                                <button type="submit" class="btn btn-success btn-block">تقديم</button>
+                                            </div>
+                                        </form>
+                                    @else
+                                        <h3 class="text-center text-success">انت مشترك بالفعل في هذا الكورس</h3>
+                                    @endif
                                 @else
                                     <h3 class="text-center  p-3"> سجل حساب جديد الان وقدم على ورشة العمل </h3>
                                     @if (session('success'))
