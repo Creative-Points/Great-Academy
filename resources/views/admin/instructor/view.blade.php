@@ -228,8 +228,10 @@
                                     placeholder="IS" name="faculty" value="{{ $users->faculty }}" required>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route($routeName.'.employee.manage') }}"
+                                @role('admin')
+                                    <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
+                                @endrole
+                                <a href="{{ route($routeName.'.instructor.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -272,8 +274,10 @@
                                         </div>
                                     </div>
                                     <div>
+                                        @role('admin')
                                         <button type="submit" class="btn btn-primary me-2">Change
                                             Password</button>
+                                        @endrole
                                     </div>
                                 </div>
                             </form>

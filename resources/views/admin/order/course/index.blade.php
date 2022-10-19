@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
-                        <form action="{{ route('dashboard.order.course.cSearch') }}" method="post">
+                        <form action="{{ route($routeName.'.order.course.cSearch') }}" method="post">
                             @csrf
                             <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                 <label>

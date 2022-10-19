@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\CourseController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\InstructorController;
-use App\Http\Controllers\Admin\MaterialController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\StudentController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SectionController;
-use App\Http\Controllers\Admin\WorkshopController;
+
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EmployeeController as AdminEmployeeController;
+use App\Http\Controllers\Admin\InstructorController as AdminInstructorController;
+use App\Http\Controllers\Admin\MaterialController as AdminMaterialController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\StudentController as AdminStudentController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\SectionController as AdminSectionController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\WorkshopController as AdminWorkshopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,15 +32,40 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     // Route::get('/', function(){
     //     return redirect()->route('admin.home');
     // })->name('index');
-    Route::get('/', [DashboardController::class, 'index'])->name('home');
-    Route::get('/profile', [ProfileController::class, 'account'])->name('account');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('home');
+    Route::controller(AdminProfileController::class)->name('my.')->prefix('profile')->group(function(){
+        Route::get('/', 'account')->name('account');
+        Route::put('update', 'update')->name('update');
+        Route::post('change-password', 'changePassword')->name('password');
+    });
+
+    // Layouts in Main website
+    Route::name('layouts.')->prefix('layouts')->group(function(){
+        // news
+        Route::controller(NewsController::class)->name('news.')->prefix('news')->group(function(){
+            Route::get('/', 'index')->name('manage');
+            Route::post('/add', 'store')->name('add');
+            Route::get('{news:id}/active', 'active')->name('active');
+            Route::get('{news:id}/inactive', 'inactive')->name('inactive');
+            Route::delete('{news:id}/delete', 'delete')->name('delete');
+        });
+        // sliders
+        Route::controller(SliderController::class)->name('slider.')->prefix('slider')->group(function(){
+            Route::get('/', 'index')->name('manage');
+            Route::post('/add', 'store')->name('add');
+            Route::get('{slider:id}/active', 'active')->name('active');
+            Route::get('{slider:id}/inactive', 'inactive')->name('inactive');
+            Route::delete('{slider:id}/delete', 'delete')->name('delete');
+        });
+    });
+
 
     // Employee
-    Route::controller(EmployeeController::class)->name('employee.')->prefix('employee')->group(function(){
+    Route::controller(AdminEmployeeController::class)->name('employee.')->prefix('employee')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
-        Route::put('{user:id}/update', 'update')->name('update');
-        Route::get('{users:id}/view', 'show')->name('view');
+        Route::get('{user:id}/view', 'show')->name('view');
+        Route::put('{id}/update', 'update')->name('update');
         Route::get('{user:id}/suspended', 'suspended')->name('suspended');
         Route::get('{user:id}/active', 'active')->name('active');
         Route::delete('{user:id}/delete', 'delete')->name('delete');
@@ -45,7 +73,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Instructor
-    Route::controller(InstructorController::class)->name('instructor.')->prefix('instructor')->group(function(){
+    Route::controller(AdminInstructorController::class)->name('instructor.')->prefix('instructor')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         Route::put('{user}/update', 'update')->name('update');
@@ -57,7 +85,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Student
-    Route::controller(StudentController::class)->name('student.')->prefix('student')->group(function(){
+    Route::controller(AdminStudentController::class)->name('student.')->prefix('student')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         Route::put('{user}/update', 'update')->name('update');
@@ -69,7 +97,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Course
-    Route::controller(CourseController::class)->name('course.')->prefix('course')->group(function(){
+    Route::controller(AdminCourseController::class)->name('course.')->prefix('course')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         Route::put('{slug}/update', 'update')->name('update');
@@ -81,7 +109,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Workshop
-    Route::controller(WorkshopController::class)->name('workshop.')->prefix('workshop')->group(function(){
+    Route::controller(AdminWorkshopController::class)->name('workshop.')->prefix('workshop')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         Route::put('{slug}/update', 'update')->name('update');
@@ -93,7 +121,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Section
-    Route::controller(SectionController::class)->name('section.')->prefix('section')->group(function(){
+    Route::controller(AdminSectionController::class)->name('section.')->prefix('section')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         Route::put('{slug}/update', 'update')->name('update');
@@ -105,7 +133,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Material
-    Route::controller(MaterialController::class)->name('material.')->prefix('material')->group(function(){
+    Route::controller(AdminMaterialController::class)->name('material.')->prefix('material')->group(function(){
         Route::get('manage', 'index')->name('manage');
         Route::post('add', 'store')->name('add');
         // Route::put('{material:slug}/update', 'update')->name('update');
@@ -117,7 +145,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     });
 
     // Order
-    Route::controller(OrderController::class)->name('order.')->prefix('order')->group(function(){
+    Route::controller(AdminOrderController::class)->name('order.')->prefix('order')->group(function(){
         // course
         Route::name('course.')->prefix('course')->group(function(){
             Route::get('manage', 'cIndex')->name('manage');
@@ -126,6 +154,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
             Route::get('{order:code}/suspend', 'suspend')->name('suspend');
+            Route::post('search', 'cSearch')->name('cSearch');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
@@ -137,11 +166,10 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
             Route::get('{order:code}/suspend', 'suspend')->name('suspend');
+            Route::post('search', 'wSearch')->name('wSearch');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
-        
+
     });
 });
-
-require __DIR__.'/auth.php';

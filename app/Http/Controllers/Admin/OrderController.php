@@ -53,7 +53,14 @@ class OrderController extends Controller
                     ->count();
             if($order == 1)
             {
-                return redirect()->route('dashboard.order.workshop.view', $value);
+                if(auth()->user()->hasRole('Admin'))
+                {
+                    return redirect()->route('dashboard.order.workshop.view', $value);
+                }
+                elseif(auth()->user()->hasRole('Employee'))
+                {
+                    return redirect()->route('emp.order.workshop.view', $value);
+                }
             }else{
                 return back()->with('error', 'This Order Code Is Not Found.');
             }
@@ -102,7 +109,15 @@ class OrderController extends Controller
                     ->count();
             if($order == 1)
             {
-                return redirect()->route('dashboard.order.course.view', $value);
+                if(auth()->user()->hasRole('Admin'))
+                {
+                    return redirect()->route('dashboard.order.course.view', $value);
+                }
+                elseif(auth()->user()->hasRole('Employee'))
+                {
+                    return redirect()->route('emp.order.course.view', $value);
+                }
+                
             }else{
                 return back()->with('error', 'This Order Code Is Not Found.');
             }
