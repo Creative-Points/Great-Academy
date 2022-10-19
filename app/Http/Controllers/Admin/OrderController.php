@@ -35,6 +35,31 @@ class OrderController extends Controller
         return view('admin.order.workshop.view', compact('order'));
     }
 
+    public function wSearch(Request $request)
+    {
+        $valid = Validator::make($request->all(), [
+            'search'        => 'required|string'
+        ]);
+
+        if($valid->fails())
+        {
+            return back()->withInput()->withErrors($valid);
+        }else{
+            $value = $request->search;
+            $order = DB::table('orders')
+                    ->where('code', '=', $value)
+                    ->where('workshop_id', '!=', 'NULL')
+                    // ->where('course_id', '=', 'NULL')
+                    ->count();
+            if($order == 1)
+            {
+                return redirect()->route('dashboard.order.workshop.view', $value);
+            }else{
+                return back()->with('error', 'This Order Code Is Not Found.');
+            }
+        }
+    }
+
     // ===================================================
     // course
     // ===================================================
@@ -58,6 +83,30 @@ class OrderController extends Controller
                     ->join('course', 'course.id', '=', 'orders.course_id')
                     ->first();
         return view('admin.order.course.view', compact('order'));
+    }
+
+    public function cSearch(Request $request)
+    {
+        $valid = Validator::make($request->all(), [
+            'search'        => 'required|string'
+        ]);
+
+        if($valid->fails())
+        {
+            return back()->withInput()->withErrors($valid);
+        }else{
+            $value = $request->search;
+            $order = DB::table('orders')
+                    ->where('code', '=', $value )
+                    ->where('course_id', '!=', 'NULL')
+                    ->count();
+            if($order == 1)
+            {
+                return redirect()->route('dashboard.order.course.view', $value);
+            }else{
+                return back()->with('error', 'This Order Code Is Not Found.');
+            }
+        }
     }
 
     // ===================================================
@@ -105,7 +154,7 @@ class OrderController extends Controller
                 $order->update();
                 return back()->with('success', 'Order progress is changed Successfully.');
             }
-            
+
         }
     }
 
@@ -122,14 +171,14 @@ class OrderController extends Controller
         $order->update();
         return back()->with('success', 'Order Inactivated.');
     }
-    
+
     public function suspend(Order $order)
     {
         $order->status = 3;
         $order->update();
         return back()->with('success', 'Order Suspended.');
     }
-    
+
     public function delete(Order $order)
     {
         $order->delete();

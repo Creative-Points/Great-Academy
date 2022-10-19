@@ -77,7 +77,7 @@ Route::controller(StudentController::class)->middleware(['auth', 'role:student']
     Route::get('my-courses', 'myCourses')->name('myCourses');
     Route::get('my-workshops', 'myWorkshops')->name('myWorkshops');
     // profile-acount
-    
+
     // seting-acount
     Route::get('setting', 'settings')->name('settings');
     // edit-password-account
@@ -212,6 +212,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
             Route::get('{order:code}/suspend', 'suspend')->name('suspend');
+            Route::post('search', 'cSearch')->name('cSearch');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });
@@ -223,6 +224,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
             Route::put('{order:code}/update', 'update')->name('update');
             Route::get('{order:code}/active', 'active')->name('active');
             Route::get('{order:code}/suspend', 'suspend')->name('suspend');
+            Route::post('search', 'wSearch')->name('wSearch');
             Route::get('{order:code}/inactive', 'inactive')->name('inactive');
             Route::delete('{order:code}/delete', 'delete')->name('delete');
         });

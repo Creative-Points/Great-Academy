@@ -75,21 +75,23 @@
                     </div>
                 </div>
                 <div class="col-md-10">
-                    <div
-                        class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
-                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                            <label>
-                                <input type="search" class="form-control" placeholder="Search.."
-                                    aria-controls="DataTables_Table_0" />
-                            </label>
-                        </div>
+                    <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
+                        <form action="{{ route('dashboard.order.course.cSearch') }}" method="post">
+                            @csrf
+                            <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                <label>
+                                    <input type="search" class="form-control" placeholder="Search.." name="search" autocomplete="no"/>
+                                </label>
+                            </div>
+                        </form>
+
                         <div class="dt-buttons">
                             <button class="dt-button buttons-collection btn btn-label-secondary dropdown-toggle mx-3"
                                 tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span><i class="bx bx-upload me-2"></i>Export</span>
                             </button>
-                            
+
                         </div>
                     </div>
                 </div>
