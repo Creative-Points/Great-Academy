@@ -70,9 +70,9 @@ class SliderController extends Controller
     {
         // delete image
         $image = $slider->image;
-        if(File::exists('uploads/section/'.$image))
+        if(File::exists('uploads/main-website/slider/'.$image))
         {
-            File::delete('uploads/section/'.$image);
+            File::delete('uploads/main-website/slider/'.$image);
         }
         // delete news
         $slider->delete();

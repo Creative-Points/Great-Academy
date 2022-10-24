@@ -61,6 +61,7 @@ Route::controller(StudentController::class)->middleware(['auth', 'role:student']
 
     Route::get('/home', 'index')->name('dashboard');
     Route::get('my-courses', 'myCourses')->name('myCourses');
+    Route::get('myCourse/{course:slug}/view', 'myCourse')->name('myCourse');
     Route::get('my-workshops', 'myWorkshops')->name('myWorkshops');
     // profile-acount
 
