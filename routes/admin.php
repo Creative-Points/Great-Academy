@@ -87,6 +87,7 @@ Route::name('dashboard.')->middleware(['auth', 'role:Admin'])->prefix('dashboard
     // Student
     Route::controller(AdminStudentController::class)->name('student.')->prefix('student')->group(function(){
         Route::get('manage', 'index')->name('manage');
+        // Route::get('manage', 'search')->name('search');
         Route::post('add', 'store')->name('add');
         Route::put('{user}/update', 'update')->name('update');
         Route::get('{user}/view', 'show')->name('view');

@@ -12,12 +12,63 @@ use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::whereHas("roles", function ($q) {
-            $q->where('name', 'student');
-        })->paginate();
-        return view('admin.student.index', compact('users'));
+        $string = '';
+        if(isset($request->search))
+        {
+            $string = $request->search;
+
+            // advanced Search like [ status:active ]
+            if($string)
+            {
+                $str = explode(':', $string);
+                if(count($str) > 1)
+                {
+                    // if search by status
+                    if($str[0] == 'STATUS')
+                    {
+                        if($str[1] == 'active')
+                        {
+                            $string = 1;
+                        }elseif($str[1] == 'inactive')
+                        {
+                            $string = 2;
+                        }elseif($str[1] == 'suspended')
+                        {
+                            $string = 3;
+                        }
+                    }elseif($str[0] == 'UNIVERSITY'){
+                        $string = $str[1];
+                    }elseif($str[0] == 'FACULTY'){
+                        $string = $str[1];
+                    }
+                }
+            }
+
+            // Query of search in DB
+            $users = User::select(['*'])
+                ->where(function($query) use ($string){
+                $cols = ['name', 'phone', 'status', 'email', 'university', 'faculty', 'address'];
+                foreach($cols as $col)
+                {
+                    if(intval($string) && strlen($string) == 1)
+                    {
+                        $query->orWhere($col, '=', $string);
+                    }else{
+                        $query->orWhere($col, 'like', '%'.$string.'%');
+                    }
+                }
+            })->whereHas('roles', function($query){
+                $query->where('name', '=', 'student');
+            })->paginate();
+            $string = $request->search;
+        }else{
+            $users = User::whereHas("roles", function ($q) {
+                $q->where('name', 'student');
+            })->paginate();
+        }
+        return view('admin.student.index', compact('users', 'string'));
     }
 
     public function store(Request $request, User $user)
