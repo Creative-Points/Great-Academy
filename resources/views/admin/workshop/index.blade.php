@@ -72,11 +72,14 @@
                 <div class="col-md-10">
                     <div
                         class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0">
-                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                            <label>
-                                <input type="search" class="form-control" placeholder="Search.."
-                                    aria-controls="DataTables_Table_0" />
-                            </label>
+                        <div class="dataTables_filter">
+                            <form action="" method="get">
+                                <label>
+                                    <input type="search" class="form-control" placeholder="Search.."
+                                        name="search" value="{{ $string }}"/>
+                                </label>
+                            </form>
+                            
                         </div>
                         <div class="dt-buttons">
                             <button class="dt-button buttons-collection btn btn-label-secondary dropdown-toggle mx-3"

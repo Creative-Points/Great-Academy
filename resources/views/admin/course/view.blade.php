@@ -2,10 +2,10 @@
 <x-admin-layout>
     @role('Admin')
         @php($routeName = 'dashboard')
-    @elserole('Employee')
-        @php($routeName='emp')
-    @elserole('instructor')
-        @php($routeName='ins')
+        @elserole('Employee')
+        @php($routeName = 'emp')
+        @elserole('instructor')
+        @php($routeName = 'ins')
     @endrole
     <h4 class="fw-bold py-3 mb-4">
         <span class="text-muted fw-light">Courses / {{ $course->name }} /</span> View
@@ -28,8 +28,8 @@
                 <div class="card-body">
                     <div class="user-avatar-section">
                         <div class=" d-flex align-items-center flex-column">
-                            <img class="img-fluid rounded my-4" src="/uploads/course/{{ $course->image }}" height="110"
-                                width="110" alt="User avatar">
+                            <img class="img-fluid rounded my-4" src="/uploads/course/{{ $course->image }}"
+                                height="110" width="110" alt="User avatar">
                             <div class="user-info text-center">
                                 <h4 class="mb-2">{{ $course->name }}</h4>
                                 <span class="badge bg-label-primary">
@@ -91,9 +91,11 @@
                         @role('Admin')
                             <div class="d-flex justify-content-center pt-3">
                                 @if ($course->status == 1)
-                                    <a href="{{ route($routeName.'.course.inactive', $course->slug) }}" class="btn btn-label-danger suspend-user">Inactive</a>
+                                    <a href="{{ route($routeName . '.course.inactive', $course->slug) }}"
+                                        class="btn btn-label-danger suspend-user">Inactive</a>
                                 @elseif($course->status == 2)
-                                    <a href="{{ route($routeName.'.course.active', $course->slug) }}" class="btn btn-label-success suspend-user">Active</a>
+                                    <a href="{{ route($routeName . '.course.active', $course->slug) }}"
+                                        class="btn btn-label-success suspend-user">Active</a>
                                 @endif
                             </div>
                         @endrole
@@ -123,12 +125,12 @@
                             aria-controls="navs-pills-justified-security" aria-selected="false"><i
                                 class="bx bxs-image me-1"></i>Image</button>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-course" aria-controls="navs-pills-justified-security"
-                            aria-selected="false"><i class='bx bxs-graduation me-1'></i>Courses</button>
+                            aria-selected="false"><i class='bx bxs-file-doc me-1'></i>Materials</button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                             data-bs-target="#navs-pills-justified-workshop" aria-selected="false">
                             <i class='bx bx-chalkboard me-1'></i>Workshops</button>
@@ -142,7 +144,8 @@
                             <h3>Edit Course Information</h3>
                             <p>Updating Course details will receive a privacy audit.</p>
                         </div>
-                        <form method="POST" class="row g-3" action="{{auth()->user()->hasRole('Admin') ? route($routeName.'.course.update', $course->slug) : '' }}">
+                        <form method="POST" class="row g-3"
+                            action="{{ auth()->user()->hasRole('Admin')? route($routeName . '.course.update', $course->slug): '' }}">
                             @method('PUT')
                             @csrf
                             {{-- <div class="col-12 col-md-12">
@@ -153,43 +156,44 @@
                             <div class="col-12 col-md-12">
                                 <label class="form-label" for="add-course-name">Name</label>
                                 <input type="text" class="form-control" id="add-course-name"
-                                    placeholder="Type name of course" name="name" value="{{ $course->name }}" required>
+                                    placeholder="Type name of course" name="name" value="{{ $course->name }}"
+                                    required>
                             </div>
                             <div class="col-12 col-md-12">
                                 <label class="form-label" for="add-course-describe">Description</label>
-                                <textarea 
-                                    class="form-control" 
-                                    name="desc" 
-                                    placeholder="Describe your course" 
-                                    id="add-course-describe" 
-                                    cols="30" 
-                                    rows="10" 
-                                    required>{{ $course->description }}</textarea>
-                                
+                                <textarea class="form-control" name="desc" placeholder="Describe your course" id="add-course-describe" cols="30"
+                                    rows="10" required>{{ $course->description }}</textarea>
+
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label" for="add-course-level">levels</label>
                                 <input type="number" id="add-course-level" class="form-control"
-                                    placeholder="Type count of course levels " name="level" value="{{ $course->level }}" required>
+                                    placeholder="Type count of course levels " name="level"
+                                    value="{{ $course->level }}" required>
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label" for="add-course-hours">Hours</label>
                                 <input type="number" id="add-course-hours" class="form-control"
-                                    placeholder="Type count of course hours " name="hours" value="{{ $course->hours }}" required>
+                                    placeholder="Type count of course hours " name="hours"
+                                    value="{{ $course->hours }}" required>
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label" for="add-course-price">Price</label>
                                 <input type="number" id="add-course-price" class="form-control"
-                                    placeholder="Type course price " name="price" value="{{ $course->price }}" required>
+                                    placeholder="Type course price " name="price" value="{{ $course->price }}"
+                                    required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalEditUserStatus">Status</label>
                                 <select id="modalEditUserStatus" name="status" class="form-select"
                                     aria-label="Default select example">
                                     <option selected="">Status</option>
-                                    <option value="1" @if($course->status == 1)selected @endif>Active</option>
-                                    <option value="2" @if($course->status == 2)selected @endif>Inactive</option>
-                                    <option value="3" @if($course->status == 3)selected @endif>Suspended</option>
+                                    <option value="1" @if ($course->status == 1) selected @endif>Active
+                                    </option>
+                                    <option value="2" @if ($course->status == 2) selected @endif>Inactive
+                                    </option>
+                                    <option value="3" @if ($course->status == 3) selected @endif>Suspended
+                                    </option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
@@ -198,13 +202,15 @@
                                     aria-label="Default select example">
                                     <option></option>
                                     @foreach ($sections as $section)
-                                        <option value="{{ $section->id }}" @if($course->section_id == $section->id)selected @endif>{{ $section->name }}</option>
+                                        <option value="{{ $section->id }}"
+                                            @if ($course->section_id == $section->id) selected @endif>{{ $section->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route($routeName.'.course.manage') }}"
+                                <a href="{{ route($routeName . '.course.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -213,7 +219,8 @@
                         <div class="text-center mb-4">
                             <h3>Edit Course Image</h3>
                         </div>
-                        <form method="POST" class="row g-3" enctype="multipart/form-data" action="{{ auth()->user()->hasRole('Admin') ? route($routeName.'.course.image', $course->slug) : '' }}">
+                        <form method="POST" class="row g-3" enctype="multipart/form-data"
+                            action="{{ auth()->user()->hasRole('Admin')? route($routeName . '.course.image', $course->slug): '' }}">
                             @method('PUT')
                             @csrf
                             <div class="col-12 col-md-12">
@@ -223,7 +230,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Update</button>
-                                <a href="{{ route($routeName.'.course.manage') }}"
+                                <a href="{{ route($routeName . '.course.manage') }}"
                                     class="btn btn-label-secondary">Cancel</a>
                             </div>
                         </form>
@@ -231,18 +238,45 @@
                     <div class="tab-pane fade" id="navs-pills-justified-course" role="tabpanel">
                         <!-- Project table -->
                         <div class=" mb-4">
-                            <h5 class="card-header">Student's Courses List</h5>
+                            <h5 class="card-header">Course's Materials List</h5>
                             <div class="table-responsive mb-3">
                                 <table class="table datatable-project border-top">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th class="text-nowrap">Level</th>
-                                            <th>Progress</th>
-                                            <th>Hours</th>
+                                            <th>Material Name</th>
+                                            <th class="text-nowrap">Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @forelse ($materials as $item)
+                                            <tr class="odd">
+                                                <td class="sorting_1">
+                                                    <div class="d-flex justify-content-start align-items-center">
+                                                        <div class="d-flex flex-column">
+                                                            <a href="{{ route($routeName . '.material.display', $item->slug) }}"
+                                                                class="text-body text-truncate">
+                                                                <span class="fw-semibold">
+                                                                    {{ $item->name }}
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        <span class="badge bg-label-success">Active</span>
+                                                    @elseif ($item->status == 2)
+                                                        <span class="badge bg-label-danger">Inactive</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="2" class="text-center text-muted">There are no data
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

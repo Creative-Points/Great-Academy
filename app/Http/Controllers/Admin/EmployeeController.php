@@ -11,10 +11,69 @@ use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::role(['admin', 'employee'])->paginate();
-        return view('admin.employee.index', compact('users'));
+        $string = '';
+        if(isset($request->search))
+        {
+            $string = $request->search;
+            // advanced search like [ STATUS:active, FACULTY:mis ]
+            if($string)
+            {
+                $str = explode(':', $string);
+                if(count($str) > 1)
+                {
+                    // search by filter
+                    $attrs = ['STATUS', 'UNIVERSITY', 'FACULTY', 'ROLE'];
+                    foreach($attrs as $attr)
+                    {
+                        if($str[0] == $attr)
+                        {
+                            if($attr == 'STATUS')
+                            {
+                                $sts = ['active', 'inactive', 'suspended'];
+                                foreach($sts as $st)
+                                {
+                                    if($str[1] == $st)
+                                    {
+                                        $string = array_search($st, $sts) + 1;
+                                    }
+                                }
+                            }elseif($attr == 'ROLE'){
+                                $string = $str[1];
+                                $role = TRUE;
+                            }else{
+                                $string = $str[1];
+                            }
+                        }
+                    }
+                }
+            }
+            // Query of search in DB
+            $users = User::select(['*'])
+                ->where(function($query) use ($string){
+                    $cols = ['name', 'email', 'phone', 'status', 'address', 'university', 'faculty'];
+                    foreach($cols as $col)
+                    {
+                        if(intval($string) && strlen($string) == 1)
+                        {
+                            $query->orWhere($col, '=', $string);
+                        }elseif($string == 'Admin'){ // Role admin
+                            $query->role(['Admin']);
+                        }elseif($string == 'Employee'){ // Role employee
+                            $query->role(['employee']);
+                        }else{
+                            $query->orWhere($col, 'like', '%' . $string . '%');
+                        }
+                    }
+                })
+                ->role(['Admin', 'employee'])
+                ->paginate();
+            $string = $request->search;
+        }else{
+            $users = User::role(['Admin', 'employee'])->paginate();
+        }
+        return view('admin.employee.index', compact('users', 'string'));
     }
 
     public function store(Request $request, User $user)

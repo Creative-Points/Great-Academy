@@ -13,14 +13,74 @@ use Illuminate\Support\Facades\File;
 
 class WorkshopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $workshops = DB::table('workshop')
+        $string = '';
+        $filter = FALSE;
+        if(isset($request->search))
+        {
+            $string = $request->search;
+            // advanced search like [ STATUS:active, FACULTY:mis ]
+            if($string)
+            {
+                $str = explode(':', $string);
+                if(count($str) > 1)
+                {
+                    $filter = TRUE;
+                    // search by filter
+                    switch ($str[0])
+                    {
+                        case 'STATUS':
+                            if($str[1] == 'active')
+                            {
+                                $string = 1;
+                            }elseif($str[1] == 'inactive')
+                            {
+                                $string = 2;
+                            }
+                            break;
+                        case 'LEVEL':
+                            $string = $str[1];
+                            break;
+                        case 'PRICE':
+                            $string = $str[1];
+                            break;
+                        case 'HOURS':
+                            $string = $str[1];
+                            break;
+                        default:
+                            return back()->with('error', 'This key: ('.$str[0].') Is not found in search system.');
+                    }
+                }
+            }
+            // Query of search in DB
+            $workshops = DB::table('workshop')
+                ->select('workshop.*', 'sections.name as section_name')
+                ->join('sections', 'workshop.section_id', '=', 'sections.id')
+                ->where(function($query) use ($string, $filter, $str){
+                    $cols = ['workshop.name', 'price', 'level', 'workshop.status', 'hours'];
+                    foreach($cols as $col)
+                    {
+                        if(intval($string) && strlen($string) == 1 && $str[0] == 'STATUS')
+                        {
+                            $query->orWhere('workshop.status', '=', $string);
+                        }elseif($filter == TRUE){
+                            $query->orWhere($str[0], '=', $string);
+                        }else{
+                            $query->orWhere($col, 'like', '%' . $string . '%');
+                        }
+                    }
+                })
+                ->paginate();
+            $string = $request->search;
+        }else{
+            $workshops = DB::table('workshop')
                     ->select('workshop.*', 'sections.name as section_name')
                     ->join('sections', 'workshop.section_id', '=', 'sections.id')
                     ->paginate();
+        }
         $sections  = Section::all();
-        return view('admin.workshop.index', compact('workshops', 'sections'));
+        return view('admin.workshop.index', compact('workshops', 'sections', 'string'));
     }
 
     public function store(Request $request)
@@ -190,8 +250,12 @@ class WorkshopController extends Controller
                     ->join('sections', 'workshop.section_id', '=', 'sections.id')
                     ->where('workshop.slug', '=', $slug)
                     ->first();
+        $materials = DB::table('materials')
+                    ->where('course_id', '=', $workshop->id)
+                    ->where('type', '=', 'Workshop')
+                    ->get();
         $sections = Section::all();
-        return view('admin.workshop.view', compact('workshop', 'sections'));
+        return view('admin.workshop.view', compact('workshop', 'sections', 'materials'));
     }
 
     public function inactive($slug)

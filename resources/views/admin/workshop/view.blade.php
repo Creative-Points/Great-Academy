@@ -125,16 +125,11 @@
                                 class="bx bxs-image me-1"></i>Image</button>
                     </li>
                     @endrole
-                    {{-- <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#navs-pills-justified-workshop" aria-controls="navs-pills-justified-security"
-                            aria-selected="false"><i class='bx bxs-graduation me-1'></i>workshops</button>
-                    </li>
                     <li class="nav-item">
                         <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#navs-pills-justified-workshop" aria-selected="false">
-                            <i class='bx bx-chalkboard me-1'></i>Workshops</button>
-                    </li> --}}
+                            data-bs-target="#navs-pills-justified-workshop" aria-controls="navs-pills-justified-security"
+                            aria-selected="false"><i class='bx bxs-file-doc me-1'></i>Materials</button>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     @role('Admin')
@@ -235,18 +230,45 @@
                     <div class="tab-pane fade" id="navs-pills-justified-workshop" role="tabpanel">
                         <!-- Project table -->
                         <div class=" mb-4">
-                            <h5 class="card-header">Student's Workshops List</h5>
+                            <h5 class="card-header">Workshop's Materials List</h5>
                             <div class="table-responsive mb-3">
                                 <table class="table datatable-project border-top">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th class="text-nowrap">Level</th>
-                                            <th>Progress</th>
-                                            <th>Hours</th>
+                                            <th>Material Name</th>
+                                            <th class="text-nowrap">Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @forelse ($materials as $item)
+                                            <tr class="odd">
+                                                <td class="sorting_1">
+                                                    <div class="d-flex justify-content-start align-items-center">
+                                                        <div class="d-flex flex-column">
+                                                            <a href="{{ route($routeName . '.material.display', $item->slug) }}"
+                                                                class="text-body text-truncate">
+                                                                <span class="fw-semibold">
+                                                                    {{ $item->name }}
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @if ($item->status == 1)
+                                                        <span class="badge bg-label-success">Active</span>
+                                                    @elseif ($item->status == 2)
+                                                        <span class="badge bg-label-danger">Inactive</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="2" class="text-center text-muted">There are no data
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

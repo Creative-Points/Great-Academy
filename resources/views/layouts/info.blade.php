@@ -2,10 +2,14 @@
     <div class="card shadow-v1">
         <div class="card-header text-center border-bottom pt-5 mb-4">
             <a>
-                <span class="iconbox padding-60 bg-primary text-white mb-4 text-uppercase ">a</span>
+                @php
+                    $name = auth()->user()->name;
+                    $str = explode(' ', $name);
+                @endphp
+                <h1 class="iconbox padding-60 bg-primary text-white mb-4 text-uppercase ">{{ $str[0][0] . $str[1][0] }}</h1>
             </a>
             <h4 class="text-capitalize">
-                {{ auth()->user()->name }} </h4>
+                {{ $name }} </h4>
             <p class="small">
                 تم الانضمام فى <bdi>{{ auth()->user()->created_at }}</bdi>
             </p>
