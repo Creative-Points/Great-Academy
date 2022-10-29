@@ -26,16 +26,16 @@
             <div class="slider">
                 @php($m = 1)
                 @foreach ($sliders as $item)
-                    <div class="slide @if($m == 1)active @endif" style="background-image: url('uploads/main-website/slider/{{ $item->image }}')">
-                        <div class="container">
-                            <div class="caption">
-                                <h1>{{ $item->title }}</h1>
-                                <p>{{ $item->subtitle }}</p>
-                                <a href="{{ $item->link_to }}">{{ $item->btn_text }}</a>
-                            </div>
+                <div class="slide @if($m == 1)active @endif" style="background-image: url('uploads/main-website/slider/{{ $item->image }}')">
+                    <div class="container">
+                        <div class="caption">
+                            <h1>{{ $item->title }}</h1>
+                            <p>{{ $item->subtitle }}</p>
+                            <a href="{{ $item->link_to }}">{{ $item->btn_text }}</a>
                         </div>
                     </div>
-                    @php($m++)
+                </div>
+                @php($m++)
                 @endforeach
                 {{-- <div class="slide active" style="background-image: url('assets/images/slide-1.jpg')">
                     <div class="container">
@@ -98,9 +98,9 @@
         </section>
         <div class="marquee">
             @forelse ($news as $item)
-                <h1>{{ $item->text }} * </h1>
+            <h1>{{ $item->text }} * </h1>
             @empty
-                {{-- <h1>Recent News </h1> --}}
+            {{-- <h1>Recent News </h1> --}}
             @endforelse
             {{-- <h1>Nepal * Himalayas * Mountains * Everest</h1>
             <h1>Nepal * Himalayas * Mountains * Everest</h1>
@@ -129,7 +129,7 @@
                     <div class="mb-0">
                         <i class="fas fa-user display-4"></i>
                     </div>
-                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="509">509</p>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="">509</p>
                     <p class="lead my-0">
                         محاضر معتمد </p>
                 </div>
@@ -292,172 +292,26 @@
       </div>
   </section> -->
 
-    <section class="section courses" data-section="section4">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h2>صور من الأكاديمية</h2>
-                    </div>
-                </div>
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img src="/assets/images/courses-01.jpg" alt="Course #1">
-                        <!-- <div class="down-content">
-                          <h4>Digital Marketing</h4>
-                          <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and
-                              Pexels.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-01.png" alt="Author 1">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="/assets/images/courses-02.jpg" alt="Course #2">
-                        <!-- <div class="down-content">
-                          <h4>Business World</h4>
-                          <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
-                              ipsum porta.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-02.png" alt="Author 2">
-                          </div>
-                          <div class="text-button-free">
-                              <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-03.jpg" alt="Course #3">
-                        <!-- <div class="down-content">
-                          <h4>Media Technology</h4>
-                          <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
-                              lobortis enim.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-03.png" alt="Author 3">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-04.jpg" alt="Course #4">
-                        <!-- <div class="down-content">
-                          <h4>Communications</h4>
-                          <p>Download free images and videos for your websites by visiting Unsplash, Pixabay, and
-                              Pexels.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-04.png" alt="Author 4">
-                          </div>
-                          <div class="text-button-free">
-                              <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-05.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Business Ethics</h4>
-                          <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
-                              lobortis enim.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-05.png" alt="">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-01.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Photography</h4>
-                          <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
-                              ipsum porta.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-01.png" alt="">
-                          </div>
-                          <div class="text-button-free">
-                              <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-02.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Web Development</h4>
-                          <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
-                              lobortis enim.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-02.png" alt="">
-                          </div>
-                          <div class="text-button-free">
-                              <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-03.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Learn HTML CSS</h4>
-                          <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and
-                              Pexels.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-03.png" alt="">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-04.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Social Media</h4>
-                          <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
-                              lobortis enim.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-04.png" alt="">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-05.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Digital Arts</h4>
-                          <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac
-                              ipsum porta.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-05.png" alt="">
-                          </div>
-                          <div class="text-button-free">
-                              <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/courses-01.jpg" alt="">
-                        <!-- <div class="down-content">
-                          <h4>Media Streaming</h4>
-                          <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus
-                              lobortis enim.</p>
-                          <div class="author-image">
-                              <img src="assets/images/author-01.png" alt="">
-                          </div>
-                          <div class="text-button-pay">
-                              <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
-                          </div>
-                      </div> -->
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-12">
+        <div class="section-heading">
+            <h2>صور من الأكاديمية</h2>
         </div>
+    </div>
+    <section id="slider">
+        <input type="radio" name="slider" id="s1" checked>
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3">
+        <input type="radio" name="slider" id="s4">
+        <input type="radio" name="slider" id="s5">
+
+        <label for="s2" id="slide2"><img src="assets/images/image-academy-slider/slider1.jpg" alt=""></label>
+        <label for="s3" id="slide3"><img src="assets/images/image-academy-slider/slider2.jpg" alt=""></label>
+        <label for="s4" id="slide4"><img src="assets/images/image-academy-slider/slider3.jpg" alt=""></label>
+        <label for="s5" id="slide5"><img src="assets/images/image-academy-slider/slider4.jpg" alt=""></label>
+    </section>
+
+    </div>
+    </div>
     </section>
 
 
