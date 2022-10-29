@@ -61,11 +61,11 @@ class WorkshopController extends Controller
                     $cols = ['workshop.name', 'price', 'level', 'workshop.status', 'hours'];
                     foreach($cols as $col)
                     {
-                        if(intval($string) && strlen($string) == 1)
+                        if(intval($string) && strlen($string) == 1 && $str[0] == 'STATUS')
                         {
-                            $query->orWhere($col, '=', $string);
+                            $query->orWhere('workshop.status', '=', $string);
                         }elseif($filter == TRUE){
-                            $query->where($str[0], '=', $string );
+                            $query->orWhere($str[0], '=', $string);
                         }else{
                             $query->orWhere($col, 'like', '%' . $string . '%');
                         }

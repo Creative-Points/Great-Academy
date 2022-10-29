@@ -37,6 +37,8 @@ class CourseController extends Controller
                             }elseif($str[1] == 'inactive')
                             {
                                 $string = 2;
+                            }else{
+                                return back()->with('error', 'This Value (' . $str[1] . ') is not found.');
                             }
                             break;
                         case 'LEVEL':
@@ -61,11 +63,11 @@ class CourseController extends Controller
                     $cols = ['course.name', 'price', 'level', 'course.status', 'hours'];
                     foreach($cols as $col)
                     {
-                        if(intval($string) && strlen($string) == 1)
+                        if(intval($string) && strlen($string) == 1 && $str[0] == 'STATUS')
                         {
-                            $query->orWhere($col, '=', $string);
+                            $query->orWhere('course.status', '=', $string);
                         }elseif($filter == TRUE){
-                            $query->where($str[0], '=', $string );
+                            $query->orWhere($str[0], '=', $string);
                         }else{
                             $query->orWhere($col, 'like', '%' . $string . '%');
                         }
