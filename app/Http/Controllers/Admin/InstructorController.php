@@ -10,12 +10,62 @@ use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::whereHas("roles", function ($q){
-            $q->where('name', 'instructor');
-        })->paginate();
-        return view('admin.instructor.index', compact('users'));
+        $string = '';
+        if(isset($request->search))
+        {
+            $string = $request->search;
+            // advanced search like [ STATUS:active, FACULTY:mis ]
+            if($string)
+            {
+                $str = explode(':', $string);
+                if(count($str) > 1)
+                {
+                    // search by filter
+                    $attrs = ['STATUS', 'UNIVERSITY', 'FACULTY'];
+                    foreach($attrs as $attr)
+                    {
+                        if($str[0] == $attr)
+                        {
+                            if($attr == 'STATUS')
+                            {
+                                $sts = ['active', 'inactive', 'suspended'];
+                                foreach($sts as $st)
+                                {
+                                    if($str[1] == $st)
+                                    {
+                                        $string = array_search($st, $sts) + 1;
+                                    }
+                                }
+                            }else{
+                                $string = $str[1];
+                            }
+                        }
+                    }
+                }
+            }
+            // Query of search in DB
+            $users = User::select(['*'])
+                ->where(function($query) use ($string){
+                    $cols = ['name', 'email', 'phone', 'status', 'address', 'university', 'faculty'];
+                    foreach($cols as $col)
+                    {
+                        if(intval($string) && strlen($string) == 1)
+                        {
+                            $query->orWhere($col, '=', $string);
+                        }else{
+                            $query->orWhere($col, 'like', '%' . $string . '%');
+                        }
+                    }
+                })
+                ->role(['instructor'])
+                ->paginate();
+            $string = $request->search;
+        }else{
+            $users = User::role(['instructor'])->paginate();
+        }
+        return view('admin.instructor.index', compact('users', 'string'));
     }
 
     public function store(Request $request, User $user)

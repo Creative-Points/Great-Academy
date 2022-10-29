@@ -49,19 +49,20 @@ class StudentController extends Controller
             // Query of search in DB
             $users = User::select(['*'])
                 ->where(function($query) use ($string){
-                $cols = ['name', 'phone', 'status', 'email', 'university', 'faculty', 'address'];
-                foreach($cols as $col)
-                {
-                    if(intval($string) && strlen($string) == 1)
+                    $cols = ['name', 'phone', 'status', 'email', 'university', 'faculty', 'address'];
+                    foreach($cols as $col)
                     {
-                        $query->orWhere($col, '=', $string);
-                    }else{
-                        $query->orWhere($col, 'like', '%'.$string.'%');
+                        if(intval($string) && strlen($string) == 1)
+                        {
+                            $query->orWhere($col, '=', $string);
+                        }else{
+                            $query->orWhere($col, 'like', '%'.$string.'%');
+                        }
                     }
+                })->whereHas('roles', function($query){
+                    $query->where('name', '=', 'student');
                 }
-            })->whereHas('roles', function($query){
-                $query->where('name', '=', 'student');
-            })->paginate();
+                )->paginate();
             $string = $request->search;
         }else{
             $users = User::whereHas("roles", function ($q) {

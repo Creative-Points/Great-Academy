@@ -13,14 +13,74 @@ use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $courses = DB::table('course')
-                    ->select('course.*', 'sections.name as section_name')
-                    ->join('sections', 'course.section_id', '=', 'sections.id')
-                    ->paginate();
+        $string = '';
+        $filter = FALSE;
+        if(isset($request->search))
+        {
+            $string = $request->search;
+            // advanced search like [ STATUS:active, FACULTY:mis ]
+            if($string)
+            {
+                $str = explode(':', $string);
+                if(count($str) > 1)
+                {
+                    $filter = TRUE;
+                    // search by filter
+                    switch ($str[0])
+                    {
+                        case 'STATUS':
+                            if($str[1] == 'active')
+                            {
+                                $string = 1;
+                            }elseif($str[1] == 'inactive')
+                            {
+                                $string = 2;
+                            }
+                            break;
+                        case 'LEVEL':
+                            $string = $str[1];
+                            break;
+                        case 'PRICE':
+                            $string = $str[1];
+                            break;
+                        case 'HOURS':
+                            $string = $str[1];
+                            break;
+                        default:
+                            return back()->with('error', 'This key: ('.$str[0].') Is not found in search system.');
+                    }
+                }
+            }
+            // Query of search in DB
+            $courses = DB::table('course')
+                ->select('course.*', 'sections.name as section_name')
+                ->join('sections', 'course.section_id', '=', 'sections.id')
+                ->where(function($query) use ($string, $filter, $str){
+                    $cols = ['course.name', 'price', 'level', 'course.status', 'hours'];
+                    foreach($cols as $col)
+                    {
+                        if(intval($string) && strlen($string) == 1)
+                        {
+                            $query->orWhere($col, '=', $string);
+                        }elseif($filter == TRUE){
+                            $query->where($str[0], '=', $string );
+                        }else{
+                            $query->orWhere($col, 'like', '%' . $string . '%');
+                        }
+                    }
+                })
+                ->paginate();
+            $string = $request->search;
+        }else{
+            $courses = DB::table('course')
+                ->select('course.*', 'sections.name as section_name')
+                ->join('sections', 'course.section_id', '=', 'sections.id')
+                ->paginate();
+        }
         $sections  = Section::all();
-        return view('admin.course.index', compact('courses', 'sections'));
+        return view('admin.course.index', compact('courses', 'sections', 'string'));
     }
 
     public function store(Request $request)
@@ -119,7 +179,7 @@ class CourseController extends Controller
                 $slug = $count ? "{$slug}-{$count}" : $slug;
                 $slug = strtolower($slug);
             }
-            
+
 
             // change section
             if($course->section_id != $request->section)
