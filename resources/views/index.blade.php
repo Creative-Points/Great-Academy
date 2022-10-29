@@ -4,23 +4,6 @@
 
     <!-- ***** Main Banner Area Start ***** -->
     <section class="section main-banner" id="top" data-section="section1">
-        <!-- <video autoplay muted loop id="bg-video">
-          <source src="assets/images/course-video.mp4" type="video/mp4" />
-      </video>
-
-      <div class="video-overlay header-text">
-          <div class="caption">
-              <h6>مرحبا بكم
-                  أكاديمية</h6>
-              <h2><em>GREAT</em> ACADEMY</h2>
-              <h6>الأولى في التعليم في مصر</h6>
-              <div class="main-button" style="display: flex; margin-left:25rem;  ">
-                  <div class="scroll-to-section"><a href="#section2">قم بالتسجيل الأن</a></div>
-                  <div class="scroll-to-section"><a href="#">تعرف على الأقسام</a></div>
-
-              </div>
-          </div>
-      </div> -->
 
         <section class="home">
             <div class="slider">
@@ -37,51 +20,6 @@
                 </div>
                 @php($m++)
                 @endforeach
-                {{-- <div class="slide active" style="background-image: url('assets/images/slide-1.jpg')">
-                    <div class="container">
-                        <div class="caption">
-                            <h1>1. Winter Collection 2022</h1>
-                            <p>Lorem ipsum dummy text goes here.</p>
-                            <a href="">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('assets/images/slide-2.jpg')">
-                    <div class="container">
-                        <div class="caption">
-                            <h1>2. Winter Collection 2022</h1>
-                            <p>Lorem ipsum dummy text goes here.</p>
-                            <a href="">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('assets/images/slide-3.jpg')">
-                    <div class="container">
-                        <div class="caption">
-                            <h1>3. Winter Collection 2022</h1>
-                            <p>Lorem ipsum dummy text goes here.</p>
-                            <a href="">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('https://www.sha.edu.eg/upload/slider/707872752_%D9%85%D8%AD%D9%85%D8%AF%20%D9%81%D8%B1%D9%8A%D8%AF%20%D8%AE%D9%85%D9%8A%D8%B3.jpg')">
-                    <div class="container">
-                        <div class="caption">
-                            <h1>3. Winter Collection 2022</h1>
-                            <p>Lorem ipsum dummy text goes here.</p>
-                            <a href="">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" style="background-image: url('https://www.sha.edu.eg/upload/slider/386966739_444799156_DJI_004200.jpg">
-                    <div class="container">
-                        <div class="caption">
-                            <h1>3. Winter Collection 2022</h1>
-                            <p>Lorem ipsum dummy text goes here.</p>
-                            <a href="">Shop Now</a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
 
             <!-- controls  -->
@@ -121,7 +59,7 @@
 
                         <i class="fas fa-thin fa-display display-4"></i>
                     </div>
-                    <p class="num2 font-size-46 font-semiBold mb-0" data-to=" 829">829</p>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="100">100</p>
                     <p class="lead my-0">
                         دورة اونلاين </p>
                 </div>
@@ -129,7 +67,7 @@
                     <div class="mb-0">
                         <i class="fas fa-user display-4"></i>
                     </div>
-                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="">509</p>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="50">50</p>
                     <p class="lead my-0">
                         محاضر معتمد </p>
                 </div>
@@ -138,8 +76,8 @@
                         <i class="fas fa-users font-size-56"></i>
 
                     </div>
-                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="399720">
-                        399720 </p>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="7000">
+                        7000 </p>
                     <p class="lead my-0">
                         طالب اونلاين </p>
                 </div>
@@ -148,149 +86,14 @@
 
                         <i class="fas fa-users font-size-56"></i>
                     </div>
-                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="68362">
-                        68362 </p>
+                    <p class="num2 font-size-46 font-semiBold mb-0" data-to="7000">
+                        7000 </p>
                     <p class="lead my-0">
                         شهادة اونلاين </p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- <section class="section why-us" data-section="section2">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="section-heading">
-                      <h2>Lorem ipsum dolor sit.</h2>
-                  </div>
-              </div>
-              <div class="col-md-12">
-                  <div id='tabs'>
-                      <ul>
-                          <li><a href='#tabs-1'>Best Education</a></li>
-                          <li><a href='#tabs-2'>Top Management</a></li>
-                          <li><a href='#tabs-3'>Quality Meeting</a></li>
-                      </ul>
-                      <section class='tabs-content'>
-                          <article id='tabs-1'>
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <img src="assets/images/choose-us-image-01.png" alt="">
-                                  </div>
-                                  <div class="col-md-6">
-                                      <h4>Best Education</h4>
-                                      <p>Grad School is free educational HTML template with Bootstrap 4.5.2 CSS
-                                          layout. Feel free to use it for educational or commercial purposes. You may
-                                          want to make <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a little donation</a> to TemplateMo. Please tell your
-                                          friends about us. Thank you.</p>
-                                  </div>
-                              </div>
-                          </article>
-                          <article id='tabs-2'>
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <img src="assets/images/choose-us-image-02.png" alt="">
-                                  </div>
-                                  <div class="col-md-6">
-                                      <h4>Top Level</h4>
-                                      <p>You can modify this HTML layout by editing contents and adding more pages as
-                                          you needed. Since this template has options to add dropdown menus, you can
-                                          put many HTML pages.</p>
-                                      <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio,
-                                          nec interdum quam felis non ante.</p>
-                                  </div>
-                              </div>
-                          </article>
-                          <article id='tabs-3'>
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <img src="assets/images/choose-us-image-03.png" alt="">
-                                  </div>
-                                  <div class="col-md-6">
-                                      <h4>Quality Meeting</h4>
-                                      <p>You are NOT allowed to redistribute this template ZIP file on any template
-                                          collection website. However, you can use this template to convert into a
-                                          specific theme for any kind of CMS platform such as WordPress. For more
-                                          information, you shall <a rel="nofollow" href="https://templatemo.com/contact" target="_parent">contact
-                                              TemplateMo</a> now.</p>
-                                  </div>
-                              </div>
-                          </article>
-                      </section>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section> -->
-    <!--
-  <section class="section coming-soon" data-section="section3">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-7 col-xs-12">
-                  <div class="continer centerIt">
-                      <div>
-                          <h4>Take <em>any online course</em> and win $326 for your next class</h4>
-                          <div class="counter">
-
-                              <div class="days">
-                                  <div class="value">00</div>
-                                  <span>Days</span>
-                              </div>
-
-                              <div class="hours">
-                                  <div class="value">00</div>
-                                  <span>Hours</span>
-                              </div>
-
-                              <div class="minutes">
-                                  <div class="value">00</div>
-                                  <span>Minutes</span>
-                              </div>
-
-                              <div class="seconds">
-                                  <div class="value">00</div>
-                                  <span>Seconds</span>
-                              </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-5">
-                  <div class="right-content">
-                      <div class="top-content">
-                          <h6>Register your free account and <em>get immediate</em> access to online courses</h6>
-                      </div>
-                      <form id="contact" action="" method="get">
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <fieldset>
-                                      <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-12">
-                                  <fieldset>
-                                      <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-12">
-                                  <fieldset>
-                                      <input name="phone-number" type="text" class="form-control" id="phone-number" placeholder="Your Phone Number" required="">
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-12">
-                                  <fieldset>
-                                      <button type="submit" id="form-submit" class="button">Get it now</button>
-                                  </fieldset>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section> -->
 
     <div class="col-md-12">
         <div class="section-heading">
@@ -355,35 +158,6 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-
-                    <!-- Do you need a working HTML contact-form script?
-
-                  Please visit https://templatemo.com/contact page -->
-
-                    <!-- <form id="contact" action="" method="post">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <fieldset>
-                                  <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
-                              </fieldset>
-                          </div>
-                          <div class="col-md-6">
-                              <fieldset>
-                                  <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
-                              </fieldset>
-                          </div>
-                          <div class="col-md-12">
-                              <fieldset>
-                                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                              </fieldset>
-                          </div>
-                          <div class="col-md-12">
-                              <fieldset>
-                                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
-                              </fieldset>
-                          </div>
-                      </div>
-                  </form> -->
                     <ul class="info-contact">
                         <li>
                             <span>
