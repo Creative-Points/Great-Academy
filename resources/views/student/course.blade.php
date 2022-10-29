@@ -40,32 +40,32 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 pr-50 md-pr-15">
-                                    <h1 class="text-center">قائمة كورساتي</h1>
+                                    <h1 class="text-center">قائمة مواد الكورس</h1>
                                     <table class="table text-center">
                                         <thead style="background:var(--main-color); color: white; font-weight: bold;">
                                             <th>#</th>
                                             <th>الاسم</th>
-                                            <th>التفاصيل</th>
+                                            {{-- <th>التفاصيل</th>
                                             <th>السعر</th>
                                             <th>المستويات</th>
-                                            <th>عدد الساعات</th>
+                                            <th>عدد الساعات</th> --}}
                                         </thead>
                                         <tbody>
-                                            @forelse ($courses as $item)
+                                            @forelse ($materials as $item)
                                                 <tr>
                                                     <td>{{ $item->id }}</td>
                                                     <td>
                                                         <a
-                                                            href="{{ route('student.myCourse', $item->slug) }}">{{ $item->name }}</a>
+                                                            href="{{ route('student.material', $item->slug) }}">{{ $item->name }}</a>
                                                     </td>
-                                                    <td>{{ substr($item->description, 0, 100) }}</td>
+                                                    {{-- <td>{{ substr($item->description, 0, 100) }}</td>
                                                     <td>{{ $item->price }}</td>
                                                     <td>{{ $item->level }}</td>
-                                                    <td>{{ $item->hours }}</td>
+                                                    <td>{{ $item->hours }}</td> --}}
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="6">لم تشترك في اي كورسات بعد...</td>
+                                                    <td colspan="2">لم تشترك في اي كورسات بعد...</td>
                                                 </tr>
                                             @endforelse
 

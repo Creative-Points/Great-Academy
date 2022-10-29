@@ -24,7 +24,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-grad-school.css?v=') . time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=') . time() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css') }}">
 </head>

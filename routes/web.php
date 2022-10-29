@@ -63,6 +63,8 @@ Route::controller(StudentController::class)->middleware(['auth', 'role:student']
     Route::get('my-courses', 'myCourses')->name('myCourses');
     Route::get('myCourse/{course:slug}/view', 'myCourse')->name('myCourse');
     Route::get('my-workshops', 'myWorkshops')->name('myWorkshops');
+    Route::get('myWorkshop/{workshop:slug}/view', 'myWorkshop')->name('myWorkshop');
+    Route::get('material/{material:slug}/view', 'viewMate')->name('material');
     // profile-acount
 
     // seting-acount
