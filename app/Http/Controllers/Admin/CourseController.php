@@ -251,8 +251,12 @@ class CourseController extends Controller
                     ->join('sections', 'course.section_id', '=', 'sections.id')
                     ->where('course.slug', '=', $course->slug)
                     ->first();
+        $materials = DB::table('materials')
+                    ->where('course_id', '=', $course->id)
+                    ->where('type', '=', 'Course')
+                    ->get();
         $sections = Section::all();
-        return view('admin.course.view', compact('course', 'sections'));
+        return view('admin.course.view', compact('course', 'sections', 'materials'));
     }
 
     public function inactive($slug)

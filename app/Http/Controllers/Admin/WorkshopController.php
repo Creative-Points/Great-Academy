@@ -250,8 +250,12 @@ class WorkshopController extends Controller
                     ->join('sections', 'workshop.section_id', '=', 'sections.id')
                     ->where('workshop.slug', '=', $slug)
                     ->first();
+        $materials = DB::table('materials')
+                    ->where('course_id', '=', $workshop->id)
+                    ->where('type', '=', 'Workshop')
+                    ->get();
         $sections = Section::all();
-        return view('admin.workshop.view', compact('workshop', 'sections'));
+        return view('admin.workshop.view', compact('workshop', 'sections', 'materials'));
     }
 
     public function inactive($slug)
